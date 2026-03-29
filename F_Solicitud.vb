@@ -603,6 +603,8 @@ Public Class F_Solicitud
         T_URLexplorador_Red.Text = ""
         T_URLlogo_Red.Text = ""
         T_URLrpc_Red.Text = ""
+        T_TipoCapa_Red.Text = ""
+        T_MecanismoConsenso_Red.Text = ""
         '
         L_IDRed_Red.Enabled = Habilitar
         T_ChainID_Red.Enabled = Habilitar
@@ -618,6 +620,9 @@ Public Class F_Solicitud
         T_URLexplorador_Red.Enabled = Habilitar
         T_URLlogo_Red.Enabled = Habilitar
         T_URLrpc_Red.Enabled = Habilitar
+        T_TipoCapa_Red.Enabled = Habilitar
+        T_MecanismoConsenso_Red.Enabled = Habilitar
+
     End Sub
     Private Sub VerRedes(F As Integer)
         LimpiezaRedes(True)
@@ -650,11 +655,11 @@ Public Class F_Solicitud
         T_NomOficial_Red.Text = Matriz_Redes(F, 2)
         T_NomCorto_Red.Text = Matriz_Redes(F, 3)
         T_APIcg_Red.Text = Matriz_Redes(F, 4)
-        '5 Tipo Capa
+        T_TipoCapa_Red.Text = Matriz_Redes(F, 5)
         T_L1padre_Red.Text = Matriz_Redes(F, 6)
         T_TipoRollup_Red.Text = Matriz_Redes(F, 7)
         '8 EVM
-        '9 Mecanismo Consenso
+        T_MecanismoConsenso_Red.Text = Matriz_Redes(F, 9)
         T_TokenNativo_Red.Text = Matriz_Redes(F, 10)
         T_Decimales_Red.Text = Matriz_Redes(F, 11)
         T_TipoBloque_Red.Text = Matriz_Redes(F, 12)
@@ -665,29 +670,14 @@ Public Class F_Solicitud
         '17 Activo
         '
         '--------------------------------------------
-        '5 Tipo Capa            Matriz_Redes(F, 5)
-        If Matriz_Redes(F, 5) = "L1" Then
-            R_L1.Checked = True
-        ElseIf Matriz_Redes(F, 5) = "L2" Then
-            R_L2.Checked = True
-        Else
-            R_Sidechain.Checked = True
-        End If
+        Dim T As String
         '
         '8 EVM                  Matriz_Redes(F, 8)
-        If Matriz_Redes(F, 8) = "SI" Then
+        T = UCase(Matriz_Redes(F, 8))
+        If T = "SI" Then
             CB_EVM_Red.Checked = True
         Else
             CB_EVM_Red.Checked = False
-        End If
-
-        '9 Mecanismo Consenso   Matriz_Redes(F, 9)
-        If Matriz_Redes(F, 9) = "POW" Then
-            R_POW.Checked = True
-        ElseIf Matriz_Redes(F, 5) = "POS" Then
-            R_POS.Checked = True
-        Else
-            R_POH.Checked = True
         End If
         '
         '17 Activo              Matriz_Redes(F, 17)
@@ -718,31 +708,6 @@ Public Class F_Solicitud
     'EVENTOS
     '---------------------------------------------------------------------------------------------------------------------
     '
-    Private Sub MecanismoDeConsendo()
-        If R_POW.Checked Then
-            R_POS.Checked = False
-            R_POH.Checked = False
-        ElseIf R_POH.Checked Then
-            R_POS.Checked = False
-            R_POW.Checked = False
-        ElseIf R_POS.Checked = False Then
-            R_POW.Checked = False
-            R_POH.Checked = False
-        End If
-    End Sub
-    Private Sub TipoCapa()
-        If R_L1.Checked Then
-            R_L2.Checked = False
-            R_Sidechain.Checked = False
-        ElseIf R_L2.Checked Then
-            R_L1.Checked = False
-            R_Sidechain.Checked = False
-        ElseIf R_Sidechain.Checked = False Then
-            R_L1.Checked = False
-            R_L2.Checked = False
-        End If
-    End Sub
-    '
     '
     '
     Private Sub F_Solicitud_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -765,35 +730,7 @@ Public Class F_Solicitud
             VerMoneda(F)
             Exit Sub
         End If
-
-
     End Sub
-
-    Private Sub R_POS_CheckedChanged(sender As Object, e As EventArgs) Handles R_POS.CheckedChanged
-        If VariableDeInicio Then Exit Sub
-        MecanismoDeConsendo()
-    End Sub
-    Private Sub R_POH_CheckedChanged(sender As Object, e As EventArgs) Handles R_POH.CheckedChanged
-        If VariableDeInicio Then Exit Sub
-        MecanismoDeConsendo()
-    End Sub
-    Private Sub R_POW_CheckedChanged(sender As Object, e As EventArgs) Handles R_POW.CheckedChanged
-        If VariableDeInicio Then Exit Sub
-        MecanismoDeConsendo()
-    End Sub
-    Private Sub R_Sidechain_CheckedChanged(sender As Object, e As EventArgs) Handles R_Sidechain.CheckedChanged
-        If VariableDeInicio Then Exit Sub
-        TipoCapa()
-    End Sub
-    Private Sub R_L2_CheckedChanged(sender As Object, e As EventArgs) Handles R_L2.CheckedChanged
-        If VariableDeInicio Then Exit Sub
-        TipoCapa()
-    End Sub
-    Private Sub R_L1_CheckedChanged(sender As Object, e As EventArgs) Handles R_L1.CheckedChanged
-        If VariableDeInicio Then Exit Sub
-        TipoCapa()
-    End Sub
-
     Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Red.Text
@@ -801,9 +738,23 @@ Public Class F_Solicitud
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
-
-    Private Sub T_URLexplorador_Red_MouseClick(sender As Object, e As MouseEventArgs) Handles T_URLexplorador_Red.MouseClick
-        Process.Start(New ProcessStartInfo(T_URLexplorador_Red.Text) With {.UseShellExecute = True})
+    Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
+        If Len(T_URLexplorador_Red.Text) < 3 Then Exit Sub
+        '
+        Dim URL As String = "http://" & T_URLexplorador_Red.Text
+        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
+    End Sub
+    Private Sub Label73_Click(sender As Object, e As EventArgs) Handles Label73.Click
+        If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
+        '
+        Dim URL As String = "http://" & T_URLlogo_Red.Text
+        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
+    End Sub
+    Private Sub Label72_Click(sender As Object, e As EventArgs) Handles Label72.Click
+        If Len(T_URLrpc_Red.Text) < 3 Then Exit Sub
+        '
+        Dim URL As String = "http://" & T_URLrpc_Red.Text
+        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
     '
     '
