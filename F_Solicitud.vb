@@ -494,12 +494,15 @@ Public Class F_Solicitud
         T_NomMoneda.Text = ""
         T_AcronimoMoneda.Text = ""
         T_ContratoMoneda.Text = ""
+        C_RedMoneda.Text = ""
 
         rT_NotaMoneda.Text = ""
         '
         T_NomMoneda.Enabled = Habilitar
         T_AcronimoMoneda.Enabled = Habilitar
         T_ContratoMoneda.Enabled = Habilitar
+        C_RedMoneda.Enabled = Habilitar
+
         rT_NotaMoneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
