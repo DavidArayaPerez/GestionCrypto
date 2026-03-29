@@ -10,14 +10,6 @@ Public Class F_zInicio
     '
     '
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Comprobar disponibilidad antes de descargar el contenido completo
-        If Not ApiIsAlive(RutaAPI_CMF_UF, 3000) Or Not ApiIsAlive(RutaAPI_CMF_UTM, 3000) Or Not ApiIsAlive(RutaAPI_CMF_DOLAR, 3000) Then
-            MsgBox("Existen problemas con la API de CMF Chile")
-        Else
-            ValorUTM = P_Datos_UTM_HOY()
-            ValorDolar = P_Datos_DOLAR_HOY()
-            ValorUF = P_Datos_UF_HOY()
-        End If
         '
         Parametros()
         '
@@ -47,6 +39,11 @@ Public Class F_zInicio
         '
         'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
         'CargarTXT("Pares", Matriz_Pares)
+        '
+        '
+        Dim ValorDolar As List(Of KeyValuePair(Of String, Double)) = APICMF_DOLAR_XML(2026)
+        '
+
         F_Solicitud.Inicializacion()
         F_Solicitud.ShowDialog()
         Me.Close()
