@@ -92,13 +92,6 @@ Public Class F_zInicio
                     RutaLocal = Elementos(1)
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & Elementos(1)
-                Case "UTM"
-                    If ValorUTM = 0 Then
-                        ValorUTM = CDbl(Elementos(1))
-                        ACTUALIZACION_UF = "NO"
-                    End If
-                    Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUTM
                 Case "DOLAR"
                     If ValorDolar = 0 Then
                         ValorDolar = CDbl(Elementos(1))
@@ -106,13 +99,6 @@ Public Class F_zInicio
                     End If
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorDolar
-                Case "UF"
-                    If ValorUF = 0 Then
-                        ValorUF = CDbl(Elementos(1))
-                        ACTUALIZACION_DOLAR = "NO"
-                    End If
-                    Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUF
             End Select
         Next Fila
         '

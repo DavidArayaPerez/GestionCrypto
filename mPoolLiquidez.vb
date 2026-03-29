@@ -54,10 +54,10 @@ Module mPoolLiquidez
         Dim Matriz(,) As String = Matriz_PoolLiquidez
         Dim TotalFilas As Integer = Matriz_PoolLiquidezTF
         For i As Integer = 1 To TotalFilas
-            If IsDate(Matriz(i, 1)) Then
-                Matriz(i, 1) = CDate(Matriz(i, 1)).ToString("yyyyMMdd")
-            End If
+            Dim FechaAux As String = TransformarFecha_TextoNumero_YYYYmmDD(Matriz(i, 1))
+            If FechaAux > 1 Then Matriz(i, 1) = FechaAux
         Next i
+        Matriz_PoolLiquidez = Matriz
     End Sub
     Public Sub Ordenar_PoolLiquidez()
         Dim Matriz(,) As String = Matriz_PoolLiquidez

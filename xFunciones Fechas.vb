@@ -9,6 +9,11 @@ Module zFuncionesAutonomas_Fechas
     '
     '
     Public Function TransformarFecha_TextoNumero_YYYYmmDD(FechaTexto As String) As Integer
+        'Devuvel 3 valores
+        '   CERO        Cuando la fecha no es correcta
+        '   UNO         Cuando la fecha ya esta en el formato correcto YYYYmmDD
+        '   YYYYmmDD    Cuando la tiene otro formato y se logra modificar
+        '
         Dim Largo As Integer = Len(FechaTexto)
         '
         If Largo = 6 Then
@@ -23,9 +28,9 @@ Module zFuncionesAutonomas_Fechas
         '
     End Function
     Function FechaLargo6(FechaTexto As String) As Integer
-        Dim Dia As String = "0"
-        Dim Mes As String = "0"
-        Dim Año As String = "0"
+        Dim Dia As String '= "0"
+        Dim Mes As String '= "0"
+        Dim Año As String '= "0"
         'Formato corto del tipo YYmmDD
         'Aca el problema es si viene al reves DDmmYY
         'Por ende se probaran ambas opciones y si la primera da fecha valida entonce se toma esa, sino la siguiente, sino Return 0
@@ -45,17 +50,25 @@ Module zFuncionesAutonomas_Fechas
         Return 0
     End Function
     Function FechaLargo8(FechaTexto As String) As Integer
-        Dim Dia As String = "0"
-        Dim Mes As String = "0"
-        Dim Año As String = "0"
+        'Devuvel 3 valores
+        '   CERO        Cuando la fecha no es correcta
+        '   UNO         Cuando la fecha ya esta en el formato correcto YYYYmmDD
+        '   YYYYmmDD    Cuando la tiene otro formato y se logra modificar
+        '
+        Dim Dia As String '= "0"
+        Dim Mes As String '= "0"
+        Dim Año As String '= "0"
         'Formato mediano del tipo YYYYmmDD, se procede de la misma forma que en el Largo=6
         Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 7, 2)    'YYYY mm DD
         Dim F2 As String = Mid(FechaTexto, 7, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 4)    'DD mm YYYY 
         If IsDate(F1) Then
-            Año = Mid(FechaTexto, 1, 4)
-            Mes = Mid(FechaTexto, 5, 2)
-            Dia = Mid(FechaTexto, 7, 2)
-            Return Año & Mes & Dia
+            'Para evitar sobre escribir valores validos he decido devolver el valor 1 cuando no hay nada que modificar
+            '   Es decir el dato viene en el formato correcto: YYYYmmDD
+            Return 1
+            'Año = Mid(FechaTexto, 1, 4)
+            'Mes = Mid(FechaTexto, 5, 2)
+            'Dia = Mid(FechaTexto, 7, 2)
+            'Return Año & Mes & Dia
         ElseIf IsDate(F2) Then
             Año = Mid(FechaTexto, 5, 4)
             Mes = Mid(FechaTexto, 3, 2)
@@ -65,9 +78,9 @@ Module zFuncionesAutonomas_Fechas
         Return 0
     End Function
     Function FechaLargo10(FechaTexto As String) As Integer
-        Dim Dia As String = "0"
-        Dim Mes As String = "0"
-        Dim Año As String = "0"
+        Dim Dia As String '= "0"
+        Dim Mes As String '= "0"
+        Dim Año As String '= "0"
         'El formato largo es el mas comun, pero se pueden presentar varias formas, por ejemplo: dd-MM-yyyy, yyyy-MM-dd, dd/MM/yyyy, yyyy/MM/dd
         Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 6, 2) & "/" & Mid(FechaTexto, 9, 2)    'YYYY mm DD
         Dim F2 As String = Mid(FechaTexto, 7, 4) & "/" & Mid(FechaTexto, 4, 2) & "/" & Mid(FechaTexto, 1, 2)    'DD mm YYYY 
@@ -85,13 +98,10 @@ Module zFuncionesAutonomas_Fechas
         Return 0
     End Function
     Function FechaLargoVariable(FechaTexto As String) As Integer
-        Dim Dia As String = "0"
-        Dim Mes As String = "0"
-        Dim Año As String = "0"
         Dim Uno As String = ""
         Dim Dos As String = ""
         Dim Tres As String = ""
-        Dim Separador As String = ""
+        Dim Separador As String '= ""
         Dim X, Y, Z As Integer
         '
         'Para casos donde el formato tiene valores diferentes como:
@@ -288,30 +298,7 @@ Module zFuncionesAutonomas_Fechas
         End Try
     End Function
     '
-    Public Function VigenciaSolicitud(FechaInicio As String, FechaFinal As String) As String
-        '"VIGENTE"          "TERMINADO"             "FUTURO"        
-        'Ejemplo si hoy es 2025/02/20, y las fechas de inicio es 2025/03/01, para el programa significa que aun no comienza el contrato.
-        'Por el contrario si la fecha de inicio es 2025/01/01, significa que el contrato ya empezo.
-        '   Pero si la fecha de inicio es 2025/01/01 y la fecha final es 2025/02/01 significa que el contrato empezo y ya termino....
-        'Por ese motivo hace faltan las dos fechas para compararla con la fecha de hoy.
-        '
-        If Not ValidaFechaTexto(FechaInicio) Then Return ""
-        If Not ValidaFechaTexto(FechaFinal) Then Return ""
-        '
-        Dim Fecha As DateTime = DateTime.Now
-        Dim FechaHoy As Integer = Val(Fecha.ToString("yyyyMMdd"))
-        Dim Estado As String = "NO VALIDO"
-        Dim FInicio As Integer = DeTextoFecha_A_NumeroEntero(FechaInicio)
-        Dim FFinal As Integer = DeTextoFecha_A_NumeroEntero(FechaFinal)
-        '
-        If FechaHoy > FInicio And FechaHoy < FFinal Then
-            Return "VIGENTE"
-        ElseIf FechaHoy > FInicio And FechaHoy > FFinal Then
-            Return "TERMINADO"
-        Else
-            Return "FUTURO"
-        End If
-    End Function
+
     '
     Public Function Texto_FechaHoraActual() As String
         Dim FechaHora As String

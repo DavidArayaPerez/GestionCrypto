@@ -50,8 +50,8 @@ Module wObjetos_MensajeBarra
     End Sub
     '
     Public Sub MensajeBarra_Valores(ByRef Control As StatusStrip)
-        Control.Items(6).Text = "UF: " & ValorUF & " | "
-        Control.Items(7).Text = "UTM: " & ValorUTM & " | "
+        'Control.Items(6).Text = "UF: " & ValorUF & " | "
+        'Control.Items(7).Text = "UTM: " & ValorUTM & " | "
         Control.Items(8).Text = "Dolar: " & ValorDolar & " | "
     End Sub
     Public Sub MensajeBarra_Hora(ByRef Control As StatusStrip)

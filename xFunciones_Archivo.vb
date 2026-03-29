@@ -77,6 +77,7 @@ Module xFunciones_Archivo
             Case "Movimientos" : ColMatriz = Matriz_MovimientosTC
             Case "PoolLiquidez" : ColMatriz = Matriz_PoolLiquidezTC
             Case "Traspasos" : ColMatriz = Matriz_TraspasosTC
+            Case "ValorDolar" : ColMatriz = Matriz_ValorDolarTC
             Case Else
                 ColMatriz = 0
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
