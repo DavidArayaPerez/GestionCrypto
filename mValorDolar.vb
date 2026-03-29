@@ -40,7 +40,9 @@ Module mValorDolar
                     Dim partes() As String = linea.Split(vbTab)
                     If partes.Length = 2 Then
                         Dim valor As Double
-                        If Double.TryParse(partes(1), NumberStyles.Any, CultureInfo.InvariantCulture, valor) Then
+                        ' Normalizar: reemplazar coma por punto para parsear correctamente
+                        Dim valorTexto As String = partes(1).Trim().Replace(",", ".")
+                        If Double.TryParse(valorTexto, NumberStyles.Any, CultureInfo.InvariantCulture, valor) Then
                             datosExistentes(partes(0).Trim()) = valor
                         End If
                     End If
@@ -68,11 +70,12 @@ Module mValorDolar
             Return
         End If
 
-        ' 4. Guardar todo ordenado por fecha
+        ' 4. Guardar todo ordenado por fecha con coma como separador decimal
         Try
+            Dim CultureES As New CultureInfo("es-CL") ' Punto miles, coma decimal
             Dim lineasOrdenadas = datosExistentes _
             .OrderBy(Function(kv) kv.Key) _
-            .Select(Function(kv) kv.Key & vbTab & kv.Value.ToString("F2", CultureInfo.InvariantCulture))
+            .Select(Function(kv) kv.Key & vbTab & kv.Value.ToString("F2", CultureES))
 
             File.WriteAllLines(RutaArchivo, lineasOrdenadas)
             MessageBox.Show($"Se agregaron {agregados} registros del año {Año}.")
