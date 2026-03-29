@@ -550,13 +550,13 @@ Public Class F_Solicitud
         T_FechaValorMonedas.Text = Matriz_ValorDolar(F, 0)
         T_ValorValorMonedas.Text = Matriz_ValorDolar(F, 1)
     End Sub
-
-
-
-
-
-
-
+    '
+    '
+    '
+    '
+    '
+    '
+    '
 
 
 
