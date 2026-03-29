@@ -217,7 +217,34 @@ Partial Class F_Solicitud
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
+        Me.TabPage9 = New System.Windows.Forms.TabPage()
+        Me.T_ValorValorMonedas = New System.Windows.Forms.TextBox()
+        Me.T_FechaValorMonedas = New System.Windows.Forms.TextBox()
+        Me.Label53 = New System.Windows.Forms.Label()
+        Me.Label54 = New System.Windows.Forms.Label()
+        Me.L_FechaValorMonedas = New System.Windows.Forms.ListBox()
+        Me.C_MonedasValorMonedas = New System.Windows.Forms.ComboBox()
+        Me.Label52 = New System.Windows.Forms.Label()
+        Me.TabPage8 = New System.Windows.Forms.TabPage()
+        Me.L_Exchange = New System.Windows.Forms.ListBox()
+        Me.B_GrabarExchange = New System.Windows.Forms.Button()
+        Me.T_NomExchange = New System.Windows.Forms.TextBox()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.rT_NotaExchange = New System.Windows.Forms.RichTextBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
+        Me.L_Billeteras = New System.Windows.Forms.ListBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.B_GrabarBilletera = New System.Windows.Forms.Button()
+        Me.T_CodigoBilletera = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.T_NombreBilletera = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
+        Me.C_RedMoneda = New System.Windows.Forms.ComboBox()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.B_NuevoMoneda = New System.Windows.Forms.Button()
         Me.L_Monedas = New System.Windows.Forms.ListBox()
         Me.T_ContratoMoneda = New System.Windows.Forms.TextBox()
         Me.Label39 = New System.Windows.Forms.Label()
@@ -227,40 +254,48 @@ Partial Class F_Solicitud
         Me.T_NomMoneda = New System.Windows.Forms.TextBox()
         Me.Label42 = New System.Windows.Forms.Label()
         Me.rT_NotaMoneda = New System.Windows.Forms.RichTextBox()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.L_Billeteras = New System.Windows.Forms.ListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.B_GrabarBilletera = New System.Windows.Forms.Button()
-        Me.T_CodigoBilletera = New System.Windows.Forms.TextBox()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.T_NombreBilletera = New System.Windows.Forms.TextBox()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
-        Me.TabPage8 = New System.Windows.Forms.TabPage()
-        Me.L_Exchange = New System.Windows.Forms.ListBox()
-        Me.B_GrabarExchange = New System.Windows.Forms.Button()
-        Me.T_NomExchange = New System.Windows.Forms.TextBox()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.rT_NotaExchange = New System.Windows.Forms.RichTextBox()
-        Me.TabPage9 = New System.Windows.Forms.TabPage()
-        Me.C_MonedasValorMonedas = New System.Windows.Forms.ComboBox()
-        Me.Label52 = New System.Windows.Forms.Label()
-        Me.L_FechaValorMonedas = New System.Windows.Forms.ListBox()
-        Me.T_ValorValorMonedas = New System.Windows.Forms.TextBox()
-        Me.T_FechaValorMonedas = New System.Windows.Forms.TextBox()
-        Me.Label53 = New System.Windows.Forms.Label()
-        Me.Label54 = New System.Windows.Forms.Label()
-        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
-        Me.B_NuevoMoneda = New System.Windows.Forms.Button()
-        Me.Label55 = New System.Windows.Forms.Label()
-        Me.C_RedMoneda = New System.Windows.Forms.ComboBox()
         Me.TabPage10 = New System.Windows.Forms.TabPage()
         Me.B_NuevoRed = New System.Windows.Forms.Button()
         Me.L_Red = New System.Windows.Forms.ListBox()
         Me.B_GrabarRed = New System.Windows.Forms.Button()
-        Me.T_NomRed = New System.Windows.Forms.TextBox()
+        Me.T_ChainID_Red = New System.Windows.Forms.TextBox()
         Me.Label59 = New System.Windows.Forms.Label()
-        Me.rT_NotaRed = New System.Windows.Forms.RichTextBox()
+        Me.Label56 = New System.Windows.Forms.Label()
+        Me.L_IDRed_Red = New System.Windows.Forms.Label()
+        Me.T_NomOficial_Red = New System.Windows.Forms.TextBox()
+        Me.Label57 = New System.Windows.Forms.Label()
+        Me.T_APIcg_Red = New System.Windows.Forms.TextBox()
+        Me.Label58 = New System.Windows.Forms.Label()
+        Me.T_NomCorto_Red = New System.Windows.Forms.TextBox()
+        Me.Label60 = New System.Windows.Forms.Label()
+        Me.T_TipoRollup_Red = New System.Windows.Forms.TextBox()
+        Me.Label62 = New System.Windows.Forms.Label()
+        Me.T_L1padre_Red = New System.Windows.Forms.TextBox()
+        Me.Label63 = New System.Windows.Forms.Label()
+        Me.Label64 = New System.Windows.Forms.Label()
+        Me.T_URLexplorador_Red = New System.Windows.Forms.TextBox()
+        Me.Label65 = New System.Windows.Forms.Label()
+        Me.T_Color_Red = New System.Windows.Forms.TextBox()
+        Me.Label66 = New System.Windows.Forms.Label()
+        Me.T_TipoBloque_Red = New System.Windows.Forms.TextBox()
+        Me.Label67 = New System.Windows.Forms.Label()
+        Me.T_Decimales_Red = New System.Windows.Forms.TextBox()
+        Me.Label68 = New System.Windows.Forms.Label()
+        Me.T_TokenNativo_Red = New System.Windows.Forms.TextBox()
+        Me.Label70 = New System.Windows.Forms.Label()
+        Me.Label71 = New System.Windows.Forms.Label()
+        Me.T_URLrpc_Red = New System.Windows.Forms.TextBox()
+        Me.Label72 = New System.Windows.Forms.Label()
+        Me.T_URLlogo_Red = New System.Windows.Forms.TextBox()
+        Me.Label73 = New System.Windows.Forms.Label()
+        Me.CB_Activo_Red = New System.Windows.Forms.CheckBox()
+        Me.R_L1 = New System.Windows.Forms.RadioButton()
+        Me.R_L2 = New System.Windows.Forms.RadioButton()
+        Me.R_Sidechain = New System.Windows.Forms.RadioButton()
+        Me.CB_EVM_Red = New System.Windows.Forms.CheckBox()
+        Me.R_POH = New System.Windows.Forms.RadioButton()
+        Me.R_POS = New System.Windows.Forms.RadioButton()
+        Me.R_POW = New System.Windows.Forms.RadioButton()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -269,10 +304,10 @@ Partial Class F_Solicitud
         Me.TabPage4.SuspendLayout()
         Me.TabPage5.SuspendLayout()
         Me.TabPage6.SuspendLayout()
-        Me.TabPage7.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
-        Me.TabPage8.SuspendLayout()
         Me.TabPage9.SuspendLayout()
+        Me.TabPage8.SuspendLayout()
+        Me.TabPage3.SuspendLayout()
+        Me.TabPage7.SuspendLayout()
         Me.TabPage10.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -431,9 +466,9 @@ Partial Class F_Solicitud
         '
         Me.StatusStrip1.BackColor = System.Drawing.Color.Khaki
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.T0, Me.T1, Me.T2, Me.T3, Me.T4, Me.T5, Me.T6, Me.T7, Me.T8, Me.T9, Me.T10})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 597)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(1086, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(1035, 22)
         Me.StatusStrip1.TabIndex = 96
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -586,7 +621,7 @@ Partial Class F_Solicitud
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Version})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1086, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1035, 24)
         Me.MenuStrip1.TabIndex = 415
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -647,7 +682,7 @@ Partial Class F_Solicitud
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(913, 555)
+        Me.B_Cerrar.Location = New System.Drawing.Point(910, 27)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 416
@@ -669,7 +704,7 @@ Partial Class F_Solicitud
         Me.TabControl1.Location = New System.Drawing.Point(12, 45)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1004, 504)
+        Me.TabControl1.Size = New System.Drawing.Size(1004, 595)
         Me.TabControl1.TabIndex = 424
         '
         'TabPage1
@@ -699,7 +734,7 @@ Partial Class F_Solicitud
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(996, 478)
+        Me.TabPage1.Size = New System.Drawing.Size(996, 569)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Depositos"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -707,9 +742,9 @@ Partial Class F_Solicitud
         'L_Depositos
         '
         Me.L_Depositos.FormattingEnabled = True
-        Me.L_Depositos.Location = New System.Drawing.Point(19, 68)
+        Me.L_Depositos.Location = New System.Drawing.Point(19, 29)
         Me.L_Depositos.Name = "L_Depositos"
-        Me.L_Depositos.Size = New System.Drawing.Size(316, 381)
+        Me.L_Depositos.Size = New System.Drawing.Size(316, 511)
         Me.L_Depositos.TabIndex = 453
         '
         'C_BilleteraDeposito
@@ -2157,6 +2192,270 @@ Partial Class F_Solicitud
         Me.Label37.TabIndex = 521
         Me.Label37.Text = "Plataforma"
         '
+        'TabPage9
+        '
+        Me.TabPage9.Controls.Add(Me.T_ValorValorMonedas)
+        Me.TabPage9.Controls.Add(Me.T_FechaValorMonedas)
+        Me.TabPage9.Controls.Add(Me.Label53)
+        Me.TabPage9.Controls.Add(Me.Label54)
+        Me.TabPage9.Controls.Add(Me.L_FechaValorMonedas)
+        Me.TabPage9.Controls.Add(Me.C_MonedasValorMonedas)
+        Me.TabPage9.Controls.Add(Me.Label52)
+        Me.TabPage9.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage9.Name = "TabPage9"
+        Me.TabPage9.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage9.Size = New System.Drawing.Size(996, 478)
+        Me.TabPage9.TabIndex = 8
+        Me.TabPage9.Text = "Valor Monedas"
+        Me.TabPage9.UseVisualStyleBackColor = True
+        '
+        'T_ValorValorMonedas
+        '
+        Me.T_ValorValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorValorMonedas.Location = New System.Drawing.Point(487, 86)
+        Me.T_ValorValorMonedas.MaxLength = 4
+        Me.T_ValorValorMonedas.Name = "T_ValorValorMonedas"
+        Me.T_ValorValorMonedas.Size = New System.Drawing.Size(79, 20)
+        Me.T_ValorValorMonedas.TabIndex = 568
+        Me.T_ValorValorMonedas.Text = "T_ValorValorMonedas"
+        Me.T_ValorValorMonedas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'T_FechaValorMonedas
+        '
+        Me.T_FechaValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_FechaValorMonedas.Location = New System.Drawing.Point(373, 86)
+        Me.T_FechaValorMonedas.MaxLength = 6
+        Me.T_FechaValorMonedas.Name = "T_FechaValorMonedas"
+        Me.T_FechaValorMonedas.Size = New System.Drawing.Size(80, 20)
+        Me.T_FechaValorMonedas.TabIndex = 567
+        Me.T_FechaValorMonedas.Text = "T_FechaValorMonedas"
+        '
+        'Label53
+        '
+        Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label53.ForeColor = System.Drawing.Color.Blue
+        Me.Label53.Location = New System.Drawing.Point(484, 70)
+        Me.Label53.Name = "Label53"
+        Me.Label53.Size = New System.Drawing.Size(59, 13)
+        Me.Label53.TabIndex = 570
+        Me.Label53.Text = "Valor"
+        Me.Label53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label54
+        '
+        Me.Label54.BackColor = System.Drawing.Color.Transparent
+        Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label54.ForeColor = System.Drawing.Color.Blue
+        Me.Label54.Location = New System.Drawing.Point(373, 70)
+        Me.Label54.Name = "Label54"
+        Me.Label54.Size = New System.Drawing.Size(80, 13)
+        Me.Label54.TabIndex = 569
+        Me.Label54.Text = "Fecha"
+        Me.Label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'L_FechaValorMonedas
+        '
+        Me.L_FechaValorMonedas.FormattingEnabled = True
+        Me.L_FechaValorMonedas.Location = New System.Drawing.Point(21, 70)
+        Me.L_FechaValorMonedas.Name = "L_FechaValorMonedas"
+        Me.L_FechaValorMonedas.Size = New System.Drawing.Size(316, 368)
+        Me.L_FechaValorMonedas.TabIndex = 566
+        '
+        'C_MonedasValorMonedas
+        '
+        Me.C_MonedasValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_MonedasValorMonedas.FormattingEnabled = True
+        Me.C_MonedasValorMonedas.Location = New System.Drawing.Point(21, 34)
+        Me.C_MonedasValorMonedas.Name = "C_MonedasValorMonedas"
+        Me.C_MonedasValorMonedas.Size = New System.Drawing.Size(212, 21)
+        Me.C_MonedasValorMonedas.TabIndex = 443
+        Me.C_MonedasValorMonedas.Text = "C_MonedasValorMonedas"
+        '
+        'Label52
+        '
+        Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label52.ForeColor = System.Drawing.Color.Blue
+        Me.Label52.Location = New System.Drawing.Point(21, 18)
+        Me.Label52.Name = "Label52"
+        Me.Label52.Size = New System.Drawing.Size(126, 13)
+        Me.Label52.TabIndex = 442
+        Me.Label52.Text = "Moneda Origen"
+        '
+        'TabPage8
+        '
+        Me.TabPage8.Controls.Add(Me.L_Exchange)
+        Me.TabPage8.Controls.Add(Me.B_GrabarExchange)
+        Me.TabPage8.Controls.Add(Me.T_NomExchange)
+        Me.TabPage8.Controls.Add(Me.Label43)
+        Me.TabPage8.Controls.Add(Me.rT_NotaExchange)
+        Me.TabPage8.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage8.Name = "TabPage8"
+        Me.TabPage8.Size = New System.Drawing.Size(996, 478)
+        Me.TabPage8.TabIndex = 7
+        Me.TabPage8.Text = "Exchange"
+        Me.TabPage8.UseVisualStyleBackColor = True
+        '
+        'L_Exchange
+        '
+        Me.L_Exchange.FormattingEnabled = True
+        Me.L_Exchange.Location = New System.Drawing.Point(20, 20)
+        Me.L_Exchange.Name = "L_Exchange"
+        Me.L_Exchange.Size = New System.Drawing.Size(316, 433)
+        Me.L_Exchange.TabIndex = 565
+        '
+        'B_GrabarExchange
+        '
+        Me.B_GrabarExchange.BackColor = System.Drawing.SystemColors.Control
+        Me.B_GrabarExchange.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_GrabarExchange.Location = New System.Drawing.Point(880, 20)
+        Me.B_GrabarExchange.Name = "B_GrabarExchange"
+        Me.B_GrabarExchange.Size = New System.Drawing.Size(99, 23)
+        Me.B_GrabarExchange.TabIndex = 498
+        Me.B_GrabarExchange.Text = "Grabar"
+        Me.B_GrabarExchange.UseVisualStyleBackColor = False
+        '
+        'T_NomExchange
+        '
+        Me.T_NomExchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_NomExchange.Location = New System.Drawing.Point(368, 50)
+        Me.T_NomExchange.MaxLength = 6
+        Me.T_NomExchange.Name = "T_NomExchange"
+        Me.T_NomExchange.Size = New System.Drawing.Size(191, 20)
+        Me.T_NomExchange.TabIndex = 497
+        Me.T_NomExchange.Text = "T_NomExchange"
+        '
+        'Label43
+        '
+        Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label43.ForeColor = System.Drawing.Color.Blue
+        Me.Label43.Location = New System.Drawing.Point(365, 25)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(126, 13)
+        Me.Label43.TabIndex = 496
+        Me.Label43.Text = "Nombre Exchange"
+        '
+        'rT_NotaExchange
+        '
+        Me.rT_NotaExchange.AcceptsTab = True
+        Me.rT_NotaExchange.AutoWordSelection = True
+        Me.rT_NotaExchange.BackColor = System.Drawing.Color.White
+        Me.rT_NotaExchange.Location = New System.Drawing.Point(368, 89)
+        Me.rT_NotaExchange.Name = "rT_NotaExchange"
+        Me.rT_NotaExchange.ReadOnly = True
+        Me.rT_NotaExchange.Size = New System.Drawing.Size(457, 364)
+        Me.rT_NotaExchange.TabIndex = 495
+        Me.rT_NotaExchange.Text = "rT_NotaExchange"
+        '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.B_NuevoBilletera)
+        Me.TabPage3.Controls.Add(Me.L_Billeteras)
+        Me.TabPage3.Controls.Add(Me.Label1)
+        Me.TabPage3.Controls.Add(Me.B_GrabarBilletera)
+        Me.TabPage3.Controls.Add(Me.T_CodigoBilletera)
+        Me.TabPage3.Controls.Add(Me.Label17)
+        Me.TabPage3.Controls.Add(Me.T_NombreBilletera)
+        Me.TabPage3.Controls.Add(Me.Label19)
+        Me.TabPage3.Controls.Add(Me.rT_NotaBilletera)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Size = New System.Drawing.Size(996, 490)
+        Me.TabPage3.TabIndex = 2
+        Me.TabPage3.Text = "Billetera"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'B_NuevoBilletera
+        '
+        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(20, 22)
+        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
+        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoBilletera.TabIndex = 565
+        Me.B_NuevoBilletera.Text = "Nuevo"
+        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        '
+        'L_Billeteras
+        '
+        Me.L_Billeteras.FormattingEnabled = True
+        Me.L_Billeteras.Location = New System.Drawing.Point(20, 59)
+        Me.L_Billeteras.Name = "L_Billeteras"
+        Me.L_Billeteras.Size = New System.Drawing.Size(316, 394)
+        Me.L_Billeteras.TabIndex = 564
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Red
+        Me.Label1.Location = New System.Drawing.Point(368, 85)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(457, 25)
+        Me.Label1.TabIndex = 493
+        Me.Label1.Text = "No escriba tu CLAVE semilla NO LO HAGAS"
+        '
+        'B_GrabarBilletera
+        '
+        Me.B_GrabarBilletera.BackColor = System.Drawing.SystemColors.Control
+        Me.B_GrabarBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_GrabarBilletera.Location = New System.Drawing.Point(880, 25)
+        Me.B_GrabarBilletera.Name = "B_GrabarBilletera"
+        Me.B_GrabarBilletera.Size = New System.Drawing.Size(99, 23)
+        Me.B_GrabarBilletera.TabIndex = 492
+        Me.B_GrabarBilletera.Text = "Grabar"
+        Me.B_GrabarBilletera.UseVisualStyleBackColor = False
+        '
+        'T_CodigoBilletera
+        '
+        Me.T_CodigoBilletera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_CodigoBilletera.Location = New System.Drawing.Point(590, 50)
+        Me.T_CodigoBilletera.MaxLength = 6
+        Me.T_CodigoBilletera.Name = "T_CodigoBilletera"
+        Me.T_CodigoBilletera.Size = New System.Drawing.Size(217, 20)
+        Me.T_CodigoBilletera.TabIndex = 490
+        Me.T_CodigoBilletera.Text = "T_CodigoBilletera"
+        '
+        'Label17
+        '
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.Color.Blue
+        Me.Label17.Location = New System.Drawing.Point(576, 22)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(126, 13)
+        Me.Label17.TabIndex = 489
+        Me.Label17.Text = "Codigo"
+        '
+        'T_NombreBilletera
+        '
+        Me.T_NombreBilletera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_NombreBilletera.Location = New System.Drawing.Point(368, 50)
+        Me.T_NombreBilletera.MaxLength = 6
+        Me.T_NombreBilletera.Name = "T_NombreBilletera"
+        Me.T_NombreBilletera.Size = New System.Drawing.Size(191, 20)
+        Me.T_NombreBilletera.TabIndex = 486
+        Me.T_NombreBilletera.Text = "T_NombreBilletera"
+        '
+        'Label19
+        '
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.Color.Blue
+        Me.Label19.Location = New System.Drawing.Point(365, 25)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(126, 13)
+        Me.Label19.TabIndex = 485
+        Me.Label19.Text = "Nombre"
+        '
+        'rT_NotaBilletera
+        '
+        Me.rT_NotaBilletera.AcceptsTab = True
+        Me.rT_NotaBilletera.AutoWordSelection = True
+        Me.rT_NotaBilletera.BackColor = System.Drawing.Color.White
+        Me.rT_NotaBilletera.Location = New System.Drawing.Point(368, 113)
+        Me.rT_NotaBilletera.Name = "rT_NotaBilletera"
+        Me.rT_NotaBilletera.ReadOnly = True
+        Me.rT_NotaBilletera.Size = New System.Drawing.Size(457, 340)
+        Me.rT_NotaBilletera.TabIndex = 482
+        Me.rT_NotaBilletera.Text = "rT_NotaBilletera"
+        '
         'TabPage7
         '
         Me.TabPage7.Controls.Add(Me.C_RedMoneda)
@@ -2174,10 +2473,41 @@ Partial Class F_Solicitud
         Me.TabPage7.Location = New System.Drawing.Point(4, 22)
         Me.TabPage7.Name = "TabPage7"
         Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage7.Size = New System.Drawing.Size(996, 478)
+        Me.TabPage7.Size = New System.Drawing.Size(996, 490)
         Me.TabPage7.TabIndex = 6
         Me.TabPage7.Text = "Moneda"
         Me.TabPage7.UseVisualStyleBackColor = True
+        '
+        'C_RedMoneda
+        '
+        Me.C_RedMoneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_RedMoneda.FormattingEnabled = True
+        Me.C_RedMoneda.Location = New System.Drawing.Point(563, 95)
+        Me.C_RedMoneda.Name = "C_RedMoneda"
+        Me.C_RedMoneda.Size = New System.Drawing.Size(170, 21)
+        Me.C_RedMoneda.TabIndex = 568
+        Me.C_RedMoneda.Text = "C_RedMoneda"
+        '
+        'Label55
+        '
+        Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label55.ForeColor = System.Drawing.Color.Blue
+        Me.Label55.Location = New System.Drawing.Point(563, 79)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(170, 13)
+        Me.Label55.TabIndex = 567
+        Me.Label55.Text = "Red"
+        '
+        'B_NuevoMoneda
+        '
+        Me.B_NuevoMoneda.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoMoneda.Location = New System.Drawing.Point(20, 25)
+        Me.B_NuevoMoneda.Name = "B_NuevoMoneda"
+        Me.B_NuevoMoneda.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoMoneda.TabIndex = 566
+        Me.B_NuevoMoneda.Text = "Nuevo"
+        Me.B_NuevoMoneda.UseVisualStyleBackColor = False
         '
         'L_Monedas
         '
@@ -2270,313 +2600,53 @@ Partial Class F_Solicitud
         Me.rT_NotaMoneda.TabIndex = 548
         Me.rT_NotaMoneda.Text = "rT_NotaMoneda"
         '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.B_NuevoBilletera)
-        Me.TabPage3.Controls.Add(Me.L_Billeteras)
-        Me.TabPage3.Controls.Add(Me.Label1)
-        Me.TabPage3.Controls.Add(Me.B_GrabarBilletera)
-        Me.TabPage3.Controls.Add(Me.T_CodigoBilletera)
-        Me.TabPage3.Controls.Add(Me.Label17)
-        Me.TabPage3.Controls.Add(Me.T_NombreBilletera)
-        Me.TabPage3.Controls.Add(Me.Label19)
-        Me.TabPage3.Controls.Add(Me.rT_NotaBilletera)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(996, 478)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "Billetera"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'L_Billeteras
-        '
-        Me.L_Billeteras.FormattingEnabled = True
-        Me.L_Billeteras.Location = New System.Drawing.Point(20, 59)
-        Me.L_Billeteras.Name = "L_Billeteras"
-        Me.L_Billeteras.Size = New System.Drawing.Size(316, 394)
-        Me.L_Billeteras.TabIndex = 564
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(368, 85)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(457, 25)
-        Me.Label1.TabIndex = 493
-        Me.Label1.Text = "No escriba tu CLAVE semilla NO LO HAGAS"
-        '
-        'B_GrabarBilletera
-        '
-        Me.B_GrabarBilletera.BackColor = System.Drawing.SystemColors.Control
-        Me.B_GrabarBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarBilletera.Location = New System.Drawing.Point(880, 25)
-        Me.B_GrabarBilletera.Name = "B_GrabarBilletera"
-        Me.B_GrabarBilletera.Size = New System.Drawing.Size(99, 23)
-        Me.B_GrabarBilletera.TabIndex = 492
-        Me.B_GrabarBilletera.Text = "Grabar"
-        Me.B_GrabarBilletera.UseVisualStyleBackColor = False
-        '
-        'T_CodigoBilletera
-        '
-        Me.T_CodigoBilletera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_CodigoBilletera.Location = New System.Drawing.Point(590, 50)
-        Me.T_CodigoBilletera.MaxLength = 6
-        Me.T_CodigoBilletera.Name = "T_CodigoBilletera"
-        Me.T_CodigoBilletera.Size = New System.Drawing.Size(217, 20)
-        Me.T_CodigoBilletera.TabIndex = 490
-        Me.T_CodigoBilletera.Text = "T_CodigoBilletera"
-        '
-        'Label17
-        '
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.ForeColor = System.Drawing.Color.Blue
-        Me.Label17.Location = New System.Drawing.Point(576, 22)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(126, 13)
-        Me.Label17.TabIndex = 489
-        Me.Label17.Text = "Codigo"
-        '
-        'T_NombreBilletera
-        '
-        Me.T_NombreBilletera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NombreBilletera.Location = New System.Drawing.Point(368, 50)
-        Me.T_NombreBilletera.MaxLength = 6
-        Me.T_NombreBilletera.Name = "T_NombreBilletera"
-        Me.T_NombreBilletera.Size = New System.Drawing.Size(191, 20)
-        Me.T_NombreBilletera.TabIndex = 486
-        Me.T_NombreBilletera.Text = "T_NombreBilletera"
-        '
-        'Label19
-        '
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.ForeColor = System.Drawing.Color.Blue
-        Me.Label19.Location = New System.Drawing.Point(365, 25)
-        Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(126, 13)
-        Me.Label19.TabIndex = 485
-        Me.Label19.Text = "Nombre"
-        '
-        'rT_NotaBilletera
-        '
-        Me.rT_NotaBilletera.AcceptsTab = True
-        Me.rT_NotaBilletera.AutoWordSelection = True
-        Me.rT_NotaBilletera.BackColor = System.Drawing.Color.White
-        Me.rT_NotaBilletera.Location = New System.Drawing.Point(368, 113)
-        Me.rT_NotaBilletera.Name = "rT_NotaBilletera"
-        Me.rT_NotaBilletera.ReadOnly = True
-        Me.rT_NotaBilletera.Size = New System.Drawing.Size(457, 340)
-        Me.rT_NotaBilletera.TabIndex = 482
-        Me.rT_NotaBilletera.Text = "rT_NotaBilletera"
-        '
-        'TabPage8
-        '
-        Me.TabPage8.Controls.Add(Me.L_Exchange)
-        Me.TabPage8.Controls.Add(Me.B_GrabarExchange)
-        Me.TabPage8.Controls.Add(Me.T_NomExchange)
-        Me.TabPage8.Controls.Add(Me.Label43)
-        Me.TabPage8.Controls.Add(Me.rT_NotaExchange)
-        Me.TabPage8.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage8.Name = "TabPage8"
-        Me.TabPage8.Size = New System.Drawing.Size(996, 478)
-        Me.TabPage8.TabIndex = 7
-        Me.TabPage8.Text = "Exchange"
-        Me.TabPage8.UseVisualStyleBackColor = True
-        '
-        'L_Exchange
-        '
-        Me.L_Exchange.FormattingEnabled = True
-        Me.L_Exchange.Location = New System.Drawing.Point(20, 20)
-        Me.L_Exchange.Name = "L_Exchange"
-        Me.L_Exchange.Size = New System.Drawing.Size(316, 433)
-        Me.L_Exchange.TabIndex = 565
-        '
-        'B_GrabarExchange
-        '
-        Me.B_GrabarExchange.BackColor = System.Drawing.SystemColors.Control
-        Me.B_GrabarExchange.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarExchange.Location = New System.Drawing.Point(880, 20)
-        Me.B_GrabarExchange.Name = "B_GrabarExchange"
-        Me.B_GrabarExchange.Size = New System.Drawing.Size(99, 23)
-        Me.B_GrabarExchange.TabIndex = 498
-        Me.B_GrabarExchange.Text = "Grabar"
-        Me.B_GrabarExchange.UseVisualStyleBackColor = False
-        '
-        'T_NomExchange
-        '
-        Me.T_NomExchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NomExchange.Location = New System.Drawing.Point(368, 50)
-        Me.T_NomExchange.MaxLength = 6
-        Me.T_NomExchange.Name = "T_NomExchange"
-        Me.T_NomExchange.Size = New System.Drawing.Size(191, 20)
-        Me.T_NomExchange.TabIndex = 497
-        Me.T_NomExchange.Text = "T_NomExchange"
-        '
-        'Label43
-        '
-        Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label43.ForeColor = System.Drawing.Color.Blue
-        Me.Label43.Location = New System.Drawing.Point(365, 25)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(126, 13)
-        Me.Label43.TabIndex = 496
-        Me.Label43.Text = "Nombre Exchange"
-        '
-        'rT_NotaExchange
-        '
-        Me.rT_NotaExchange.AcceptsTab = True
-        Me.rT_NotaExchange.AutoWordSelection = True
-        Me.rT_NotaExchange.BackColor = System.Drawing.Color.White
-        Me.rT_NotaExchange.Location = New System.Drawing.Point(368, 89)
-        Me.rT_NotaExchange.Name = "rT_NotaExchange"
-        Me.rT_NotaExchange.ReadOnly = True
-        Me.rT_NotaExchange.Size = New System.Drawing.Size(457, 364)
-        Me.rT_NotaExchange.TabIndex = 495
-        Me.rT_NotaExchange.Text = "rT_NotaExchange"
-        '
-        'TabPage9
-        '
-        Me.TabPage9.Controls.Add(Me.T_ValorValorMonedas)
-        Me.TabPage9.Controls.Add(Me.T_FechaValorMonedas)
-        Me.TabPage9.Controls.Add(Me.Label53)
-        Me.TabPage9.Controls.Add(Me.Label54)
-        Me.TabPage9.Controls.Add(Me.L_FechaValorMonedas)
-        Me.TabPage9.Controls.Add(Me.C_MonedasValorMonedas)
-        Me.TabPage9.Controls.Add(Me.Label52)
-        Me.TabPage9.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage9.Name = "TabPage9"
-        Me.TabPage9.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage9.Size = New System.Drawing.Size(996, 478)
-        Me.TabPage9.TabIndex = 8
-        Me.TabPage9.Text = "Valor Monedas"
-        Me.TabPage9.UseVisualStyleBackColor = True
-        '
-        'C_MonedasValorMonedas
-        '
-        Me.C_MonedasValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_MonedasValorMonedas.FormattingEnabled = True
-        Me.C_MonedasValorMonedas.Location = New System.Drawing.Point(21, 34)
-        Me.C_MonedasValorMonedas.Name = "C_MonedasValorMonedas"
-        Me.C_MonedasValorMonedas.Size = New System.Drawing.Size(212, 21)
-        Me.C_MonedasValorMonedas.TabIndex = 443
-        Me.C_MonedasValorMonedas.Text = "C_MonedasValorMonedas"
-        '
-        'Label52
-        '
-        Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label52.ForeColor = System.Drawing.Color.Blue
-        Me.Label52.Location = New System.Drawing.Point(21, 18)
-        Me.Label52.Name = "Label52"
-        Me.Label52.Size = New System.Drawing.Size(126, 13)
-        Me.Label52.TabIndex = 442
-        Me.Label52.Text = "Moneda Origen"
-        '
-        'L_FechaValorMonedas
-        '
-        Me.L_FechaValorMonedas.FormattingEnabled = True
-        Me.L_FechaValorMonedas.Location = New System.Drawing.Point(21, 70)
-        Me.L_FechaValorMonedas.Name = "L_FechaValorMonedas"
-        Me.L_FechaValorMonedas.Size = New System.Drawing.Size(316, 368)
-        Me.L_FechaValorMonedas.TabIndex = 566
-        '
-        'T_ValorValorMonedas
-        '
-        Me.T_ValorValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorValorMonedas.Location = New System.Drawing.Point(487, 86)
-        Me.T_ValorValorMonedas.MaxLength = 4
-        Me.T_ValorValorMonedas.Name = "T_ValorValorMonedas"
-        Me.T_ValorValorMonedas.Size = New System.Drawing.Size(79, 20)
-        Me.T_ValorValorMonedas.TabIndex = 568
-        Me.T_ValorValorMonedas.Text = "T_ValorValorMonedas"
-        Me.T_ValorValorMonedas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'T_FechaValorMonedas
-        '
-        Me.T_FechaValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_FechaValorMonedas.Location = New System.Drawing.Point(373, 86)
-        Me.T_FechaValorMonedas.MaxLength = 6
-        Me.T_FechaValorMonedas.Name = "T_FechaValorMonedas"
-        Me.T_FechaValorMonedas.Size = New System.Drawing.Size(80, 20)
-        Me.T_FechaValorMonedas.TabIndex = 567
-        Me.T_FechaValorMonedas.Text = "T_FechaValorMonedas"
-        '
-        'Label53
-        '
-        Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label53.ForeColor = System.Drawing.Color.Blue
-        Me.Label53.Location = New System.Drawing.Point(484, 70)
-        Me.Label53.Name = "Label53"
-        Me.Label53.Size = New System.Drawing.Size(59, 13)
-        Me.Label53.TabIndex = 570
-        Me.Label53.Text = "Valor"
-        Me.Label53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'Label54
-        '
-        Me.Label54.BackColor = System.Drawing.Color.Transparent
-        Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label54.ForeColor = System.Drawing.Color.Blue
-        Me.Label54.Location = New System.Drawing.Point(373, 70)
-        Me.Label54.Name = "Label54"
-        Me.Label54.Size = New System.Drawing.Size(80, 13)
-        Me.Label54.TabIndex = 569
-        Me.Label54.Text = "Fecha"
-        Me.Label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'B_NuevoBilletera
-        '
-        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
-        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoBilletera.Location = New System.Drawing.Point(20, 22)
-        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
-        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
-        Me.B_NuevoBilletera.TabIndex = 565
-        Me.B_NuevoBilletera.Text = "Nuevo"
-        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
-        '
-        'B_NuevoMoneda
-        '
-        Me.B_NuevoMoneda.BackColor = System.Drawing.SystemColors.Control
-        Me.B_NuevoMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoMoneda.Location = New System.Drawing.Point(20, 25)
-        Me.B_NuevoMoneda.Name = "B_NuevoMoneda"
-        Me.B_NuevoMoneda.Size = New System.Drawing.Size(99, 23)
-        Me.B_NuevoMoneda.TabIndex = 566
-        Me.B_NuevoMoneda.Text = "Nuevo"
-        Me.B_NuevoMoneda.UseVisualStyleBackColor = False
-        '
-        'Label55
-        '
-        Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label55.ForeColor = System.Drawing.Color.Blue
-        Me.Label55.Location = New System.Drawing.Point(563, 79)
-        Me.Label55.Name = "Label55"
-        Me.Label55.Size = New System.Drawing.Size(170, 13)
-        Me.Label55.TabIndex = 567
-        Me.Label55.Text = "Red"
-        '
-        'C_RedMoneda
-        '
-        Me.C_RedMoneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_RedMoneda.FormattingEnabled = True
-        Me.C_RedMoneda.Location = New System.Drawing.Point(563, 95)
-        Me.C_RedMoneda.Name = "C_RedMoneda"
-        Me.C_RedMoneda.Size = New System.Drawing.Size(170, 21)
-        Me.C_RedMoneda.TabIndex = 568
-        Me.C_RedMoneda.Text = "C_RedMoneda"
-        '
         'TabPage10
         '
+        Me.TabPage10.Controls.Add(Me.R_POH)
+        Me.TabPage10.Controls.Add(Me.R_POS)
+        Me.TabPage10.Controls.Add(Me.R_POW)
+        Me.TabPage10.Controls.Add(Me.CB_EVM_Red)
+        Me.TabPage10.Controls.Add(Me.R_Sidechain)
+        Me.TabPage10.Controls.Add(Me.R_L2)
+        Me.TabPage10.Controls.Add(Me.R_L1)
+        Me.TabPage10.Controls.Add(Me.CB_Activo_Red)
+        Me.TabPage10.Controls.Add(Me.T_URLrpc_Red)
+        Me.TabPage10.Controls.Add(Me.Label72)
+        Me.TabPage10.Controls.Add(Me.T_URLlogo_Red)
+        Me.TabPage10.Controls.Add(Me.Label73)
+        Me.TabPage10.Controls.Add(Me.T_URLexplorador_Red)
+        Me.TabPage10.Controls.Add(Me.Label65)
+        Me.TabPage10.Controls.Add(Me.T_Color_Red)
+        Me.TabPage10.Controls.Add(Me.Label66)
+        Me.TabPage10.Controls.Add(Me.T_TipoBloque_Red)
+        Me.TabPage10.Controls.Add(Me.Label67)
+        Me.TabPage10.Controls.Add(Me.T_Decimales_Red)
+        Me.TabPage10.Controls.Add(Me.Label68)
+        Me.TabPage10.Controls.Add(Me.T_TokenNativo_Red)
+        Me.TabPage10.Controls.Add(Me.Label70)
+        Me.TabPage10.Controls.Add(Me.Label71)
+        Me.TabPage10.Controls.Add(Me.T_TipoRollup_Red)
+        Me.TabPage10.Controls.Add(Me.Label62)
+        Me.TabPage10.Controls.Add(Me.T_L1padre_Red)
+        Me.TabPage10.Controls.Add(Me.Label63)
+        Me.TabPage10.Controls.Add(Me.Label64)
+        Me.TabPage10.Controls.Add(Me.T_APIcg_Red)
+        Me.TabPage10.Controls.Add(Me.Label58)
+        Me.TabPage10.Controls.Add(Me.T_NomCorto_Red)
+        Me.TabPage10.Controls.Add(Me.Label60)
+        Me.TabPage10.Controls.Add(Me.T_NomOficial_Red)
+        Me.TabPage10.Controls.Add(Me.Label57)
+        Me.TabPage10.Controls.Add(Me.L_IDRed_Red)
+        Me.TabPage10.Controls.Add(Me.Label56)
         Me.TabPage10.Controls.Add(Me.B_NuevoRed)
         Me.TabPage10.Controls.Add(Me.L_Red)
         Me.TabPage10.Controls.Add(Me.B_GrabarRed)
-        Me.TabPage10.Controls.Add(Me.T_NomRed)
+        Me.TabPage10.Controls.Add(Me.T_ChainID_Red)
         Me.TabPage10.Controls.Add(Me.Label59)
-        Me.TabPage10.Controls.Add(Me.rT_NotaRed)
         Me.TabPage10.Location = New System.Drawing.Point(4, 22)
         Me.TabPage10.Name = "TabPage10"
         Me.TabPage10.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage10.Size = New System.Drawing.Size(996, 478)
+        Me.TabPage10.Size = New System.Drawing.Size(996, 569)
         Me.TabPage10.TabIndex = 9
         Me.TabPage10.Text = "Red"
         Me.TabPage10.UseVisualStyleBackColor = True
@@ -2585,7 +2655,7 @@ Partial Class F_Solicitud
         '
         Me.B_NuevoRed.BackColor = System.Drawing.SystemColors.Control
         Me.B_NuevoRed.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoRed.Location = New System.Drawing.Point(19, 25)
+        Me.B_NuevoRed.Location = New System.Drawing.Point(879, 63)
         Me.B_NuevoRed.Name = "B_NuevoRed"
         Me.B_NuevoRed.Size = New System.Drawing.Size(99, 23)
         Me.B_NuevoRed.TabIndex = 578
@@ -2595,9 +2665,9 @@ Partial Class F_Solicitud
         'L_Red
         '
         Me.L_Red.FormattingEnabled = True
-        Me.L_Red.Location = New System.Drawing.Point(19, 85)
+        Me.L_Red.Location = New System.Drawing.Point(19, 20)
         Me.L_Red.Name = "L_Red"
-        Me.L_Red.Size = New System.Drawing.Size(316, 368)
+        Me.L_Red.Size = New System.Drawing.Size(316, 524)
         Me.L_Red.TabIndex = 577
         '
         'B_GrabarRed
@@ -2611,44 +2681,416 @@ Partial Class F_Solicitud
         Me.B_GrabarRed.Text = "Grabar"
         Me.B_GrabarRed.UseVisualStyleBackColor = False
         '
-        'T_NomRed
+        'T_ChainID_Red
         '
-        Me.T_NomRed.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NomRed.Location = New System.Drawing.Point(370, 41)
-        Me.T_NomRed.MaxLength = 6
-        Me.T_NomRed.Name = "T_NomRed"
-        Me.T_NomRed.Size = New System.Drawing.Size(170, 20)
-        Me.T_NomRed.TabIndex = 571
-        Me.T_NomRed.Text = "T_NomRed"
+        Me.T_ChainID_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ChainID_Red.Location = New System.Drawing.Point(518, 47)
+        Me.T_ChainID_Red.MaxLength = 6
+        Me.T_ChainID_Red.Name = "T_ChainID_Red"
+        Me.T_ChainID_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_ChainID_Red.TabIndex = 571
+        Me.T_ChainID_Red.Text = "T_ChainID_Red"
         '
         'Label59
         '
         Me.Label59.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label59.ForeColor = System.Drawing.Color.Blue
-        Me.Label59.Location = New System.Drawing.Point(370, 25)
+        Me.Label59.Location = New System.Drawing.Point(371, 47)
         Me.Label59.Name = "Label59"
-        Me.Label59.Size = New System.Drawing.Size(170, 13)
+        Me.Label59.Size = New System.Drawing.Size(128, 13)
         Me.Label59.TabIndex = 570
-        Me.Label59.Text = "Nombre Red"
+        Me.Label59.Text = "Chain ID"
+        Me.Label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'rT_NotaRed
+        'Label56
         '
-        Me.rT_NotaRed.AcceptsTab = True
-        Me.rT_NotaRed.AutoWordSelection = True
-        Me.rT_NotaRed.BackColor = System.Drawing.Color.White
-        Me.rT_NotaRed.Location = New System.Drawing.Point(370, 85)
-        Me.rT_NotaRed.Name = "rT_NotaRed"
-        Me.rT_NotaRed.ReadOnly = True
-        Me.rT_NotaRed.Size = New System.Drawing.Size(457, 368)
-        Me.rT_NotaRed.TabIndex = 569
-        Me.rT_NotaRed.Text = "rT_NotaRed"
+        Me.Label56.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label56.ForeColor = System.Drawing.Color.Blue
+        Me.Label56.Location = New System.Drawing.Point(371, 25)
+        Me.Label56.Name = "Label56"
+        Me.Label56.Size = New System.Drawing.Size(128, 13)
+        Me.Label56.TabIndex = 579
+        Me.Label56.Text = "ID Interno"
+        Me.Label56.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_IDRed_Red
+        '
+        Me.L_IDRed_Red.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_IDRed_Red.ForeColor = System.Drawing.Color.Black
+        Me.L_IDRed_Red.Location = New System.Drawing.Point(518, 25)
+        Me.L_IDRed_Red.Name = "L_IDRed_Red"
+        Me.L_IDRed_Red.Size = New System.Drawing.Size(170, 13)
+        Me.L_IDRed_Red.TabIndex = 580
+        Me.L_IDRed_Red.Text = "L_IDRed_Red"
+        '
+        'T_NomOficial_Red
+        '
+        Me.T_NomOficial_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_NomOficial_Red.Location = New System.Drawing.Point(518, 73)
+        Me.T_NomOficial_Red.MaxLength = 6
+        Me.T_NomOficial_Red.Name = "T_NomOficial_Red"
+        Me.T_NomOficial_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_NomOficial_Red.TabIndex = 582
+        Me.T_NomOficial_Red.Text = "T_NomOficial_Red"
+        '
+        'Label57
+        '
+        Me.Label57.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label57.ForeColor = System.Drawing.Color.Blue
+        Me.Label57.Location = New System.Drawing.Point(371, 73)
+        Me.Label57.Name = "Label57"
+        Me.Label57.Size = New System.Drawing.Size(128, 13)
+        Me.Label57.TabIndex = 581
+        Me.Label57.Text = "Nombre Oficial"
+        Me.Label57.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_APIcg_Red
+        '
+        Me.T_APIcg_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_APIcg_Red.Location = New System.Drawing.Point(518, 129)
+        Me.T_APIcg_Red.MaxLength = 6
+        Me.T_APIcg_Red.Name = "T_APIcg_Red"
+        Me.T_APIcg_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_APIcg_Red.TabIndex = 586
+        Me.T_APIcg_Red.Text = "T_APIcg_Red"
+        '
+        'Label58
+        '
+        Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label58.ForeColor = System.Drawing.Color.Blue
+        Me.Label58.Location = New System.Drawing.Point(371, 129)
+        Me.Label58.Name = "Label58"
+        Me.Label58.Size = New System.Drawing.Size(128, 13)
+        Me.Label58.TabIndex = 585
+        Me.Label58.Text = "API CoinGecko"
+        Me.Label58.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_NomCorto_Red
+        '
+        Me.T_NomCorto_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_NomCorto_Red.Location = New System.Drawing.Point(518, 103)
+        Me.T_NomCorto_Red.MaxLength = 6
+        Me.T_NomCorto_Red.Name = "T_NomCorto_Red"
+        Me.T_NomCorto_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_NomCorto_Red.TabIndex = 584
+        Me.T_NomCorto_Red.Text = "T_NomCorto_Red"
+        '
+        'Label60
+        '
+        Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label60.ForeColor = System.Drawing.Color.Blue
+        Me.Label60.Location = New System.Drawing.Point(371, 103)
+        Me.Label60.Name = "Label60"
+        Me.Label60.Size = New System.Drawing.Size(128, 13)
+        Me.Label60.TabIndex = 583
+        Me.Label60.Text = "Nombre Corto"
+        Me.Label60.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_TipoRollup_Red
+        '
+        Me.T_TipoRollup_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_TipoRollup_Red.Location = New System.Drawing.Point(518, 185)
+        Me.T_TipoRollup_Red.MaxLength = 6
+        Me.T_TipoRollup_Red.Name = "T_TipoRollup_Red"
+        Me.T_TipoRollup_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_TipoRollup_Red.TabIndex = 592
+        Me.T_TipoRollup_Red.Text = "T_TipoRollup_Red"
+        '
+        'Label62
+        '
+        Me.Label62.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label62.ForeColor = System.Drawing.Color.Blue
+        Me.Label62.Location = New System.Drawing.Point(374, 185)
+        Me.Label62.Name = "Label62"
+        Me.Label62.Size = New System.Drawing.Size(128, 13)
+        Me.Label62.TabIndex = 591
+        Me.Label62.Text = "Tipo Rollup"
+        Me.Label62.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_L1padre_Red
+        '
+        Me.T_L1padre_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_L1padre_Red.Location = New System.Drawing.Point(518, 155)
+        Me.T_L1padre_Red.MaxLength = 6
+        Me.T_L1padre_Red.Name = "T_L1padre_Red"
+        Me.T_L1padre_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_L1padre_Red.TabIndex = 590
+        Me.T_L1padre_Red.Text = "T_L1padre_Red"
+        '
+        'Label63
+        '
+        Me.Label63.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label63.ForeColor = System.Drawing.Color.Blue
+        Me.Label63.Location = New System.Drawing.Point(374, 155)
+        Me.Label63.Name = "Label63"
+        Me.Label63.Size = New System.Drawing.Size(128, 13)
+        Me.Label63.TabIndex = 589
+        Me.Label63.Text = "L1 Padre"
+        Me.Label63.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label64
+        '
+        Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label64.ForeColor = System.Drawing.Color.Blue
+        Me.Label64.Location = New System.Drawing.Point(370, 456)
+        Me.Label64.Name = "Label64"
+        Me.Label64.Size = New System.Drawing.Size(128, 13)
+        Me.Label64.TabIndex = 587
+        Me.Label64.Text = "Tipo Capa"
+        Me.Label64.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_URLexplorador_Red
+        '
+        Me.T_URLexplorador_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_URLexplorador_Red.Location = New System.Drawing.Point(518, 326)
+        Me.T_URLexplorador_Red.MaxLength = 6
+        Me.T_URLexplorador_Red.Name = "T_URLexplorador_Red"
+        Me.T_URLexplorador_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_URLexplorador_Red.TabIndex = 606
+        Me.T_URLexplorador_Red.Text = "T_URLexplorador_Red"
+        '
+        'Label65
+        '
+        Me.Label65.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label65.ForeColor = System.Drawing.Color.Blue
+        Me.Label65.Location = New System.Drawing.Point(375, 330)
+        Me.Label65.Name = "Label65"
+        Me.Label65.Size = New System.Drawing.Size(128, 13)
+        Me.Label65.TabIndex = 605
+        Me.Label65.Text = "URL Explotador"
+        Me.Label65.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_Color_Red
+        '
+        Me.T_Color_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Color_Red.Location = New System.Drawing.Point(518, 300)
+        Me.T_Color_Red.MaxLength = 6
+        Me.T_Color_Red.Name = "T_Color_Red"
+        Me.T_Color_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_Color_Red.TabIndex = 604
+        Me.T_Color_Red.Text = "T_Color_Red"
+        '
+        'Label66
+        '
+        Me.Label66.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label66.ForeColor = System.Drawing.Color.Blue
+        Me.Label66.Location = New System.Drawing.Point(375, 300)
+        Me.Label66.Name = "Label66"
+        Me.Label66.Size = New System.Drawing.Size(128, 13)
+        Me.Label66.TabIndex = 603
+        Me.Label66.Text = "Color Marca"
+        Me.Label66.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_TipoBloque_Red
+        '
+        Me.T_TipoBloque_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_TipoBloque_Red.Location = New System.Drawing.Point(518, 270)
+        Me.T_TipoBloque_Red.MaxLength = 6
+        Me.T_TipoBloque_Red.Name = "T_TipoBloque_Red"
+        Me.T_TipoBloque_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_TipoBloque_Red.TabIndex = 602
+        Me.T_TipoBloque_Red.Text = "T_TipoBloque_Red"
+        '
+        'Label67
+        '
+        Me.Label67.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label67.ForeColor = System.Drawing.Color.Blue
+        Me.Label67.Location = New System.Drawing.Point(375, 270)
+        Me.Label67.Name = "Label67"
+        Me.Label67.Size = New System.Drawing.Size(128, 13)
+        Me.Label67.TabIndex = 601
+        Me.Label67.Text = "Tiempo Bloque"
+        Me.Label67.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_Decimales_Red
+        '
+        Me.T_Decimales_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Decimales_Red.Location = New System.Drawing.Point(518, 244)
+        Me.T_Decimales_Red.MaxLength = 6
+        Me.T_Decimales_Red.Name = "T_Decimales_Red"
+        Me.T_Decimales_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_Decimales_Red.TabIndex = 600
+        Me.T_Decimales_Red.Text = "T_Decimales_Red"
+        '
+        'Label68
+        '
+        Me.Label68.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label68.ForeColor = System.Drawing.Color.Blue
+        Me.Label68.Location = New System.Drawing.Point(375, 244)
+        Me.Label68.Name = "Label68"
+        Me.Label68.Size = New System.Drawing.Size(128, 13)
+        Me.Label68.TabIndex = 599
+        Me.Label68.Text = "Decimales"
+        Me.Label68.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_TokenNativo_Red
+        '
+        Me.T_TokenNativo_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_TokenNativo_Red.Location = New System.Drawing.Point(518, 215)
+        Me.T_TokenNativo_Red.MaxLength = 6
+        Me.T_TokenNativo_Red.Name = "T_TokenNativo_Red"
+        Me.T_TokenNativo_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_TokenNativo_Red.TabIndex = 598
+        Me.T_TokenNativo_Red.Text = "T_TokenNativo_Red"
+        '
+        'Label70
+        '
+        Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label70.ForeColor = System.Drawing.Color.Blue
+        Me.Label70.Location = New System.Drawing.Point(375, 215)
+        Me.Label70.Name = "Label70"
+        Me.Label70.Size = New System.Drawing.Size(128, 13)
+        Me.Label70.TabIndex = 597
+        Me.Label70.Text = "Token nativo"
+        Me.Label70.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label71
+        '
+        Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label71.ForeColor = System.Drawing.Color.Blue
+        Me.Label71.Location = New System.Drawing.Point(373, 421)
+        Me.Label71.Name = "Label71"
+        Me.Label71.Size = New System.Drawing.Size(128, 13)
+        Me.Label71.TabIndex = 595
+        Me.Label71.Text = "Mecanismo Consenso"
+        Me.Label71.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_URLrpc_Red
+        '
+        Me.T_URLrpc_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_URLrpc_Red.Location = New System.Drawing.Point(518, 387)
+        Me.T_URLrpc_Red.MaxLength = 6
+        Me.T_URLrpc_Red.Name = "T_URLrpc_Red"
+        Me.T_URLrpc_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_URLrpc_Red.TabIndex = 610
+        Me.T_URLrpc_Red.Text = "T_URLrpc_Red"
+        '
+        'Label72
+        '
+        Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label72.ForeColor = System.Drawing.Color.Blue
+        Me.Label72.Location = New System.Drawing.Point(375, 387)
+        Me.Label72.Name = "Label72"
+        Me.Label72.Size = New System.Drawing.Size(128, 14)
+        Me.Label72.TabIndex = 609
+        Me.Label72.Text = "URL RPC"
+        Me.Label72.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_URLlogo_Red
+        '
+        Me.T_URLlogo_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_URLlogo_Red.Location = New System.Drawing.Point(518, 357)
+        Me.T_URLlogo_Red.MaxLength = 6
+        Me.T_URLlogo_Red.Name = "T_URLlogo_Red"
+        Me.T_URLlogo_Red.Size = New System.Drawing.Size(170, 20)
+        Me.T_URLlogo_Red.TabIndex = 608
+        Me.T_URLlogo_Red.Text = "T_URLlogo_Red"
+        '
+        'Label73
+        '
+        Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label73.ForeColor = System.Drawing.Color.Blue
+        Me.Label73.Location = New System.Drawing.Point(375, 357)
+        Me.Label73.Name = "Label73"
+        Me.Label73.Size = New System.Drawing.Size(128, 13)
+        Me.Label73.TabIndex = 607
+        Me.Label73.Text = "URL Logo"
+        Me.Label73.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'CB_Activo_Red
+        '
+        Me.CB_Activo_Red.AutoSize = True
+        Me.CB_Activo_Red.Location = New System.Drawing.Point(786, 76)
+        Me.CB_Activo_Red.Name = "CB_Activo_Red"
+        Me.CB_Activo_Red.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CB_Activo_Red.Size = New System.Drawing.Size(56, 17)
+        Me.CB_Activo_Red.TabIndex = 612
+        Me.CB_Activo_Red.Text = "Activo"
+        Me.CB_Activo_Red.UseVisualStyleBackColor = True
+        '
+        'R_L1
+        '
+        Me.R_L1.AutoSize = True
+        Me.R_L1.Location = New System.Drawing.Point(517, 456)
+        Me.R_L1.Name = "R_L1"
+        Me.R_L1.Size = New System.Drawing.Size(37, 17)
+        Me.R_L1.TabIndex = 613
+        Me.R_L1.TabStop = True
+        Me.R_L1.Text = "L1"
+        Me.R_L1.UseVisualStyleBackColor = True
+        '
+        'R_L2
+        '
+        Me.R_L2.AutoSize = True
+        Me.R_L2.Location = New System.Drawing.Point(571, 456)
+        Me.R_L2.Name = "R_L2"
+        Me.R_L2.Size = New System.Drawing.Size(37, 17)
+        Me.R_L2.TabIndex = 614
+        Me.R_L2.TabStop = True
+        Me.R_L2.Text = "L2"
+        Me.R_L2.UseVisualStyleBackColor = True
+        '
+        'R_Sidechain
+        '
+        Me.R_Sidechain.AutoSize = True
+        Me.R_Sidechain.Location = New System.Drawing.Point(635, 456)
+        Me.R_Sidechain.Name = "R_Sidechain"
+        Me.R_Sidechain.Size = New System.Drawing.Size(72, 17)
+        Me.R_Sidechain.TabIndex = 615
+        Me.R_Sidechain.TabStop = True
+        Me.R_Sidechain.Text = "Sidechain"
+        Me.R_Sidechain.UseVisualStyleBackColor = True
+        '
+        'CB_EVM_Red
+        '
+        Me.CB_EVM_Red.AutoSize = True
+        Me.CB_EVM_Red.Location = New System.Drawing.Point(717, 46)
+        Me.CB_EVM_Red.Name = "CB_EVM_Red"
+        Me.CB_EVM_Red.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CB_EVM_Red.Size = New System.Drawing.Size(125, 17)
+        Me.CB_EVM_Red.TabIndex = 616
+        Me.CB_EVM_Red.Text = "Compatible con EVM"
+        Me.CB_EVM_Red.UseVisualStyleBackColor = True
+        '
+        'R_POH
+        '
+        Me.R_POH.AutoSize = True
+        Me.R_POH.Location = New System.Drawing.Point(635, 419)
+        Me.R_POH.Name = "R_POH"
+        Me.R_POH.Size = New System.Drawing.Size(46, 17)
+        Me.R_POH.TabIndex = 619
+        Me.R_POH.TabStop = True
+        Me.R_POH.Text = "PoH"
+        Me.R_POH.UseVisualStyleBackColor = True
+        '
+        'R_POS
+        '
+        Me.R_POS.AutoSize = True
+        Me.R_POS.Location = New System.Drawing.Point(570, 419)
+        Me.R_POS.Name = "R_POS"
+        Me.R_POS.Size = New System.Drawing.Size(45, 17)
+        Me.R_POS.TabIndex = 618
+        Me.R_POS.TabStop = True
+        Me.R_POS.Text = "PoS"
+        Me.R_POS.UseVisualStyleBackColor = True
+        '
+        'R_POW
+        '
+        Me.R_POW.AutoSize = True
+        Me.R_POW.Location = New System.Drawing.Point(516, 419)
+        Me.R_POW.Name = "R_POW"
+        Me.R_POW.Size = New System.Drawing.Size(49, 17)
+        Me.R_POW.TabIndex = 617
+        Me.R_POW.TabStop = True
+        Me.R_POW.Text = "PoW"
+        Me.R_POW.UseVisualStyleBackColor = True
         '
         'F_Solicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(1086, 619)
+        Me.ClientSize = New System.Drawing.Size(1035, 681)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.StatusStrip1)
@@ -2673,14 +3115,14 @@ Partial Class F_Solicitud
         Me.TabPage5.PerformLayout()
         Me.TabPage6.ResumeLayout(False)
         Me.TabPage6.PerformLayout()
-        Me.TabPage7.ResumeLayout(False)
-        Me.TabPage7.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout()
-        Me.TabPage8.ResumeLayout(False)
-        Me.TabPage8.PerformLayout()
         Me.TabPage9.ResumeLayout(False)
         Me.TabPage9.PerformLayout()
+        Me.TabPage8.ResumeLayout(False)
+        Me.TabPage8.PerformLayout()
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
+        Me.TabPage7.ResumeLayout(False)
+        Me.TabPage7.PerformLayout()
         Me.TabPage10.ResumeLayout(False)
         Me.TabPage10.PerformLayout()
         Me.ResumeLayout(False)
@@ -2922,7 +3364,42 @@ Partial Class F_Solicitud
     Friend WithEvents B_NuevoRed As Button
     Friend WithEvents L_Red As ListBox
     Friend WithEvents B_GrabarRed As Button
-    Friend WithEvents T_NomRed As TextBox
+    Friend WithEvents T_ChainID_Red As TextBox
     Friend WithEvents Label59 As Label
-    Friend WithEvents rT_NotaRed As RichTextBox
+    Friend WithEvents T_URLexplorador_Red As TextBox
+    Friend WithEvents Label65 As Label
+    Friend WithEvents T_Color_Red As TextBox
+    Friend WithEvents Label66 As Label
+    Friend WithEvents T_TipoBloque_Red As TextBox
+    Friend WithEvents Label67 As Label
+    Friend WithEvents T_Decimales_Red As TextBox
+    Friend WithEvents Label68 As Label
+    Friend WithEvents T_TokenNativo_Red As TextBox
+    Friend WithEvents Label70 As Label
+    Friend WithEvents Label71 As Label
+    Friend WithEvents T_TipoRollup_Red As TextBox
+    Friend WithEvents Label62 As Label
+    Friend WithEvents T_L1padre_Red As TextBox
+    Friend WithEvents Label63 As Label
+    Friend WithEvents Label64 As Label
+    Friend WithEvents T_APIcg_Red As TextBox
+    Friend WithEvents Label58 As Label
+    Friend WithEvents T_NomCorto_Red As TextBox
+    Friend WithEvents Label60 As Label
+    Friend WithEvents T_NomOficial_Red As TextBox
+    Friend WithEvents Label57 As Label
+    Friend WithEvents L_IDRed_Red As Label
+    Friend WithEvents Label56 As Label
+    Friend WithEvents R_Sidechain As RadioButton
+    Friend WithEvents R_L2 As RadioButton
+    Friend WithEvents R_L1 As RadioButton
+    Friend WithEvents CB_Activo_Red As CheckBox
+    Friend WithEvents T_URLrpc_Red As TextBox
+    Friend WithEvents Label72 As Label
+    Friend WithEvents T_URLlogo_Red As TextBox
+    Friend WithEvents Label73 As Label
+    Friend WithEvents R_POH As RadioButton
+    Friend WithEvents R_POS As RadioButton
+    Friend WithEvents R_POW As RadioButton
+    Friend WithEvents CB_EVM_Red As CheckBox
 End Class

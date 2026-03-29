@@ -12,7 +12,7 @@ Module mRedes
 
     Public Matriz_Redes(,) As String
     Public Matriz_RedesTF As String
-    Public Matriz_RedesTC As String = 3
+    Public Matriz_RedesTC As String = 17
 
     '0      ID_Interno
     '1      Chain_ID               Identificador único para redes EVM

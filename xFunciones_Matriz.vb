@@ -17,9 +17,30 @@ Module xFunciones_Matriz
         Next i
         Return 0
     End Function
+    Public Sub OrdenarMatriz(ByRef MatrizOrigen(,) As String, TotalFilas As Integer, TotalColumnas As Integer, NumeroColumnaOrden As Integer, Optional TipoOrden As String = "ASC")
+        For i As Integer = 1 To TotalFilas - 1
+            For j As Integer = i + 1 To TotalFilas
+                If TipoOrden = "ASC" Then
+                    If MatrizOrigen(i, NumeroColumnaOrden) < MatrizOrigen(j, NumeroColumnaOrden) Then
+                        For k As Integer = 0 To TotalColumnas - 1
+                            Dim Temp As String = MatrizOrigen(i, k)
+                            MatrizOrigen(i, k) = MatrizOrigen(j, k)
+                            MatrizOrigen(j, k) = Temp
+                        Next k
+                    End If
+                Else
+                    If MatrizOrigen(i, NumeroColumnaOrden) > MatrizOrigen(j, NumeroColumnaOrden) Then
+                        For k As Integer = 0 To TotalColumnas - 1
+                            Dim Temp As String = MatrizOrigen(i, k)
+                            MatrizOrigen(i, k) = MatrizOrigen(j, k)
+                            MatrizOrigen(j, k) = Temp
+                        Next k
+                    End If
+                End If
 
-
-
+            Next j
+        Next i
+    End Sub
 
     Public Function AgrandarMatriz(ByRef MatrizOrigen(,) As String, ByRef TotalFilas As Integer, ByVal TotalColumnas As Integer) As Integer
         Dim i, j, UltimoRegistro As Integer
