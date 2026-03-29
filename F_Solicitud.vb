@@ -41,6 +41,8 @@ Public Class F_Solicitud
     End Sub
     Private Sub LlenarList()
         Dim T As String = ""
+        '
+        L_Depositos.Text = ""
         L_Depositos.Items.Clear()
         For i As Integer = 1 To Matriz_DepositosTF
             T = Matriz_Depositos(i, 1) & ":" & Matriz_Depositos(i, 2) & " " & Matriz_Depositos(i, 3) & "(" & i & ")"
@@ -51,6 +53,7 @@ Public Class F_Solicitud
         '   5   Moneda_Entrada
         '   6   Valor_Entrada
         '
+        L_Compras.Text = ""
         L_Compras.Items.Clear()
         For i As Integer = 1 To Matriz_ComprasTF
             T = Matriz_Compras(i, 1) & ":" & Matriz_Compras(i, 2) & " " & Matriz_Compras(i, 3) & "(" & i & ")"
@@ -60,6 +63,7 @@ Public Class F_Solicitud
         '   4   Moneda_Origen
         '   5   Valor_Origen
         '
+        L_Traspasos.Text = ""
         L_Traspasos.Items.Clear()
         For i As Integer = 1 To Matriz_TraspasosTF
             T = Matriz_Traspasos(i, 1) & ":" & Matriz_Traspasos(i, 2) & " " & Matriz_Traspasos(i, 3) & "(" & i & ")"
@@ -70,6 +74,7 @@ Public Class F_Solicitud
         '   5   Moneda_Origen
         '   6   Valor_Origen
         '
+        L_PoolLiquidez.Text = ""
         L_PoolLiquidez.Items.Clear()
         For i As Integer = 1 To Matriz_PoolLiquidezTF
             T = Matriz_PoolLiquidez(i, 1) & ":" & Matriz_PoolLiquidez(i, 2) & " " & Matriz_PoolLiquidez(i, 3) & "(" & i & ")"
@@ -79,6 +84,7 @@ Public Class F_Solicitud
         '   4   Billetera
         '   5   Moneda_Uno
         '
+        L_Movimientos.Text = ""
         L_Movimientos.Items.Clear()
         For i As Integer = 1 To Matriz_MovimientosTF
             T = Matriz_Movimientos(i, 1) & ":" & Matriz_Movimientos(i, 2) & " " & Matriz_Movimientos(i, 3) & "(" & i & ")"
@@ -88,6 +94,7 @@ Public Class F_Solicitud
         '   4   Billetera
         '   5   Moneda_Origen
         '
+        L_Monedas.Text = ""
         L_Monedas.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
             T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
@@ -97,6 +104,7 @@ Public Class F_Solicitud
         '   2   Acronimo
         '   3   Contrato
         '
+        L_Billeteras.Text = ""
         L_Billeteras.Items.Clear()
         For i As Integer = 1 To Matriz_BilleterasTF
             T = Matriz_Billeteras(i, 1) & " " & "(" & i & ")"
@@ -105,12 +113,19 @@ Public Class F_Solicitud
         '   0   Codigo Billetera
         '   1   Nombre
         '
+        L_Exchange.Text = ""
         L_Exchange.Items.Clear()
         For i As Integer = 1 To Matriz_ExchangeTF
             T = Matriz_Exchange(i, 1) & " " & "(" & i & ")"
             L_Exchange.Items.Add(T)
         Next i
         '
+        C_MonedasValorMonedas.Text = ""
+        C_MonedasValorMonedas.Items.Clear()
+        For i As Integer = 1 To Matriz_MonedasTF
+            T = Matriz_Monedas(i, 1)
+            C_MonedasValorMonedas.Items.Add(T)
+        Next i
     End Sub
 
     Private Sub LlenarExchange()
@@ -156,6 +171,7 @@ Public Class F_Solicitud
             C_MonedaDestinoMovimiento.Items.Add(T)
             C_MonedasValorMonedas.Items.Add(T)
         Next i
+
     End Sub
     '
     '
@@ -539,6 +555,7 @@ Public Class F_Solicitud
         'VALOR MONEDAS
         T_FechaValorMonedas.Text = ""
         T_ValorValorMonedas.Text = ""
+
         '
         T_FechaValorMonedas.Enabled = Habilitar
         T_ValorValorMonedas.Enabled = Habilitar
