@@ -95,6 +95,7 @@ Module xFunciones_Archivo
             Case "Movimientos" : Matriz_MovimientosTF = Filas
             Case "PoolLiquidez" : Matriz_PoolLiquidezTF = Filas
             Case "Traspasos" : Matriz_TraspasosTF = Filas
+            Case "ValorDolar" : Matriz_ValorDolarTF = Filas
             Case Else
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
         End Select
