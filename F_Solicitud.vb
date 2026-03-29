@@ -178,7 +178,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaDeposito(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'DEPOSITO
         T_FechaDeposito.Text = ""
         T_HoraDeposito.Text = ""
@@ -238,7 +238,7 @@ Public Class F_Solicitud
     End Sub
     '
     Private Sub LimpiezaCompras(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'COMPRAS
         T_FechaCompra.Text = ""
         T_HoraCompra.Text = ""
@@ -296,7 +296,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaTraspaso(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'TRASPASO
         T_FechaTraspaso.Text = ""
         T_HoraTraspaso.Text = ""
@@ -354,7 +354,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaPool(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'POOL LIQUIDEZ
         T_FechaPool.Text = ""
         T_HoraPool.Text = ""
@@ -422,7 +422,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaMovimiento(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'MOVIMIENTO
         T_FechaMovimiento.Text = ""
         T_HoraMovimiento.Text = ""
@@ -476,7 +476,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'MONEDA
         T_NomMoneda.Text = ""
         T_AcronimoMoneda.Text = ""
@@ -506,7 +506,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaBilletera(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        If VariableDeInicio Then Exit Sub
         'BILLETERA
         T_NombreBilletera.Text = ""
         T_CodigoBilletera.Text = ""
@@ -531,7 +531,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaExchange(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'EXCHANGE
         T_NomExchange.Text = ""
         rT_NotaExchange.Text = ""
@@ -553,7 +553,7 @@ Public Class F_Solicitud
     ' 
     '
     Private Sub LimpiezaValorMonedas(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'VALOR MONEDAS
         T_FechaValorMonedas.Text = ""
         T_ValorValorMonedas.Text = ""
@@ -574,7 +574,7 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaRedes(Optional Habilitar As Boolean = False)
-        If Not VariableDeInicio Then Exit Sub
+        'If VariableDeInicio Then Exit Sub
         'REDES
         L_IDRed_Red.Text = ""
         T_ChainID_Red.Text = ""
@@ -607,7 +607,7 @@ Public Class F_Solicitud
         T_URLrpc_Red.Enabled = Habilitar
     End Sub
     Private Sub VerRedes(F As Integer)
-        LimpiezaValorMonedas(True)
+        LimpiezaRedes(True)
         If F < 1 Then Exit Sub
         '0      ID_Interno
         '1      Chain_ID               Identificador único para redes EVM
@@ -787,6 +787,10 @@ Public Class F_Solicitud
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
+    End Sub
+
+    Private Sub T_URLexplorador_Red_MouseClick(sender As Object, e As MouseEventArgs) Handles T_URLexplorador_Red.MouseClick
+        Process.Start(New ProcessStartInfo(T_URLexplorador_Red.Text) With {.UseShellExecute = True})
     End Sub
     '
     '
