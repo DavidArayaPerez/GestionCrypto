@@ -42,24 +42,74 @@ Public Class F_Solicitud
         Dim T As String = ""
         L_Depositos.Items.Clear()
         For i As Integer = 1 To Matriz_DepositosTF
-            T = Matriz_Depositos(i, 1) & ":" & Matriz_Depositos(i, 2) & " " & "(" & i & ")"
+            T = Matriz_Depositos(i, 1) & ":" & Matriz_Depositos(i, 2) & " " & Matriz_Depositos(i, 3) & "(" & i & ")"
             L_Depositos.Items.Add(T)
         Next i
+        '   3   Plataforma      MetraMask, Uniswap, etc
+        '   4   Billetera
+        '   5   Moneda_Entrada
+        '   6   Valor_Entrada
         '
         L_Compras.Items.Clear()
         For i As Integer = 1 To Matriz_ComprasTF
-            T = Matriz_Compras(i, 1) & ":" & Matriz_Compras(i, 2) & " " & "(" & i & ")"
+            T = Matriz_Compras(i, 1) & ":" & Matriz_Compras(i, 2) & " " & Matriz_Compras(i, 3) & "(" & i & ")"
             L_Compras.Items.Add(T)
         Next i
+        '   3   Plataforma      MetraMask, Uniswap, etc
+        '   4   Moneda_Origen
+        '   5   Valor_Origen
         '
         L_Traspasos.Items.Clear()
         For i As Integer = 1 To Matriz_TraspasosTF
-            T = Matriz_Traspasos(i, 1) & ":" & Matriz_Traspasos(i, 2) & " " & "(" & i & ")"
+            T = Matriz_Traspasos(i, 1) & ":" & Matriz_Traspasos(i, 2) & " " & Matriz_Traspasos(i, 3) & "(" & i & ")"
             L_Traspasos.Items.Add(T)
         Next i
-
-
-
+        '   3   Plataforma          MetraMask, Uniswap, etc
+        '   4   Billetera_Origen
+        '   5   Moneda_Origen
+        '   6   Valor_Origen
+        '
+        L_PoolLiquidez.Items.Clear()
+        For i As Integer = 1 To Matriz_PoolLiquidezTF
+            T = Matriz_PoolLiquidez(i, 1) & ":" & Matriz_PoolLiquidez(i, 2) & " " & Matriz_PoolLiquidez(i, 3) & "(" & i & ")"
+            L_PoolLiquidez.Items.Add(T)
+        Next i
+        '   3   Plataforma      MetraMask, Uniswap, etc
+        '   4   Billetera
+        '   5   Moneda_Uno
+        '
+        L_Movimientos.Items.Clear()
+        For i As Integer = 1 To Matriz_MovimientosTF
+            T = Matriz_Movimientos(i, 1) & ":" & Matriz_Movimientos(i, 2) & " " & Matriz_Movimientos(i, 3) & "(" & i & ")"
+            L_Movimientos.Items.Add(T)
+        Next i
+        '   3   Plataforma      MetraMask, Uniswap, etc
+        '   4   Billetera
+        '   5   Moneda_Origen
+        '
+        L_Monedas.Items.Clear()
+        For i As Integer = 1 To Matriz_MonedasTF
+            T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
+            L_Monedas.Items.Add(T)
+        Next i
+        '   1   Nombre
+        '   2   Acronimo
+        '   3   Contrato
+        '
+        L_Billeteras.Items.Clear()
+        For i As Integer = 1 To Matriz_BilleterasTF
+            T = Matriz_Billeteras(i, 1) & " " & "(" & i & ")"
+            L_Billeteras.Items.Add(T)
+        Next i
+        '   0   Codigo Billetera
+        '   1   Nombre
+        '
+        L_Exchange.Items.Clear()
+        For i As Integer = 1 To Matriz_ExchangeTF
+            T = Matriz_Exchange(i, 1) & " " & "(" & i & ")"
+            L_Exchange.Items.Add(T)
+        Next i
+        '
     End Sub
 
     Private Sub LlenarExchange()
