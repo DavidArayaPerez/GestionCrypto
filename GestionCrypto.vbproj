@@ -343,7 +343,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="wObjeto_Botones.vb" />
+    <!-- Removed missing file wObjeto_Botones.vb (deleted from worktree) -->
     <Compile Include="xFunciones_EdicionTexto.vb" />
     <Compile Include="wObjetos_MensajeBarra.vb" />
     <Compile Include="zAPI_CMF_Chile.vb" />

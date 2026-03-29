@@ -85,6 +85,7 @@ Partial Class F_Solicitud
         Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.L_Depositos = New System.Windows.Forms.ListBox()
         Me.C_BilleteraDeposito = New System.Windows.Forms.ComboBox()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.B_GrabarDeposito = New System.Windows.Forms.Button()
@@ -241,7 +242,6 @@ Partial Class F_Solicitud
         Me.Label43 = New System.Windows.Forms.Label()
         Me.rT_NotaExchange = New System.Windows.Forms.RichTextBox()
         Me.A_Exchange = New System.Windows.Forms.TreeView()
-        Me.L_Depositos = New System.Windows.Forms.ListBox()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -680,6 +680,14 @@ Partial Class F_Solicitud
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Depositos"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'L_Depositos
+        '
+        Me.L_Depositos.FormattingEnabled = True
+        Me.L_Depositos.Location = New System.Drawing.Point(19, 16)
+        Me.L_Depositos.Name = "L_Depositos"
+        Me.L_Depositos.Size = New System.Drawing.Size(316, 433)
+        Me.L_Depositos.TabIndex = 453
         '
         'C_BilleteraDeposito
         '
@@ -2391,14 +2399,6 @@ Partial Class F_Solicitud
         Me.A_Exchange.Name = "A_Exchange"
         Me.A_Exchange.Size = New System.Drawing.Size(308, 433)
         Me.A_Exchange.TabIndex = 494
-        '
-        'L_Depositos
-        '
-        Me.L_Depositos.FormattingEnabled = True
-        Me.L_Depositos.Location = New System.Drawing.Point(19, 16)
-        Me.L_Depositos.Name = "L_Depositos"
-        Me.L_Depositos.Size = New System.Drawing.Size(316, 433)
-        Me.L_Depositos.TabIndex = 453
         '
         'F_Solicitud
         '
