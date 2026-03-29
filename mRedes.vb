@@ -40,9 +40,9 @@ Module mRedes
 
     Public Sub CambiarIDRedes()
         Dim i As Integer
-        For i = 0 To Matriz_RedesTC - 1
-            If Len(Matriz_Redes(0, i)) < 5 Then
-                Matriz_Redes(0, i) = CrearCodigoInterno()
+        For i = 1 To Matriz_RedesTF
+            If Len(Matriz_Redes(i, 0)) < 7 Then
+                Matriz_Redes(i, 0) = CrearCodigoInterno()
             End If
         Next i
         Guardar_Matrices("Redes")

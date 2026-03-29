@@ -2646,7 +2646,7 @@ Partial Class F_Solicitud
         'T_MecanismoConsenso_Red
         '
         Me.T_MecanismoConsenso_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_MecanismoConsenso_Red.Location = New System.Drawing.Point(521, 259)
+        Me.T_MecanismoConsenso_Red.Location = New System.Drawing.Point(521, 237)
         Me.T_MecanismoConsenso_Red.MaxLength = 6
         Me.T_MecanismoConsenso_Red.Name = "T_MecanismoConsenso_Red"
         Me.T_MecanismoConsenso_Red.Size = New System.Drawing.Size(170, 20)
@@ -2656,7 +2656,7 @@ Partial Class F_Solicitud
         'T_TipoCapa_Red
         '
         Me.T_TipoCapa_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_TipoCapa_Red.Location = New System.Drawing.Point(518, 155)
+        Me.T_TipoCapa_Red.Location = New System.Drawing.Point(521, 155)
         Me.T_TipoCapa_Red.MaxLength = 6
         Me.T_TipoCapa_Red.Name = "T_TipoCapa_Red"
         Me.T_TipoCapa_Red.Size = New System.Drawing.Size(170, 20)
@@ -2666,7 +2666,7 @@ Partial Class F_Solicitud
         'CB_EVM_Red
         '
         Me.CB_EVM_Red.AutoSize = True
-        Me.CB_EVM_Red.Location = New System.Drawing.Point(407, 237)
+        Me.CB_EVM_Red.Location = New System.Drawing.Point(384, 472)
         Me.CB_EVM_Red.Name = "CB_EVM_Red"
         Me.CB_EVM_Red.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.CB_EVM_Red.Size = New System.Drawing.Size(125, 17)
@@ -2677,7 +2677,7 @@ Partial Class F_Solicitud
         'CB_Activo_Red
         '
         Me.CB_Activo_Red.AutoSize = True
-        Me.CB_Activo_Red.Location = New System.Drawing.Point(476, 495)
+        Me.CB_Activo_Red.Location = New System.Drawing.Point(453, 494)
         Me.CB_Activo_Red.Name = "CB_Activo_Red"
         Me.CB_Activo_Red.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.CB_Activo_Red.Size = New System.Drawing.Size(56, 17)
@@ -2688,7 +2688,7 @@ Partial Class F_Solicitud
         'T_URLrpc_Red
         '
         Me.T_URLrpc_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_URLrpc_Red.Location = New System.Drawing.Point(521, 460)
+        Me.T_URLrpc_Red.Location = New System.Drawing.Point(521, 438)
         Me.T_URLrpc_Red.MaxLength = 6
         Me.T_URLrpc_Red.Name = "T_URLrpc_Red"
         Me.T_URLrpc_Red.Size = New System.Drawing.Size(324, 20)
@@ -2699,7 +2699,7 @@ Partial Class F_Solicitud
         '
         Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label72.ForeColor = System.Drawing.Color.DarkViolet
-        Me.Label72.Location = New System.Drawing.Point(381, 460)
+        Me.Label72.Location = New System.Drawing.Point(381, 438)
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(128, 14)
         Me.Label72.TabIndex = 609
@@ -2709,7 +2709,7 @@ Partial Class F_Solicitud
         'T_URLlogo_Red
         '
         Me.T_URLlogo_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_URLlogo_Red.Location = New System.Drawing.Point(521, 430)
+        Me.T_URLlogo_Red.Location = New System.Drawing.Point(521, 408)
         Me.T_URLlogo_Red.MaxLength = 6
         Me.T_URLlogo_Red.Name = "T_URLlogo_Red"
         Me.T_URLlogo_Red.Size = New System.Drawing.Size(324, 20)
@@ -2720,7 +2720,7 @@ Partial Class F_Solicitud
         '
         Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label73.ForeColor = System.Drawing.Color.DarkViolet
-        Me.Label73.Location = New System.Drawing.Point(381, 430)
+        Me.Label73.Location = New System.Drawing.Point(381, 408)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(128, 13)
         Me.Label73.TabIndex = 607
@@ -2730,7 +2730,7 @@ Partial Class F_Solicitud
         'T_URLexplorador_Red
         '
         Me.T_URLexplorador_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_URLexplorador_Red.Location = New System.Drawing.Point(521, 399)
+        Me.T_URLexplorador_Red.Location = New System.Drawing.Point(521, 377)
         Me.T_URLexplorador_Red.MaxLength = 6
         Me.T_URLexplorador_Red.Name = "T_URLexplorador_Red"
         Me.T_URLexplorador_Red.Size = New System.Drawing.Size(324, 20)
@@ -2741,7 +2741,7 @@ Partial Class F_Solicitud
         '
         Me.Label65.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label65.ForeColor = System.Drawing.Color.BlueViolet
-        Me.Label65.Location = New System.Drawing.Point(381, 403)
+        Me.Label65.Location = New System.Drawing.Point(381, 381)
         Me.Label65.Name = "Label65"
         Me.Label65.Size = New System.Drawing.Size(128, 13)
         Me.Label65.TabIndex = 605
@@ -2751,7 +2751,7 @@ Partial Class F_Solicitud
         'T_Color_Red
         '
         Me.T_Color_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_Color_Red.Location = New System.Drawing.Point(521, 373)
+        Me.T_Color_Red.Location = New System.Drawing.Point(521, 351)
         Me.T_Color_Red.MaxLength = 6
         Me.T_Color_Red.Name = "T_Color_Red"
         Me.T_Color_Red.Size = New System.Drawing.Size(170, 20)
@@ -2762,7 +2762,7 @@ Partial Class F_Solicitud
         '
         Me.Label66.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label66.ForeColor = System.Drawing.Color.Blue
-        Me.Label66.Location = New System.Drawing.Point(381, 373)
+        Me.Label66.Location = New System.Drawing.Point(381, 351)
         Me.Label66.Name = "Label66"
         Me.Label66.Size = New System.Drawing.Size(128, 13)
         Me.Label66.TabIndex = 603
@@ -2772,7 +2772,7 @@ Partial Class F_Solicitud
         'T_TipoBloque_Red
         '
         Me.T_TipoBloque_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_TipoBloque_Red.Location = New System.Drawing.Point(521, 343)
+        Me.T_TipoBloque_Red.Location = New System.Drawing.Point(521, 321)
         Me.T_TipoBloque_Red.MaxLength = 6
         Me.T_TipoBloque_Red.Name = "T_TipoBloque_Red"
         Me.T_TipoBloque_Red.Size = New System.Drawing.Size(170, 20)
@@ -2783,7 +2783,7 @@ Partial Class F_Solicitud
         '
         Me.Label67.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label67.ForeColor = System.Drawing.Color.Blue
-        Me.Label67.Location = New System.Drawing.Point(381, 343)
+        Me.Label67.Location = New System.Drawing.Point(381, 321)
         Me.Label67.Name = "Label67"
         Me.Label67.Size = New System.Drawing.Size(128, 13)
         Me.Label67.TabIndex = 601
@@ -2793,7 +2793,7 @@ Partial Class F_Solicitud
         'T_Decimales_Red
         '
         Me.T_Decimales_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_Decimales_Red.Location = New System.Drawing.Point(521, 317)
+        Me.T_Decimales_Red.Location = New System.Drawing.Point(521, 295)
         Me.T_Decimales_Red.MaxLength = 6
         Me.T_Decimales_Red.Name = "T_Decimales_Red"
         Me.T_Decimales_Red.Size = New System.Drawing.Size(170, 20)
@@ -2804,7 +2804,7 @@ Partial Class F_Solicitud
         '
         Me.Label68.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label68.ForeColor = System.Drawing.Color.Blue
-        Me.Label68.Location = New System.Drawing.Point(381, 317)
+        Me.Label68.Location = New System.Drawing.Point(381, 295)
         Me.Label68.Name = "Label68"
         Me.Label68.Size = New System.Drawing.Size(128, 13)
         Me.Label68.TabIndex = 599
@@ -2814,7 +2814,7 @@ Partial Class F_Solicitud
         'T_TokenNativo_Red
         '
         Me.T_TokenNativo_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_TokenNativo_Red.Location = New System.Drawing.Point(521, 288)
+        Me.T_TokenNativo_Red.Location = New System.Drawing.Point(521, 266)
         Me.T_TokenNativo_Red.MaxLength = 6
         Me.T_TokenNativo_Red.Name = "T_TokenNativo_Red"
         Me.T_TokenNativo_Red.Size = New System.Drawing.Size(170, 20)
@@ -2825,7 +2825,7 @@ Partial Class F_Solicitud
         '
         Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label70.ForeColor = System.Drawing.Color.Blue
-        Me.Label70.Location = New System.Drawing.Point(381, 291)
+        Me.Label70.Location = New System.Drawing.Point(381, 269)
         Me.Label70.Name = "Label70"
         Me.Label70.Size = New System.Drawing.Size(128, 13)
         Me.Label70.TabIndex = 597
@@ -2836,7 +2836,7 @@ Partial Class F_Solicitud
         '
         Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label71.ForeColor = System.Drawing.Color.Blue
-        Me.Label71.Location = New System.Drawing.Point(381, 262)
+        Me.Label71.Location = New System.Drawing.Point(381, 240)
         Me.Label71.Name = "Label71"
         Me.Label71.Size = New System.Drawing.Size(128, 13)
         Me.Label71.TabIndex = 595
@@ -2846,7 +2846,7 @@ Partial Class F_Solicitud
         'T_TipoRollup_Red
         '
         Me.T_TipoRollup_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_TipoRollup_Red.Location = New System.Drawing.Point(518, 211)
+        Me.T_TipoRollup_Red.Location = New System.Drawing.Point(521, 211)
         Me.T_TipoRollup_Red.MaxLength = 6
         Me.T_TipoRollup_Red.Name = "T_TipoRollup_Red"
         Me.T_TipoRollup_Red.Size = New System.Drawing.Size(170, 20)
@@ -2857,7 +2857,7 @@ Partial Class F_Solicitud
         '
         Me.Label62.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label62.ForeColor = System.Drawing.Color.Blue
-        Me.Label62.Location = New System.Drawing.Point(377, 211)
+        Me.Label62.Location = New System.Drawing.Point(381, 211)
         Me.Label62.Name = "Label62"
         Me.Label62.Size = New System.Drawing.Size(128, 13)
         Me.Label62.TabIndex = 591
@@ -2867,7 +2867,7 @@ Partial Class F_Solicitud
         'T_L1padre_Red
         '
         Me.T_L1padre_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_L1padre_Red.Location = New System.Drawing.Point(518, 181)
+        Me.T_L1padre_Red.Location = New System.Drawing.Point(521, 181)
         Me.T_L1padre_Red.MaxLength = 6
         Me.T_L1padre_Red.Name = "T_L1padre_Red"
         Me.T_L1padre_Red.Size = New System.Drawing.Size(170, 20)
@@ -2878,7 +2878,7 @@ Partial Class F_Solicitud
         '
         Me.Label63.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label63.ForeColor = System.Drawing.Color.Blue
-        Me.Label63.Location = New System.Drawing.Point(377, 181)
+        Me.Label63.Location = New System.Drawing.Point(381, 181)
         Me.Label63.Name = "Label63"
         Me.Label63.Size = New System.Drawing.Size(128, 13)
         Me.Label63.TabIndex = 589
@@ -2889,7 +2889,7 @@ Partial Class F_Solicitud
         '
         Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label64.ForeColor = System.Drawing.Color.Blue
-        Me.Label64.Location = New System.Drawing.Point(372, 155)
+        Me.Label64.Location = New System.Drawing.Point(381, 155)
         Me.Label64.Name = "Label64"
         Me.Label64.Size = New System.Drawing.Size(128, 13)
         Me.Label64.TabIndex = 587
@@ -2899,7 +2899,7 @@ Partial Class F_Solicitud
         'T_APIcg_Red
         '
         Me.T_APIcg_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_APIcg_Red.Location = New System.Drawing.Point(518, 129)
+        Me.T_APIcg_Red.Location = New System.Drawing.Point(521, 129)
         Me.T_APIcg_Red.MaxLength = 6
         Me.T_APIcg_Red.Name = "T_APIcg_Red"
         Me.T_APIcg_Red.Size = New System.Drawing.Size(170, 20)
@@ -2910,7 +2910,7 @@ Partial Class F_Solicitud
         '
         Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label58.ForeColor = System.Drawing.Color.Blue
-        Me.Label58.Location = New System.Drawing.Point(371, 129)
+        Me.Label58.Location = New System.Drawing.Point(381, 129)
         Me.Label58.Name = "Label58"
         Me.Label58.Size = New System.Drawing.Size(128, 13)
         Me.Label58.TabIndex = 585
@@ -2920,7 +2920,7 @@ Partial Class F_Solicitud
         'T_NomCorto_Red
         '
         Me.T_NomCorto_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NomCorto_Red.Location = New System.Drawing.Point(518, 103)
+        Me.T_NomCorto_Red.Location = New System.Drawing.Point(521, 103)
         Me.T_NomCorto_Red.MaxLength = 6
         Me.T_NomCorto_Red.Name = "T_NomCorto_Red"
         Me.T_NomCorto_Red.Size = New System.Drawing.Size(170, 20)
@@ -2931,7 +2931,7 @@ Partial Class F_Solicitud
         '
         Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label60.ForeColor = System.Drawing.Color.Blue
-        Me.Label60.Location = New System.Drawing.Point(371, 103)
+        Me.Label60.Location = New System.Drawing.Point(381, 103)
         Me.Label60.Name = "Label60"
         Me.Label60.Size = New System.Drawing.Size(128, 13)
         Me.Label60.TabIndex = 583
@@ -2941,7 +2941,7 @@ Partial Class F_Solicitud
         'T_NomOficial_Red
         '
         Me.T_NomOficial_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NomOficial_Red.Location = New System.Drawing.Point(518, 73)
+        Me.T_NomOficial_Red.Location = New System.Drawing.Point(521, 73)
         Me.T_NomOficial_Red.MaxLength = 6
         Me.T_NomOficial_Red.Name = "T_NomOficial_Red"
         Me.T_NomOficial_Red.Size = New System.Drawing.Size(170, 20)
@@ -2952,7 +2952,7 @@ Partial Class F_Solicitud
         '
         Me.Label57.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label57.ForeColor = System.Drawing.Color.Blue
-        Me.Label57.Location = New System.Drawing.Point(371, 73)
+        Me.Label57.Location = New System.Drawing.Point(381, 73)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(128, 13)
         Me.Label57.TabIndex = 581
@@ -2963,7 +2963,7 @@ Partial Class F_Solicitud
         '
         Me.L_IDRed_Red.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_IDRed_Red.ForeColor = System.Drawing.Color.Black
-        Me.L_IDRed_Red.Location = New System.Drawing.Point(518, 25)
+        Me.L_IDRed_Red.Location = New System.Drawing.Point(521, 25)
         Me.L_IDRed_Red.Name = "L_IDRed_Red"
         Me.L_IDRed_Red.Size = New System.Drawing.Size(170, 13)
         Me.L_IDRed_Red.TabIndex = 580
@@ -2973,7 +2973,7 @@ Partial Class F_Solicitud
         '
         Me.Label56.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label56.ForeColor = System.Drawing.Color.Blue
-        Me.Label56.Location = New System.Drawing.Point(371, 25)
+        Me.Label56.Location = New System.Drawing.Point(381, 25)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(128, 13)
         Me.Label56.TabIndex = 579
@@ -3015,7 +3015,7 @@ Partial Class F_Solicitud
         'T_ChainID_Red
         '
         Me.T_ChainID_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ChainID_Red.Location = New System.Drawing.Point(518, 47)
+        Me.T_ChainID_Red.Location = New System.Drawing.Point(521, 47)
         Me.T_ChainID_Red.MaxLength = 6
         Me.T_ChainID_Red.Name = "T_ChainID_Red"
         Me.T_ChainID_Red.Size = New System.Drawing.Size(170, 20)
@@ -3026,7 +3026,7 @@ Partial Class F_Solicitud
         '
         Me.Label59.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label59.ForeColor = System.Drawing.Color.Blue
-        Me.Label59.Location = New System.Drawing.Point(371, 47)
+        Me.Label59.Location = New System.Drawing.Point(381, 47)
         Me.Label59.Name = "Label59"
         Me.Label59.Size = New System.Drawing.Size(128, 13)
         Me.Label59.TabIndex = 570

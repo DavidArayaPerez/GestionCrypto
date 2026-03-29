@@ -174,6 +174,10 @@ Module xFunciones_Archivo
                 MatrizAuxActual = Matriz_Traspasos
                 TotalFilas = Matriz_TraspasosTF
                 TotalColumnas = Matriz_TraspasosTC
+            Case "Redes"
+                MatrizAuxActual = Matriz_Redes
+                TotalFilas = Matriz_RedesTF
+                TotalColumnas = Matriz_RedesTC
         End Select
     End Sub
     '
