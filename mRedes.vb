@@ -38,7 +38,15 @@ Module mRedes
     '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
     '
 
-
+    Public Sub CambiarIDRedes()
+        Dim i As Integer
+        For i = 0 To Matriz_RedesTC - 1
+            If Len(Matriz_Redes(0, i)) < 5 Then
+                Matriz_Redes(0, i) = CrearCodigoInterno()
+            End If
+        Next i
+        Guardar_Matrices("Redes")
+    End Sub
 
 
     '

@@ -134,47 +134,9 @@ Module xFunciones_Archivo
         Next i
         ReDim Preserve ArchivoFinal(Contador)
         '
-        Dim RutaArchivo As String = RutaLocal & "\TxT\" & NombreMatriz & ".txt"
+        Dim RutaArchivo As String = RutaLocal & "\" & NombreMatriz & ".txt"
         File.WriteAllLines(RutaArchivo, ArchivoFinal, System.Text.Encoding.UTF8)
     End Sub
-    Public Sub Guardar_MatrizValor(ByVal NombreMatriz As String)
-        'Se utiliza para guardar el valor del dólar, que se almacena en la matriz Matriz_Valor_Dolar, que tiene una sola fila y dos columnas: Fecha y Valor
-        'Valor_Dolar    =   Valor_Dolar.txt
-        '
-        Dim NombreProcedimiento As String = MethodBase.GetCurrentMethod().Name
-        If NombreMatriz = Nothing Then Exit Sub
-        '
-        Dim TotalFilas, TotalColumnas As Integer
-        Dim MatrizAuxActual(,) As String
-        ReDim MatrizAuxActual(1, 1) 'Para evitar que el Compilador alege
-        '
-        AsignarMatrizAuxiliar(NombreMatriz, MatrizAuxActual, TotalFilas, TotalColumnas)
-        If TotalFilas = 0 Or TotalColumnas = 0 Then Exit Sub
-        '
-        Dim i, j, Contador As Integer
-        Dim ArchivoFinal() As String
-        Dim T As String
-        ReDim ArchivoFinal(TotalFilas)
-        Contador = -1
-        For i = 0 To TotalFilas
-            If MatrizAuxActual(i, 1) = "" Then
-                Continue For
-            Else
-                T = MatrizAuxActual(i, 0)
-                For j = 1 To TotalColumnas - 1
-                    MatrizAuxActual(i, j) = If(String.IsNullOrEmpty(MatrizAuxActual(i, j)), "0", MatrizAuxActual(i, j))
-                    T &= vbTab & MatrizAuxActual(i, j)
-                Next j
-                Contador += 1
-                ArchivoFinal(Contador) = T
-            End If
-        Next i
-        ReDim Preserve ArchivoFinal(Contador)
-        '
-        Dim RutaArchivo As String = RutaLocal & "\TxT\" & NombreMatriz & ".txt"
-        File.WriteAllLines(RutaArchivo, ArchivoFinal, System.Text.Encoding.UTF8)
-    End Sub
-
     '
     Private Sub AsignarMatrizAuxiliar(ByVal NombreMatriz As String, ByRef MatrizAuxActual(,) As String, ByRef TotalFilas As Integer, ByRef TotalColumnas As Integer)
         TotalFilas = 0
@@ -226,7 +188,7 @@ Module xFunciones_Archivo
         End If
     End Function
     '
-    Public Sub GuardarMatrizEnArchivoTXT(ByVal RutaArchivo As String, ByVal Arreglo() As String)
+    Public Sub GuardarParametros(ByVal RutaArchivo As String, ByVal Arreglo() As String)
         Dim ArregloSinEspacios(1) As String
         Dim Contador As Integer = -1
         For i As Integer = 0 To Arreglo.Length - 1

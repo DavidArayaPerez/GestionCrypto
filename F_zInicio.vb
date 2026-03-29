@@ -38,10 +38,7 @@ Public Class F_zInicio
         Ordenar_Movimientos()
         '
         CargarTXT("Redes", Matriz_Redes)
-        Transformar_Fechas_Movimientos()
-        Ordenar_Movimientos()
-
-
+        CambiarIDRedes()
         '
         GuardarValorUSD(2022)
         GuardarValorUSD(2023)
@@ -117,12 +114,8 @@ Public Class F_zInicio
         '
         ReDim Preserve ArchivoFinal(Contador + 4)
         ArchivoFinal(Contador + 1) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()
-        '
-        ArchivoFinal(Contador + 2) = "ACTUALIZACION_UF" & vbTab & ACTUALIZACION_UF
-        ArchivoFinal(Contador + 3) = "ACTUALIZACION_UTM" & vbTab & ACTUALIZACION_UTM
         ArchivoFinal(Contador + 4) = "ACTUALIZACION_DOLAR" & vbTab & ACTUALIZACION_DOLAR
-        '
-        GuardarMatrizEnArchivoTXT(RutaArchivo, ArchivoFinal)
+        GuardarParametros(RutaArchivo, ArchivoFinal)
         '
     End Sub
     '
