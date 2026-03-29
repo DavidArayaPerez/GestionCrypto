@@ -37,6 +37,12 @@ Public Class F_zInicio
         Transformar_Fechas_Movimientos()
         Ordenar_Movimientos()
         '
+        CargarTXT("Redes", Matriz_Redes)
+        Transformar_Fechas_Movimientos()
+        Ordenar_Movimientos()
+
+
+        '
         GuardarValorUSD(2022)
         GuardarValorUSD(2023)
         GuardarValorUSD(2024)

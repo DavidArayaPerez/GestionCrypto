@@ -333,6 +333,7 @@
     <Compile Include="mMonedas.vb" />
     <Compile Include="mMovimientos.vb" />
     <Compile Include="mPoolLiquidez.vb" />
+    <Compile Include="mRedes.vb" />
     <Compile Include="mTraspasos.vb" />
     <Compile Include="mValorDolar.vb" />
     <Compile Include="wObjeto_Calendario.vb" />
@@ -351,7 +352,7 @@
     <Compile Include="xFunciones Fechas.vb" />
     <Compile Include="xFunciones Texto.vb" />
     <Compile Include="xFunciones Matematicas.vb" />
-    <Compile Include="mzMatriz.vb" />
+    <Compile Include="xFunciones_Matriz.vb" />
     <Compile Include="F_Solicitud.Designer.vb">
       <DependentUpon>F_Solicitud.vb</DependentUpon>
     </Compile>

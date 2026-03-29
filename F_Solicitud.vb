@@ -5,7 +5,7 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
+'Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
 Imports OfficeOpenXml
 '
 '
@@ -40,7 +40,7 @@ Public Class F_Solicitud
         Timer1.Enabled = True
     End Sub
     Private Sub LlenarList()
-        Dim T As String = ""
+        Dim T As String '= ""
         '
         L_Depositos.Text = ""
         L_Depositos.Items.Clear()
@@ -129,7 +129,7 @@ Public Class F_Solicitud
     End Sub
 
     Private Sub LlenarExchange()
-        Dim T As String = ""
+        Dim T As String '= ""
         C_ExchangeDeposito.Items.Clear()
         C_ExchangeCompra.Items.Clear()
         C_ExchangeTraspaso.Items.Clear()
@@ -145,7 +145,7 @@ Public Class F_Solicitud
         Next i
     End Sub
     Private Sub LlenarMonedas()
-        Dim T As String = ""
+        Dim T As String ' = ""
         C_MonedaOrigenDeposito.Items.Clear()
         C_MonedaDestinoDeposito.Items.Clear()
         C_MonedaOrigenCompra.Items.Clear()
@@ -600,6 +600,20 @@ Public Class F_Solicitud
     End Sub
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
+    End Sub
+
+    Private Sub B_NuevoMoneda_Click(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
+        Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
+        Dim Acronimo As String = InputBox(T, "Nueva Moneda")
+
+        '
+        Dim F As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
+        If F > 0 Then
+            VerMoneda(F)
+            Exit Sub
+        End If
+
+
     End Sub
     '
     '

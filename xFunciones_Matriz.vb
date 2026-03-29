@@ -5,7 +5,7 @@ Imports System.Reflection
 '
 '
 '
-Module mzMatriz
+Module xFunciones_Matriz
     '
     '
     '

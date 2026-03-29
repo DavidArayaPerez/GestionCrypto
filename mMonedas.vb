@@ -9,10 +9,10 @@ Module mMonedas
     Public Matriz_MonedasTF As String
     Public Matriz_MonedasTC As String = 3
     '
-    '   0   ID
-    '   1   Nombre
-    '   2   Acronimo
-    '   3   Contrato
+    '   0   ID          x
+    '   1   Nombre      x
+    '   2   Acronimo    x
+    '   3   Contrato    x
     '
     Public Function Crear_Monedas() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno

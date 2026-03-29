@@ -250,6 +250,17 @@ Partial Class F_Solicitud
         Me.T_FechaValorMonedas = New System.Windows.Forms.TextBox()
         Me.Label53 = New System.Windows.Forms.Label()
         Me.Label54 = New System.Windows.Forms.Label()
+        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
+        Me.B_NuevoMoneda = New System.Windows.Forms.Button()
+        Me.Label55 = New System.Windows.Forms.Label()
+        Me.C_RedMoneda = New System.Windows.Forms.ComboBox()
+        Me.TabPage10 = New System.Windows.Forms.TabPage()
+        Me.B_NuevoRed = New System.Windows.Forms.Button()
+        Me.L_Red = New System.Windows.Forms.ListBox()
+        Me.B_GrabarRed = New System.Windows.Forms.Button()
+        Me.T_NomRed = New System.Windows.Forms.TextBox()
+        Me.Label59 = New System.Windows.Forms.Label()
+        Me.rT_NotaRed = New System.Windows.Forms.RichTextBox()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -262,6 +273,7 @@ Partial Class F_Solicitud
         Me.TabPage3.SuspendLayout()
         Me.TabPage8.SuspendLayout()
         Me.TabPage9.SuspendLayout()
+        Me.TabPage10.SuspendLayout()
         Me.SuspendLayout()
         '
         'Menu_Agregar
@@ -649,10 +661,11 @@ Partial Class F_Solicitud
         Me.TabControl1.Controls.Add(Me.TabPage4)
         Me.TabControl1.Controls.Add(Me.TabPage5)
         Me.TabControl1.Controls.Add(Me.TabPage6)
-        Me.TabControl1.Controls.Add(Me.TabPage7)
-        Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Controls.Add(Me.TabPage8)
         Me.TabControl1.Controls.Add(Me.TabPage9)
+        Me.TabControl1.Controls.Add(Me.TabPage8)
+        Me.TabControl1.Controls.Add(Me.TabPage3)
+        Me.TabControl1.Controls.Add(Me.TabPage7)
+        Me.TabControl1.Controls.Add(Me.TabPage10)
         Me.TabControl1.Location = New System.Drawing.Point(12, 45)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -694,9 +707,9 @@ Partial Class F_Solicitud
         'L_Depositos
         '
         Me.L_Depositos.FormattingEnabled = True
-        Me.L_Depositos.Location = New System.Drawing.Point(19, 16)
+        Me.L_Depositos.Location = New System.Drawing.Point(19, 68)
         Me.L_Depositos.Name = "L_Depositos"
-        Me.L_Depositos.Size = New System.Drawing.Size(316, 433)
+        Me.L_Depositos.Size = New System.Drawing.Size(316, 381)
         Me.L_Depositos.TabIndex = 453
         '
         'C_BilleteraDeposito
@@ -2146,6 +2159,9 @@ Partial Class F_Solicitud
         '
         'TabPage7
         '
+        Me.TabPage7.Controls.Add(Me.C_RedMoneda)
+        Me.TabPage7.Controls.Add(Me.Label55)
+        Me.TabPage7.Controls.Add(Me.B_NuevoMoneda)
         Me.TabPage7.Controls.Add(Me.L_Monedas)
         Me.TabPage7.Controls.Add(Me.T_ContratoMoneda)
         Me.TabPage7.Controls.Add(Me.Label39)
@@ -2166,9 +2182,9 @@ Partial Class F_Solicitud
         'L_Monedas
         '
         Me.L_Monedas.FormattingEnabled = True
-        Me.L_Monedas.Location = New System.Drawing.Point(20, 20)
+        Me.L_Monedas.Location = New System.Drawing.Point(20, 85)
         Me.L_Monedas.Name = "L_Monedas"
-        Me.L_Monedas.Size = New System.Drawing.Size(316, 433)
+        Me.L_Monedas.Size = New System.Drawing.Size(316, 368)
         Me.L_Monedas.TabIndex = 563
         '
         'T_ContratoMoneda
@@ -2194,7 +2210,7 @@ Partial Class F_Solicitud
         'T_AcronimoMoneda
         '
         Me.T_AcronimoMoneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_AcronimoMoneda.Location = New System.Drawing.Point(557, 41)
+        Me.T_AcronimoMoneda.Location = New System.Drawing.Point(563, 41)
         Me.T_AcronimoMoneda.MaxLength = 6
         Me.T_AcronimoMoneda.Name = "T_AcronimoMoneda"
         Me.T_AcronimoMoneda.Size = New System.Drawing.Size(170, 20)
@@ -2205,7 +2221,7 @@ Partial Class F_Solicitud
         '
         Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label38.ForeColor = System.Drawing.Color.Blue
-        Me.Label38.Location = New System.Drawing.Point(557, 25)
+        Me.Label38.Location = New System.Drawing.Point(563, 25)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(170, 13)
         Me.Label38.TabIndex = 559
@@ -2215,7 +2231,7 @@ Partial Class F_Solicitud
         '
         Me.B_GrabarMoneda.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarMoneda.Location = New System.Drawing.Point(880, 20)
+        Me.B_GrabarMoneda.Location = New System.Drawing.Point(880, 25)
         Me.B_GrabarMoneda.Name = "B_GrabarMoneda"
         Me.B_GrabarMoneda.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarMoneda.TabIndex = 558
@@ -2256,6 +2272,7 @@ Partial Class F_Solicitud
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.B_NuevoBilletera)
         Me.TabPage3.Controls.Add(Me.L_Billeteras)
         Me.TabPage3.Controls.Add(Me.Label1)
         Me.TabPage3.Controls.Add(Me.B_GrabarBilletera)
@@ -2274,9 +2291,9 @@ Partial Class F_Solicitud
         'L_Billeteras
         '
         Me.L_Billeteras.FormattingEnabled = True
-        Me.L_Billeteras.Location = New System.Drawing.Point(20, 20)
+        Me.L_Billeteras.Location = New System.Drawing.Point(20, 59)
         Me.L_Billeteras.Name = "L_Billeteras"
-        Me.L_Billeteras.Size = New System.Drawing.Size(316, 433)
+        Me.L_Billeteras.Size = New System.Drawing.Size(316, 394)
         Me.L_Billeteras.TabIndex = 564
         '
         'Label1
@@ -2293,7 +2310,7 @@ Partial Class F_Solicitud
         '
         Me.B_GrabarBilletera.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarBilletera.Location = New System.Drawing.Point(880, 20)
+        Me.B_GrabarBilletera.Location = New System.Drawing.Point(880, 25)
         Me.B_GrabarBilletera.Name = "B_GrabarBilletera"
         Me.B_GrabarBilletera.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarBilletera.TabIndex = 492
@@ -2506,6 +2523,126 @@ Partial Class F_Solicitud
         Me.Label54.Text = "Fecha"
         Me.Label54.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'B_NuevoBilletera
+        '
+        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(20, 22)
+        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
+        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoBilletera.TabIndex = 565
+        Me.B_NuevoBilletera.Text = "Nuevo"
+        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        '
+        'B_NuevoMoneda
+        '
+        Me.B_NuevoMoneda.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoMoneda.Location = New System.Drawing.Point(20, 25)
+        Me.B_NuevoMoneda.Name = "B_NuevoMoneda"
+        Me.B_NuevoMoneda.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoMoneda.TabIndex = 566
+        Me.B_NuevoMoneda.Text = "Nuevo"
+        Me.B_NuevoMoneda.UseVisualStyleBackColor = False
+        '
+        'Label55
+        '
+        Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label55.ForeColor = System.Drawing.Color.Blue
+        Me.Label55.Location = New System.Drawing.Point(563, 79)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(170, 13)
+        Me.Label55.TabIndex = 567
+        Me.Label55.Text = "Red"
+        '
+        'C_RedMoneda
+        '
+        Me.C_RedMoneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_RedMoneda.FormattingEnabled = True
+        Me.C_RedMoneda.Location = New System.Drawing.Point(563, 95)
+        Me.C_RedMoneda.Name = "C_RedMoneda"
+        Me.C_RedMoneda.Size = New System.Drawing.Size(170, 21)
+        Me.C_RedMoneda.TabIndex = 568
+        Me.C_RedMoneda.Text = "C_RedMoneda"
+        '
+        'TabPage10
+        '
+        Me.TabPage10.Controls.Add(Me.B_NuevoRed)
+        Me.TabPage10.Controls.Add(Me.L_Red)
+        Me.TabPage10.Controls.Add(Me.B_GrabarRed)
+        Me.TabPage10.Controls.Add(Me.T_NomRed)
+        Me.TabPage10.Controls.Add(Me.Label59)
+        Me.TabPage10.Controls.Add(Me.rT_NotaRed)
+        Me.TabPage10.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage10.Name = "TabPage10"
+        Me.TabPage10.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage10.Size = New System.Drawing.Size(996, 478)
+        Me.TabPage10.TabIndex = 9
+        Me.TabPage10.Text = "Red"
+        Me.TabPage10.UseVisualStyleBackColor = True
+        '
+        'B_NuevoRed
+        '
+        Me.B_NuevoRed.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoRed.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoRed.Location = New System.Drawing.Point(19, 25)
+        Me.B_NuevoRed.Name = "B_NuevoRed"
+        Me.B_NuevoRed.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoRed.TabIndex = 578
+        Me.B_NuevoRed.Text = "Nuevo"
+        Me.B_NuevoRed.UseVisualStyleBackColor = False
+        '
+        'L_Red
+        '
+        Me.L_Red.FormattingEnabled = True
+        Me.L_Red.Location = New System.Drawing.Point(19, 85)
+        Me.L_Red.Name = "L_Red"
+        Me.L_Red.Size = New System.Drawing.Size(316, 368)
+        Me.L_Red.TabIndex = 577
+        '
+        'B_GrabarRed
+        '
+        Me.B_GrabarRed.BackColor = System.Drawing.SystemColors.Control
+        Me.B_GrabarRed.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_GrabarRed.Location = New System.Drawing.Point(879, 25)
+        Me.B_GrabarRed.Name = "B_GrabarRed"
+        Me.B_GrabarRed.Size = New System.Drawing.Size(99, 23)
+        Me.B_GrabarRed.TabIndex = 572
+        Me.B_GrabarRed.Text = "Grabar"
+        Me.B_GrabarRed.UseVisualStyleBackColor = False
+        '
+        'T_NomRed
+        '
+        Me.T_NomRed.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_NomRed.Location = New System.Drawing.Point(370, 41)
+        Me.T_NomRed.MaxLength = 6
+        Me.T_NomRed.Name = "T_NomRed"
+        Me.T_NomRed.Size = New System.Drawing.Size(170, 20)
+        Me.T_NomRed.TabIndex = 571
+        Me.T_NomRed.Text = "T_NomRed"
+        '
+        'Label59
+        '
+        Me.Label59.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label59.ForeColor = System.Drawing.Color.Blue
+        Me.Label59.Location = New System.Drawing.Point(370, 25)
+        Me.Label59.Name = "Label59"
+        Me.Label59.Size = New System.Drawing.Size(170, 13)
+        Me.Label59.TabIndex = 570
+        Me.Label59.Text = "Nombre Red"
+        '
+        'rT_NotaRed
+        '
+        Me.rT_NotaRed.AcceptsTab = True
+        Me.rT_NotaRed.AutoWordSelection = True
+        Me.rT_NotaRed.BackColor = System.Drawing.Color.White
+        Me.rT_NotaRed.Location = New System.Drawing.Point(370, 85)
+        Me.rT_NotaRed.Name = "rT_NotaRed"
+        Me.rT_NotaRed.ReadOnly = True
+        Me.rT_NotaRed.Size = New System.Drawing.Size(457, 368)
+        Me.rT_NotaRed.TabIndex = 569
+        Me.rT_NotaRed.Text = "rT_NotaRed"
+        '
         'F_Solicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2544,6 +2681,8 @@ Partial Class F_Solicitud
         Me.TabPage8.PerformLayout()
         Me.TabPage9.ResumeLayout(False)
         Me.TabPage9.PerformLayout()
+        Me.TabPage10.ResumeLayout(False)
+        Me.TabPage10.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -2775,4 +2914,15 @@ Partial Class F_Solicitud
     Friend WithEvents L_FechaValorMonedas As ListBox
     Friend WithEvents C_MonedasValorMonedas As ComboBox
     Friend WithEvents Label52 As Label
+    Friend WithEvents B_NuevoBilletera As Button
+    Friend WithEvents B_NuevoMoneda As Button
+    Friend WithEvents C_RedMoneda As ComboBox
+    Friend WithEvents Label55 As Label
+    Friend WithEvents TabPage10 As TabPage
+    Friend WithEvents B_NuevoRed As Button
+    Friend WithEvents L_Red As ListBox
+    Friend WithEvents B_GrabarRed As Button
+    Friend WithEvents T_NomRed As TextBox
+    Friend WithEvents Label59 As Label
+    Friend WithEvents rT_NotaRed As RichTextBox
 End Class
