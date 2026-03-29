@@ -38,13 +38,16 @@ Public Class F_zInicio
         Ordenar_Movimientos()
         '
         CargarTXT("ValorDolar", Matriz_Movimientos)
-        Transformar_Fechas_Movimientos()
+        Transformar_Fechas_ValorDolar()
         Ordenar_Movimientos()
 
         'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
         'CargarTXT("Pares", Matriz_Pares)
         '
         '
+        GuardarValorDolar(2022)
+        GuardarValorDolar(2023)
+        GuardarValorDolar(2024)
         GuardarValorDolar(2025)
         GuardarValorDolar(2026)
         '

@@ -62,7 +62,7 @@ Module zAPI_CMF_Chile
                     End If
                 Next
             End If
-
+            '
             Return result
         Catch ex As Exception
             MsgBox("Error leyendo API DOLAR (XML): " & ex.Message)
