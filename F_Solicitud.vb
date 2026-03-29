@@ -5,6 +5,7 @@ Imports System.Drawing.Drawing2D
 Imports System.IO
 Imports System.Security.Cryptography
 Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
 Imports OfficeOpenXml
 '
 '
@@ -31,11 +32,36 @@ Public Class F_Solicitud
         LimpiezaBilletera()
         LimpiezaExchange()
         '
+        LlenarList()
         LlenarExchange()
         LlenarMonedas()
         '
         Timer1.Enabled = True
     End Sub
+    Private Sub LlenarList()
+        Dim T As String = ""
+        L_Depositos.Items.Clear()
+        For i As Integer = 1 To Matriz_DepositosTF
+            T = Matriz_Depositos(i, 1) & ":" & Matriz_Depositos(i, 2) & " " & "(" & i & ")"
+            L_Depositos.Items.Add(T)
+        Next i
+        '
+        L_Compras.Items.Clear()
+        For i As Integer = 1 To Matriz_ComprasTF
+            T = Matriz_Compras(i, 1) & ":" & Matriz_Compras(i, 2) & " " & "(" & i & ")"
+            L_Compras.Items.Add(T)
+        Next i
+        '
+        L_Traspasos.Items.Clear()
+        For i As Integer = 1 To Matriz_TraspasosTF
+            T = Matriz_Traspasos(i, 1) & ":" & Matriz_Traspasos(i, 2) & " " & "(" & i & ")"
+            L_Traspasos.Items.Add(T)
+        Next i
+
+
+
+    End Sub
+
     Private Sub LlenarExchange()
         Dim T As String = ""
         C_ExchangeDeposito.Items.Clear()
