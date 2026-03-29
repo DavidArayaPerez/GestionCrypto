@@ -44,7 +44,7 @@ Public Class F_Solicitud
         C_ExchangePool.Items.Clear()
         C_ExchangeMovimiento.Items.Clear()
         For i As Integer = 1 To Matriz_ExchangeTF
-            T = Matriz_Exchange(i, 1)
+            T = Matriz_Exchange(i, 0)
             C_ExchangeDeposito.Items.Add(T)
             C_ExchangeCompra.Items.Add(T)
             C_ExchangeTraspaso.Items.Add(T)
@@ -64,8 +64,8 @@ Public Class F_Solicitud
         C_Moneda2Pool.Items.Clear()
         C_MonedaOrigenMovimiento.Items.Clear()
         C_MonedaDestinoMovimiento.Items.Clear()
-        For i As Integer = 1 To Matriz_ExchangeTF
-            C_ExchangeDeposito.Items.Add(T)
+        For i As Integer = 1 To Matriz_MonedasTF
+            T = Matriz_Monedas(i, 1)
             C_MonedaOrigenDeposito.Items.Add(T)
             C_MonedaDestinoDeposito.Items.Add(T)
             C_MonedaOrigenCompra.Items.Add(T)
