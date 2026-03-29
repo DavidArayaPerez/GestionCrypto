@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /mBilleteras.vb
+/wObjetos_Arbol.vb
+/wObjeto_Botones.vb
+/xFunciones_EdicionTexto.vb
