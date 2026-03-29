@@ -1,0 +1,109 @@
+﻿'
+'
+'
+Imports System.IO
+'
+'
+'
+Public Class F_zInicio
+    '
+    '
+    '
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        ' Comprobar disponibilidad antes de descargar el contenido completo
+        If Not ApiIsAlive(RutaAPI_CMF_UF, 3000) Or Not ApiIsAlive(RutaAPI_CMF_UTM, 3000) Or Not ApiIsAlive(RutaAPI_CMF_DOLAR, 3000) Then
+            MsgBox("Existen problemas con la API de CMF Chile")
+        Else
+            ValorUTM = P_Datos_UTM_HOY()
+            ValorDolar = P_Datos_DOLAR_HOY()
+            ValorUF = P_Datos_UF_HOY()
+        End If
+        '
+        Parametros()
+        '
+        CargarTXT("Monedas", Matriz_Monedas)
+        CargarTXT("Exchange", Matriz_Exchange)
+        CargarTXT("Billeteras", Matriz_Billeteras)
+        '
+        CargarTXT("Depositos", Matriz_Depositos)
+        CargarTXT("Compras", Matriz_Compras)
+        CargarTXT("Traspasos", Matriz_Traspasos)
+        CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
+        CargarTXT("Movimientos", Matriz_Movimientos)
+        '
+        'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
+        'CargarTXT("Pares", Matriz_Pares)
+        F_Solicitud.Inicializacion()
+        F_Solicitud.ShowDialog()
+        Me.Close()
+    End Sub
+    Public Sub Parametros()
+        Dim NombreArchivo As String = "zParametros.txt"
+        Dim CarpetaInicio As String = Application.StartupPath
+        Dim RutaArchivo As String = CarpetaInicio & "\" & NombreArchivo
+        Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto As String
+        Dim Fila, Total, Contador As Integer
+        '
+        If Not ExisteArchivo(RutaArchivo) Then
+            Texto = "El archivo de configuracion no fue encontrado" & vbCrLf
+            Texto &= "Nombre Archivo: " & NombreArchivo & vbCrLf
+            Texto &= "Ruta: " & CarpetaInicio & vbCrLf
+            MsgBox(Texto, vbCritical, "Error Grave")
+            End
+        End If
+        '
+        Lineas = File.ReadAllLines(RutaArchivo)
+        Total = Lineas.Length
+        If Lineas.Length = 0 Then
+            Texto = "El archivo de configuracion No tiene datos" & vbCrLf
+            MsgBox(Texto, vbCritical, "Error Grave")
+            End
+        End If
+        '
+        ReDim ArchivoFinal(Total)
+        Contador = -1
+        '
+        For Fila = 0 To Total - 1
+            Linea = Lineas(Fila)
+            If Linea.Trim = "" Then Continue For
+            '
+            Elementos = Linea.Split(vbTab)
+            Select Case Elementos(0)
+                Case "RUTA_LOCAL"
+                    RutaLocal = Elementos(1)
+                    Contador += 1
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & Elementos(1)
+                Case "UTM"
+                    If ValorUTM = 0 Then ValorUTM = CDbl(Elementos(1))
+                    Contador += 1
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUTM
+                Case "DOLAR"
+                    If ValorDolar = 0 Then ValorDolar = CDbl(Elementos(1))
+                    Contador += 1
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorDolar
+                Case "UF"
+                    If ValorUF = 0 Then ValorUF = CDbl(Elementos(1))
+                    Contador += 1
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUF
+            End Select
+        Next Fila
+        '
+        If RutaLocal = "" Then
+            Texto = "No fue encontrada la variable RUTA local" & vbCrLf
+            MsgBox(Texto, vbCritical, "Error Grave")
+            End
+        End If
+        '
+        ReDim Preserve ArchivoFinal(Contador + 1)
+        ArchivoFinal(Contador + 1) = "FECHA" & vbTab & Texto_FechaHoraActual()
+        GuardarMatrizEnArchivoTXT(RutaArchivo, ArchivoFinal)
+        '
+    End Sub
+    '
+    '
+    '
+End Class
+'
+'
+'
