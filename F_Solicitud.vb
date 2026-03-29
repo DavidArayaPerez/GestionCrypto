@@ -178,7 +178,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaDeposito(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'DEPOSITO
         T_FechaDeposito.Text = ""
         T_HoraDeposito.Text = ""
@@ -238,7 +237,6 @@ Public Class F_Solicitud
     End Sub
     '
     Private Sub LimpiezaCompras(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'COMPRAS
         T_FechaCompra.Text = ""
         T_HoraCompra.Text = ""
@@ -296,7 +294,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaTraspaso(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'TRASPASO
         T_FechaTraspaso.Text = ""
         T_HoraTraspaso.Text = ""
@@ -307,6 +304,8 @@ Public Class F_Solicitud
         C_ExchangeTraspaso.Text = ""
         T_ComisionTraspaso.Text = ""
         T_GasTraspaso.Text = ""
+        C_BilleteraOrigenTraspaso.Text = ""
+        C_BilleteraDestinoTraspaso.Text = ""
         rT_NotaTraspaso.Text = ""
         '
         T_FechaTraspaso.Enabled = Habilitar
@@ -318,6 +317,8 @@ Public Class F_Solicitud
         C_ExchangeTraspaso.Enabled = Habilitar
         T_ComisionTraspaso.Enabled = Habilitar
         T_GasTraspaso.Enabled = Habilitar
+        C_BilleteraOrigenTraspaso.Enabled = Habilitar
+        C_BilleteraDestinoTraspaso.Enabled = Habilitar
         rT_NotaTraspaso.Enabled = Habilitar
     End Sub
     Private Sub VerTraspasos(F As Integer)
@@ -354,7 +355,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaPool(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'POOL LIQUIDEZ
         T_FechaPool.Text = ""
         T_HoraPool.Text = ""
@@ -366,6 +366,11 @@ Public Class F_Solicitud
         T_GasPool.Text = ""
         T_MinPool.Text = ""
         T_MaxPool.Text = ""
+        C_ExchangePool.Text = ""
+        C_BilleteraPool.Text = ""
+        T_ValorMoneda1ResultantePool.Text = ""
+        T_ValorMoneda2ResultantePool.Text = ""
+
         rT_NotaPool.Text = ""
         '
         T_FechaPool.Enabled = Habilitar
@@ -376,6 +381,11 @@ Public Class F_Solicitud
         T_ValorMoneda2Pool.Enabled = Habilitar
         T_ComisionPool.Enabled = Habilitar
         T_GasPool.Enabled = Habilitar
+        C_ExchangePool.Enabled = Habilitar
+        C_BilleteraPool.Enabled = Habilitar
+        T_ValorMoneda1ResultantePool.Enabled = Habilitar
+        T_ValorMoneda2ResultantePool.Enabled = Habilitar
+
         rT_NotaPool.Enabled = Habilitar
     End Sub
     Private Sub VerPool(F As Integer)
@@ -422,7 +432,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaMovimiento(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'MOVIMIENTO
         T_FechaMovimiento.Text = ""
         T_HoraMovimiento.Text = ""
@@ -432,6 +441,8 @@ Public Class F_Solicitud
         T_ValorDestinoMovimiento.Text = ""
         T_ComisionMovimiento.Text = ""
         T_GasMovimiento.Text = ""
+        C_ExchangeMovimiento.Text = ""
+        C_BilleteraMovimiento.Text = ""
         rT_NotaMovimiento.Text = ""
         '
         T_FechaMovimiento.Enabled = Habilitar
@@ -442,6 +453,9 @@ Public Class F_Solicitud
         T_ValorDestinoMovimiento.Enabled = Habilitar
         T_ComisionMovimiento.Enabled = Habilitar
         T_GasMovimiento.Enabled = Habilitar
+        C_ExchangeMovimiento.Enabled = Habilitar
+        C_BilleteraMovimiento.Enabled = Habilitar
+
         rT_NotaMovimiento.Enabled = Habilitar
     End Sub
     Private Sub VerMovimiento(F As Integer)
@@ -476,11 +490,11 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'MONEDA
         T_NomMoneda.Text = ""
         T_AcronimoMoneda.Text = ""
         T_ContratoMoneda.Text = ""
+
         rT_NotaMoneda.Text = ""
         '
         T_NomMoneda.Enabled = Habilitar
@@ -506,7 +520,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaBilletera(Optional Habilitar As Boolean = False)
-        If VariableDeInicio Then Exit Sub
         'BILLETERA
         T_NombreBilletera.Text = ""
         T_CodigoBilletera.Text = ""
@@ -531,7 +544,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaExchange(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'EXCHANGE
         T_NomExchange.Text = ""
         rT_NotaExchange.Text = ""
@@ -553,7 +565,6 @@ Public Class F_Solicitud
     ' 
     '
     Private Sub LimpiezaValorMonedas(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'VALOR MONEDAS
         T_FechaValorMonedas.Text = ""
         T_ValorValorMonedas.Text = ""
@@ -574,7 +585,6 @@ Public Class F_Solicitud
     '
     '
     Private Sub LimpiezaRedes(Optional Habilitar As Boolean = False)
-        'If VariableDeInicio Then Exit Sub
         'REDES
         L_IDRed_Red.Text = ""
         T_ChainID_Red.Text = ""
