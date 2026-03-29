@@ -27,6 +27,9 @@ Public Class F_zInicio
         CargarTXT("Billeteras", Matriz_Billeteras)
         '
         CargarTXT("Depositos", Matriz_Depositos)
+        Transformar_Fechas_Depositos()
+        Ordenar_Depositos()
+
         CargarTXT("Compras", Matriz_Compras)
         CargarTXT("Traspasos", Matriz_Traspasos)
         CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
