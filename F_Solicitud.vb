@@ -31,6 +31,7 @@ Public Class F_Solicitud
         LimpiezaMoneda()
         LimpiezaBilletera()
         LimpiezaExchange()
+        LimpiezaValorMonedas()
         '
         LlenarList()
         LlenarExchange()
@@ -531,6 +532,43 @@ Public Class F_Solicitud
     End Sub
     ' 
     '
+    Private Sub LimpiezaValorMonedas(Optional Habilitar As Boolean = False)
+        If Not VariableDeInicio Then Exit Sub
+        'VALOR MONEDAS
+        T_FechaValorMonedas.Text = ""
+        T_ValorValorMonedas.Text = ""
+        '
+        T_FechaValorMonedas.Enabled = Habilitar
+        T_ValorValorMonedas.Enabled = Habilitar
+    End Sub
+    Private Sub VerValorMonedas(F As Integer)
+        LimpiezaValorMonedas(True)
+        If F < 1 Then Exit Sub
+        '   0   Fecha
+        '   1   Valor
+        '
+        T_FechaValorMonedas.Text = Matriz_ValorDolar(F, 0)
+        T_ValorValorMonedas.Text = Matriz_ValorDolar(F, 1)
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     '---------------------------------------------------------------------------------------------------------------------
     'EVENTOS
     '---------------------------------------------------------------------------------------------------------------------
