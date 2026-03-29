@@ -10,7 +10,6 @@ Public Class F_zInicio
     '
     '
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         ' Comprobar disponibilidad antes de descargar el contenido completo
         If Not ApiIsAlive(RutaAPI_CMF_UF, 3000) Or Not ApiIsAlive(RutaAPI_CMF_UTM, 3000) Or Not ApiIsAlive(RutaAPI_CMF_DOLAR, 3000) Then
             MsgBox("Existen problemas con la API de CMF Chile")
@@ -29,11 +28,22 @@ Public Class F_zInicio
         CargarTXT("Depositos", Matriz_Depositos)
         Transformar_Fechas_Depositos()
         Ordenar_Depositos()
-
+        '
         CargarTXT("Compras", Matriz_Compras)
+        Transformar_Fechas_Compras()
+        Ordenar_Compras()
+        '
         CargarTXT("Traspasos", Matriz_Traspasos)
+        Transformar_Fechas_Traspasos()
+        Ordenar_Traspasos()
+        '
         CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
+        Transformar_Fechas_PoolLiquidez()
+        Ordenar_PoolLiquidez()
+        '
         CargarTXT("Movimientos", Matriz_Movimientos)
+        Transformar_Fechas_Movimientos()
+        Ordenar_Movimientos()
         '
         'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
         'CargarTXT("Pares", Matriz_Pares)

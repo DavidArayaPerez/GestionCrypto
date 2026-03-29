@@ -48,6 +48,31 @@ Module mMovimientos
         Matriz_Movimientos(Fila, 10) = ""
         Return Fila
     End Function
+    Public Sub Transformar_Fechas_Movimientos()
+        Dim Matriz(,) As String = Matriz_Movimientos
+        Dim TotalFilas As Integer = Matriz_MovimientosTF
+        For i As Integer = 1 To TotalFilas
+            If IsDate(Matriz(i, 1)) Then
+                Matriz(i, 1) = CDate(Matriz(i, 1)).ToString("yyyyMMdd")
+            End If
+        Next i
+    End Sub
+    Public Sub Ordenar_Movimientos()
+        Dim Matriz(,) As String = Matriz_Movimientos
+        Dim TotalFilas As Integer = Matriz_MovimientosTF
+        Dim TotalColumnas As Integer = Matriz_MovimientosTC
+        For i As Integer = 1 To TotalFilas - 1
+            For j As Integer = i + 1 To TotalFilas
+                If Matriz(i, 1) & Matriz(i, 2) < Matriz(j, 1) & Matriz(j, 2) Then
+                    For k As Integer = 0 To TotalColumnas - 1
+                        Dim Temp As String = Matriz(i, k)
+                        Matriz(i, k) = Matriz(j, k)
+                        Matriz(j, k) = Temp
+                    Next k
+                End If
+            Next j
+        Next i
+    End Sub
     '
     '
     '

@@ -10,6 +10,109 @@ Module zFuncionesAutonomas_Fechas
     '
     '
     '
+    Public Function TransformarFecha_TextoNumero_YYYYmmDD(FechaTexto As String) As Integer
+        Dim Dia As String = "0"
+        Dim Mes As String = "0"
+        Dim Año As String = "0"
+        Dim Largo As Integer = Len(FechaTexto)
+        '
+        If Largo = 6 Then
+            'Formato corto del tipo YYmmDD
+            'Aca el problema es si viene al reves DDmmYY
+            'Por ende se probaran ambas opciones y si la primera da fecha valida entonce se toma esa, sino la siguiente, sino Return 0
+            Dim F1 As String = "20" & Mid(FechaTexto, 1, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 2) 'YYmmDD
+            Dim F2 As String = "20" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 1, 2) 'DDmmYY
+            If IsDate(F1) Then
+                Año = "20" & Mid(FechaTexto, 1, 2)
+                Mes = Mid(FechaTexto, 3, 2)
+                Dia = Mid(FechaTexto, 5, 2)
+                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
+                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
+                Return Año & Mes & Dia
+            ElseIf IsDate(F2) Then
+                Año = "20" & Mid(FechaTexto, 5, 2)
+                Mes = Mid(FechaTexto, 3, 2)
+                Dia = Mid(FechaTexto, 1, 2)
+                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
+                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
+                Return Año & Mes & Dia
+            Else
+                Return 0
+            End If
+            '
+        ElseIf Largo = 8 Then
+            'Formato mediano del tipo YYYYmmDD, se procede de la misma forma que en el Largo=6
+            Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 7, 2)    'YYYY mm DD
+            Dim F2 As String = Mid(FechaTexto, 7, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 4)    'DD mm YYYY 
+            If IsDate(F1) Then
+                Año = Mid(FechaTexto, 1, 4)
+                Mes = Mid(FechaTexto, 5, 2)
+                Dia = Mid(FechaTexto, 7, 2)
+                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
+                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
+                Return Año & Mes & Dia
+            ElseIf IsDate(F2) Then
+                Año = Mid(FechaTexto, 5, 4)
+                Mes = Mid(FechaTexto, 3, 2)
+                Dia = Mid(FechaTexto, 7, 2)
+                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
+                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
+                Return Año & Mes & Dia
+            Else
+                Return 0
+            End If
+            '
+        ElseIf Largo = 10 Then
+            'El formato largo es el mas comun, pero se pueden presentar varias formas, por ejemplo: dd-MM-yyyy, yyyy-MM-dd, dd/MM/yyyy, yyyy/MM/dd
+            Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 6, 2) & "/" & Mid(FechaTexto, 9, 2)    'YYYY mm DD
+            Dim F2 As String = Mid(FechaTexto, 7, 4) & "/" & Mid(FechaTexto, 4, 2) & "/" & Mid(FechaTexto, 1, 2)    'DD mm YYYY 
+            If IsDate(F1) Then
+                Año = Mid(FechaTexto, 1, 4)
+                Mes = Mid(FechaTexto, 6, 2)
+                Dia = Mid(FechaTexto, 9, 2)
+                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
+                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
+                Return Año & Mes & Dia
+            ElseIf IsDate(F2) Then
+                Año = Mid(FechaTexto, 7, 4)
+                Mes = Mid(FechaTexto, 4, 2)
+                Dia = Mid(FechaTexto, 1, 2)
+                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
+                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
+                Return Año & Mes & Dia
+            Else
+                Return 0
+            End If
+        Else
+            Return 0
+        End If
+        '
+    End Function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Public Function ValidaAño(Año As String) As Integer
         Dim Num As Integer = Val(Año)
         Dim AñoActual As Integer = Now.Year
@@ -113,49 +216,7 @@ Module zFuncionesAutonomas_Fechas
         Return "01-01-1900"
     End Function
     '
-    Public Function TransformarTextoFecha_Numero_YYYYmmDD(FechaTexto As String) As Integer
-        Dim Dia As String = "0"
-        Dim Mes As String = "0"
-        Dim Año As String = "0"
-        'If Not ValidaFechaTexto(FechaTexto) Then Return 0
-        '
-        If Len(FechaTexto) >= 8 Then
-            'Puede tener formato fecha como: ddMMyyyy, yyyyMMdd, dd-MM-yyyy, yyyy-MM-dd, dd/MM/yyyy, yyyy/MM/dd
-            If IsDate(FechaTexto) Then
-                If DateAndTime.Year(FechaTexto) > 0 And DateAndTime.Month(FechaTexto) > 0 And DateAndTime.Day(FechaTexto) Then
-                    Año = Str(DateAndTime.Year(FechaTexto)).Trim
-                    Mes = Str(DateAndTime.Month(FechaTexto)).Trim
-                    Dia = Str(DateAndTime.Day(FechaTexto)).Trim
-                    If Len(Mes) = 1 Then Mes = "0" & Mes
-                    If Len(Dia) = 1 Then Dia = "0" & Dia
-                End If
-            ElseIf Len(FechaTexto) = 10 Then
-                'dd-MM-yyyy
-                Dia = Mid(FechaTexto, 1, 2)
-                Mes = Mid(FechaTexto, 4, 2)
-                Año = Mid(FechaTexto, 7, 4)
-            ElseIf Len(FechaTexto) = 8 Then
-                'Se debe definir si el formato es   YYYYmmDD
-                'o el formato es                    DDmmYYYY
-                If Val(Mid(FechaTexto, 1, 2)) = 19 Or Val(Mid(FechaTexto, 1, 2)) = 20 Then
-                    'Es para definir si los dos primeros caracteres corresponden al 19XX o al 20XX
-                    Año = Mid(FechaTexto, 1, 4)
-                    Mes = Mid(FechaTexto, 5, 2)
-                    Dia = Mid(FechaTexto, 7, 2)
-                Else
-                    Año = Mid(FechaTexto, 5, 4)
-                    Mes = Mid(FechaTexto, 3, 2)
-                    Dia = Mid(FechaTexto, 1, 2)
-                End If
-            End If
-        End If
-        '
-        If Dia < 1 Or Dia > 31 Or Mes < 1 And Mes > 12 Or Año < 1900 Or Año > 2100 Then
-            Return 0
-        Else
-            Return Año & Mes & Dia
-        End If
-    End Function
+
     '
     Public Function FechaEnTextoSoloAñoMes(Año As Integer, Mes As Integer) As String
         If Mes < 1 Or Mes > 12 Or Año < 1900 Or Año > 2100 Then Return ""
