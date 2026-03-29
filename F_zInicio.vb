@@ -44,6 +44,9 @@ Public Class F_zInicio
         Dim RutaArchivo As String = CarpetaInicio & "\" & NombreArchivo
         Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto As String
         Dim Fila, Total, Contador As Integer
+        Dim ACTUALIZACION_UF As String = "SI"
+        Dim ACTUALIZACION_UTM As String = "SI"
+        Dim ACTUALIZACION_DOLAR As String = "SI"
         '
         If Not ExisteArchivo(RutaArchivo) Then
             Texto = "El archivo de configuracion no fue encontrado" & vbCrLf
@@ -75,15 +78,24 @@ Public Class F_zInicio
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & Elementos(1)
                 Case "UTM"
-                    If ValorUTM = 0 Then ValorUTM = CDbl(Elementos(1))
+                    If ValorUTM = 0 Then
+                        ValorUTM = CDbl(Elementos(1))
+                        ACTUALIZACION_UF = "NO"
+                    End If
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUTM
                 Case "DOLAR"
-                    If ValorDolar = 0 Then ValorDolar = CDbl(Elementos(1))
+                    If ValorDolar = 0 Then
+                        ValorDolar = CDbl(Elementos(1))
+                        ACTUALIZACION_UTM = "NO"
+                    End If
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorDolar
                 Case "UF"
-                    If ValorUF = 0 Then ValorUF = CDbl(Elementos(1))
+                    If ValorUF = 0 Then
+                        ValorUF = CDbl(Elementos(1))
+                        ACTUALIZACION_DOLAR = "NO"
+                    End If
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUF
             End Select
@@ -95,8 +107,13 @@ Public Class F_zInicio
             End
         End If
         '
-        ReDim Preserve ArchivoFinal(Contador + 1)
-        ArchivoFinal(Contador + 1) = "FECHA" & vbTab & Texto_FechaHoraActual()
+        ReDim Preserve ArchivoFinal(Contador + 4)
+        ArchivoFinal(Contador + 1) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()
+        '
+        ArchivoFinal(Contador + 2) = "ACTUALIZACION_UF" & vbTab & ACTUALIZACION_UF
+        ArchivoFinal(Contador + 3) = "ACTUALIZACION_UTM" & vbTab & ACTUALIZACION_UTM
+        ArchivoFinal(Contador + 4) = "ACTUALIZACION_DOLAR" & vbTab & ACTUALIZACION_DOLAR
+        '
         GuardarMatrizEnArchivoTXT(RutaArchivo, ArchivoFinal)
         '
     End Sub
