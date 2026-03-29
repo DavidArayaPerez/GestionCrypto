@@ -9,6 +9,18 @@ Module mzMatriz
     '
     '
     '
+    Public Function BuscarCualquierValorEnCuaquierMatriz(MatrizOrigen(,) As String, TotalFilas As Integer, NumeroColumnaBuscada As Integer, ElementoBuscado As String) As Integer
+        'Devuelve la posicion
+        Dim Matriz(,) As String = MatrizOrigen
+        For i As Integer = 1 To TotalFilas
+            If ElementoBuscado = Matriz(i, NumeroColumnaBuscada) Then Return i
+        Next i
+        Return 0
+    End Function
+
+
+
+
     Public Function AgrandarMatriz(ByRef MatrizOrigen(,) As String, ByRef TotalFilas As Integer, ByVal TotalColumnas As Integer) As Integer
         Dim i, j, UltimoRegistro As Integer
         '

@@ -334,6 +334,7 @@
     <Compile Include="mMovimientos.vb" />
     <Compile Include="mPoolLiquidez.vb" />
     <Compile Include="mTraspasos.vb" />
+    <Compile Include="mValorDolar.vb" />
     <Compile Include="wObjeto_Calendario.vb" />
     <Compile Include="wObjeto_CajaTexto.vb" />
     <Compile Include="mBilleteras.vb" />

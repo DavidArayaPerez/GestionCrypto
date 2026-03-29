@@ -21,16 +21,6 @@ Module mMovimientos
     '   9   Comsion
     '   10  Gas
     '
-    Public Function Buscar_Movimiento(Fecha As String, Hora As String) As Integer
-        Dim Matriz(,) As String = Matriz_Movimientos
-        Dim TotalFilas As Integer = Matriz_MovimientosTF
-        For i As Integer = 1 To TotalFilas
-            If Fecha = Matriz(i, 1) And Hora = Matriz(i, 2) Then
-                Return i
-            End If
-        Next i
-        Return 0
-    End Function
     Public Function Crear_Movimiento() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Movimientos, Matriz_MovimientosTF, Matriz_MovimientosTC)

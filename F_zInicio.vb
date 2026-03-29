@@ -37,11 +37,16 @@ Public Class F_zInicio
         Transformar_Fechas_Movimientos()
         Ordenar_Movimientos()
         '
+        CargarTXT("ValorDolar", Matriz_Movimientos)
+        Transformar_Fechas_Movimientos()
+        Ordenar_Movimientos()
+
         'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
         'CargarTXT("Pares", Matriz_Pares)
         '
         '
-        Dim ValorDolar As List(Of KeyValuePair(Of String, Double)) = APICMF_DOLAR_XML(2026)
+        GuardarValorDolar(2025)
+        GuardarValorDolar(2026)
         '
 
         F_Solicitud.Inicializacion()

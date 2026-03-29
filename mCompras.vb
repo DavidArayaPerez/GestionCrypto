@@ -21,18 +21,6 @@ Module mCompras
     '   9   Gas
     '   10  Precio
     '
-    Public Function Buscar_Compras(Codigo As String) As Integer
-        Codigo = UCase(Codigo.Trim).Trim
-        If Codigo = Nothing Then Return -1
-        Dim Matriz(,) As String = Matriz_Compras
-        Dim TotalFilas As Integer = Matriz_ComprasTF
-        For i As Integer = 1 To TotalFilas
-            If Codigo = Matriz(i, 0) Then
-                Return i
-            End If
-        Next i
-        Return 0
-    End Function
     Public Function Crear_Compras() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)

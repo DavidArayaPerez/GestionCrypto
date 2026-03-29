@@ -1,8 +1,6 @@
 ﻿'
 Imports System.Globalization
-'Imports System.Security.Cryptography
-'Imports Microsoft.Graph.DeviceManagement.DeviceManagementPartners.Item
-
+Imports System.Security.Cryptography
 '
 '
 '
@@ -11,87 +9,122 @@ Module zFuncionesAutonomas_Fechas
     '
     '
     Public Function TransformarFecha_TextoNumero_YYYYmmDD(FechaTexto As String) As Integer
-        Dim Dia As String = "0"
-        Dim Mes As String = "0"
-        Dim Año As String = "0"
         Dim Largo As Integer = Len(FechaTexto)
         '
         If Largo = 6 Then
-            'Formato corto del tipo YYmmDD
-            'Aca el problema es si viene al reves DDmmYY
-            'Por ende se probaran ambas opciones y si la primera da fecha valida entonce se toma esa, sino la siguiente, sino Return 0
-            Dim F1 As String = "20" & Mid(FechaTexto, 1, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 2) 'YYmmDD
-            Dim F2 As String = "20" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 1, 2) 'DDmmYY
-            If IsDate(F1) Then
-                Año = "20" & Mid(FechaTexto, 1, 2)
-                Mes = Mid(FechaTexto, 3, 2)
-                Dia = Mid(FechaTexto, 5, 2)
-                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
-                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
-                Return Año & Mes & Dia
-            ElseIf IsDate(F2) Then
-                Año = "20" & Mid(FechaTexto, 5, 2)
-                Mes = Mid(FechaTexto, 3, 2)
-                Dia = Mid(FechaTexto, 1, 2)
-                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
-                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
-                Return Año & Mes & Dia
-            Else
-                Return 0
-            End If
-            '
+            Return FechaLargo6(FechaTexto)
         ElseIf Largo = 8 Then
-            'Formato mediano del tipo YYYYmmDD, se procede de la misma forma que en el Largo=6
-            Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 7, 2)    'YYYY mm DD
-            Dim F2 As String = Mid(FechaTexto, 7, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 4)    'DD mm YYYY 
-            If IsDate(F1) Then
-                Año = Mid(FechaTexto, 1, 4)
-                Mes = Mid(FechaTexto, 5, 2)
-                Dia = Mid(FechaTexto, 7, 2)
-                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
-                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
-                Return Año & Mes & Dia
-            ElseIf IsDate(F2) Then
-                Año = Mid(FechaTexto, 5, 4)
-                Mes = Mid(FechaTexto, 3, 2)
-                Dia = Mid(FechaTexto, 7, 2)
-                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
-                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
-                Return Año & Mes & Dia
-            Else
-                Return 0
-            End If
-            '
+            Return FechaLargo8(FechaTexto)
         ElseIf Largo = 10 Then
-            'El formato largo es el mas comun, pero se pueden presentar varias formas, por ejemplo: dd-MM-yyyy, yyyy-MM-dd, dd/MM/yyyy, yyyy/MM/dd
-            Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 6, 2) & "/" & Mid(FechaTexto, 9, 2)    'YYYY mm DD
-            Dim F2 As String = Mid(FechaTexto, 7, 4) & "/" & Mid(FechaTexto, 4, 2) & "/" & Mid(FechaTexto, 1, 2)    'DD mm YYYY 
-            If IsDate(F1) Then
-                Año = Mid(FechaTexto, 1, 4)
-                Mes = Mid(FechaTexto, 6, 2)
-                Dia = Mid(FechaTexto, 9, 2)
-                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
-                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
-                Return Año & Mes & Dia
-            ElseIf IsDate(F2) Then
-                Año = Mid(FechaTexto, 7, 4)
-                Mes = Mid(FechaTexto, 4, 2)
-                Dia = Mid(FechaTexto, 1, 2)
-                If Mes < 10 Then Mes = "0" & Str(Mes).Trim
-                If Dia < 10 Then Dia = "0" & Str(Dia).Trim
-                Return Año & Mes & Dia
-            Else
-                Return 0
-            End If
+            Return FechaLargo10(FechaTexto)
+        Else
+            Return FechaLargoVariable(FechaTexto)
+        End If
+        '
+    End Function
+    Function FechaLargo6(FechaTexto As String) As Integer
+        Dim Dia As String = "0"
+        Dim Mes As String = "0"
+        Dim Año As String = "0"
+        'Formato corto del tipo YYmmDD
+        'Aca el problema es si viene al reves DDmmYY
+        'Por ende se probaran ambas opciones y si la primera da fecha valida entonce se toma esa, sino la siguiente, sino Return 0
+        Dim F1 As String = "20" & Mid(FechaTexto, 1, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 2) 'YYmmDD
+        Dim F2 As String = "20" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 1, 2) 'DDmmYY
+        If IsDate(F1) Then
+            Año = "20" & Mid(FechaTexto, 1, 2)
+            Mes = Mid(FechaTexto, 3, 2)
+            Dia = Mid(FechaTexto, 5, 2)
+            Return Año & Mes & Dia
+        ElseIf IsDate(F2) Then
+            Año = "20" & Mid(FechaTexto, 5, 2)
+            Mes = Mid(FechaTexto, 3, 2)
+            Dia = Mid(FechaTexto, 1, 2)
+            Return Año & Mes & Dia
+        End If
+        Return 0
+    End Function
+    Function FechaLargo8(FechaTexto As String) As Integer
+        Dim Dia As String = "0"
+        Dim Mes As String = "0"
+        Dim Año As String = "0"
+        'Formato mediano del tipo YYYYmmDD, se procede de la misma forma que en el Largo=6
+        Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 5, 2) & "/" & Mid(FechaTexto, 7, 2)    'YYYY mm DD
+        Dim F2 As String = Mid(FechaTexto, 7, 2) & "/" & Mid(FechaTexto, 3, 2) & "/" & Mid(FechaTexto, 5, 4)    'DD mm YYYY 
+        If IsDate(F1) Then
+            Año = Mid(FechaTexto, 1, 4)
+            Mes = Mid(FechaTexto, 5, 2)
+            Dia = Mid(FechaTexto, 7, 2)
+            Return Año & Mes & Dia
+        ElseIf IsDate(F2) Then
+            Año = Mid(FechaTexto, 5, 4)
+            Mes = Mid(FechaTexto, 3, 2)
+            Dia = Mid(FechaTexto, 7, 2)
+            Return Año & Mes & Dia
+        End If
+        Return 0
+    End Function
+    Function FechaLargo10(FechaTexto As String) As Integer
+        Dim Dia As String = "0"
+        Dim Mes As String = "0"
+        Dim Año As String = "0"
+        'El formato largo es el mas comun, pero se pueden presentar varias formas, por ejemplo: dd-MM-yyyy, yyyy-MM-dd, dd/MM/yyyy, yyyy/MM/dd
+        Dim F1 As String = Mid(FechaTexto, 1, 4) & "/" & Mid(FechaTexto, 6, 2) & "/" & Mid(FechaTexto, 9, 2)    'YYYY mm DD
+        Dim F2 As String = Mid(FechaTexto, 7, 4) & "/" & Mid(FechaTexto, 4, 2) & "/" & Mid(FechaTexto, 1, 2)    'DD mm YYYY 
+        If IsDate(F1) Then
+            Año = Mid(FechaTexto, 1, 4)
+            Mes = Mid(FechaTexto, 6, 2)
+            Dia = Mid(FechaTexto, 9, 2)
+            Return Año & Mes & Dia
+        ElseIf IsDate(F2) Then
+            Año = Mid(FechaTexto, 7, 4)
+            Mes = Mid(FechaTexto, 4, 2)
+            Dia = Mid(FechaTexto, 1, 2)
+            Return Año & Mes & Dia
+        End If
+        Return 0
+    End Function
+    Function FechaLargoVariable(FechaTexto As String) As Integer
+        Dim Dia As String = "0"
+        Dim Mes As String = "0"
+        Dim Año As String = "0"
+        Dim Uno As String = ""
+        Dim Dos As String = ""
+        Dim Tres As String = ""
+        Dim Separador As String = ""
+        Dim X, Y, Z As Integer
+        '
+        'Para casos donde el formato tiene valores diferentes como:
+        '   Ejemplo 1: Primero de Enero 2026 =      1/2/2026    ó      26/1/2
+        '   Ejemplo 2: Cuando vienen con datos con hora y fecha, por ejemplo: 2026/01/01 12:00:00
+        '   Lo primero es encontrar el separador: / ó -
+        '
+        If InStr(1, FechaTexto, "/") > 0 Then
+            Separador = "/"
+        ElseIf InStr(1, FechaTexto, "-") > 0 Then
+            Separador = "-"
         Else
             Return 0
         End If
         '
+        X = InStr(1, FechaTexto, Separador)
+        Y = InStr(X + 1, FechaTexto, Separador)
+        Z = InStr(Y + 1, FechaTexto, " ")
+        If X > 0 And Y > 0 And Z > 0 Then
+            Uno = Mid(FechaTexto, 1, X - 1)
+            Dos = Mid(FechaTexto, X + 1, Y - 1)
+            Tres = Mid(FechaTexto, Y + 1, Z - 1)
+        ElseIf X > 0 And Y > 0 And Z = 0 Then
+            Uno = Mid(FechaTexto, 1, X - 1)
+            Dos = Mid(FechaTexto, X + 1, Y - 1)
+            Tres = Mid(FechaTexto, Y + 1, Len(FechaTexto) - Y)
+        End If
+        If Len(Uno) = 1 Then Uno = "0" & Uno
+        If Len(Dos) = 1 Then Dos = "0" & Dos
+        If Len(Tres) = 1 Then Tres = "0" & Tres
+        '
+        Return FechaLargo6(Uno & Dos & Tres)
     End Function
-
-
-
-
 
 
 

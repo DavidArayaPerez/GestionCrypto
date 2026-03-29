@@ -22,16 +22,6 @@ Module mDespositos
     '   10  Gas
     '   11  Precio
     '
-    Public Function Buscar_Depositos(Fecha As String, Hora As String) As Integer
-        Dim Matriz(,) As String = Matriz_Depositos
-        Dim TotalFilas As Integer = Matriz_DepositosTF
-        For i As Integer = 1 To TotalFilas
-            If Fecha = Matriz(i, 1) And Hora = Matriz(i, 2) Then
-                Return i
-            End If
-        Next i
-        Return 0
-    End Function
     Public Function Crear_Depositos() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Depositos, Matriz_DepositosTF, Matriz_DepositosTC)

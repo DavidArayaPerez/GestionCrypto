@@ -153,13 +153,13 @@ Module zAPI_CMF_Chile
             ' Usar XmlNamespaceManager y XPath para localizar los nodos <Dolar> correctamente.
             Dim nsmgr As New XmlNamespaceManager(doc.NameTable)
             nsmgr.AddNamespace("ns", "http://api.sbif.cl")
-
+            '
             Dim nodes As XmlNodeList = doc.SelectNodes("//ns:Dolar", nsmgr)
             If nodes Is Nothing OrElse nodes.Count = 0 Then
                 ' Intento alternativo: buscar bajo Dolares sin prefijo (por si no se aplicó el namespace)
                 nodes = doc.SelectNodes("//Dolar")
             End If
-
+            '
             If nodes IsNot Nothing Then
                 For Each n As XmlNode In nodes
                     Dim fechaNode As XmlNode = n.SelectSingleNode("ns:Fecha", nsmgr)
@@ -178,7 +178,6 @@ Module zAPI_CMF_Chile
                         Dim valor As Double
                         If Double.TryParse(valorText, NumberStyles.Any, CultureInfo.InvariantCulture, valor) Then result.Add(New KeyValuePair(Of String, Double)(fecha, valor))
                         '
-
                     End If
                 Next
             End If
