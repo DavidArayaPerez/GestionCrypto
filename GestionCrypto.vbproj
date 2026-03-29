@@ -336,15 +336,12 @@
     <Compile Include="mTraspasos.vb" />
     <Compile Include="wObjeto_Calendario.vb" />
     <Compile Include="wObjeto_CajaTexto.vb" />
-    <Compile Include="wObjetos_Arbol.vb" />
     <Compile Include="mBilleteras.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <!-- Removed missing file wObjeto_Botones.vb (deleted from worktree) -->
-    <Compile Include="xFunciones_EdicionTexto.vb" />
     <Compile Include="wObjetos_MensajeBarra.vb" />
     <Compile Include="zAPI_CMF_Chile.vb" />
     <Compile Include="xFunciones_Archivo.vb" />

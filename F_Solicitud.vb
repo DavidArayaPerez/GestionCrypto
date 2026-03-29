@@ -37,20 +37,23 @@ Public Class F_Solicitud
         Timer1.Enabled = True
     End Sub
     Private Sub LlenarExchange()
+        Dim T As String = ""
         C_ExchangeDeposito.Items.Clear()
         C_ExchangeCompra.Items.Clear()
         C_ExchangeTraspaso.Items.Clear()
         C_ExchangePool.Items.Clear()
         C_ExchangeMovimiento.Items.Clear()
         For i As Integer = 1 To Matriz_ExchangeTF
-            C_ExchangeDeposito.Items.Add(Matriz_Exchange(i, 1))
-            C_ExchangeCompra.Items.Add(Matriz_Exchange(i, 1))
-            C_ExchangeTraspaso.Items.Add(Matriz_Exchange(i, 1))
-            C_ExchangePool.Items.Add(Matriz_Exchange(i, 1))
-            C_ExchangeMovimiento.Items.Add(Matriz_Exchange(i, 1))
+            T = Matriz_Exchange(i, 1)
+            C_ExchangeDeposito.Items.Add(T)
+            C_ExchangeCompra.Items.Add(T)
+            C_ExchangeTraspaso.Items.Add(T)
+            C_ExchangePool.Items.Add(T)
+            C_ExchangeMovimiento.Items.Add(T)
         Next i
     End Sub
     Private Sub LlenarMonedas()
+        Dim T As String = ""
         C_MonedaOrigenDeposito.Items.Clear()
         C_MonedaDestinoDeposito.Items.Clear()
         C_MonedaOrigenCompra.Items.Clear()
@@ -62,17 +65,17 @@ Public Class F_Solicitud
         C_MonedaOrigenMovimiento.Items.Clear()
         C_MonedaDestinoMovimiento.Items.Clear()
         For i As Integer = 1 To Matriz_ExchangeTF
-            C_ExchangeDeposito.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaOrigenDeposito.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaDestinoDeposito.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaOrigenCompra.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaDestinoCompra.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaOrigenTraspaso.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaDestinoTraspaso.Items.Add(Matriz_Exchange(i, 1))
-            C_Moneda1Pool.Items.Add(Matriz_Exchange(i, 1))
-            C_Moneda2Pool.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaOrigenMovimiento.Items.Add(Matriz_Exchange(i, 1))
-            C_MonedaDestinoMovimiento.Items.Add(Matriz_Exchange(i, 1))
+            C_ExchangeDeposito.Items.Add(T)
+            C_MonedaOrigenDeposito.Items.Add(T)
+            C_MonedaDestinoDeposito.Items.Add(T)
+            C_MonedaOrigenCompra.Items.Add(T)
+            C_MonedaDestinoCompra.Items.Add(T)
+            C_MonedaOrigenTraspaso.Items.Add(T)
+            C_MonedaDestinoTraspaso.Items.Add(T)
+            C_Moneda1Pool.Items.Add(T)
+            C_Moneda2Pool.Items.Add(T)
+            C_MonedaOrigenMovimiento.Items.Add(T)
+            C_MonedaDestinoMovimiento.Items.Add(T)
         Next i
     End Sub
     '
