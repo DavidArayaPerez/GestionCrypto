@@ -166,15 +166,19 @@ Module zAPI_CMF_Chile
                     Dim valorNode As XmlNode = n.SelectSingleNode("ns:Valor", nsmgr)
                     If fechaNode Is Nothing Then fechaNode = n.SelectSingleNode("Fecha")
                     If valorNode Is Nothing Then valorNode = n.SelectSingleNode("Valor")
+                    '
                     If fechaNode IsNot Nothing AndAlso valorNode IsNot Nothing Then
+                        'Normaliza la fecha en formato yyyyMMdd
                         Dim fecha As String = fechaNode.InnerText.Trim()
+                        fecha = TransformarFecha_TextoNumero_YYYYmmDD(fecha)
+                        '
+                        'Normalizar número: quitar separadores de miles y usar punto como separador decimal
                         Dim valorText As String = valorNode.InnerText.Trim()
-                        ' Normalizar número: quitar separadores de miles y usar punto como separador decimal
                         valorText = valorText.Replace(".", "").Replace(",", ".")
                         Dim valor As Double
-                        If Double.TryParse(valorText, NumberStyles.Any, CultureInfo.InvariantCulture, valor) Then
-                            result.Add(New KeyValuePair(Of String, Double)(fecha, valor))
-                        End If
+                        If Double.TryParse(valorText, NumberStyles.Any, CultureInfo.InvariantCulture, valor) Then result.Add(New KeyValuePair(Of String, Double)(fecha, valor))
+                        '
+
                     End If
                 Next
             End If

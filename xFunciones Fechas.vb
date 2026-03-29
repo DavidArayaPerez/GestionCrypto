@@ -1,7 +1,7 @@
 ﻿'
 Imports System.Globalization
-Imports System.Security.Cryptography
-Imports Microsoft.Graph.DeviceManagement.DeviceManagementPartners.Item
+'Imports System.Security.Cryptography
+'Imports Microsoft.Graph.DeviceManagement.DeviceManagementPartners.Item
 
 '
 '
