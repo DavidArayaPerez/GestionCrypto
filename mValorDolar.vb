@@ -4,33 +4,33 @@ Imports System.IO
 '
 '
 '
-Module mValorDolar
+Module mValorUSD
     '
     '
     '
-    Public Matriz_ValorDolar(,) As String
-    Public Matriz_ValorDolarTF As String
-    Public Matriz_ValorDolarTC As String = 1
+    Public Matriz_ValorUSD(,) As String
+    Public Matriz_ValorUSDTF As String
+    Public Matriz_ValorUSDTC As String = 1
     '
     '   0   Fecha
     '   1   Valor (el separador decimal es el punto, no la coma, para evitar problemas al guardar y leer el valor)
     '
-    Public Sub Transformar_Fechas_ValorDolar()
-        Dim Matriz(,) As String = Matriz_ValorDolar
-        Dim TotalFilas As Integer = Matriz_ValorDolarTF
+    Public Sub Transformar_Fechas_ValorUSD()
+        Dim Matriz(,) As String = Matriz_ValorUSD
+        Dim TotalFilas As Integer = Matriz_ValorUSDTF
         For i As Integer = 1 To TotalFilas
             Dim FechaAux As String = TransformarFecha_TextoNumero_YYYYmmDD(Matriz(i, 0))
             If FechaAux > 1 Then Matriz(i, 1) = FechaAux
         Next i
-        Matriz_ValorDolar = Matriz
+        Matriz_ValorUSD = Matriz
     End Sub
-    Public Function Buscar_FechaEnValorDolar(Fecha As String) As Boolean
-        'Busca una Fecha en la matriz de ValorDolar, devuelve True si la encuentra, False si no la encuentra
-        If BuscarCualquierValorEnCuaquierMatriz(Matriz_ValorDolar, Matriz_ValorDolarTF, 0, Fecha) > 0 Then Return True
+    Public Function Buscar_FechaEnValorUSD(Fecha As String) As Boolean
+        'Busca una Fecha en la matriz de ValorUSD, devuelve True si la encuentra, False si no la encuentra
+        If BuscarCualquierValorEnCuaquierMatriz(Matriz_ValorUSD, Matriz_ValorUSDTF, 0, Fecha) > 0 Then Return True
         Return False
     End Function
-    Public Sub GuardarValorDolar(Año As Integer)
-        Dim RutaArchivo As String = RutaLocal & "\ValorDolar.txt"
+    Public Sub GuardarValorUSD(Año As Integer)
+        Dim RutaArchivo As String = RutaLocal & "\ValorUSD.txt"
 
         ' 1. Leer datos existentes en el archivo (si existe)
         Dim datosExistentes As New Dictionary(Of String, Double)
@@ -54,11 +54,11 @@ Module mValorDolar
         End If
 
         ' 2. Obtener datos desde la API para el año indicado
-        Dim ValorDolar As List(Of KeyValuePair(Of String, Double)) = APICMF_DOLAR_XML(Año)
+        Dim ValorUSD As List(Of KeyValuePair(Of String, Double)) = APICMF_DOLAR_XML(Año)
 
         ' 3. Agregar solo los registros que NO existen aún
         Dim agregados As Integer = 0
-        For Each par As KeyValuePair(Of String, Double) In ValorDolar
+        For Each par As KeyValuePair(Of String, Double) In ValorUSD
             If Not datosExistentes.ContainsKey(par.Key) Then
                 datosExistentes(par.Key) = par.Value
                 agregados += 1

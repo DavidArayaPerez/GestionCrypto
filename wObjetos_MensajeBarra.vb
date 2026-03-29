@@ -52,7 +52,7 @@ Module wObjetos_MensajeBarra
     Public Sub MensajeBarra_Valores(ByRef Control As StatusStrip)
         'Control.Items(6).Text = "UF: " & ValorUF & " | "
         'Control.Items(7).Text = "UTM: " & ValorUTM & " | "
-        Control.Items(8).Text = "Dolar: " & ValorDolar & " | "
+        Control.Items(8).Text = "Dolar: " & ValorUSD & " | "
     End Sub
     Public Sub MensajeBarra_Hora(ByRef Control As StatusStrip)
         Control.Items(9).Text = Format(Now(), "yyyy/MM/dd") & ", " & Format(Now(), "hh:mm") & "hrs"

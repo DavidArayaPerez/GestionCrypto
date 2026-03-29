@@ -16,7 +16,7 @@ Module zAPI_CMF_Chile
     '
     '
     '
-    Public ValorDolar As Double
+    Public ValorUSD As Double
     '
     '
     '

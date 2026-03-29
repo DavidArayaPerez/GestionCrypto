@@ -37,12 +37,12 @@ Public Class F_zInicio
         Transformar_Fechas_Movimientos()
         Ordenar_Movimientos()
         '
-        GuardarValorDolar(2022)
-        GuardarValorDolar(2023)
-        GuardarValorDolar(2024)
-        GuardarValorDolar(2025)
-        GuardarValorDolar(2026)
-        CargarTXT("ValorDolar", Matriz_ValorDolar)
+        GuardarValorUSD(2022)
+        GuardarValorUSD(2023)
+        GuardarValorUSD(2024)
+        GuardarValorUSD(2025)
+        GuardarValorUSD(2026)
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
         '
 
         F_Solicitud.Inicializacion()
@@ -94,12 +94,12 @@ Public Class F_zInicio
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & Elementos(1)
                 Case "DOLAR"
-                    If ValorDolar = 0 Then
-                        ValorDolar = CDbl(Elementos(1))
+                    If ValorUSD = 0 Then
+                        ValorUSD = CDbl(Elementos(1))
                         ACTUALIZACION_UTM = "NO"
                     End If
                     Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorDolar
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
             End Select
         Next Fila
         '

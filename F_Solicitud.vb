@@ -141,6 +141,7 @@ Public Class F_Solicitud
         C_Moneda2Pool.Items.Clear()
         C_MonedaOrigenMovimiento.Items.Clear()
         C_MonedaDestinoMovimiento.Items.Clear()
+        C_MonedasValorMonedas.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
             T = Matriz_Monedas(i, 1)
             C_MonedaOrigenDeposito.Items.Add(T)
@@ -153,6 +154,7 @@ Public Class F_Solicitud
             C_Moneda2Pool.Items.Add(T)
             C_MonedaOrigenMovimiento.Items.Add(T)
             C_MonedaDestinoMovimiento.Items.Add(T)
+            C_MonedasValorMonedas.Items.Add(T)
         Next i
     End Sub
     '
@@ -547,8 +549,8 @@ Public Class F_Solicitud
         '   0   Fecha
         '   1   Valor
         '
-        T_FechaValorMonedas.Text = Matriz_ValorDolar(F, 0)
-        T_ValorValorMonedas.Text = Matriz_ValorDolar(F, 1)
+        T_FechaValorMonedas.Text = Matriz_ValorUSD(F, 0)
+        T_ValorValorMonedas.Text = Matriz_ValorUSD(F, 1)
     End Sub
     '
     '
