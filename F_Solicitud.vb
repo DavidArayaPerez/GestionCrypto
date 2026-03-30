@@ -573,10 +573,13 @@ Public Class F_Solicitud
         T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
         T_Activa_Moneda.Text = Matriz_Monedas(F, 13)
         '
-
+        '
         Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 10, T_IDredNativa_Moneda.Text)
-
-
+        '2      Nombre_Oficial         Nombre completo
+        T_IDredNativa_Moneda.Text = Matriz_Redes(F, 2)
+        '
+        '
+        '
         'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
     End Sub
