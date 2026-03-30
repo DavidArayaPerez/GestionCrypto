@@ -26,7 +26,7 @@ Module mMonedas
     '
     '
 
-    Dim monedas = Await CoinGeckoService.ObtenerMonedasAsync(cantidad:=100)
+    'Dim monedas = Await CoinGeckoService.ObtenerMonedasAsync(cantidad:=100)
 
 
 

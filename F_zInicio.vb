@@ -62,8 +62,6 @@ Public Class F_zInicio
         Dim RutaArchivo As String = CarpetaInicio & "\" & NombreArchivo
         Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto As String
         Dim Fila, Total, Contador As Integer
-        Dim ACTUALIZACION_UF As String = "SI"
-        Dim ACTUALIZACION_UTM As String = "SI"
         Dim ACTUALIZACION_DOLAR As String = "SI"
         '
         If Not ExisteArchivo(RutaArchivo) Then
@@ -98,7 +96,7 @@ Public Class F_zInicio
                 Case "DOLAR"
                     If ValorUSD = 0 Then
                         ValorUSD = CDbl(Elementos(1))
-                        ACTUALIZACION_UTM = "NO"
+                        ACTUALIZACION_DOLAR = "NO"
                     End If
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
