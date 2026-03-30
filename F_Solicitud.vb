@@ -124,6 +124,7 @@ Public Class F_Solicitud
         '
         '
         '   3       Nombre_Oficial
+        OrdenarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC, 3, "DES")
         C_MonedasValorMonedas.Text = ""
         C_MonedasValorMonedas.Items.Clear()
         L_Monedas.Items.Clear()
