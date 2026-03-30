@@ -2596,6 +2596,7 @@ Partial Class F_Solicitud
         'T_IDredNativa_Moneda
         '
         Me.T_IDredNativa_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_IDredNativa_Moneda.ForeColor = System.Drawing.Color.Red
         Me.T_IDredNativa_Moneda.Location = New System.Drawing.Point(447, 288)
         Me.T_IDredNativa_Moneda.MaxLength = 6
         Me.T_IDredNativa_Moneda.Name = "T_IDredNativa_Moneda"

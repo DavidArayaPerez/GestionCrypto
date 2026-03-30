@@ -574,9 +574,9 @@ Public Class F_Solicitud
         T_Activa_Moneda.Text = Matriz_Monedas(F, 13)
         '
         '
-        Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 10, T_IDredNativa_Moneda.Text)
+        Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 10, T_IDredNativa_Moneda.Text)
         '2      Nombre_Oficial         Nombre completo
-        T_IDredNativa_Moneda.Text = Matriz_Redes(F, 2)
+        T_IDredNativa_Moneda.Text = Matriz_Redes(Fred, 2)
         '
         '
         '
