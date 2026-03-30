@@ -483,7 +483,7 @@ Partial Class F_Solicitud
         '
         Me.StatusStrip1.BackColor = System.Drawing.Color.Khaki
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.T0, Me.T1, Me.T2, Me.T3, Me.T4, Me.T5, Me.T6, Me.T7, Me.T8, Me.T9, Me.T10})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 659)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 694)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(1035, 22)
         Me.StatusStrip1.TabIndex = 96
@@ -699,7 +699,7 @@ Partial Class F_Solicitud
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(910, 27)
+        Me.B_Cerrar.Location = New System.Drawing.Point(913, 43)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 416
@@ -718,7 +718,7 @@ Partial Class F_Solicitud
         Me.TabControl1.Controls.Add(Me.TabPage3)
         Me.TabControl1.Controls.Add(Me.TabPage7)
         Me.TabControl1.Controls.Add(Me.TabPage10)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 56)
+        Me.TabControl1.Location = New System.Drawing.Point(12, 82)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1004, 595)
@@ -3337,7 +3337,7 @@ Partial Class F_Solicitud
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(1035, 681)
+        Me.ClientSize = New System.Drawing.Size(1035, 716)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.StatusStrip1)

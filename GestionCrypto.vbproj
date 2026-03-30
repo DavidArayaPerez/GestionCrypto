@@ -327,6 +327,7 @@
     <Compile Include="F_zInicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="mCoinGecko.vb" />
     <Compile Include="mCompras.vb" />
     <Compile Include="mDespositos.vb" />
     <Compile Include="mExchange.vb" />
