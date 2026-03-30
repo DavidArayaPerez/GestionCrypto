@@ -574,7 +574,7 @@ Public Class F_Solicitud
         T_Activa_Moneda.Text = Matriz_Monedas(F, 13)
         '
 
-        Dim Fmoneda As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 10, T_IDredNativa_Moneda.Text)
+        Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 10, T_IDredNativa_Moneda.Text)
 
 
         'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
