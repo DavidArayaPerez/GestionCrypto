@@ -19,7 +19,7 @@ Module mMonedas
     '   7       Moneda_Paridad
     '   8       Centralizada
     '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
-    '   10      ID_Red_Nativa           la red de origen (referencia al TSV de redes). ETH → 1, BNB → 56, etc.
+    '   10      ID_Red                  Es el ID de la Matriz_Red
     '   11      Supply_Maximo
     '   12      Contract_Address
     '   13      Activa

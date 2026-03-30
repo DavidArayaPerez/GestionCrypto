@@ -553,7 +553,7 @@ Public Class F_Solicitud
         '   7       Moneda_Paridad
         '   8       Centralizada
         '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
-        '   10      ID_Red_Nativa           la red de origen (referencia al TSV de redes). ETH → 1, BNB → 56, etc.
+        '   10      ID_Red                  Es el ID de la Matriz_Red
         '   11      Supply_Maximo
         '   12      Contract_Address
         '   13      Activa
@@ -573,8 +573,12 @@ Public Class F_Solicitud
         T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
         T_Activa_Moneda.Text = Matriz_Monedas(F, 13)
         '
-        Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
-        CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
+
+        Dim Fmoneda As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 10, T_IDredNativa_Moneda.Text)
+
+
+        'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
+        'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
     End Sub
     '
     '
