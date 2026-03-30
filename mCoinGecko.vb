@@ -13,7 +13,6 @@ Module mCoinGecko
     '
     '
 
-
     ' ============================================================
     '  Modelo — refleja exactamente las columnas del TSV
     ' ============================================================
@@ -181,6 +180,7 @@ Module mCoinGecko
 
             Return resultado
         End Function
+
 
         ' ── Helpers ────────────────────────────────────────────
 
