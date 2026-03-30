@@ -11,7 +11,6 @@ Module zCrearCodigoUnico
         Dim Letra1, Letra2, Letra3, Letra4 As String
         Dim MatrizLetras() As String
         Dim Contador, x, y As Long
-        Dim Codigo As String = ""
         '------------------------------------------------------------------------
         'Rellena una tabla con codigo ASCII dos veces : AA, AB, AC, AD...
         'Esa tabla se utiliza para generar un codigo unico.

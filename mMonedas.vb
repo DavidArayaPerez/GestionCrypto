@@ -7,23 +7,25 @@ Module mMonedas
     '
     Public Matriz_Monedas(,) As String
     Public Matriz_MonedasTF As String
-    Public Matriz_MonedasTC As String = 3
+    Public Matriz_MonedasTC As String = 13
     '
-    '   0   ID          x
-    '   1   Nombre      x
-    '   2   Acronimo    x
-    '   3   Contrato    x
+    '   0       ID_Moneda
+    '   1       ID_Despliegue
+    '   2       Simbolo
+    '   3       Nombre_Oficial
+    '   4       Slug_API
+    '   5       Tipo_Activo
+    '   6       Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
+    '   7       Moneda_Paridad
+    '   8       Centralizada
+    '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
+    '   10      ID_Red_Nativa           la red de origen (referencia al TSV de redes). ETH → 1, BNB → 56, etc.
+    '   11      Supply_Maximo
+    '   12      Contract_Address
+    '   13      Activa
     '
-    Public Function Crear_Monedas() As Integer
-        'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
-        Dim Fila As Integer = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
-        Dim CodigoInterno As String = CrearCodigoInterno()
-        Matriz_Monedas(Fila, 0) = CodigoInterno
-        Matriz_Monedas(Fila, 1) = ""
-        Matriz_Monedas(Fila, 2) = ""
-        Matriz_Monedas(Fila, 3) = ""
-        Return Fila
-    End Function
+    '
+
     '
     '
     '

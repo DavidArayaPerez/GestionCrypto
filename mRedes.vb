@@ -25,7 +25,7 @@ Module mRedes
     '8      Compatible_EVM         Define si usa el estándar de Ethereum           Sí / No
     '9      Mecanismo_Consenso     Cómo valida la red                              PoW, PoS, PoH
     '10     Token_Nativo           En ARB el token nativo es ETH, no ARB.
-    '                            El token ARB existe, pero es el token de gobernanza del protocolo,
+    '                              El token ARB existe, pero es el token de gobernanza del protocolo,
     '                                no el que se usa para pagar el gas.
     '                                Esto aplica también a otras redes como Base y Optimism,
     '                                    que también usan ETH como gas aunque tengan su propio token de gobernanza.

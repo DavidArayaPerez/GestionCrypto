@@ -19,7 +19,7 @@ Module mTraspasos
     '   7   Billetera_Destino
     '   8   Moneda_Destino
     '   9   Valor_Destino
-    '   10   Comision
+    '   10  Comision
     '   11  Gas
     '
     Public Function Crear_Traspasos() As Integer

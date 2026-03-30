@@ -39,94 +39,110 @@ Public Class F_Solicitud
     Private Sub LlenarList()
         Dim T As String '= ""
         '
+        '
+        '
+        '   1   Fecha
+        '   2   Hora
+        '   3   Plataforma      MetraMask, Uniswap, etc
         L_Depositos.Items.Clear()
         For i As Integer = 1 To Matriz_DepositosTF
             T = Matriz_Depositos(i, 1) & ":" & Matriz_Depositos(i, 2) & " " & Matriz_Depositos(i, 3) & "(" & i & ")"
             L_Depositos.Items.Add(T)
         Next i
-        '   3   Plataforma      MetraMask, Uniswap, etc
-        '   4   Billetera
-        '   5   Moneda_Entrada
-        '   6   Valor_Entrada
         '
+        '
+        '
+        '   1   Fecha
+        '   2   Hora
+        '   3   Plataforma      MetraMask, Uniswap, etc
         L_Compras.Items.Clear()
         For i As Integer = 1 To Matriz_ComprasTF
             T = Matriz_Compras(i, 1) & ":" & Matriz_Compras(i, 2) & " " & Matriz_Compras(i, 3) & "(" & i & ")"
             L_Compras.Items.Add(T)
         Next i
-        '   3   Plataforma      MetraMask, Uniswap, etc
-        '   4   Moneda_Origen
-        '   5   Valor_Origen
         '
+        '
+        '
+        '   1   Fecha
+        '   2   Hora
+        '   3   Plataforma          MetraMask, Uniswap, etc
         L_Traspasos.Items.Clear()
         For i As Integer = 1 To Matriz_TraspasosTF
             T = Matriz_Traspasos(i, 1) & ":" & Matriz_Traspasos(i, 2) & " " & Matriz_Traspasos(i, 3) & "(" & i & ")"
             L_Traspasos.Items.Add(T)
         Next i
-        '   3   Plataforma          MetraMask, Uniswap, etc
-        '   4   Billetera_Origen
-        '   5   Moneda_Origen
-        '   6   Valor_Origen
         '
+        '
+        '
+        '   1   Fecha
+        '   2   Hora
+        '   3   Plataforma      MetraMask, Uniswap, etc
         L_PoolLiquidez.Items.Clear()
         For i As Integer = 1 To Matriz_PoolLiquidezTF
             T = Matriz_PoolLiquidez(i, 1) & ":" & Matriz_PoolLiquidez(i, 2) & " " & Matriz_PoolLiquidez(i, 3) & "(" & i & ")"
             L_PoolLiquidez.Items.Add(T)
         Next i
-        '   3   Plataforma      MetraMask, Uniswap, etc
-        '   4   Billetera
-        '   5   Moneda_Uno
         '
+        '
+        '
+        '   1   Fecha
+        '   2   Hora
+        '   3   Plataforma      MetraMask, Uniswap, etc
         L_Movimientos.Items.Clear()
         For i As Integer = 1 To Matriz_MovimientosTF
             T = Matriz_Movimientos(i, 1) & ":" & Matriz_Movimientos(i, 2) & " " & Matriz_Movimientos(i, 3) & "(" & i & ")"
             L_Movimientos.Items.Add(T)
         Next i
-        '   3   Plataforma      MetraMask, Uniswap, etc
-        '   4   Billetera
-        '   5   Moneda_Origen
         '
+        '
+        '
+        '   2   Acronimo
         L_Monedas.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
             T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
             L_Monedas.Items.Add(T)
         Next i
-        '   1   Nombre
-        '   2   Acronimo
-        '   3   Contrato
         '
+        '
+        '
+        '   1   Nombre
         L_Billeteras.Items.Clear()
         For i As Integer = 1 To Matriz_BilleterasTF
             T = Matriz_Billeteras(i, 1) & " " & "(" & i & ")"
             L_Billeteras.Items.Add(T)
         Next i
-        '   0   Codigo Billetera
-        '   1   Nombre
         '
+        '
+        '
+        '   1   Nombre
         L_Exchange.Items.Clear()
         For i As Integer = 1 To Matriz_ExchangeTF
             T = Matriz_Exchange(i, 1) & " " & "(" & i & ")"
             L_Exchange.Items.Add(T)
         Next i
         '
+        '
+        '
+        '   3       Nombre_Oficial
         C_MonedasValorMonedas.Text = ""
         C_MonedasValorMonedas.Items.Clear()
+        L_Monedas.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
-            T = Matriz_Monedas(i, 1) & " (" & i & ")"
+            T = Matriz_Monedas(i, 3) & " (" & i & ")"
             C_MonedasValorMonedas.Items.Add(T)
+            L_Monedas.Items.Add(T)
         Next i
+        '
+        '
         '
         '2      Nombre_Oficial         Nombre completo
         OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
         L_Red.Items.Clear()
-        C_RedMoneda.Items.Clear()
         For i As Integer = 1 To Matriz_RedesTF
             T = Matriz_Redes(i, 2) & " (" & i & ")"
             L_Red.Items.Add(T)
-            C_RedMoneda.Items.Add(T)
         Next i
         '
-
         '
     End Sub
 
@@ -491,31 +507,70 @@ Public Class F_Solicitud
     '
     Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)
         'MONEDA
-        T_NomMoneda.Text = ""
+        L_IDmoneda_Moneda.Text = ""
+        T_IDdespliegue_Moneda.Text = ""
+        T_Simbolo_Moneda.Text = ""
         T_AcronimoMoneda.Text = ""
-        T_ContratoMoneda.Text = ""
-        C_RedMoneda.Text = ""
-
+        T_SlugAPI_Moneda.Text = ""
+        T_TipoActivo_Moneda.Text = ""
+        T_SubtipoStablecoin_Moneda.Text = ""
+        T_MonedaParidad_Moneda.Text = ""
+        T_Centralizada_Moneda.Text = ""
+        T_ActivoSubyacente_Moneda.Text = ""
+        T_IDredNativa_Moneda.Text = ""
+        T_SupplyMaximo_Moneda.Text = ""
+        T_ContractAddress_Moneda.Text = ""
+        T_Activa_Moneda.Text = ""
         rT_NotaMoneda.Text = ""
         '
-        T_NomMoneda.Enabled = Habilitar
+        L_IDmoneda_Moneda.Enabled = Habilitar
+        T_IDdespliegue_Moneda.Enabled = Habilitar
+        T_Simbolo_Moneda.Enabled = Habilitar
         T_AcronimoMoneda.Enabled = Habilitar
-        T_ContratoMoneda.Enabled = Habilitar
-        C_RedMoneda.Enabled = Habilitar
-
+        T_SlugAPI_Moneda.Enabled = Habilitar
+        T_TipoActivo_Moneda.Enabled = Habilitar
+        T_SubtipoStablecoin_Moneda.Enabled = Habilitar
+        T_MonedaParidad_Moneda.Enabled = Habilitar
+        T_Centralizada_Moneda.Enabled = Habilitar
+        T_ActivoSubyacente_Moneda.Enabled = Habilitar
+        T_IDredNativa_Moneda.Enabled = Habilitar
+        T_SupplyMaximo_Moneda.Enabled = Habilitar
+        T_ContractAddress_Moneda.Enabled = Habilitar
+        T_Activa_Moneda.Enabled = Habilitar
         rT_NotaMoneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
         LimpiezaMoneda(True)
         If F < 1 Then Exit Sub
-        '   0   ID
-        '   1   Nombre
-        '   2   Acronimo
-        '   3   Contrato
+        '   0       ID_Moneda
+        '   1       ID_Despliegue
+        '   2       Simbolo
+        '   3       Nombre_Oficial
+        '   4       Slug_API
+        '   5       Tipo_Activo
+        '   6       Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
+        '   7       Moneda_Paridad
+        '   8       Centralizada
+        '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
+        '   10      ID_Red_Nativa           la red de origen (referencia al TSV de redes). ETH → 1, BNB → 56, etc.
+        '   11      Supply_Maximo
+        '   12      Contract_Address
+        '   13      Activa
         '
-        T_NomMoneda.Text = Matriz_Monedas(F, 1)
-        T_AcronimoMoneda.Text = Matriz_Monedas(F, 2)
-        T_ContratoMoneda.Text = Matriz_Monedas(F, 3)
+        L_IDmoneda_Moneda.Text = Matriz_Monedas(F, 0)
+        T_IDdespliegue_Moneda.Text = Matriz_Monedas(F, 1)
+        T_Simbolo_Moneda.Text = Matriz_Monedas(F, 2)
+        T_AcronimoMoneda.Text = Matriz_Monedas(F, 3)
+        T_SlugAPI_Moneda.Text = Matriz_Monedas(F, 4)
+        T_TipoActivo_Moneda.Text = Matriz_Monedas(F, 5)
+        T_SubtipoStablecoin_Moneda.Text = Matriz_Monedas(F, 6)
+        T_MonedaParidad_Moneda.Text = Matriz_Monedas(F, 7)
+        T_Centralizada_Moneda.Text = Matriz_Monedas(F, 8)
+        T_ActivoSubyacente_Moneda.Text = Matriz_Monedas(F, 9)
+        T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)
+        T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
+        T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
+        T_Activa_Moneda.Text = Matriz_Monedas(F, 13)
         '
         Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
         CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
@@ -731,6 +786,8 @@ Public Class F_Solicitud
             Exit Sub
         End If
     End Sub
+
+
     Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Red.Text
@@ -738,6 +795,15 @@ Public Class F_Solicitud
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
+    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+        If VariableDeInicio Then Exit Sub
+        Dim T As String = L_Monedas.Text
+        Dim x As Integer = InStr(T, "(")
+        If x = 0 Then Exit Sub
+        VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
+    End Sub
+
+
     Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
         If Len(T_URLexplorador_Red.Text) < 3 Then Exit Sub
         '
@@ -756,6 +822,8 @@ Public Class F_Solicitud
         Dim URL As String = "http://" & T_URLrpc_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
+
+
     '
     '
     '
