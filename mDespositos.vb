@@ -7,7 +7,7 @@ Module mDespositos
     '
     Public Matriz_Depositos(,) As String
     Public Matriz_DepositosTF As Integer
-    Public Matriz_DepositosTC As Integer = 11
+    Public Matriz_DepositosTC As Integer = 12
     '
     '   0   ID
     '   1   Fecha

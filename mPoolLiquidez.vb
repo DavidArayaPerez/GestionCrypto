@@ -7,7 +7,7 @@ Module mPoolLiquidez
     '
     Public Matriz_PoolLiquidez(,) As String
     Public Matriz_PoolLiquidezTF As String
-    Public Matriz_PoolLiquidezTC As String = 16
+    Public Matriz_PoolLiquidezTC As String = 17
     '
     '   0   ID
     '   1   Fecha

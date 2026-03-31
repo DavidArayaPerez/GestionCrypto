@@ -23,16 +23,10 @@ Public Class F_zInicio
         CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
         '
         '
-        'Cargar monedas existentes
         CargarTXT("Monedas", Matriz_Monedas)
-        'Carga valores actualizados de MONEDAS
-        API_CoinGecko_Monedas(250, 1)
-        API_CoinGecko_Monedas(250, 2)
-        API_CoinGecko_Monedas(250, 3)
-        API_CoinGecko_Monedas(250, 4)
-        API_CoinGecko_Monedas(250, 5)
-        API_CoinGecko_Monedas(250, 6)
-        OrdenarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC, 13, "DESC") '13     market_cap_rank
+        '
+        '
+
 
 
         CargarTXT("Exchange", Matriz_Exchange)

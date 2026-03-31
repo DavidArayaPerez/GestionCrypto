@@ -7,7 +7,7 @@ Module mExchange
     '
     Public Matriz_Exchange(,) As String
     Public Matriz_ExchangeTF As String
-    Public Matriz_ExchangeTC As String = 1
+    Public Matriz_ExchangeTC As String = 2
     '
     '   0   ID
     '   1   Nombre

@@ -834,6 +834,12 @@ Public Class F_Solicitud
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
 
+    Private Sub B_Actualizar_Monedas_Click(sender As Object, e As EventArgs) Handles B_Actualizar_Monedas.Click
+        ActualizarMonedas()
+        OrdenarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC, 13, "DESC") '13     market_cap_rank
+        Guardar_Matrices("Monedas")
+    End Sub
+
 
     '
     '

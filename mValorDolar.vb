@@ -10,7 +10,7 @@ Module mValorUSD
     '
     Public Matriz_ValorUSD(,) As String
     Public Matriz_ValorUSDTF As String
-    Public Matriz_ValorUSDTC As String = 1
+    Public Matriz_ValorUSDTC As String = 2
     '
     '   0   Fecha
     '   1   Valor (el separador decimal es el punto, no la coma, para evitar problemas al guardar y leer el valor)

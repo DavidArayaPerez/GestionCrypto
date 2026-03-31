@@ -7,7 +7,7 @@ Module mTraspasos
     '
     Public Matriz_Traspasos(,) As String
     Public Matriz_TraspasosTF As String
-    Public Matriz_TraspasosTC As String = 10
+    Public Matriz_TraspasosTC As String = 12
     '
     '   0   ID
     '   1   Fecha

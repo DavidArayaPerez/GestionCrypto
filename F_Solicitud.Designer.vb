@@ -313,6 +313,7 @@ Partial Class F_Solicitud
         Me.B_GrabarRed = New System.Windows.Forms.Button()
         Me.T_ChainID_Red = New System.Windows.Forms.TextBox()
         Me.Label59 = New System.Windows.Forms.Label()
+        Me.B_Actualizar_Monedas = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -2475,6 +2476,7 @@ Partial Class F_Solicitud
         '
         'TabPage7
         '
+        Me.TabPage7.Controls.Add(Me.B_Actualizar_Monedas)
         Me.TabPage7.Controls.Add(Me.Label80)
         Me.TabPage7.Controls.Add(Me.T_MarketCapRank_Moneda)
         Me.TabPage7.Controls.Add(Me.Label81)
@@ -3332,6 +3334,17 @@ Partial Class F_Solicitud
         Me.Label59.Text = "Chain ID"
         Me.Label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'B_Actualizar_Monedas
+        '
+        Me.B_Actualizar_Monedas.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Actualizar_Monedas.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Actualizar_Monedas.Location = New System.Drawing.Point(764, 25)
+        Me.B_Actualizar_Monedas.Name = "B_Actualizar_Monedas"
+        Me.B_Actualizar_Monedas.Size = New System.Drawing.Size(99, 23)
+        Me.B_Actualizar_Monedas.TabIndex = 606
+        Me.B_Actualizar_Monedas.Text = "Actualizar"
+        Me.B_Actualizar_Monedas.UseVisualStyleBackColor = False
+        '
         'F_Solicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3666,4 +3679,5 @@ Partial Class F_Solicitud
     Friend WithEvents Label55 As Label
     Friend WithEvents T_TipoActivo_Moneda As TextBox
     Friend WithEvents rT_NotaRed As RichTextBox
+    Friend WithEvents B_Actualizar_Monedas As Button
 End Class
