@@ -107,14 +107,9 @@ Module zAPI_CoinGecko
     '  Detalle de una moneda por slug — genera una fila por red
     ' ---------------------------------------------------------------
     Public Function API_CoinGecko_Detalle(ByVal slug As String) As List(Of Moneda)
-        '
         Dim result As New List(Of Moneda)()
+        Dim url As String = CG_BASE_URL & $"coins/{slug}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
-        Dim url As String = CG_BASE_URL &
-                        $"coins/{slug}" &
-                        $"?localization=false&tickers=false" &
-                        $"&market_data=true&community_data=false&developer_data=false" &
-                        $"&x_cg_demo_api_key={CG_API_KEY}"
         Try
             Dim json As String = New WebClient().DownloadString(New Uri(url))
             Dim item As JsonNode = JsonNode.Parse(json)

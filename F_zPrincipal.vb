@@ -570,7 +570,7 @@ Public Class F_zPrincipal
         T_MonedaParidad_Moneda.Text = Matriz_Monedas(F, 7)
         T_Centralizada_Moneda.Text = Matriz_Monedas(F, 8)
         T_ActivoSubyacente_Moneda.Text = Matriz_Monedas(F, 9)
-        T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)
+        T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)       'xxxx
         T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
         T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
         T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
