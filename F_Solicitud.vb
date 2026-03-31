@@ -805,7 +805,7 @@ Public Class F_Solicitud
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
-    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+    Private Sub L_Monedas_DoubleClick(sender As Object, e As EventArgs) Handles L_Monedas.DoubleClick
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Monedas.Text
         Dim x As Integer = InStr(T, "(")
@@ -844,13 +844,15 @@ Public Class F_Solicitud
         If VariableDeInicio Then Exit Sub
         Dim Filtro As String = T_Busqueda_Monedas.Text.Trim().ToUpper()
         L_Monedas.Items.Clear()
-        For i As Integer = 1 To Matriz_Monedas.GetUpperBound(0)
+        For i As Integer = 1 To Matriz_MonedasTF
             Dim Simbolo As String = Matriz_Monedas(i, 2).ToString().ToUpper()
             If Filtro = "" OrElse Simbolo.StartsWith(Filtro) Then
                 L_Monedas.Items.Add(Matriz_Monedas(i, 2))
             End If
         Next
     End Sub
+
+
 
 
     '

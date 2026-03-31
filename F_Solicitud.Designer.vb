@@ -242,6 +242,9 @@ Partial Class F_Solicitud
         Me.Label19 = New System.Windows.Forms.Label()
         Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
+        Me.Label83 = New System.Windows.Forms.Label()
+        Me.T_Busqueda_Monedas = New System.Windows.Forms.TextBox()
+        Me.B_Actualizar_Monedas = New System.Windows.Forms.Button()
         Me.Label80 = New System.Windows.Forms.Label()
         Me.T_MarketCapRank_Moneda = New System.Windows.Forms.TextBox()
         Me.Label81 = New System.Windows.Forms.Label()
@@ -313,9 +316,6 @@ Partial Class F_Solicitud
         Me.B_GrabarRed = New System.Windows.Forms.Button()
         Me.T_ChainID_Red = New System.Windows.Forms.TextBox()
         Me.Label59 = New System.Windows.Forms.Label()
-        Me.B_Actualizar_Monedas = New System.Windows.Forms.Button()
-        Me.Label83 = New System.Windows.Forms.Label()
-        Me.T_Busqueda_Monedas = New System.Windows.Forms.TextBox()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -2521,6 +2521,39 @@ Partial Class F_Solicitud
         Me.TabPage7.Text = "Moneda"
         Me.TabPage7.UseVisualStyleBackColor = True
         '
+        'Label83
+        '
+        Me.Label83.AutoSize = True
+        Me.Label83.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label83.ForeColor = System.Drawing.Color.Blue
+        Me.Label83.Location = New System.Drawing.Point(18, 21)
+        Me.Label83.Name = "Label83"
+        Me.Label83.Size = New System.Drawing.Size(58, 13)
+        Me.Label83.TabIndex = 608
+        Me.Label83.Text = "Busqueda:"
+        Me.Label83.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_Busqueda_Monedas
+        '
+        Me.T_Busqueda_Monedas.BackColor = System.Drawing.Color.White
+        Me.T_Busqueda_Monedas.Location = New System.Drawing.Point(21, 37)
+        Me.T_Busqueda_Monedas.MaxLength = 6
+        Me.T_Busqueda_Monedas.Name = "T_Busqueda_Monedas"
+        Me.T_Busqueda_Monedas.Size = New System.Drawing.Size(170, 20)
+        Me.T_Busqueda_Monedas.TabIndex = 607
+        Me.T_Busqueda_Monedas.Text = "T_Busqueda_Monedas"
+        '
+        'B_Actualizar_Monedas
+        '
+        Me.B_Actualizar_Monedas.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Actualizar_Monedas.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Actualizar_Monedas.Location = New System.Drawing.Point(764, 25)
+        Me.B_Actualizar_Monedas.Name = "B_Actualizar_Monedas"
+        Me.B_Actualizar_Monedas.Size = New System.Drawing.Size(99, 23)
+        Me.B_Actualizar_Monedas.TabIndex = 606
+        Me.B_Actualizar_Monedas.Text = "Actualizar"
+        Me.B_Actualizar_Monedas.UseVisualStyleBackColor = False
+        '
         'Label80
         '
         Me.Label80.AutoSize = True
@@ -3337,39 +3370,6 @@ Partial Class F_Solicitud
         Me.Label59.TabIndex = 570
         Me.Label59.Text = "Chain ID"
         Me.Label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'B_Actualizar_Monedas
-        '
-        Me.B_Actualizar_Monedas.BackColor = System.Drawing.SystemColors.Control
-        Me.B_Actualizar_Monedas.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Actualizar_Monedas.Location = New System.Drawing.Point(764, 25)
-        Me.B_Actualizar_Monedas.Name = "B_Actualizar_Monedas"
-        Me.B_Actualizar_Monedas.Size = New System.Drawing.Size(99, 23)
-        Me.B_Actualizar_Monedas.TabIndex = 606
-        Me.B_Actualizar_Monedas.Text = "Actualizar"
-        Me.B_Actualizar_Monedas.UseVisualStyleBackColor = False
-        '
-        'Label83
-        '
-        Me.Label83.AutoSize = True
-        Me.Label83.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label83.ForeColor = System.Drawing.Color.Blue
-        Me.Label83.Location = New System.Drawing.Point(18, 12)
-        Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(58, 13)
-        Me.Label83.TabIndex = 608
-        Me.Label83.Text = "Busqueda:"
-        Me.Label83.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'T_Busqueda_Monedas
-        '
-        Me.T_Busqueda_Monedas.BackColor = System.Drawing.Color.White
-        Me.T_Busqueda_Monedas.Location = New System.Drawing.Point(21, 28)
-        Me.T_Busqueda_Monedas.MaxLength = 6
-        Me.T_Busqueda_Monedas.Name = "T_Busqueda_Monedas"
-        Me.T_Busqueda_Monedas.Size = New System.Drawing.Size(170, 20)
-        Me.T_Busqueda_Monedas.TabIndex = 607
-        Me.T_Busqueda_Monedas.Text = "T_Busqueda_Monedas"
         '
         'F_Solicitud
         '
