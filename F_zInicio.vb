@@ -25,7 +25,6 @@ Public Class F_zInicio
         '
         CargarTXT("Monedas", Matriz_Monedas)
         OrdenarMatriz_Monedas()
-
         '
         '
         CargarTXT("Exchange", Matriz_Exchange)
@@ -51,9 +50,7 @@ Public Class F_zInicio
         Transformar_Fechas_Movimientos()
         Ordenar_Movimientos()
         '
-
         '
-
         '
         '
         F_Solicitud.Inicializacion()

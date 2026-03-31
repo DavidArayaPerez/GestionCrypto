@@ -584,9 +584,7 @@ Public Class F_Solicitud
         'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
     End Sub
-    Private Sub GrabarMoneda(F As Integer)
-        LimpiezaMoneda(True)
-        If F < 1 Then Exit Sub
+    Private Sub GrabarMoneda()
         '   0       ID_Moneda
         '   1       ID_Despliegue
         '   2       Simbolo
@@ -602,27 +600,25 @@ Public Class F_Solicitud
         '   12      Contract_Address
         '   13     market_cap_rank
         '
-        L_IDmoneda_Moneda.Text = Matriz_Monedas(F, 0)
-        T_IDdespliegue_Moneda.Text = Matriz_Monedas(F, 1)
-        T_Simbolo_Moneda.Text = Matriz_Monedas(F, 2)
-        T_AcronimoMoneda.Text = Matriz_Monedas(F, 3)
-        T_SlugAPI_Moneda.Text = Matriz_Monedas(F, 4)
-        T_TipoActivo_Moneda.Text = Matriz_Monedas(F, 5)
-        T_SubtipoStablecoin_Moneda.Text = Matriz_Monedas(F, 6)
-        T_MonedaParidad_Moneda.Text = Matriz_Monedas(F, 7)
-        T_Centralizada_Moneda.Text = Matriz_Monedas(F, 8)
-        T_ActivoSubyacente_Moneda.Text = Matriz_Monedas(F, 9)
-        T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)
-        T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
-        T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
-        T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
+        Dim F As Integer = L_Fila_Moneda.Text
+        Matriz_Monedas(F, 0) = L_IDmoneda_Moneda.Text
+        Matriz_Monedas(F, 1) = T_IDdespliegue_Moneda.Text
+        Matriz_Monedas(F, 2) = T_Simbolo_Moneda.Text
+        Matriz_Monedas(F, 3) = T_AcronimoMoneda.Text
+        Matriz_Monedas(F, 4) = T_SlugAPI_Moneda.Text
+        Matriz_Monedas(F, 5) = T_TipoActivo_Moneda.Text
+        Matriz_Monedas(F, 6) = T_SubtipoStablecoin_Moneda.Text
+        Matriz_Monedas(F, 7) = T_MonedaParidad_Moneda.Text
+        Matriz_Monedas(F, 8) = T_Centralizada_Moneda.Text
+        Matriz_Monedas(F, 9) = T_ActivoSubyacente_Moneda.Text
+        Matriz_Monedas(F, 10) = T_IDredNativa_Moneda.Text
+        Matriz_Monedas(F, 11) = T_SupplyMaximo_Moneda.Text
+        Matriz_Monedas(F, 12) = T_ContractAddress_Moneda.Text
+        Matriz_Monedas(F, 13) = T_MarketCapRank_Moneda.Text
         '
         '
-        Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)
-        '   2       Simbolo
-        '   10      ID_Red                  Es el ID de la Matriz_Red
-        T_IDredNativa_Moneda.Text = Matriz_Redes(Fred, 2)
-        '
+        Guardar_Matrices("Monedas")
+        MsgBox("Moneda guardada correctamente")
         'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
     End Sub
@@ -900,7 +896,7 @@ Public Class F_Solicitud
     End Sub
 
     Private Sub B_GrabarMoneda_Click(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
-        Guardar_Matrices("Monedas")
+        GrabarMoneda()
     End Sub
     '
     '

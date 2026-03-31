@@ -2549,7 +2549,7 @@ Partial Class F_Solicitud
         '
         Me.B_Actualizar_Monedas.BackColor = System.Drawing.SystemColors.Control
         Me.B_Actualizar_Monedas.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Actualizar_Monedas.Location = New System.Drawing.Point(764, 25)
+        Me.B_Actualizar_Monedas.Location = New System.Drawing.Point(880, 83)
         Me.B_Actualizar_Monedas.Name = "B_Actualizar_Monedas"
         Me.B_Actualizar_Monedas.Size = New System.Drawing.Size(99, 23)
         Me.B_Actualizar_Monedas.TabIndex = 606
