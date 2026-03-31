@@ -520,6 +520,7 @@ Public Class F_Solicitud
         T_SupplyMaximo_Moneda.Text = ""
         T_ContractAddress_Moneda.Text = ""
         T_MarketCapRank_Moneda.Text = ""
+        T_Busqueda_Monedas.Text = ""
         rT_NotaMoneda.Text = ""
         '
         L_IDmoneda_Moneda.Enabled = Habilitar
@@ -536,6 +537,7 @@ Public Class F_Solicitud
         T_SupplyMaximo_Moneda.Enabled = Habilitar
         T_ContractAddress_Moneda.Enabled = Habilitar
         T_MarketCapRank_Moneda.Enabled = Habilitar
+        'T_Busqueda_Monedas.Enabled = Habilitar
         rT_NotaMoneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
@@ -787,7 +789,6 @@ Public Class F_Solicitud
     Private Sub B_NuevoMoneda_Click(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
         Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
         Dim Acronimo As String = InputBox(T, "Nueva Moneda")
-
         '
         Dim F As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
         If F > 0 Then
@@ -812,20 +813,22 @@ Public Class F_Solicitud
         VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
 
-
     Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
+        If VariableDeInicio Then Exit Sub
         If Len(T_URLexplorador_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLexplorador_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
     Private Sub Label73_Click(sender As Object, e As EventArgs) Handles Label73.Click
+        If VariableDeInicio Then Exit Sub
         If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLlogo_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
     Private Sub Label72_Click(sender As Object, e As EventArgs) Handles Label72.Click
+        If VariableDeInicio Then Exit Sub
         If Len(T_URLrpc_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLrpc_Red.Text
@@ -836,6 +839,17 @@ Public Class F_Solicitud
         ActualizarMonedas()
         OrdenarMatriz_Monedas()
         Guardar_Matrices("Monedas")
+    End Sub
+    Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs) Handles T_Busqueda_Monedas.KeyUp
+        If VariableDeInicio Then Exit Sub
+        Dim Filtro As String = T_Busqueda_Monedas.Text.Trim().ToUpper()
+        L_Monedas.Items.Clear()
+        For i As Integer = 1 To Matriz_Monedas.GetUpperBound(0)
+            Dim Simbolo As String = Matriz_Monedas(i, 2).ToString().ToUpper()
+            If Filtro = "" OrElse Simbolo.StartsWith(Filtro) Then
+                L_Monedas.Items.Add(Matriz_Monedas(i, 2))
+            End If
+        Next
     End Sub
 
 
