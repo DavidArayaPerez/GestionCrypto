@@ -316,6 +316,7 @@ Partial Class F_Solicitud
         Me.B_GrabarRed = New System.Windows.Forms.Button()
         Me.T_ChainID_Red = New System.Windows.Forms.TextBox()
         Me.Label59 = New System.Windows.Forms.Label()
+        Me.L_Fila_Moneda = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -2478,6 +2479,7 @@ Partial Class F_Solicitud
         '
         'TabPage7
         '
+        Me.TabPage7.Controls.Add(Me.L_Fila_Moneda)
         Me.TabPage7.Controls.Add(Me.Label83)
         Me.TabPage7.Controls.Add(Me.T_Busqueda_Monedas)
         Me.TabPage7.Controls.Add(Me.B_Actualizar_Monedas)
@@ -2815,7 +2817,7 @@ Partial Class F_Solicitud
         '
         Me.L_IDmoneda_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_IDmoneda_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_IDmoneda_Moneda.Location = New System.Drawing.Point(455, 53)
+        Me.L_IDmoneda_Moneda.Location = New System.Drawing.Point(455, 59)
         Me.L_IDmoneda_Moneda.Name = "L_IDmoneda_Moneda"
         Me.L_IDmoneda_Moneda.Size = New System.Drawing.Size(170, 13)
         Me.L_IDmoneda_Moneda.TabIndex = 582
@@ -2826,7 +2828,7 @@ Partial Class F_Solicitud
         Me.Label74.AutoSize = True
         Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label74.ForeColor = System.Drawing.Color.Blue
-        Me.Label74.Location = New System.Drawing.Point(395, 53)
+        Me.Label74.Location = New System.Drawing.Point(395, 59)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(54, 13)
         Me.Label74.TabIndex = 581
@@ -3371,6 +3373,17 @@ Partial Class F_Solicitud
         Me.Label59.Text = "Chain ID"
         Me.Label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'L_Fila_Moneda
+        '
+        Me.L_Fila_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Fila_Moneda.ForeColor = System.Drawing.Color.Black
+        Me.L_Fila_Moneda.Location = New System.Drawing.Point(455, 422)
+        Me.L_Fila_Moneda.Name = "L_Fila_Moneda"
+        Me.L_Fila_Moneda.Size = New System.Drawing.Size(170, 13)
+        Me.L_Fila_Moneda.TabIndex = 609
+        Me.L_Fila_Moneda.Text = "L_Fila_Moneda"
+        Me.L_Fila_Moneda.Visible = False
+        '
         'F_Solicitud
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3708,4 +3721,5 @@ Partial Class F_Solicitud
     Friend WithEvents B_Actualizar_Monedas As Button
     Friend WithEvents Label83 As Label
     Friend WithEvents T_Busqueda_Monedas As TextBox
+    Friend WithEvents L_Fila_Moneda As Label
 End Class

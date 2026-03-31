@@ -522,6 +522,7 @@ Public Class F_Solicitud
         T_ContractAddress_Moneda.Text = ""
         T_MarketCapRank_Moneda.Text = ""
         rT_NotaMoneda.Text = ""
+        L_Fila_Moneda.Text = ""
         '
         L_IDmoneda_Moneda.Enabled = Habilitar
         T_IDdespliegue_Moneda.Enabled = Habilitar
@@ -541,6 +542,49 @@ Public Class F_Solicitud
         rT_NotaMoneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
+        LimpiezaMoneda(True)
+        If F < 1 Then Exit Sub
+        '   0       ID_Moneda
+        '   1       ID_Despliegue
+        '   2       Simbolo
+        '   3       Nombre_Oficial
+        '   4       Slug_API
+        '   5       Tipo_Activo
+        '   6       Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
+        '   7       Moneda_Paridad
+        '   8       Centralizada
+        '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
+        '   10      ID_Red                  Es el ID de la Matriz_Red
+        '   11      Supply_Maximo
+        '   12      Contract_Address
+        '   13     market_cap_rank
+        '
+        L_Fila_Moneda.Text = F
+        L_IDmoneda_Moneda.Text = Matriz_Monedas(F, 0)
+        T_IDdespliegue_Moneda.Text = Matriz_Monedas(F, 1)
+        T_Simbolo_Moneda.Text = Matriz_Monedas(F, 2)
+        T_AcronimoMoneda.Text = Matriz_Monedas(F, 3)
+        T_SlugAPI_Moneda.Text = Matriz_Monedas(F, 4)
+        T_TipoActivo_Moneda.Text = Matriz_Monedas(F, 5)
+        T_SubtipoStablecoin_Moneda.Text = Matriz_Monedas(F, 6)
+        T_MonedaParidad_Moneda.Text = Matriz_Monedas(F, 7)
+        T_Centralizada_Moneda.Text = Matriz_Monedas(F, 8)
+        T_ActivoSubyacente_Moneda.Text = Matriz_Monedas(F, 9)
+        T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)
+        T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
+        T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
+        T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
+        '
+        '
+        Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)
+        '   2       Simbolo
+        '   10      ID_Red                  Es el ID de la Matriz_Red
+        T_IDredNativa_Moneda.Text = Matriz_Redes(Fred, 2)
+        '
+        'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
+        'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
+    End Sub
+    Private Sub GrabarMoneda(F As Integer)
         LimpiezaMoneda(True)
         If F < 1 Then Exit Sub
         '   0       ID_Moneda
@@ -579,11 +623,10 @@ Public Class F_Solicitud
         '   10      ID_Red                  Es el ID de la Matriz_Red
         T_IDredNativa_Moneda.Text = Matriz_Redes(Fred, 2)
         '
-        '
-        '
         'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
     End Sub
+
     '
     '
     Private Sub LimpiezaBilletera(Optional Habilitar As Boolean = False)
@@ -856,7 +899,9 @@ Public Class F_Solicitud
         Next
     End Sub
 
-
+    Private Sub B_GrabarMoneda_Click(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
+        Guardar_Matrices("Monedas")
+    End Sub
     '
     '
     '
