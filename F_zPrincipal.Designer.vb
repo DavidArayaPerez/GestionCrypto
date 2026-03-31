@@ -242,6 +242,7 @@ Partial Class F_zPrincipal
         Me.Label19 = New System.Windows.Forms.Label()
         Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
+        Me.L_Fila_Moneda = New System.Windows.Forms.Label()
         Me.Label83 = New System.Windows.Forms.Label()
         Me.T_Busqueda_Monedas = New System.Windows.Forms.TextBox()
         Me.B_Actualizar_Monedas = New System.Windows.Forms.Button()
@@ -316,7 +317,6 @@ Partial Class F_zPrincipal
         Me.B_GrabarRed = New System.Windows.Forms.Button()
         Me.T_ChainID_Red = New System.Windows.Forms.TextBox()
         Me.Label59 = New System.Windows.Forms.Label()
-        Me.L_Fila_Moneda = New System.Windows.Forms.Label()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
@@ -2523,6 +2523,16 @@ Partial Class F_zPrincipal
         Me.TabPage7.Text = "Moneda"
         Me.TabPage7.UseVisualStyleBackColor = True
         '
+        'L_Fila_Moneda
+        '
+        Me.L_Fila_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Fila_Moneda.ForeColor = System.Drawing.Color.Black
+        Me.L_Fila_Moneda.Location = New System.Drawing.Point(455, 422)
+        Me.L_Fila_Moneda.Name = "L_Fila_Moneda"
+        Me.L_Fila_Moneda.Size = New System.Drawing.Size(170, 13)
+        Me.L_Fila_Moneda.TabIndex = 609
+        Me.L_Fila_Moneda.Text = "L_Fila_Moneda"
+        '
         'Label83
         '
         Me.Label83.AutoSize = True
@@ -3373,18 +3383,7 @@ Partial Class F_zPrincipal
         Me.Label59.Text = "Chain ID"
         Me.Label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'L_Fila_Moneda
-        '
-        Me.L_Fila_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.L_Fila_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_Fila_Moneda.Location = New System.Drawing.Point(455, 422)
-        Me.L_Fila_Moneda.Name = "L_Fila_Moneda"
-        Me.L_Fila_Moneda.Size = New System.Drawing.Size(170, 13)
-        Me.L_Fila_Moneda.TabIndex = 609
-        Me.L_Fila_Moneda.Text = "L_Fila_Moneda"
-        Me.L_Fila_Moneda.Visible = False
-        '
-        'F_Solicitud
+        'F_zPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -3396,7 +3395,7 @@ Partial Class F_zPrincipal
         Me.Controls.Add(Me.MenuStrip1)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.MaximizeBox = False
-        Me.Name = "F_Solicitud"
+        Me.Name = "F_zPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Gestión Solicitud"
         Me.StatusStrip1.ResumeLayout(False)

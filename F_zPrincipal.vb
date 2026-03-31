@@ -1,7 +1,7 @@
 ﻿'
 '
 '
-'Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
+
 '
 '
 '
@@ -9,6 +9,53 @@ Public Class F_zPrincipal
     '
     '
     '
+    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        '
+        Parametros()
+        '
+        'Carga valores actualizados del DOLAR
+        'GuardarValorUSD(2022)  GuardarValorUSD(2023)   GuardarValorUSD(2024)   GuardarValorUSD(2025)
+        GuardarValorUSD(2026)
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
+        '
+        '
+        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
+        '
+        '
+        CargarTXT("Monedas", Matriz_Monedas)
+        '
+        '
+        CargarTXT("Exchange", Matriz_Exchange)
+        CargarTXT("Billeteras", Matriz_Billeteras)
+        '
+        CargarTXT("Depositos", Matriz_Depositos)
+        Transformar_Fechas_Depositos()
+        'Ordenar_Depositos()
+        '
+        CargarTXT("Compras", Matriz_Compras)
+        Transformar_Fechas_Compras()
+        'Ordenar_Compras()
+        '
+        CargarTXT("Traspasos", Matriz_Traspasos)
+        Transformar_Fechas_Traspasos()
+        'Ordenar_Traspasos()
+        '
+        CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
+        Transformar_Fechas_PoolLiquidez()
+        'Ordenar_PoolLiquidez()
+        '
+        CargarTXT("Movimientos", Matriz_Movimientos)
+        Transformar_Fechas_Movimientos()
+        'Ordenar_Movimientos()
+        '
+        '
+        '
+        'CargaFormulario()
+        'Me.Close()
+        '
+        'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
+        'CargarTXT("Pares", Matriz_Pares)
+    End Sub
     Public Sub Inicializacion()
         VariableDeInicio = True
         '
@@ -576,10 +623,12 @@ Public Class F_zPrincipal
         T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
         '
         '
-        Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)
-        '   2       Simbolo
-        '   10      ID_Red                  Es el ID de la Matriz_Red
-        T_IDredNativa_Moneda.Text = Matriz_Redes(Fred, 2)
+        Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)
+        If FilaRed = 0 Then
+            T_IDredNativa_Moneda.Text = ""
+        Else
+            T_IDredNativa_Moneda.Text = Matriz_Redes(FilaRed, 2)
+        End If
         '
         'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
@@ -815,54 +864,7 @@ Public Class F_zPrincipal
     '
     '
     '
-    Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '
-        Parametros()
-        '
-        'Carga valores actualizados del DOLAR
-        'GuardarValorUSD(2022)  GuardarValorUSD(2023)   GuardarValorUSD(2024)   GuardarValorUSD(2025)
-        GuardarValorUSD(2026)
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
-        '
-        '
-        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
-        '
-        '
-        CargarTXT("Monedas", Matriz_Monedas)
-        OrdenarMatriz_Monedas()
-        '
-        '
-        CargarTXT("Exchange", Matriz_Exchange)
-        CargarTXT("Billeteras", Matriz_Billeteras)
-        '
-        CargarTXT("Depositos", Matriz_Depositos)
-        Transformar_Fechas_Depositos()
-        Ordenar_Depositos()
-        '
-        CargarTXT("Compras", Matriz_Compras)
-        Transformar_Fechas_Compras()
-        Ordenar_Compras()
-        '
-        CargarTXT("Traspasos", Matriz_Traspasos)
-        Transformar_Fechas_Traspasos()
-        Ordenar_Traspasos()
-        '
-        CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
-        Transformar_Fechas_PoolLiquidez()
-        Ordenar_PoolLiquidez()
-        '
-        CargarTXT("Movimientos", Matriz_Movimientos)
-        Transformar_Fechas_Movimientos()
-        Ordenar_Movimientos()
-        '
-        '
-        '
-        'CargaFormulario()
-        'Me.Close()
-        '
-        'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
-        'CargarTXT("Pares", Matriz_Pares)
-    End Sub
+
     '
     '
     Private Sub F_Solicitud_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -879,14 +881,14 @@ Public Class F_zPrincipal
         Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
         Dim Acronimo As String = InputBox(T, "Nueva Moneda")
         '
-        Dim F As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
-        If F > 0 Then
-            VerMoneda(F)
+        Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
+        If Fila > 0 Then
+            VerMoneda(Fila)
             Exit Sub
         End If
     End Sub
-
-
+    '
+    '
     Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Red.Text

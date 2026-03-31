@@ -204,7 +204,7 @@ Module xFunciones_Archivo
         Next i
         '
         File.WriteAllLines(RutaArchivo, ArregloSinEspacios, System.Text.Encoding.UTF8)
-
+        '
         'File.WriteAllText(NombreArchivo, Mensaje)
         'No utilizo WriteAllText porque No agrega saltos de línea automáticamente
 

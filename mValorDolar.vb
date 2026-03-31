@@ -26,7 +26,8 @@ Module mValorUSD
     End Sub
     Public Function Buscar_FechaEnValorUSD(Fecha As String) As Boolean
         'Busca una Fecha en la matriz de ValorUSD, devuelve True si la encuentra, False si no la encuentra
-        If BuscarCualquierValorEnCuaquierMatriz(Matriz_ValorUSD, Matriz_ValorUSDTF, 0, Fecha) > 0 Then Return True
+        Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_ValorUSD, Matriz_ValorUSDTF, 0, Fecha)
+        If Fila > 0 Then Return True
         Return False
     End Function
     Public Sub GuardarValorUSD(Año As Integer)

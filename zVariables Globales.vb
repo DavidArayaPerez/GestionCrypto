@@ -73,10 +73,6 @@ Module zVariables_Globales
         ArchivoFinal(Contador + 4) = "ACTUALIZACION_DOLAR" & vbTab & ACTUALIZACION_DOLAR
         GuardarParametros(RutaArchivo, ArchivoFinal)
     End Sub
-    Public Sub CargaFormulario()
-        F_zPrincipal.Inicializacion()
-        F_zPrincipal.ShowDialog()
-    End Sub
     '
     '
     '

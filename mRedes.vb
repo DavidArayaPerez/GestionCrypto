@@ -47,8 +47,6 @@ Module mRedes
         Next i
         Guardar_Matrices("Redes")
     End Sub
-
-
     '
     '
     '
