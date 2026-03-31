@@ -22,7 +22,7 @@ Module mMonedas
     '   10      ID_Red                  Es el ID de la Matriz_Red
     '   11      Supply_Maximo
     '   12      Contract_Address
-    '   13      Activa
+    '   13      market_cap_rank
     '
     '
 

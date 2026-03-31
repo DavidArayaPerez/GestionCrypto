@@ -51,13 +51,16 @@ Module zAPI_CoinGecko
             Dim monedas As JsonArray = JsonNode.Parse(json).AsArray()
             Dim Simbolo As String
             Dim Supply_Maximo As Long
+            Dim MarketCapRank As String
             Dim SW As Boolean
+            Dim i As Integer
             '
             For Each item As JsonNode In monedas
                 Dim m As New Moneda()
                 Simbolo = ValorSeguro(item("symbol")).ToUpper()
+                MarketCapRank = ValorSeguro(item("market_cap_rank"))
                 SW = True
-                For i As Integer = 1 To Matriz_MonedasTF
+                For i = 1 To Matriz_MonedasTF
                     If Matriz_Monedas(i, 2).ToUpper() = Simbolo Then
                         SW = False
                         Exit For
@@ -73,21 +76,26 @@ Module zAPI_CoinGecko
                     End If
                     '
                     Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
-                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()         '0      ID_Moneda
-                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()         '1      ID_Despliegue
-                    Matriz_Monedas(NuevaFila, 2) = Simbolo                      '2      Simbolo
-                    Matriz_Monedas(NuevaFila, 3) = ValorSeguro(item("name"))    '3      Nombre_Oficial
-                    Matriz_Monedas(NuevaFila, 4) = ValorSeguro(item("id"))      '4      Slug_API
-                    'Matriz_Monedas(NuevaFila, 5) = 0                           '5      Tipo_Activo
-                    'Matriz_Monedas(NuevaFila, 6) = 0                           '6      Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
-                    'Matriz_Monedas(NuevaFila, 7) = 0                           '7      Moneda_Paridad
-                    'Matriz_Monedas(NuevaFila, 8) = 0                           '8      Centralizada
-                    'Matriz_Monedas(NuevaFila, 9) = 0                           '9      Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
-                    'Matriz_Monedas(NuevaFila, 10) = 0                          '10     ID_Red                  Es el ID de la Matriz_Red
-                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo               '11     Supply_Maximo
-                    'Matriz_Monedas(NuevaFila, 12) = 0                          '12     Contract_Address
-                    'Matriz_Monedas(NuevaFila, 13) = 0                          '13     Activa
-                    Guardar_Matrices("Matriz_Monedas")
+                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()                     '0      ID_Moneda
+                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()                     '1      ID_Despliegue
+                    Matriz_Monedas(NuevaFila, 2) = Simbolo                                  '2      Simbolo
+                    Matriz_Monedas(NuevaFila, 3) = ValorSeguro(item("name"))                '3      Nombre_Oficial
+                    Matriz_Monedas(NuevaFila, 4) = ValorSeguro(item("id"))                  '4      Slug_API
+                    'Matriz_Monedas(NuevaFila, 5) = 0                                       '5      Tipo_Activo
+                    'Matriz_Monedas(NuevaFila, 6) = 0                                       '6      Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
+                    'Matriz_Monedas(NuevaFila, 7) = 0                                       '7      Moneda_Paridad
+                    'Matriz_Monedas(NuevaFila, 8) = 0                                       '8      Centralizada
+                    'Matriz_Monedas(NuevaFila, 9) = 0                                       '9      Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
+                    'Matriz_Monedas(NuevaFila, 10) = 0                                      '10     ID_Red                  Es el ID de la Matriz_Red
+                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                           '11     Supply_Maximo
+                    'Matriz_Monedas(NuevaFila, 12) = 0                                      '12     Contract_Address
+                    Matriz_Monedas(NuevaFila, 13) = MarketCapRank                           '13     market_cap_rank
+                    Guardar_Matrices("Monedas")
+                Else
+                    If Val(Matriz_Monedas(i, 13)) <> MarketCapRank Then
+                        Matriz_Monedas(i, 13) = MarketCapRank
+                        Guardar_Matrices("Monedas")
+                    End If
                 End If
             Next
         Catch ex As Exception

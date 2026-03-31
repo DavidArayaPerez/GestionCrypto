@@ -521,7 +521,7 @@ Public Class F_Solicitud
         T_IDredNativa_Moneda.Text = ""
         T_SupplyMaximo_Moneda.Text = ""
         T_ContractAddress_Moneda.Text = ""
-        T_Activa_Moneda.Text = ""
+        T_MarketCapRank_Moneda.Text = ""
         rT_NotaMoneda.Text = ""
         '
         L_IDmoneda_Moneda.Enabled = Habilitar
@@ -537,7 +537,7 @@ Public Class F_Solicitud
         T_IDredNativa_Moneda.Enabled = Habilitar
         T_SupplyMaximo_Moneda.Enabled = Habilitar
         T_ContractAddress_Moneda.Enabled = Habilitar
-        T_Activa_Moneda.Enabled = Habilitar
+        T_MarketCapRank_Moneda.Enabled = Habilitar
         rT_NotaMoneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
@@ -556,7 +556,7 @@ Public Class F_Solicitud
         '   10      ID_Red                  Es el ID de la Matriz_Red
         '   11      Supply_Maximo
         '   12      Contract_Address
-        '   13      Activa
+        '   13     market_cap_rank
         '
         L_IDmoneda_Moneda.Text = Matriz_Monedas(F, 0)
         T_IDdespliegue_Moneda.Text = Matriz_Monedas(F, 1)
@@ -571,7 +571,7 @@ Public Class F_Solicitud
         T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)
         T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
         T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
-        T_Activa_Moneda.Text = Matriz_Monedas(F, 13)
+        T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
         '
         '
         Dim Fred As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)

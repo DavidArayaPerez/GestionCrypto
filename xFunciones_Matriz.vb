@@ -47,7 +47,7 @@ Module xFunciones_Matriz
         '
         If TotalFilas = 0 Then             'Esto aplica para cuando las Matrices no tienen datos.
             Dim AuxMatriz(,) As String
-            ReDim AuxMatriz(TotalFilas + 3, TotalColumnas)
+            ReDim AuxMatriz(TotalFilas + 1, TotalColumnas)
             For i = 0 To TotalFilas
                 For j = 0 To TotalColumnas
                     AuxMatriz(i, j) = MatrizOrigen(i, j)

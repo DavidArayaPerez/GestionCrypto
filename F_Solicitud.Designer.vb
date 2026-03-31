@@ -243,7 +243,7 @@ Partial Class F_Solicitud
         Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
         Me.Label80 = New System.Windows.Forms.Label()
-        Me.T_Activa_Moneda = New System.Windows.Forms.TextBox()
+        Me.T_MarketCapRank_Moneda = New System.Windows.Forms.TextBox()
         Me.Label81 = New System.Windows.Forms.Label()
         Me.Label82 = New System.Windows.Forms.Label()
         Me.T_ContractAddress_Moneda = New System.Windows.Forms.TextBox()
@@ -2476,7 +2476,7 @@ Partial Class F_Solicitud
         'TabPage7
         '
         Me.TabPage7.Controls.Add(Me.Label80)
-        Me.TabPage7.Controls.Add(Me.T_Activa_Moneda)
+        Me.TabPage7.Controls.Add(Me.T_MarketCapRank_Moneda)
         Me.TabPage7.Controls.Add(Me.Label81)
         Me.TabPage7.Controls.Add(Me.Label82)
         Me.TabPage7.Controls.Add(Me.T_ContractAddress_Moneda)
@@ -2520,22 +2520,22 @@ Partial Class F_Solicitud
         Me.Label80.AutoSize = True
         Me.Label80.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label80.ForeColor = System.Drawing.Color.Blue
-        Me.Label80.Location = New System.Drawing.Point(404, 369)
+        Me.Label80.Location = New System.Drawing.Point(350, 369)
         Me.Label80.Name = "Label80"
-        Me.Label80.Size = New System.Drawing.Size(37, 13)
+        Me.Label80.Size = New System.Drawing.Size(91, 13)
         Me.Label80.TabIndex = 605
-        Me.Label80.Text = "Activa"
+        Me.Label80.Text = "Market Cap Rank"
         Me.Label80.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'T_Activa_Moneda
+        'T_MarketCapRank_Moneda
         '
-        Me.T_Activa_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_Activa_Moneda.Location = New System.Drawing.Point(447, 366)
-        Me.T_Activa_Moneda.MaxLength = 6
-        Me.T_Activa_Moneda.Name = "T_Activa_Moneda"
-        Me.T_Activa_Moneda.Size = New System.Drawing.Size(170, 20)
-        Me.T_Activa_Moneda.TabIndex = 604
-        Me.T_Activa_Moneda.Text = "T_Activa_Moneda"
+        Me.T_MarketCapRank_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_MarketCapRank_Moneda.Location = New System.Drawing.Point(447, 366)
+        Me.T_MarketCapRank_Moneda.MaxLength = 6
+        Me.T_MarketCapRank_Moneda.Name = "T_MarketCapRank_Moneda"
+        Me.T_MarketCapRank_Moneda.Size = New System.Drawing.Size(170, 20)
+        Me.T_MarketCapRank_Moneda.TabIndex = 604
+        Me.T_MarketCapRank_Moneda.Text = "T_MarketCapRank_Moneda"
         '
         'Label81
         '
@@ -3648,7 +3648,7 @@ Partial Class F_Solicitud
     Friend WithEvents Label42 As Label
     Friend WithEvents T_AcronimoMoneda As TextBox
     Friend WithEvents Label80 As Label
-    Friend WithEvents T_Activa_Moneda As TextBox
+    Friend WithEvents T_MarketCapRank_Moneda As TextBox
     Friend WithEvents Label81 As Label
     Friend WithEvents Label82 As Label
     Friend WithEvents T_ContractAddress_Moneda As TextBox

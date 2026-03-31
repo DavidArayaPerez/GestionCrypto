@@ -32,7 +32,7 @@ Public Class F_zInicio
         API_CoinGecko_Monedas(250, 4)
         API_CoinGecko_Monedas(250, 5)
         API_CoinGecko_Monedas(250, 6)
-        Ordenar_Movimientos()
+        OrdenarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC, 13, "DESC") '13     market_cap_rank
 
 
         CargarTXT("Exchange", Matriz_Exchange)
