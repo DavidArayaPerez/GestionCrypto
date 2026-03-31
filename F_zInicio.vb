@@ -7,13 +7,34 @@ Imports System.IO
 '
 Public Class F_zInicio
     '
-    '
+    ' Traer 100 monedas
+
     '
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '
         Parametros()
         '
+        'Carga valores actualizados del DOLAR
+        'GuardarValorUSD(2022)  GuardarValorUSD(2023)   GuardarValorUSD(2024)   GuardarValorUSD(2025)
+        GuardarValorUSD(2026)
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
+        '
+        '
+        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
+        '
+        '
+        'Cargar monedas existentes
         CargarTXT("Monedas", Matriz_Monedas)
+        'Carga valores actualizados de MONEDAS
+        API_CoinGecko_Monedas(250, 1)
+        API_CoinGecko_Monedas(250, 2)
+        API_CoinGecko_Monedas(250, 3)
+        API_CoinGecko_Monedas(250, 4)
+        API_CoinGecko_Monedas(250, 5)
+        API_CoinGecko_Monedas(250, 6)
+        Ordenar_Movimientos()
+
+
         CargarTXT("Exchange", Matriz_Exchange)
         CargarTXT("Billeteras", Matriz_Billeteras)
         '
@@ -37,14 +58,9 @@ Public Class F_zInicio
         Transformar_Fechas_Movimientos()
         Ordenar_Movimientos()
         '
-        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
+
         '
-        GuardarValorUSD(2022)
-        GuardarValorUSD(2023)
-        GuardarValorUSD(2024)
-        GuardarValorUSD(2025)
-        GuardarValorUSD(2026)
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
+
         '
         '
         F_Solicitud.Inicializacion()

@@ -54,7 +54,7 @@ Module xFunciones_Matriz
                 Next j
             Next i
             '
-            TotalFilas += 3
+            TotalFilas += 1
             MatrizOrigen = AuxMatriz
             Return 1
         End If
@@ -83,7 +83,7 @@ Module xFunciones_Matriz
                 Next j
             Next i
             '
-            TotalFilas += 3
+            TotalFilas += 1
             MatrizOrigen = AuxMatriz
             Return UltimoRegistro
         End If
