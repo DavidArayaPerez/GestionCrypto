@@ -637,6 +637,30 @@ Public Class F_zPrincipal
     Private Sub B_Monedas_Click(sender As Object, e As EventArgs) Handles B_Monedas.Click
         F_Monedas.ShowDialog()
     End Sub
+
+    Private Sub CargaDolarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_CargaDolar.Click
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
+    End Sub
+
+    Private Sub VerDolarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_VerDolar.Click
+        F_Dolar.ShowDialog()
+    End Sub
+
+    Private Sub VerRedesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_VerRedes.Click
+        F_Red.ShowDialog()
+    End Sub
+
+    Private Sub VerMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_VerMonedas.Click
+        F_Monedas.ShowDialog()
+    End Sub
+
+    Private Sub CargaRedesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_CargaRedes.Click
+        CargarTXT("Redes", Matriz_Redes)
+    End Sub
+
+    Private Sub CargaMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_CargaMonedas.Click
+        CargarTXT("Monedas", Matriz_Monedas)
+    End Sub
     '
     '
     '
