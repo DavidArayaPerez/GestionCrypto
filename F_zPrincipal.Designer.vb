@@ -22,7 +22,6 @@ Partial Class F_zPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.Menu_Agregar = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_ServicioMas = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_DocumentoMas = New System.Windows.Forms.ToolStripMenuItem()
@@ -71,26 +70,6 @@ Partial Class F_zPrincipal
         Me.SL08 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SL09 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SL10 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.Menu_Version = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.APP08ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Diseño05ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Mejoras06ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Pruebas106ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AutorDavidArayaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Monedas = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_VerMonedas = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_CargaMonedas = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Redes = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_VerRedes = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_CargaRedes = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Dolar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_VerDolar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_CargaDolar = New System.Windows.Forms.ToolStripMenuItem()
         Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.B_Monedas = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
@@ -253,8 +232,23 @@ Partial Class F_zPrincipal
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.B_Redes = New System.Windows.Forms.Button()
         Me.B_Dolar = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.Menu_Version = New System.Windows.Forms.ToolStripMenuItem()
+        Me.APPCryptoMonedasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Version10ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Diseño20ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Funcionalidad00ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Prueba12ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Monedas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Redes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Dolar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_VerMonedas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_CargarMonedas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_VerRedes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_CargarRedes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_VerDolar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_CargarDolar = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage8.SuspendLayout()
         Me.TabPage9.SuspendLayout()
@@ -264,6 +258,7 @@ Partial Class F_zPrincipal
         Me.TabPage2.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Menu_Agregar
@@ -419,7 +414,7 @@ Partial Class F_zPrincipal
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.BackColor = System.Drawing.Color.Khaki
+        Me.StatusStrip1.BackColor = System.Drawing.Color.LightSkyBlue
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.T0, Me.T1, Me.T2, Me.T3, Me.T4, Me.T5, Me.T6, Me.T7, Me.T8, Me.T9, Me.T10})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 694)
         Me.StatusStrip1.Name = "StatusStrip1"
@@ -565,130 +560,6 @@ Partial Class F_zPrincipal
         Me.SL10.Name = "SL10"
         Me.SL10.Size = New System.Drawing.Size(31, 17)
         Me.SL10.Text = "SL10"
-        '
-        'Timer1
-        '
-        Me.Timer1.Interval = 60000
-        '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.BackColor = System.Drawing.SystemColors.Info
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Version, Me.Menu_Monedas, Me.Menu_Redes, Me.Menu_Dolar})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1035, 24)
-        Me.MenuStrip1.TabIndex = 415
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'Menu_Version
-        '
-        Me.Menu_Version.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.APP08ToolStripMenuItem, Me.Diseño05ToolStripMenuItem, Me.Mejoras06ToolStripMenuItem, Me.Pruebas106ToolStripMenuItem, Me.ToolStripSeparator1, Me.AutorDavidArayaToolStripMenuItem})
-        Me.Menu_Version.Name = "Menu_Version"
-        Me.Menu_Version.Size = New System.Drawing.Size(57, 20)
-        Me.Menu_Version.Text = "Versión"
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(190, 22)
-        Me.ToolStripMenuItem2.Text = "2026/03/28"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(187, 6)
-        '
-        'APP08ToolStripMenuItem
-        '
-        Me.APP08ToolStripMenuItem.Name = "APP08ToolStripMenuItem"
-        Me.APP08ToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.APP08ToolStripMenuItem.Text = "APP: 01"
-        '
-        'Diseño05ToolStripMenuItem
-        '
-        Me.Diseño05ToolStripMenuItem.Name = "Diseño05ToolStripMenuItem"
-        Me.Diseño05ToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.Diseño05ToolStripMenuItem.Text = "Diseño: 01"
-        '
-        'Mejoras06ToolStripMenuItem
-        '
-        Me.Mejoras06ToolStripMenuItem.Name = "Mejoras06ToolStripMenuItem"
-        Me.Mejoras06ToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.Mejoras06ToolStripMenuItem.Text = "Mejoras: 01"
-        '
-        'Pruebas106ToolStripMenuItem
-        '
-        Me.Pruebas106ToolStripMenuItem.Name = "Pruebas106ToolStripMenuItem"
-        Me.Pruebas106ToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.Pruebas106ToolStripMenuItem.Text = "Pruebas: 01"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(187, 6)
-        '
-        'AutorDavidArayaToolStripMenuItem
-        '
-        Me.AutorDavidArayaToolStripMenuItem.Name = "AutorDavidArayaToolStripMenuItem"
-        Me.AutorDavidArayaToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.AutorDavidArayaToolStripMenuItem.Text = "Autor: David Araya CL"
-        '
-        'Menu_Monedas
-        '
-        Me.Menu_Monedas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerMonedas, Me.Menu_CargaMonedas})
-        Me.Menu_Monedas.Name = "Menu_Monedas"
-        Me.Menu_Monedas.Size = New System.Drawing.Size(68, 20)
-        Me.Menu_Monedas.Text = "Monedas"
-        '
-        'Menu_VerMonedas
-        '
-        Me.Menu_VerMonedas.Name = "Menu_VerMonedas"
-        Me.Menu_VerMonedas.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_VerMonedas.Text = "Ver Monedas"
-        '
-        'Menu_CargaMonedas
-        '
-        Me.Menu_CargaMonedas.Name = "Menu_CargaMonedas"
-        Me.Menu_CargaMonedas.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_CargaMonedas.Text = "Carga Monedas"
-        '
-        'Menu_Redes
-        '
-        Me.Menu_Redes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerRedes, Me.Menu_CargaRedes})
-        Me.Menu_Redes.Name = "Menu_Redes"
-        Me.Menu_Redes.Size = New System.Drawing.Size(50, 20)
-        Me.Menu_Redes.Text = "Redes"
-        '
-        'Menu_VerRedes
-        '
-        Me.Menu_VerRedes.Name = "Menu_VerRedes"
-        Me.Menu_VerRedes.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_VerRedes.Text = "Ver Redes"
-        '
-        'Menu_CargaRedes
-        '
-        Me.Menu_CargaRedes.Name = "Menu_CargaRedes"
-        Me.Menu_CargaRedes.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_CargaRedes.Text = "Carga Redes"
-        '
-        'Menu_Dolar
-        '
-        Me.Menu_Dolar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerDolar, Me.Menu_CargaDolar})
-        Me.Menu_Dolar.Name = "Menu_Dolar"
-        Me.Menu_Dolar.Size = New System.Drawing.Size(47, 20)
-        Me.Menu_Dolar.Text = "Dolar"
-        '
-        'Menu_VerDolar
-        '
-        Me.Menu_VerDolar.Name = "Menu_VerDolar"
-        Me.Menu_VerDolar.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_VerDolar.Text = "Ver Dolar"
-        '
-        'Menu_CargaDolar
-        '
-        Me.Menu_CargaDolar.Name = "Menu_CargaDolar"
-        Me.Menu_CargaDolar.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_CargaDolar.Text = "Carga Dolar"
         '
         'B_Cerrar
         '
@@ -2499,6 +2370,110 @@ Partial Class F_zPrincipal
         Me.B_Dolar.Text = "Dolar"
         Me.B_Dolar.UseVisualStyleBackColor = False
         '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.LightSkyBlue
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_Version, Me.Menu_Monedas, Me.Menu_Redes, Me.Menu_Dolar})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(1035, 24)
+        Me.MenuStrip1.TabIndex = 428
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'Menu_Version
+        '
+        Me.Menu_Version.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.APPCryptoMonedasToolStripMenuItem, Me.Version10ToolStripMenuItem, Me.Diseño20ToolStripMenuItem, Me.Funcionalidad00ToolStripMenuItem, Me.Prueba12ToolStripMenuItem})
+        Me.Menu_Version.Name = "Menu_Version"
+        Me.Menu_Version.Size = New System.Drawing.Size(57, 20)
+        Me.Menu_Version.Text = "Versión"
+        '
+        'APPCryptoMonedasToolStripMenuItem
+        '
+        Me.APPCryptoMonedasToolStripMenuItem.Name = "APPCryptoMonedasToolStripMenuItem"
+        Me.APPCryptoMonedasToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.APPCryptoMonedasToolStripMenuItem.Text = "APP: CryptoMonedas"
+        '
+        'Version10ToolStripMenuItem
+        '
+        Me.Version10ToolStripMenuItem.Name = "Version10ToolStripMenuItem"
+        Me.Version10ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.Version10ToolStripMenuItem.Text = "Version: 1.0"
+        '
+        'Diseño20ToolStripMenuItem
+        '
+        Me.Diseño20ToolStripMenuItem.Name = "Diseño20ToolStripMenuItem"
+        Me.Diseño20ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.Diseño20ToolStripMenuItem.Text = "Diseño: 2.0"
+        '
+        'Funcionalidad00ToolStripMenuItem
+        '
+        Me.Funcionalidad00ToolStripMenuItem.Name = "Funcionalidad00ToolStripMenuItem"
+        Me.Funcionalidad00ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.Funcionalidad00ToolStripMenuItem.Text = "Funcionalidad: 0.0"
+        '
+        'Prueba12ToolStripMenuItem
+        '
+        Me.Prueba12ToolStripMenuItem.Name = "Prueba12ToolStripMenuItem"
+        Me.Prueba12ToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.Prueba12ToolStripMenuItem.Text = "Prueba: 12"
+        '
+        'Menu_Monedas
+        '
+        Me.Menu_Monedas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerMonedas, Me.Menu_CargarMonedas})
+        Me.Menu_Monedas.Name = "Menu_Monedas"
+        Me.Menu_Monedas.Size = New System.Drawing.Size(68, 20)
+        Me.Menu_Monedas.Text = "Monedas"
+        '
+        'Menu_Redes
+        '
+        Me.Menu_Redes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerRedes, Me.Menu_CargarRedes})
+        Me.Menu_Redes.Name = "Menu_Redes"
+        Me.Menu_Redes.Size = New System.Drawing.Size(50, 20)
+        Me.Menu_Redes.Text = "Redes"
+        '
+        'Menu_Dolar
+        '
+        Me.Menu_Dolar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerDolar, Me.Menu_CargarDolar})
+        Me.Menu_Dolar.Name = "Menu_Dolar"
+        Me.Menu_Dolar.Size = New System.Drawing.Size(47, 20)
+        Me.Menu_Dolar.Text = "Dolar"
+        '
+        'Menu_VerMonedas
+        '
+        Me.Menu_VerMonedas.Name = "Menu_VerMonedas"
+        Me.Menu_VerMonedas.Size = New System.Drawing.Size(180, 22)
+        Me.Menu_VerMonedas.Text = "Ver Monedas"
+        '
+        'Menu_CargarMonedas
+        '
+        Me.Menu_CargarMonedas.Name = "Menu_CargarMonedas"
+        Me.Menu_CargarMonedas.Size = New System.Drawing.Size(180, 22)
+        Me.Menu_CargarMonedas.Text = "Cargar Monedas"
+        '
+        'Menu_VerRedes
+        '
+        Me.Menu_VerRedes.Name = "Menu_VerRedes"
+        Me.Menu_VerRedes.Size = New System.Drawing.Size(180, 22)
+        Me.Menu_VerRedes.Text = "Ver Redes"
+        '
+        'Menu_CargarRedes
+        '
+        Me.Menu_CargarRedes.Name = "Menu_CargarRedes"
+        Me.Menu_CargarRedes.Size = New System.Drawing.Size(180, 22)
+        Me.Menu_CargarRedes.Text = "Cargar Redes"
+        '
+        'Menu_VerDolar
+        '
+        Me.Menu_VerDolar.Name = "Menu_VerDolar"
+        Me.Menu_VerDolar.Size = New System.Drawing.Size(180, 22)
+        Me.Menu_VerDolar.Text = "Ver Dolar"
+        '
+        'Menu_CargarDolar
+        '
+        Me.Menu_CargarDolar.Name = "Menu_CargarDolar"
+        Me.Menu_CargarDolar.Size = New System.Drawing.Size(180, 22)
+        Me.Menu_CargarDolar.Text = "Cargar Dolar"
+        '
         'F_zPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2519,8 +2494,6 @@ Partial Class F_zPrincipal
         Me.Text = "Gestión Solicitud"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
         Me.TabPage8.ResumeLayout(False)
@@ -2538,12 +2511,13 @@ Partial Class F_zPrincipal
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents StatusStrip1 As StatusStrip
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents Menu_Agregar As ToolStripMenuItem
     Friend WithEvents SL00 As ToolStripStatusLabel
     Friend WithEvents SL01 As ToolStripStatusLabel
@@ -2591,16 +2565,6 @@ Partial Class F_zPrincipal
     Friend WithEvents T8 As ToolStripStatusLabel
     Friend WithEvents T9 As ToolStripStatusLabel
     Friend WithEvents T10 As ToolStripStatusLabel
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents Menu_Version As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem2 As ToolStripMenuItem
-    Friend WithEvents APP08ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Diseño05ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Mejoras06ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents Pruebas106ToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem1 As ToolStripSeparator
-    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
-    Friend WithEvents AutorDavidArayaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents B_Cerrar As Button
     Friend WithEvents B_Monedas As Button
     Friend WithEvents TabPage3 As TabPage
@@ -2763,13 +2727,20 @@ Partial Class F_zPrincipal
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents B_Redes As Button
     Friend WithEvents B_Dolar As Button
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents Menu_Version As ToolStripMenuItem
+    Friend WithEvents APPCryptoMonedasToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Version10ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Diseño20ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Funcionalidad00ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Prueba12ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Menu_Monedas As ToolStripMenuItem
     Friend WithEvents Menu_VerMonedas As ToolStripMenuItem
-    Friend WithEvents Menu_CargaMonedas As ToolStripMenuItem
+    Friend WithEvents Menu_CargarMonedas As ToolStripMenuItem
     Friend WithEvents Menu_Redes As ToolStripMenuItem
     Friend WithEvents Menu_VerRedes As ToolStripMenuItem
-    Friend WithEvents Menu_CargaRedes As ToolStripMenuItem
+    Friend WithEvents Menu_CargarRedes As ToolStripMenuItem
     Friend WithEvents Menu_Dolar As ToolStripMenuItem
     Friend WithEvents Menu_VerDolar As ToolStripMenuItem
-    Friend WithEvents Menu_CargaDolar As ToolStripMenuItem
+    Friend WithEvents Menu_CargarDolar As ToolStripMenuItem
 End Class

@@ -63,7 +63,6 @@ Public Class F_zPrincipal
         LlenarMonedas()
         '
         VariableDeInicio = False
-        Timer1.Enabled = True
     End Sub
     Private Sub LlenarList()
         Dim T As String '= ""
@@ -616,7 +615,7 @@ Public Class F_zPrincipal
     Private Sub F_Solicitud_Load(sender As Object, e As EventArgs) Handles Me.Load
         Inicializacion()
     End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
         MensajeBarra_Hora(StatusStrip1)
     End Sub
 
@@ -638,29 +637,31 @@ Public Class F_zPrincipal
         F_Monedas.ShowDialog()
     End Sub
 
-    Private Sub CargaDolarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_CargaDolar.Click
+    Private Sub CargaDolarToolStripMenuItem_Click(sender As Object, e As EventArgs)
         CargarTXT("ValorUSD", Matriz_ValorUSD)
     End Sub
 
-    Private Sub VerDolarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_VerDolar.Click
+    Private Sub VerDolarToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Dolar.ShowDialog()
     End Sub
 
-    Private Sub VerRedesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_VerRedes.Click
+    Private Sub VerRedesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Red.ShowDialog()
     End Sub
 
-    Private Sub VerMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_VerMonedas.Click
+    Private Sub VerMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Monedas.ShowDialog()
     End Sub
 
-    Private Sub CargaRedesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_CargaRedes.Click
+    Private Sub CargaRedesToolStripMenuItem_Click(sender As Object, e As EventArgs)
         CargarTXT("Redes", Matriz_Redes)
     End Sub
 
-    Private Sub CargaMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles Menu_CargaMonedas.Click
+    Private Sub CargaMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs)
         CargarTXT("Monedas", Matriz_Monedas)
     End Sub
+
+
     '
     '
     '
