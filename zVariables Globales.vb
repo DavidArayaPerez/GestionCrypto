@@ -74,8 +74,8 @@ Module zVariables_Globales
         GuardarParametros(RutaArchivo, ArchivoFinal)
     End Sub
     Public Sub CargaFormulario()
-        F_Solicitud.Inicializacion()
-        F_Solicitud.ShowDialog()
+        F_zPrincipal.Inicializacion()
+        F_zPrincipal.ShowDialog()
     End Sub
     '
     '

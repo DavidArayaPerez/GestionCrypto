@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{141979E1-B9A6-48CF-AA46-5AA65D1328F9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>GestionCrypto.F_zInicio</StartupObject>
+    <StartupObject>GestionCrypto.F_zPrincipal</StartupObject>
     <RootNamespace>GestionCrypto</RootNamespace>
     <AssemblyName>GestionCrypto</AssemblyName>
     <FileAlignment>512</FileAlignment>
@@ -321,12 +321,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="F_zInicio.Designer.vb">
-      <DependentUpon>F_zInicio.vb</DependentUpon>
-    </Compile>
-    <Compile Include="F_zInicio.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="zAPI_CoinGecko.vb" />
     <Compile Include="mCompras.vb" />
     <Compile Include="mDespositos.vb" />
@@ -354,10 +348,10 @@
     <Compile Include="xFunciones Texto.vb" />
     <Compile Include="xFunciones Matematicas.vb" />
     <Compile Include="xFunciones_Matriz.vb" />
-    <Compile Include="F_Solicitud.Designer.vb">
-      <DependentUpon>F_Solicitud.vb</DependentUpon>
+    <Compile Include="F_zPrincipal.Designer.vb">
+      <DependentUpon>F_zPrincipal.vb</DependentUpon>
     </Compile>
-    <Compile Include="F_Solicitud.vb">
+    <Compile Include="F_zPrincipal.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -369,11 +363,8 @@
     <Compile Include="zVariables Globales.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="F_zInicio.resx">
-      <DependentUpon>F_zInicio.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="F_Solicitud.resx">
-      <DependentUpon>F_Solicitud.vb</DependentUpon>
+    <EmbeddedResource Include="F_zPrincipal.resx">
+      <DependentUpon>F_zPrincipal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

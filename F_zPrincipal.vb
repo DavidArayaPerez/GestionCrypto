@@ -5,7 +5,7 @@
 '
 '
 '
-Public Class F_Solicitud
+Public Class F_zPrincipal
     '
     '
     '
@@ -857,8 +857,8 @@ Public Class F_Solicitud
         '
         '
         '
-        CargaFormulario()
-        Me.Close()
+        'CargaFormulario()
+        'Me.Close()
         '
         'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
         'CargarTXT("Pares", Matriz_Pares)
