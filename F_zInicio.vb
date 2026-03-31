@@ -24,11 +24,10 @@ Public Class F_zInicio
         '
         '
         CargarTXT("Monedas", Matriz_Monedas)
+        OrdenarMatriz_Monedas()
+
         '
         '
-
-
-
         CargarTXT("Exchange", Matriz_Exchange)
         CargarTXT("Billeteras", Matriz_Billeteras)
         '

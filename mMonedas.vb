@@ -25,9 +25,10 @@ Module mMonedas
     '   13      market_cap_rank
     '
     '
-
     'Dim monedas = Await CoinGeckoService.ObtenerMonedasAsync(cantidad:=100)
-
+    '
+    '
+    '
     Public Sub ActualizarMonedas()
         'Carga valores actualizados de MONEDAS
         API_CoinGecko_Monedas(250, 1)
@@ -35,15 +36,26 @@ Module mMonedas
         API_CoinGecko_Monedas(250, 3)
         API_CoinGecko_Monedas(250, 4)
         API_CoinGecko_Monedas(250, 5)
-        API_CoinGecko_Monedas(250, 6)
-        API_CoinGecko_Monedas(250, 7)
-        API_CoinGecko_Monedas(250, 8)
-        API_CoinGecko_Monedas(250, 9)
-        API_CoinGecko_Monedas(250, 10)
-        API_CoinGecko_Monedas(250, 11)
-        API_CoinGecko_Monedas(250, 12)
     End Sub
-
+    Public Sub OrdenarMatriz_Monedas()
+        Dim V1, V2 As Integer
+        For i As Integer = 1 To Matriz_MonedasTF - 1
+            V1 = Val(Matriz_Monedas(i, 13))
+            For j As Integer = i + 1 To Matriz_MonedasTF
+                V2 = Matriz_Monedas(j, 13)
+                If V2 > 0 Then
+                    If V1 > V2 Then
+                        For k As Integer = 0 To Matriz_MonedasTC - 1
+                            Dim Temp As String = Matriz_Monedas(i, k)
+                            Matriz_Monedas(i, k) = Matriz_Monedas(j, k)
+                            Matriz_Monedas(j, k) = Temp
+                        Next k
+                    End If
+                End If
+            Next j
+        Next i
+        Guardar_Matrices("Monedas")
+    End Sub
     '
     '
     '
