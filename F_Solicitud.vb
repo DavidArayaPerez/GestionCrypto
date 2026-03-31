@@ -102,6 +102,7 @@ Public Class F_Solicitud
             T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
             L_Monedas.Items.Add(T)
         Next i
+        T_Busqueda_Monedas.Text = ""
         '
         '
         '
@@ -520,7 +521,6 @@ Public Class F_Solicitud
         T_SupplyMaximo_Moneda.Text = ""
         T_ContractAddress_Moneda.Text = ""
         T_MarketCapRank_Moneda.Text = ""
-        T_Busqueda_Monedas.Text = ""
         rT_NotaMoneda.Text = ""
         '
         L_IDmoneda_Moneda.Enabled = Habilitar
@@ -805,12 +805,15 @@ Public Class F_Solicitud
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
-    Private Sub L_Monedas_DoubleClick(sender As Object, e As EventArgs) Handles L_Monedas.DoubleClick
+    Private Sub L_Monedas_Click(sender As Object, e As EventArgs) Handles L_Monedas.Click
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Monedas.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
+    End Sub
+    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+
     End Sub
 
     Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
@@ -847,14 +850,16 @@ Public Class F_Solicitud
         For i As Integer = 1 To Matriz_MonedasTF
             Dim Simbolo As String = Matriz_Monedas(i, 2).ToString().ToUpper()
             If Filtro = "" OrElse Simbolo.StartsWith(Filtro) Then
-                L_Monedas.Items.Add(Matriz_Monedas(i, 2))
+                Dim T As String = Matriz_Monedas(i, 3) & " (" & i & ")"
+                L_Monedas.Items.Add(T)
             End If
         Next
     End Sub
 
 
-
-
+    '
+    '
+    '
     '
     '
     '
