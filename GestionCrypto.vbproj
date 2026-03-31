@@ -321,6 +321,24 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F_Dolar.Designer.vb">
+      <DependentUpon>F_Dolar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Dolar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Monedas.Designer.vb">
+      <DependentUpon>F_Monedas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Monedas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Red.Designer.vb">
+      <DependentUpon>F_Red.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Red.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="zAPI_CoinGecko.vb" />
     <Compile Include="mCompras.vb" />
     <Compile Include="mDespositos.vb" />
@@ -363,6 +381,15 @@
     <Compile Include="zVariables Globales.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_Dolar.resx">
+      <DependentUpon>F_Dolar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Monedas.resx">
+      <DependentUpon>F_Monedas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Red.resx">
+      <DependentUpon>F_Red.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_zPrincipal.resx">
       <DependentUpon>F_zPrincipal.vb</DependentUpon>
     </EmbeddedResource>

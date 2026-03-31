@@ -877,7 +877,7 @@ Public Class F_zPrincipal
         Me.Close()
     End Sub
 
-    Private Sub B_NuevoMoneda_Click(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
+    Private Sub B_NuevoMoneda_Click(sender As Object, e As EventArgs)
         Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
         Dim Acronimo As String = InputBox(T, "Nueva Moneda")
         '
@@ -889,39 +889,39 @@ Public Class F_zPrincipal
     End Sub
     '
     '
-    Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
+    Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs)
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Red.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
-    Private Sub L_Monedas_Click(sender As Object, e As EventArgs) Handles L_Monedas.Click
+    Private Sub L_Monedas_Click(sender As Object, e As EventArgs)
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Monedas.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
-    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub Label65_Click(sender As Object, e As EventArgs) Handles Label65.Click
+    Private Sub Label65_Click(sender As Object, e As EventArgs)
         If VariableDeInicio Then Exit Sub
         If Len(T_URLexplorador_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLexplorador_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
-    Private Sub Label73_Click(sender As Object, e As EventArgs) Handles Label73.Click
+    Private Sub Label73_Click(sender As Object, e As EventArgs)
         If VariableDeInicio Then Exit Sub
         If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLlogo_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
-    Private Sub Label72_Click(sender As Object, e As EventArgs) Handles Label72.Click
+    Private Sub Label72_Click(sender As Object, e As EventArgs)
         If VariableDeInicio Then Exit Sub
         If Len(T_URLrpc_Red.Text) < 3 Then Exit Sub
         '
@@ -929,12 +929,12 @@ Public Class F_zPrincipal
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
 
-    Private Sub B_Actualizar_Monedas_Click(sender As Object, e As EventArgs) Handles B_Actualizar_Monedas.Click
+    Private Sub B_Actualizar_Monedas_Click(sender As Object, e As EventArgs)
         ActualizarMonedas()
         OrdenarMatriz_Monedas()
         Guardar_Matrices("Monedas")
     End Sub
-    Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs) Handles T_Busqueda_Monedas.KeyUp
+    Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs)
         If VariableDeInicio Then Exit Sub
         Dim Filtro As String = T_Busqueda_Monedas.Text.Trim().ToUpper()
         L_Monedas.Items.Clear()
@@ -947,7 +947,7 @@ Public Class F_zPrincipal
         Next
     End Sub
 
-    Private Sub B_GrabarMoneda_Click(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
+    Private Sub B_GrabarMoneda_Click(sender As Object, e As EventArgs)
         GrabarMoneda()
     End Sub
     '
