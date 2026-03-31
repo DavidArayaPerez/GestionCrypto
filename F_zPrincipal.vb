@@ -1,30 +1,12 @@
 ﻿'
 '
 '
-
-'
-'
-'
 Public Class F_zPrincipal
     '
     '
     '
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        '
         Parametros()
-        '
-        'Carga valores actualizados del DOLAR
-        'GuardarValorUSD(2022)  GuardarValorUSD(2023)   GuardarValorUSD(2024)   GuardarValorUSD(2025)
-        GuardarValorUSD(2026)
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
-        '
-        '
-        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
-        '
-        '
-        CargarTXT("Monedas", Matriz_Monedas)
-        '
-        '
         CargarTXT("Exchange", Matriz_Exchange)
         CargarTXT("Billeteras", Matriz_Billeteras)
         '
@@ -70,11 +52,11 @@ Public Class F_zPrincipal
         LimpiezaTraspaso()
         LimpiezaPool()
         LimpiezaMovimiento()
-        LimpiezaMoneda()
+
         LimpiezaBilletera()
         LimpiezaExchange()
         LimpiezaValorMonedas()
-        LimpiezaRedes()
+
         '
         LlenarList()
         LlenarExchange()
@@ -144,12 +126,7 @@ Public Class F_zPrincipal
         '
         '
         '   2   Acronimo
-        L_Monedas.Items.Clear()
-        For i As Integer = 1 To Matriz_MonedasTF
-            T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
-            L_Monedas.Items.Add(T)
-        Next i
-        T_Busqueda_Monedas.Text = ""
+
         '
         '
         '
@@ -173,22 +150,14 @@ Public Class F_zPrincipal
         '
         C_MonedasValorMonedas.Text = ""
         C_MonedasValorMonedas.Items.Clear()
-        L_Monedas.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
             T = Matriz_Monedas(i, 3) & " (" & i & ")"
             C_MonedasValorMonedas.Items.Add(T)
-            L_Monedas.Items.Add(T)
         Next i
         '
         '
         '
-        '2      Nombre_Oficial         Nombre completo
-        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
-        L_Red.Items.Clear()
-        For i As Integer = 1 To Matriz_RedesTF
-            T = Matriz_Redes(i, 2) & " (" & i & ")"
-            L_Red.Items.Add(T)
-        Next i
+
         '
         '
     End Sub
@@ -552,128 +521,6 @@ Public Class F_zPrincipal
     End Sub
     '
     '
-    Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)
-        'MONEDA
-        L_IDmoneda_Moneda.Text = ""
-        T_IDdespliegue_Moneda.Text = ""
-        T_Simbolo_Moneda.Text = ""
-        T_AcronimoMoneda.Text = ""
-        T_SlugAPI_Moneda.Text = ""
-        T_TipoActivo_Moneda.Text = ""
-        T_SubtipoStablecoin_Moneda.Text = ""
-        T_MonedaParidad_Moneda.Text = ""
-        T_Centralizada_Moneda.Text = ""
-        T_ActivoSubyacente_Moneda.Text = ""
-        T_IDredNativa_Moneda.Text = ""
-        T_SupplyMaximo_Moneda.Text = ""
-        T_ContractAddress_Moneda.Text = ""
-        T_MarketCapRank_Moneda.Text = ""
-        rT_NotaMoneda.Text = ""
-        L_Fila_Moneda.Text = ""
-        '
-        L_IDmoneda_Moneda.Enabled = Habilitar
-        T_IDdespliegue_Moneda.Enabled = Habilitar
-        T_Simbolo_Moneda.Enabled = Habilitar
-        T_AcronimoMoneda.Enabled = Habilitar
-        T_SlugAPI_Moneda.Enabled = Habilitar
-        T_TipoActivo_Moneda.Enabled = Habilitar
-        T_SubtipoStablecoin_Moneda.Enabled = Habilitar
-        T_MonedaParidad_Moneda.Enabled = Habilitar
-        T_Centralizada_Moneda.Enabled = Habilitar
-        T_ActivoSubyacente_Moneda.Enabled = Habilitar
-        T_IDredNativa_Moneda.Enabled = Habilitar
-        T_SupplyMaximo_Moneda.Enabled = Habilitar
-        T_ContractAddress_Moneda.Enabled = Habilitar
-        T_MarketCapRank_Moneda.Enabled = Habilitar
-        'T_Busqueda_Monedas.Enabled = Habilitar
-        rT_NotaMoneda.Enabled = Habilitar
-    End Sub
-    Private Sub VerMoneda(F As Integer)
-        LimpiezaMoneda(True)
-        If F < 1 Then Exit Sub
-        '   0       ID_Moneda
-        '   1       ID_Despliegue
-        '   2       Simbolo
-        '   3       Nombre_Oficial
-        '   4       Slug_API
-        '   5       Tipo_Activo
-        '   6       Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
-        '   7       Moneda_Paridad
-        '   8       Centralizada
-        '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
-        '   10      ID_Red                  Es el ID de la Matriz_Red
-        '   11      Supply_Maximo
-        '   12      Contract_Address
-        '   13     market_cap_rank
-        '
-        L_Fila_Moneda.Text = F
-        L_IDmoneda_Moneda.Text = Matriz_Monedas(F, 0)
-        T_IDdespliegue_Moneda.Text = Matriz_Monedas(F, 1)
-        T_Simbolo_Moneda.Text = Matriz_Monedas(F, 2)
-        T_AcronimoMoneda.Text = Matriz_Monedas(F, 3)
-        T_SlugAPI_Moneda.Text = Matriz_Monedas(F, 4)
-        T_TipoActivo_Moneda.Text = Matriz_Monedas(F, 5)
-        T_SubtipoStablecoin_Moneda.Text = Matriz_Monedas(F, 6)
-        T_MonedaParidad_Moneda.Text = Matriz_Monedas(F, 7)
-        T_Centralizada_Moneda.Text = Matriz_Monedas(F, 8)
-        T_ActivoSubyacente_Moneda.Text = Matriz_Monedas(F, 9)
-        T_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)       'xxxx
-        T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
-        T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
-        T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
-        '
-        '
-        Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)
-        If FilaRed = 0 Then
-            T_IDredNativa_Moneda.Text = ""
-        Else
-            T_IDredNativa_Moneda.Text = Matriz_Redes(FilaRed, 2)
-        End If
-        '
-        'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
-        'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
-    End Sub
-    Private Sub GrabarMoneda()
-        '   0       ID_Moneda
-        '   1       ID_Despliegue
-        '   2       Simbolo
-        '   3       Nombre_Oficial
-        '   4       Slug_API
-        '   5       Tipo_Activo
-        '   6       Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
-        '   7       Moneda_Paridad
-        '   8       Centralizada
-        '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
-        '   10      ID_Red                  Es el ID de la Matriz_Red
-        '   11      Supply_Maximo
-        '   12      Contract_Address
-        '   13     market_cap_rank
-        '
-        Dim F As Integer = L_Fila_Moneda.Text
-        Matriz_Monedas(F, 0) = L_IDmoneda_Moneda.Text
-        Matriz_Monedas(F, 1) = T_IDdespliegue_Moneda.Text
-        Matriz_Monedas(F, 2) = T_Simbolo_Moneda.Text
-        Matriz_Monedas(F, 3) = T_AcronimoMoneda.Text
-        Matriz_Monedas(F, 4) = T_SlugAPI_Moneda.Text
-        Matriz_Monedas(F, 5) = T_TipoActivo_Moneda.Text
-        Matriz_Monedas(F, 6) = T_SubtipoStablecoin_Moneda.Text
-        Matriz_Monedas(F, 7) = T_MonedaParidad_Moneda.Text
-        Matriz_Monedas(F, 8) = T_Centralizada_Moneda.Text
-        Matriz_Monedas(F, 9) = T_ActivoSubyacente_Moneda.Text
-        Matriz_Monedas(F, 10) = T_IDredNativa_Moneda.Text
-        Matriz_Monedas(F, 11) = T_SupplyMaximo_Moneda.Text
-        Matriz_Monedas(F, 12) = T_ContractAddress_Moneda.Text
-        Matriz_Monedas(F, 13) = T_MarketCapRank_Moneda.Text
-        '
-        '
-        Guardar_Matrices("Monedas")
-        MsgBox("Moneda guardada correctamente")
-        'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
-        'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
-    End Sub
-
-    '
-    '
     Private Sub LimpiezaBilletera(Optional Habilitar As Boolean = False)
         'BILLETERA
         T_NombreBilletera.Text = ""
@@ -739,108 +586,7 @@ Public Class F_zPrincipal
     End Sub
     '
     '
-    Private Sub LimpiezaRedes(Optional Habilitar As Boolean = False)
-        'REDES
-        L_IDRed_Red.Text = ""
-        T_ChainID_Red.Text = ""
-        T_NomOficial_Red.Text = ""
-        T_NomCorto_Red.Text = ""
-        T_APIcg_Red.Text = ""
-        T_L1padre_Red.Text = ""
-        T_TipoRollup_Red.Text = ""
-        T_TokenNativo_Red.Text = ""
-        T_Decimales_Red.Text = ""
-        T_TipoBloque_Red.Text = ""
-        T_Color_Red.Text = ""
-        T_URLexplorador_Red.Text = ""
-        T_URLlogo_Red.Text = ""
-        T_URLrpc_Red.Text = ""
-        T_TipoCapa_Red.Text = ""
-        T_MecanismoConsenso_Red.Text = ""
-        rT_NotaRed.Text = ""
-        '
-        L_IDRed_Red.Enabled = Habilitar
-        T_ChainID_Red.Enabled = Habilitar
-        T_NomOficial_Red.Enabled = Habilitar
-        T_NomCorto_Red.Enabled = Habilitar
-        T_APIcg_Red.Enabled = Habilitar
-        T_L1padre_Red.Enabled = Habilitar
-        T_TipoRollup_Red.Enabled = Habilitar
-        T_TokenNativo_Red.Enabled = Habilitar
-        T_Decimales_Red.Enabled = Habilitar
-        T_TipoBloque_Red.Enabled = Habilitar
-        T_Color_Red.Enabled = Habilitar
-        T_URLexplorador_Red.Enabled = Habilitar
-        T_URLlogo_Red.Enabled = Habilitar
-        T_URLrpc_Red.Enabled = Habilitar
-        T_TipoCapa_Red.Enabled = Habilitar
-        T_MecanismoConsenso_Red.Enabled = Habilitar
-        rT_NotaRed.Enabled = Habilitar
-
-    End Sub
-    Private Sub VerRedes(F As Integer)
-        LimpiezaRedes(True)
-        If F < 1 Then Exit Sub
-        '0      ID_Interno
-        '1      Chain_ID               Identificador único para redes EVM
-        '2      Nombre_Oficial         Nombre completo
-        '3      Nombre_Corto           Para mostrar en pantalla
-        '4      Slug_API               Identificador en APIs como CoinGecko
-        '5      Tipo_Capa              Arquitectura de la red, L1 / L2 / Sidechain
-        '6      L1_Padre               Solo aplica si es L2 — a qué L1 está anclada
-        '7      Tipo_Rollup            Solo aplica a L2s
-        '8      Compatible_EVM         Define si usa el estándar de Ethereum           Sí / No
-        '9      Mecanismo_Consenso     Cómo valida la red                              PoW, PoS, PoH
-        '10     Token_Nativo           En ARB el token nativo es ETH, no ARB.
-        '                            El token ARB existe, pero es el token de gobernanza del protocolo,
-        '                                no el que se usa para pagar el gas.
-        '                                Esto aplica también a otras redes como Base y Optimism,
-        '                                    que también usan ETH como gas aunque tengan su propio token de gobernanza.
-        '11     Decimales              Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
-        '12     Tiempo_Bloque          Velocidad de confirmación                       12 seg, 0.4 seg
-        '13     Color_Marca            Para mostrar en la UI                           #627EEA                     
-        '14     URL_Explorador         Para consultar transacciones                    etherscan.io
-        '15     URL_Logo               Ícono de la red                                 https://...
-        '16     URL_RPC                Para conectarse a la red programáticamente      https://...
-        '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
-        '
-        L_IDRed_Red.Text = Matriz_Redes(F, 0)
-        T_ChainID_Red.Text = Matriz_Redes(F, 1)
-        T_NomOficial_Red.Text = Matriz_Redes(F, 2)
-        T_NomCorto_Red.Text = Matriz_Redes(F, 3)
-        T_APIcg_Red.Text = Matriz_Redes(F, 4)
-        T_TipoCapa_Red.Text = Matriz_Redes(F, 5)
-        T_L1padre_Red.Text = Matriz_Redes(F, 6)
-        T_TipoRollup_Red.Text = Matriz_Redes(F, 7)
-        '8 EVM
-        T_MecanismoConsenso_Red.Text = Matriz_Redes(F, 9)
-        T_TokenNativo_Red.Text = Matriz_Redes(F, 10)
-        T_Decimales_Red.Text = Matriz_Redes(F, 11)
-        T_TipoBloque_Red.Text = Matriz_Redes(F, 12)
-        T_Color_Red.Text = Matriz_Redes(F, 13)
-        T_URLexplorador_Red.Text = Matriz_Redes(F, 14)
-        T_URLlogo_Red.Text = Matriz_Redes(F, 15)
-        T_URLrpc_Red.Text = Matriz_Redes(F, 16)
-        '17 Activo
-        '
-        '--------------------------------------------
-        Dim T As String
-        '
-        '8 EVM                  Matriz_Redes(F, 8)
-        T = UCase(Matriz_Redes(F, 8))
-        If T = "SI" Then
-            CB_EVM_Red.Checked = True
-        Else
-            CB_EVM_Red.Checked = False
-        End If
-        '
-        '17 Activo              Matriz_Redes(F, 17)
-        If Matriz_Redes(F, 17) = "SI" Then
-            CB_Activo_Red.Checked = True
-        Else
-            CB_Activo_Red.Checked = False
-        End If
-    End Sub
+    '
     '
     '
     '
@@ -873,82 +619,23 @@ Public Class F_zPrincipal
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         MensajeBarra_Hora(StatusStrip1)
     End Sub
-    Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
-        Me.Close()
-    End Sub
-
-    Private Sub B_NuevoMoneda_Click(sender As Object, e As EventArgs)
-        Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
-        Dim Acronimo As String = InputBox(T, "Nueva Moneda")
-        '
-        Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
-        If Fila > 0 Then
-            VerMoneda(Fila)
-            Exit Sub
-        End If
-    End Sub
-    '
-    '
-    Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        Dim T As String = L_Red.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        VerRedes(Mid(T, x + 1, Len(T) - x - 1))
-    End Sub
-    Private Sub L_Monedas_Click(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        Dim T As String = L_Monedas.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
-    End Sub
-    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label65_Click(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        If Len(T_URLexplorador_Red.Text) < 3 Then Exit Sub
-        '
-        Dim URL As String = "http://" & T_URLexplorador_Red.Text
-        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
-    End Sub
-    Private Sub Label73_Click(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
-        '
-        Dim URL As String = "http://" & T_URLlogo_Red.Text
-        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
-    End Sub
-    Private Sub Label72_Click(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        If Len(T_URLrpc_Red.Text) < 3 Then Exit Sub
-        '
-        Dim URL As String = "http://" & T_URLrpc_Red.Text
-        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
-    End Sub
 
     Private Sub B_Actualizar_Monedas_Click(sender As Object, e As EventArgs)
         ActualizarMonedas()
         OrdenarMatriz_Monedas()
         Guardar_Matrices("Monedas")
     End Sub
-    Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs)
-        If VariableDeInicio Then Exit Sub
-        Dim Filtro As String = T_Busqueda_Monedas.Text.Trim().ToUpper()
-        L_Monedas.Items.Clear()
-        For i As Integer = 1 To Matriz_MonedasTF
-            Dim Simbolo As String = Matriz_Monedas(i, 2).ToString().ToUpper()
-            If Filtro = "" OrElse Simbolo.StartsWith(Filtro) Then
-                Dim T As String = Matriz_Monedas(i, 3) & " (" & i & ")"
-                L_Monedas.Items.Add(T)
-            End If
-        Next
+    Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
+        Me.Close()
     End Sub
-
-    Private Sub B_GrabarMoneda_Click(sender As Object, e As EventArgs)
-        GrabarMoneda()
+    Private Sub B_Dolar_Click(sender As Object, e As EventArgs) Handles B_Dolar.Click
+        F_Dolar.ShowDialog()
+    End Sub
+    Private Sub B_Redes_Click(sender As Object, e As EventArgs) Handles B_Redes.Click
+        F_Red.ShowDialog()
+    End Sub
+    Private Sub B_Monedas_Click(sender As Object, e As EventArgs) Handles B_Monedas.Click
+        F_Monedas.ShowDialog()
     End Sub
     '
     '

@@ -243,6 +243,7 @@ Partial Class F_zPrincipal
         Me.L_Depositos = New System.Windows.Forms.ListBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.B_Redes = New System.Windows.Forms.Button()
+        Me.B_Dolar = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -2421,12 +2422,24 @@ Partial Class F_zPrincipal
         Me.B_Redes.Text = "Redes"
         Me.B_Redes.UseVisualStyleBackColor = False
         '
+        'B_Dolar
+        '
+        Me.B_Dolar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Dolar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Dolar.Location = New System.Drawing.Point(226, 42)
+        Me.B_Dolar.Name = "B_Dolar"
+        Me.B_Dolar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Dolar.TabIndex = 427
+        Me.B_Dolar.Text = "Dolar"
+        Me.B_Dolar.UseVisualStyleBackColor = False
+        '
         'F_zPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(1035, 716)
+        Me.Controls.Add(Me.B_Dolar)
         Me.Controls.Add(Me.B_Redes)
         Me.Controls.Add(Me.B_Monedas)
         Me.Controls.Add(Me.TabControl1)
@@ -2683,4 +2696,5 @@ Partial Class F_zPrincipal
     Friend WithEvents Label20 As Label
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents B_Redes As Button
+    Friend WithEvents B_Dolar As Button
 End Class

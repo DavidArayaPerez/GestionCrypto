@@ -505,6 +505,7 @@ Partial Class F_Red
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(989, 655)
         Me.Controls.Add(Me.L_Fila_Red)
         Me.Controls.Add(Me.B_Cerrar)
