@@ -7,8 +7,7 @@ Imports System.IO
 '
 Public Class F_zInicio
     '
-    ' Traer 100 monedas
-
+    '
     '
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         '
