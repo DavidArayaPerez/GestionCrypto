@@ -6,6 +6,8 @@ Public Class F_zPrincipal
     '
     '
     Private Sub FrmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        VariableDeInicio = True
+
         Parametros()
         CargarTXT("Exchange", Matriz_Exchange)
         CargarTXT("Billeteras", Matriz_Billeteras)
@@ -31,15 +33,10 @@ Public Class F_zPrincipal
         'Ordenar_Movimientos()
         '
         '
+        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
+        CargarTXT("Monedas", Matriz_Monedas)
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
         '
-        'CargaFormulario()
-        'Me.Close()
-        '
-        'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
-        'CargarTXT("Pares", Matriz_Pares)
-    End Sub
-    Public Sub Inicializacion()
-        VariableDeInicio = True
         '
         'CargArbolDesdeMatrizSolicitudes(Arbol, "Gestion")
         '
@@ -63,7 +60,11 @@ Public Class F_zPrincipal
         LlenarMonedas()
         '
         VariableDeInicio = False
+        '
+        'Como tercer paso se cargan las relaciones que hay entre la Solicitud y los Expedientes, OrdenCompra y Documentos
+        'CargarTXT("Pares", Matriz_Pares)
     End Sub
+
     Private Sub LlenarList()
         Dim T As String '= ""
         '
@@ -608,58 +609,41 @@ Public Class F_zPrincipal
     '---------------------------------------------------------------------------------------------------------------------
     '
     '
-    '
 
-    '
-    '
-    Private Sub F_Solicitud_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Inicializacion()
-    End Sub
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs)
-        MensajeBarra_Hora(StatusStrip1)
-    End Sub
-
-    Private Sub B_Actualizar_Monedas_Click(sender As Object, e As EventArgs)
-        ActualizarMonedas()
-        OrdenarMatriz_Monedas()
-        Guardar_Matrices("Monedas")
-    End Sub
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
-        Me.Close()
+        End
     End Sub
-    Private Sub B_Dolar_Click(sender As Object, e As EventArgs) Handles B_Dolar.Click
-        F_Dolar.ShowDialog()
-    End Sub
+    '--------------------------------------------------------------------------------------------------------------
     Private Sub B_Redes_Click(sender As Object, e As EventArgs) Handles B_Redes.Click
         F_Red.ShowDialog()
     End Sub
     Private Sub B_Monedas_Click(sender As Object, e As EventArgs) Handles B_Monedas.Click
         F_Monedas.ShowDialog()
     End Sub
-
-    Private Sub CargaDolarToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
-    End Sub
-
-    Private Sub VerDolarToolStripMenuItem_Click(sender As Object, e As EventArgs)
+    Private Sub B_Dolar_Click(sender As Object, e As EventArgs) Handles B_Dolar.Click
         F_Dolar.ShowDialog()
     End Sub
-
-    Private Sub VerRedesToolStripMenuItem_Click(sender As Object, e As EventArgs)
+    '--------------------------------------------------------------------------------------------------------------
+    Private Sub Menu_CargarMonedas_Click(sender As Object, e As EventArgs) Handles Menu_CargarMonedas.Click
+        CargarTXT("Monedas", Matriz_Monedas)
+    End Sub
+    Private Sub Menu_CargarRedes_Click(sender As Object, e As EventArgs) Handles Menu_CargarRedes.Click
+        CargarTXT("Redes", Matriz_Redes)
+    End Sub
+    Private Sub Menu_CargarDolar_Click(sender As Object, e As EventArgs) Handles Menu_CargarDolar.Click
+        GuardarValorUSD(2026)
+    End Sub
+    Private Sub Menu_VerDolar_Click(sender As Object, e As EventArgs) Handles Menu_VerDolar.Click
+        F_Dolar.ShowDialog()
+    End Sub
+    Private Sub Menu_VerMonedas_Click(sender As Object, e As EventArgs) Handles Menu_VerMonedas.Click
+        F_Monedas.ShowDialog()
+    End Sub
+    Private Sub Menu_VerRedes_Click(sender As Object, e As EventArgs) Handles Menu_VerRedes.Click
         F_Red.ShowDialog()
     End Sub
 
-    Private Sub VerMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        F_Monedas.ShowDialog()
-    End Sub
 
-    Private Sub CargaRedesToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        CargarTXT("Redes", Matriz_Redes)
-    End Sub
-
-    Private Sub CargaMonedasToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        CargarTXT("Monedas", Matriz_Monedas)
-    End Sub
 
 
     '

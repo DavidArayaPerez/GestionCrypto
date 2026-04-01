@@ -105,6 +105,8 @@ Public Class F_Monedas
         '   13     market_cap_rank
         '
         Dim F As Integer = L_Fila_Moneda.Text
+        If F = 0 Then Exit Sub
+
         Matriz_Monedas(F, 0) = L_IDmoneda_Moneda.Text
         Matriz_Monedas(F, 1) = L_IDdespliegue_Moneda.Text
         Matriz_Monedas(F, 2) = T_Simbolo_Moneda.Text
@@ -136,7 +138,7 @@ Public Class F_Monedas
 
 
     Private Sub F_Monedas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CargarTXT("Monedas", Matriz_Monedas)
+
         LimpiezaMoneda()
         '
         L_Monedas.Items.Clear()
@@ -149,10 +151,7 @@ Public Class F_Monedas
 
     End Sub
 
-
-
-
-    Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs)
+    Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs) Handles T_Busqueda_Monedas.KeyUp
         If VariableDeInicio Then Exit Sub
         Dim Filtro As String = T_Busqueda_Monedas.Text.Trim().ToUpper()
         L_Monedas.Items.Clear()
@@ -164,22 +163,8 @@ Public Class F_Monedas
             End If
         Next
     End Sub
-    Private Sub L_Monedas_Click(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        Dim T As String = L_Monedas.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
-    End Sub
-    Private Sub B_NuevoMoneda_Click(sender As Object, e As EventArgs)
-        Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
-        Dim Acronimo As String = InputBox(T, "Nueva Moneda")
-        '
-        Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
-        If Fila > 0 Then
-            VerMoneda(Fila)
-            Exit Sub
-        End If
+    Private Sub T_Busqueda_Monedas_TextChanged(sender As Object, e As EventArgs) Handles T_Busqueda_Monedas.TextChanged
+
     End Sub
     Private Sub B_GrabarMoneda_Click(sender As Object, e As EventArgs)
         GrabarMoneda()
@@ -188,7 +173,25 @@ Public Class F_Monedas
         Me.Close()
     End Sub
 
-
+    Private Sub B_Actualizar_Monedas_Click(sender As Object, e As EventArgs)
+        ActualizarMonedas()
+        OrdenarMatriz_Monedas()
+        Guardar_Matrices("Monedas")
+    End Sub
+    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+        If VariableDeInicio Then Exit Sub
+        Dim T As String = L_Monedas.Text
+        Dim x As Integer = InStr(T, "(")
+        If x = 0 Then Exit Sub
+        VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
+    End Sub
+    Private Sub B_NuevoMoneda_Click_1(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
+        Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
+        Dim Acronimo As String = InputBox(T, "Nueva Moneda")
+        '
+        Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
+        If Fila > 0 Then VerMoneda(Fila)
+    End Sub
 
 
 End Class

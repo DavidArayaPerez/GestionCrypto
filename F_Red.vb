@@ -116,7 +116,7 @@ Public Class F_Red
     Private Sub F_Red_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim T As String
         LimpiezaRedes()
-        CargarTXT("Redes", Matriz_Redes)                'CambiarIDRedes()
+
 
         '2      Nombre_Oficial         Nombre completo
         OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
@@ -126,37 +126,37 @@ Public Class F_Red
             L_Red.Items.Add(T)
         Next i
     End Sub
-    Private Sub Label65_Click(sender As Object, e As EventArgs)
+    Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
+        Me.Close()
+    End Sub
+
+
+    Private Sub Label65_Click_1(sender As Object, e As EventArgs) Handles Label65.Click
         If VariableDeInicio Then Exit Sub
         If Len(T_URLexplorador_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLexplorador_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
-    Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
-        Me.Close()
-    End Sub
-    Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs)
+    Private Sub L_Red_ControlAdded(sender As Object, e As ControlEventArgs) Handles L_Red.ControlAdded
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Red.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
-    Private Sub Label73_Click(sender As Object, e As EventArgs)
-        If VariableDeInicio Then Exit Sub
-        If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
-        '
-        Dim URL As String = "http://" & T_URLlogo_Red.Text
-        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
-    End Sub
-    Private Sub Label72_Click(sender As Object, e As EventArgs)
+    Private Sub Label72_Click_1(sender As Object, e As EventArgs) Handles Label72.Click
         If VariableDeInicio Then Exit Sub
         If Len(T_URLrpc_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLrpc_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
-
-
+    Private Sub Label73_Click_1(sender As Object, e As EventArgs) Handles Label73.Click
+        If VariableDeInicio Then Exit Sub
+        If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
+        '
+        Dim URL As String = "http://" & T_URLlogo_Red.Text
+        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
+    End Sub
 End Class

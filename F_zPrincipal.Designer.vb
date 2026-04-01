@@ -240,12 +240,12 @@ Partial Class F_zPrincipal
         Me.Funcionalidad00ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Prueba12ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_Monedas = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Redes = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Menu_Dolar = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_VerMonedas = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_CargarMonedas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Redes = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_VerRedes = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_CargarRedes = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Menu_Dolar = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_VerDolar = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_CargarDolar = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatusStrip1.SuspendLayout()
@@ -2424,31 +2424,24 @@ Partial Class F_zPrincipal
         Me.Menu_Monedas.Size = New System.Drawing.Size(68, 20)
         Me.Menu_Monedas.Text = "Monedas"
         '
+        'Menu_VerMonedas
+        '
+        Me.Menu_VerMonedas.Name = "Menu_VerMonedas"
+        Me.Menu_VerMonedas.Size = New System.Drawing.Size(161, 22)
+        Me.Menu_VerMonedas.Text = "Ver Monedas"
+        '
+        'Menu_CargarMonedas
+        '
+        Me.Menu_CargarMonedas.Name = "Menu_CargarMonedas"
+        Me.Menu_CargarMonedas.Size = New System.Drawing.Size(161, 22)
+        Me.Menu_CargarMonedas.Text = "Cargar Monedas"
+        '
         'Menu_Redes
         '
         Me.Menu_Redes.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerRedes, Me.Menu_CargarRedes})
         Me.Menu_Redes.Name = "Menu_Redes"
         Me.Menu_Redes.Size = New System.Drawing.Size(50, 20)
         Me.Menu_Redes.Text = "Redes"
-        '
-        'Menu_Dolar
-        '
-        Me.Menu_Dolar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerDolar, Me.Menu_CargarDolar})
-        Me.Menu_Dolar.Name = "Menu_Dolar"
-        Me.Menu_Dolar.Size = New System.Drawing.Size(47, 20)
-        Me.Menu_Dolar.Text = "Dolar"
-        '
-        'Menu_VerMonedas
-        '
-        Me.Menu_VerMonedas.Name = "Menu_VerMonedas"
-        Me.Menu_VerMonedas.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_VerMonedas.Text = "Ver Monedas"
-        '
-        'Menu_CargarMonedas
-        '
-        Me.Menu_CargarMonedas.Name = "Menu_CargarMonedas"
-        Me.Menu_CargarMonedas.Size = New System.Drawing.Size(180, 22)
-        Me.Menu_CargarMonedas.Text = "Cargar Monedas"
         '
         'Menu_VerRedes
         '
@@ -2461,6 +2454,13 @@ Partial Class F_zPrincipal
         Me.Menu_CargarRedes.Name = "Menu_CargarRedes"
         Me.Menu_CargarRedes.Size = New System.Drawing.Size(180, 22)
         Me.Menu_CargarRedes.Text = "Cargar Redes"
+        '
+        'Menu_Dolar
+        '
+        Me.Menu_Dolar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Menu_VerDolar, Me.Menu_CargarDolar})
+        Me.Menu_Dolar.Name = "Menu_Dolar"
+        Me.Menu_Dolar.Size = New System.Drawing.Size(47, 20)
+        Me.Menu_Dolar.Text = "Dolar"
         '
         'Menu_VerDolar
         '
