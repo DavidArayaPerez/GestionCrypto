@@ -76,13 +76,32 @@ Public Class F_zPrincipal
     End Sub
     '--------------------------------------------------------------------------------------------------------------
     Private Sub B_Redes_Click(sender As Object, e As EventArgs) Handles B_Redes.Click
-        F_Red.ShowDialog()
+        F_Red.Show()
     End Sub
     Private Sub B_Monedas_Click(sender As Object, e As EventArgs) Handles B_Monedas.Click
-        F_Monedas.ShowDialog()
+        F_Monedas.Show()
     End Sub
     Private Sub B_Dolar_Click(sender As Object, e As EventArgs) Handles B_Dolar.Click
-        F_Dolar.ShowDialog()
+        F_Dolar.Show()
+    End Sub
+
+    Private Sub B_Billetera_Click(sender As Object, e As EventArgs) Handles B_Billetera.Click
+        F_Billetera.Show()
+    End Sub
+    Private Sub B_Compras_Click(sender As Object, e As EventArgs) Handles B_Compras.Click
+        F_Billetera.Show()
+    End Sub
+
+    Private Sub B_Depositos_Click(sender As Object, e As EventArgs) Handles B_Depositos.Click
+        F_Depositos.Show()
+    End Sub
+
+    Private Sub B_Movimientos_Click(sender As Object, e As EventArgs) Handles B_Movimientos.Click
+        F_Movimientos.Show()
+    End Sub
+
+    Private Sub B_PoolLiquidez_Click(sender As Object, e As EventArgs) Handles B_PoolLiquidez.Click
+        F_PoolLiquidez.Show()
     End Sub
 
     '

@@ -36,6 +36,7 @@ Module mMonedas
         API_CoinGecko_Monedas(250, 3)
         API_CoinGecko_Monedas(250, 4)
         API_CoinGecko_Monedas(250, 5)
+        MsgBox("Monedas actualizadas correctamente")
     End Sub
     Public Sub OrdenarMatriz_Monedas()
         Dim V1, V2 As Integer

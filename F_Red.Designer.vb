@@ -62,6 +62,7 @@ Partial Class F_Red
         Me.Label59 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.L_Fila_Red = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'rT_NotaRed
@@ -501,12 +502,25 @@ Partial Class F_Red
         Me.L_Fila_Red.TabIndex = 662
         Me.L_Fila_Red.Text = "L_Fila_Red"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Black
+        Me.Label1.Location = New System.Drawing.Point(428, 579)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(23, 13)
+        Me.Label1.TabIndex = 663
+        Me.Label1.Text = "Fila"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'F_Red
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(989, 623)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.L_Fila_Red)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.rT_NotaRed)
@@ -596,4 +610,5 @@ Partial Class F_Red
     Friend WithEvents Label59 As Label
     Friend WithEvents B_Cerrar As Button
     Friend WithEvents L_Fila_Red As Label
+    Friend WithEvents Label1 As Label
 End Class

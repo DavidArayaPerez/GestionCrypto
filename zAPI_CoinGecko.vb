@@ -90,6 +90,7 @@ Module zAPI_CoinGecko
                     Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                           '11     Supply_Maximo
                     'Matriz_Monedas(NuevaFila, 12) = 0                                      '12     Contract_Address
                     Matriz_Monedas(NuevaFila, 13) = MarketCapRank                           '13     market_cap_rank
+                    '
                     Guardar_Matrices("Monedas")
                 Else
                     If Val(Matriz_Monedas(i, 13)) <> MarketCapRank Then
@@ -106,8 +107,7 @@ Module zAPI_CoinGecko
     ' ---------------------------------------------------------------
     '  Detalle de una moneda por slug — genera una fila por red
     ' ---------------------------------------------------------------
-    Public Function API_CoinGecko_Detalle(ByVal slug As String) As List(Of Moneda)
-        Dim result As New List(Of Moneda)()
+    Public Sub API_CoinGecko_Detalle(ByVal slug As String)
         Dim url As String = CG_BASE_URL & $"coins/{slug}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         Try
@@ -115,67 +115,74 @@ Module zAPI_CoinGecko
             Dim item As JsonNode = JsonNode.Parse(json)
             '
             Dim slugAPI As String = ValorSeguro(item("id"))
-            Dim simbolo As String = ValorSeguro(item("symbol")).ToUpper()
-            Dim nombre As String = ValorSeguro(item("name"))
+            Dim Simbolo As String = ValorSeguro(item("symbol")).ToUpper()
+            Dim Nombre As String = ValorSeguro(item("name"))
+            Dim MarketCapRank As String = ValorSeguro(item("market_cap_rank"))
             '
             Dim supplyNode As JsonNode = item("market_data")?("max_supply")
-            Dim supplyMax As Long = 0
+            Dim Supply_Maximo As Long = 0
             If supplyNode IsNot Nothing AndAlso supplyNode.GetValueKind() <> JsonValueKind.Null Then
-                supplyMax = CLng(supplyNode.GetValue(Of Double)())
+                Supply_Maximo = CLng(supplyNode.GetValue(Of Double)())
             End If
             '
-            Dim idMoneda As String = GenerarID()
+            ' Buscar si la moneda ya existe en la matriz por símbolo
+            Dim SW As Boolean = True
+            Dim i As Integer
+            For i = 1 To Matriz_MonedasTF
+                If Matriz_Monedas(i, 2).ToUpper() = Simbolo Then
+                    SW = False
+                    Exit For
+                End If
+            Next
             '
             Dim platforms As JsonObject = item("platforms")?.AsObject()
             '
-            If platforms IsNot Nothing AndAlso platforms.Count > 0 Then
-                For Each plat As KeyValuePair(Of String, JsonNode) In platforms
-                    Dim address As String = If(plat.Value IsNot Nothing, plat.Value.ToString(), "0")
-                    If String.IsNullOrWhiteSpace(address) Then address = "0"
-                    '
-                    Dim m As New Moneda()
-                    m.ID_Moneda = idMoneda
-                    m.ID_Despliegue = GenerarID()
-                    m.Simbolo = simbolo
-                    m.Nombre_Oficial = nombre
-                    m.Slug_API = slugAPI
-                    m.Tipo_Activo = "token_defi"
-                    m.Subtipo_Stablecoin = "0"
-                    m.Moneda_Paridad = "0"
-                    m.Centralizada = "0"
-                    m.Activo_Subyacente = "0"
-                    m.ID_Red_Nativa = "0"
-                    m.Supply_Maximo = supplyMax
-                    m.Contract_Address = address
-                    m.Activa = "Si"
-                    '
-                    result.Add(m)
-                Next
+            If SW Then
+                ' ── MONEDA NUEVA: agregar una fila por cada plataforma (o una si no tiene) ──
+                If platforms IsNot Nothing AndAlso platforms.Count > 0 Then
+                    For Each plat As KeyValuePair(Of String, JsonNode) In platforms
+                        Dim address As String = If(plat.Value IsNot Nothing, plat.Value.ToString(), "0")
+                        If String.IsNullOrWhiteSpace(address) Then address = "0"
+                        '
+                        Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                        Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()     '0  ID_Moneda
+                        Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()     '1  ID_Despliegue
+                        Matriz_Monedas(NuevaFila, 2) = Simbolo                  '2  Simbolo
+                        Matriz_Monedas(NuevaFila, 3) = Nombre                   '3  Nombre_Oficial
+                        Matriz_Monedas(NuevaFila, 4) = slugAPI                  '4  Slug_API
+                        Matriz_Monedas(NuevaFila, 5) = "token_defi"             '5  Tipo_Activo
+                        Matriz_Monedas(NuevaFila, 11) = Supply_Maximo           '11 Supply_Maximo
+                        Matriz_Monedas(NuevaFila, 12) = address                 '12 Contract_Address
+                        Matriz_Monedas(NuevaFila, 13) = MarketCapRank           '13 market_cap_rank
+                    Next
+                Else
+                    Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()         '0  ID_Moneda
+                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()         '1  ID_Despliegue
+                    Matriz_Monedas(NuevaFila, 2) = Simbolo                      '2  Simbolo
+                    Matriz_Monedas(NuevaFila, 3) = Nombre                       '3  Nombre_Oficial
+                    Matriz_Monedas(NuevaFila, 4) = slugAPI                      '4  Slug_API
+                    Matriz_Monedas(NuevaFila, 5) = "coin_nativa"                '5  Tipo_Activo
+                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo               '11 Supply_Maximo
+                    Matriz_Monedas(NuevaFila, 12) = "0"                         '12 Contract_Address
+                    Matriz_Monedas(NuevaFila, 13) = MarketCapRank               '13 market_cap_rank
+                End If
+                Guardar_Matrices("Monedas")
             Else
-                Dim m As New Moneda()
-                m.ID_Moneda = idMoneda
-                m.ID_Despliegue = GenerarID()
-                m.Simbolo = simbolo
-                m.Nombre_Oficial = nombre
-                m.Slug_API = slugAPI
-                m.Tipo_Activo = "coin_nativa"
-                m.Subtipo_Stablecoin = "0"
-                m.Moneda_Paridad = "0"
-                m.Centralizada = "0"
-                m.Activo_Subyacente = "0"
-                m.ID_Red_Nativa = "0"
-                m.Supply_Maximo = supplyMax
-                m.Contract_Address = "0"
-                m.Activa = "Si"
-                result.Add(m)
+                ' ── MONEDA EXISTENTE: actualizar solo los campos que pueden cambiar ──
+                If Val(Matriz_Monedas(i, 13)) <> Val(MarketCapRank) Then
+                    Matriz_Monedas(i, 13) = MarketCapRank
+                End If
+                If Matriz_Monedas(i, 11) = "0" AndAlso Supply_Maximo > 0 Then
+                    Matriz_Monedas(i, 11) = Supply_Maximo
+                End If
+                Guardar_Matrices("Monedas")
             End If
             '
-            Return result
         Catch ex As Exception
             MsgBox("Error leyendo API CoinGecko (Detalle): " & ex.Message)
-            Return result
         End Try
-    End Function
+    End Sub
     '
     ' ── Helpers ────────────────────────────────────────────────────
     '
