@@ -54,6 +54,7 @@ Partial Class F_PoolLiquidez
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'L_PoolLiquidez
@@ -149,10 +150,10 @@ Partial Class F_PoolLiquidez
         Me.rT_NotaPool.AcceptsTab = True
         Me.rT_NotaPool.AutoWordSelection = True
         Me.rT_NotaPool.BackColor = System.Drawing.Color.White
-        Me.rT_NotaPool.Location = New System.Drawing.Point(639, 288)
+        Me.rT_NotaPool.Location = New System.Drawing.Point(356, 398)
         Me.rT_NotaPool.Name = "rT_NotaPool"
         Me.rT_NotaPool.ReadOnly = True
-        Me.rT_NotaPool.Size = New System.Drawing.Size(296, 152)
+        Me.rT_NotaPool.Size = New System.Drawing.Size(421, 100)
         Me.rT_NotaPool.TabIndex = 536
         Me.rT_NotaPool.Text = "rT_NotaPool"
         '
@@ -382,11 +383,23 @@ Partial Class F_PoolLiquidez
         Me.Label28.TabIndex = 531
         Me.Label28.Text = "Plataforma"
         '
+        'B_Cerrar
+        '
+        Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Cerrar.Location = New System.Drawing.Point(688, 12)
+        Me.B_Cerrar.Name = "B_Cerrar"
+        Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Cerrar.TabIndex = 561
+        Me.B_Cerrar.Text = "Cerrar"
+        Me.B_Cerrar.UseVisualStyleBackColor = False
+        '
         'F_PoolLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1015, 540)
+        Me.ClientSize = New System.Drawing.Size(800, 520)
+        Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_PoolLiquidez)
         Me.Controls.Add(Me.T_MaxPool)
         Me.Controls.Add(Me.T_MinPool)
@@ -458,4 +471,5 @@ Partial Class F_PoolLiquidez
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label28 As Label
+    Friend WithEvents B_Cerrar As Button
 End Class

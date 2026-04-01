@@ -473,7 +473,7 @@ Partial Class F_Monedas
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(978, 615)
+        Me.ClientSize = New System.Drawing.Size(978, 579)
         Me.Controls.Add(Me.L_IDdespliegue_Moneda)
         Me.Controls.Add(Me.L_Fila_Moneda)
         Me.Controls.Add(Me.Label83)

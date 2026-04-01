@@ -332,7 +332,7 @@ Partial Class F_Traspaso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1032, 598)
+        Me.ClientSize = New System.Drawing.Size(840, 520)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Traspasos)
         Me.Controls.Add(Me.C_BilleteraDestinoTraspaso)

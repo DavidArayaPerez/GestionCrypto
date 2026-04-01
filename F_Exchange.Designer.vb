@@ -27,6 +27,7 @@ Partial Class F_Exchange
         Me.T_NomExchange = New System.Windows.Forms.TextBox()
         Me.rT_NotaExchange = New System.Windows.Forms.RichTextBox()
         Me.Label43 = New System.Windows.Forms.Label()
+        Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'L_Exchange
@@ -80,11 +81,23 @@ Partial Class F_Exchange
         Me.Label43.TabIndex = 567
         Me.Label43.Text = "Nombre Exchange"
         '
+        'B_Cerrar
+        '
+        Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Cerrar.Location = New System.Drawing.Point(733, 12)
+        Me.B_Cerrar.Name = "B_Cerrar"
+        Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Cerrar.TabIndex = 571
+        Me.B_Cerrar.Text = "Cerrar"
+        Me.B_Cerrar.UseVisualStyleBackColor = False
+        '
         'F_Exchange
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1039, 574)
+        Me.ClientSize = New System.Drawing.Size(845, 518)
+        Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Exchange)
         Me.Controls.Add(Me.B_GrabarExchange)
         Me.Controls.Add(Me.T_NomExchange)
@@ -102,4 +115,5 @@ Partial Class F_Exchange
     Friend WithEvents T_NomExchange As TextBox
     Friend WithEvents rT_NotaExchange As RichTextBox
     Friend WithEvents Label43 As Label
+    Friend WithEvents B_Cerrar As Button
 End Class

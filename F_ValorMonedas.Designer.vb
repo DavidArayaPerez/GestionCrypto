@@ -29,6 +29,7 @@ Partial Class F_ValorMonedas
         Me.L_FechaValorMonedas = New System.Windows.Forms.ListBox()
         Me.C_MonedasValorMonedas = New System.Windows.Forms.ComboBox()
         Me.Label52 = New System.Windows.Forms.Label()
+        Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'T_ValorValorMonedas
@@ -103,11 +104,23 @@ Partial Class F_ValorMonedas
         Me.Label52.TabIndex = 571
         Me.Label52.Text = "Moneda Origen"
         '
+        'B_Cerrar
+        '
+        Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Cerrar.Location = New System.Drawing.Point(471, 12)
+        Me.B_Cerrar.Name = "B_Cerrar"
+        Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Cerrar.TabIndex = 578
+        Me.B_Cerrar.Text = "Cerrar"
+        Me.B_Cerrar.UseVisualStyleBackColor = False
+        '
         'F_ValorMonedas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(611, 507)
+        Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.T_ValorValorMonedas)
         Me.Controls.Add(Me.T_FechaValorMonedas)
         Me.Controls.Add(Me.Label53)
@@ -129,4 +142,5 @@ Partial Class F_ValorMonedas
     Friend WithEvents L_FechaValorMonedas As ListBox
     Friend WithEvents C_MonedasValorMonedas As ComboBox
     Friend WithEvents Label52 As Label
+    Friend WithEvents B_Cerrar As Button
 End Class

@@ -14,10 +14,7 @@ Module zCargaInicia
     '
     '
     '
-    Public Sub LogTiempo(mensaje As String)
-        File.AppendAllText(zCargaInicialTXT, $"{DateTime.Now:HH:mm:ss.fff} | {mensaje} | {sw.ElapsedMilliseconds}ms" & vbCrLf)
-        sw.Restart()
-    End Sub
+
     Public Sub Parametros()
         'Dim NombreArchivo As String =
         'Dim CarpetaInicio As String = Application.StartupPath

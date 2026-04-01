@@ -46,6 +46,7 @@ Partial Class F_Movimientos
         Me.Label35 = New System.Windows.Forms.Label()
         Me.Label36 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
+        Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'L_Movimientos
@@ -294,11 +295,23 @@ Partial Class F_Movimientos
         Me.Label37.TabIndex = 545
         Me.Label37.Text = "Plataforma"
         '
+        'B_Cerrar
+        '
+        Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Cerrar.Location = New System.Drawing.Point(721, 12)
+        Me.B_Cerrar.Name = "B_Cerrar"
+        Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Cerrar.TabIndex = 567
+        Me.B_Cerrar.Text = "Cerrar"
+        Me.B_Cerrar.UseVisualStyleBackColor = False
+        '
         'F_Movimientos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1013, 527)
+        Me.ClientSize = New System.Drawing.Size(836, 513)
+        Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Movimientos)
         Me.Controls.Add(Me.C_BilleteraMovimiento)
         Me.Controls.Add(Me.Label51)
@@ -354,4 +367,5 @@ Partial Class F_Movimientos
     Friend WithEvents Label35 As Label
     Friend WithEvents Label36 As Label
     Friend WithEvents Label37 As Label
+    Friend WithEvents B_Cerrar As Button
 End Class

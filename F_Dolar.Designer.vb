@@ -56,7 +56,9 @@ Partial Class F_Dolar
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Dolar)
         Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Dolar"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Dolar"
         Me.ResumeLayout(False)
 

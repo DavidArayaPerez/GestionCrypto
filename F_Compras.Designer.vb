@@ -310,7 +310,7 @@ Partial Class F_Compras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1062, 584)
+        Me.ClientSize = New System.Drawing.Size(830, 521)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Compras)
         Me.Controls.Add(Me.Label45)

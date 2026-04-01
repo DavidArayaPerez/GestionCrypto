@@ -8,12 +8,17 @@ Public Class F_zPrincipal
     '
     '
     Private sw As New Stopwatch()
-
+    Private Sub LogTiempo(mensaje As String)
+        File.AppendAllText(zCargaInicialTXT, $"{DateTime.Now:HH:mm:ss.fff} | {mensaje} | {sw.ElapsedMilliseconds}ms" & vbCrLf)
+        sw.Restart()
+    End Sub
+    '
+    '
     Public Sub New()
         sw.Start()
         InitializeComponent()
         sw.Stop()
-        File.WriteAllText(zCargaInicialTXT, $"=== CARGA INICIAL {DateTime.Now:dd-MM-yyyy HH:mm:ss} ===" & vbCrLf)
+        File.AppendAllText(zCargaInicialTXT, $"=== CARGA INICIAL {DateTime.Now:dd-MM-yyyy HH:mm:ss} ===" & vbCrLf)
         File.AppendAllText(zCargaInicialTXT, $"00:00:00.000 | InitializeComponent | {sw.ElapsedMilliseconds}ms" & vbCrLf)
         sw.Restart()
     End Sub

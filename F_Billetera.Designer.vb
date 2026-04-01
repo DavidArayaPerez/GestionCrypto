@@ -31,6 +31,7 @@ Partial Class F_Billetera
         Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
+        Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'B_NuevoBilletera
@@ -125,11 +126,23 @@ Partial Class F_Billetera
         Me.Label19.TabIndex = 567
         Me.Label19.Text = "Nombre"
         '
+        'B_Cerrar
+        '
+        Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Cerrar.Location = New System.Drawing.Point(721, 12)
+        Me.B_Cerrar.Name = "B_Cerrar"
+        Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Cerrar.TabIndex = 575
+        Me.B_Cerrar.Text = "Cerrar"
+        Me.B_Cerrar.UseVisualStyleBackColor = False
+        '
         'F_Billetera
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1128, 649)
+        Me.ClientSize = New System.Drawing.Size(846, 505)
+        Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.L_Billeteras)
         Me.Controls.Add(Me.Label1)
@@ -155,4 +168,5 @@ Partial Class F_Billetera
     Friend WithEvents rT_NotaBilletera As RichTextBox
     Friend WithEvents Label17 As Label
     Friend WithEvents Label19 As Label
+    Friend WithEvents B_Cerrar As Button
 End Class

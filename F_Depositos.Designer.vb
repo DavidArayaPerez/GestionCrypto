@@ -52,7 +52,7 @@ Partial Class F_Depositos
         Me.L_Depositos.FormattingEnabled = True
         Me.L_Depositos.Location = New System.Drawing.Point(12, 61)
         Me.L_Depositos.Name = "L_Depositos"
-        Me.L_Depositos.Size = New System.Drawing.Size(316, 511)
+        Me.L_Depositos.Size = New System.Drawing.Size(316, 420)
         Me.L_Depositos.TabIndex = 475
         '
         'C_BilleteraDeposito
@@ -288,7 +288,7 @@ Partial Class F_Depositos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1053, 640)
+        Me.ClientSize = New System.Drawing.Size(841, 499)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Depositos)
         Me.Controls.Add(Me.C_BilleteraDeposito)

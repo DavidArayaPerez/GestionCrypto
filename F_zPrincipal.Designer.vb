@@ -407,7 +407,7 @@ Partial Class F_zPrincipal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(576, 413)
+        Me.ClientSize = New System.Drawing.Size(137, 413)
         Me.Controls.Add(Me.B_Traspasos)
         Me.Controls.Add(Me.B_PoolLiquidez)
         Me.Controls.Add(Me.B_Movimientos)
