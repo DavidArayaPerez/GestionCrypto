@@ -107,16 +107,21 @@ Module zAPI_CoinGecko
     ' ---------------------------------------------------------------
     '  Detalle de una moneda por slug — genera una fila por red
     ' ---------------------------------------------------------------
-    Public Sub API_CoinGecko_Detalle(
-                                        ByVal slug As String,
-                                        ByRef current_price As String,
-                                        ByRef high_24h As String,
-                                        ByRef low_24h As String,
-                                        ByRef price_change_24h As String,
-                                        ByRef price_change_percentage_24h As String,
-                                        ByRef circulating_supply As String)
+    Public Sub API_CoinGecko_Detalle(ByVal slug As String,
+                                  ByRef current_price As String,
+                                  ByRef high_24h As String,
+                                  ByRef low_24h As String,
+                                  ByRef price_change_24h As String,
+                                  ByRef price_change_percentage_24h As String,
+                                  ByRef circulating_supply As String)
+        Dim url As String = CG_BASE_URL & $"coins/{slug}" &
+                        $"?localization=false&tickers=false" &
+                        $"&market_data=true&community_data=false&developer_data=false" &
+                        $"&x_cg_demo_api_key={CG_API_KEY}"
         '
-        Dim url As String = CG_BASE_URL & $"coins/{slug}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
+        ' Inicializar ByRef en caso de error
+        current_price = "0" : high_24h = "0" : low_24h = "0"
+        price_change_24h = "0" : price_change_percentage_24h = "0" : circulating_supply = "0"
         '
         Try
             Dim json As String = New WebClient().DownloadString(New Uri(url))
@@ -127,20 +132,23 @@ Module zAPI_CoinGecko
             Dim Nombre As String = ValorSeguro(item("name"))
             Dim MarketCapRank As String = ValorSeguro(item("market_cap_rank"))
             '
-            current_price = ValorSeguro(item("current_price"))
-            high_24h = ValorSeguro(item("high_24h"))
-            low_24h = ValorSeguro(item("low_24h"))
-            price_change_24h = ValorSeguro(item("price_change_24h "))
-            price_change_percentage_24h = ValorSeguro(item("price_change_percentage_24h"))
-            circulating_supply = ValorSeguro(item("circulating_supply"))
+            ' ── Datos de precio (ByRef) ──
+            Dim marketData As JsonNode = item("market_data")
+            current_price = ValorSeguro(marketData?("current_price")?("usd"))
+            high_24h = ValorSeguro(marketData?("high_24h")?("usd"))
+            low_24h = ValorSeguro(marketData?("low_24h")?("usd"))
+            price_change_24h = ValorSeguro(marketData?("price_change_24h"))
+            price_change_percentage_24h = ValorSeguro(marketData?("price_change_percentage_24h"))
+            circulating_supply = ValorSeguro(marketData?("circulating_supply"))
             '
-            Dim supplyNode As JsonNode = item("market_data")?("max_supply")
+            ' ── Supply máximo ──
+            Dim supplyNode As JsonNode = marketData?("max_supply")
             Dim Supply_Maximo As Long = 0
             If supplyNode IsNot Nothing AndAlso supplyNode.GetValueKind() <> JsonValueKind.Null Then
                 Supply_Maximo = CLng(supplyNode.GetValue(Of Double)())
             End If
             '
-            ' Buscar si la moneda ya existe en la matriz por símbolo
+            ' ── Buscar si la moneda ya existe en la matriz ──
             Dim SW As Boolean = True
             Dim i As Integer
             For i = 1 To Matriz_MonedasTF
@@ -153,7 +161,7 @@ Module zAPI_CoinGecko
             Dim platforms As JsonObject = item("platforms")?.AsObject()
             '
             If SW Then
-                ' ── MONEDA NUEVA: agregar una fila por cada plataforma (o una si no tiene) ──
+                ' ── MONEDA NUEVA ──
                 If platforms IsNot Nothing AndAlso platforms.Count > 0 Then
                     For Each plat As KeyValuePair(Of String, JsonNode) In platforms
                         Dim address As String = If(plat.Value IsNot Nothing, plat.Value.ToString(), "0")
@@ -184,7 +192,7 @@ Module zAPI_CoinGecko
                 End If
                 Guardar_Matrices("Monedas")
             Else
-                ' ── MONEDA EXISTENTE: actualizar solo los campos que pueden cambiar ──
+                ' ── MONEDA EXISTENTE: actualizar campos variables ──
                 If Val(Matriz_Monedas(i, 13)) <> Val(MarketCapRank) Then
                     Matriz_Monedas(i, 13) = MarketCapRank
                 End If

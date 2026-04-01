@@ -7,6 +7,20 @@ Module zFuncionesMatematicas
     '
     '
     '
+
+    Public Function FormatoChileno(ByVal valor As String, Optional ByVal decimales As Integer = 2) As String
+        If String.IsNullOrWhiteSpace(valor) Then Return "0"
+        '
+        Dim numero As Double
+        If Not Double.TryParse(valor, System.Globalization.NumberStyles.Any,
+                           System.Globalization.CultureInfo.InvariantCulture, numero) Then
+            Return valor
+        End If
+        '
+        Return numero.ToString("N" & decimales, System.Globalization.CultureInfo.GetCultureInfo("es-CL"))
+    End Function
+
+
     Public Function ValidaTXT_Numero(Texto As String) As String
         If Not IsNumeric(Texto) Then Return "0"
         Return Texto

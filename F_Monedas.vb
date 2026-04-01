@@ -2,6 +2,7 @@
 '
 '
 Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook
+Imports Microsoft.SharePoint.Client
 
 Public Class F_Monedas
     '
@@ -43,6 +44,13 @@ Public Class F_Monedas
         rT_NotaMoneda.Enabled = Habilitar
         '
         B_Actualiza_Moneda.Enabled = Habilitar
+        '
+        L_CurentPrice.Text = ""
+        L_Hight24h.Text = ""
+        L_Low24h.Text = ""
+        L_PriceChange24h.Text = ""
+        L_PriceChangePor24h.Text = ""
+        L_CirculatingSupply.Text = ""
     End Sub
     Private Sub VerMoneda(F As Integer)
         LimpiezaMoneda(True)
@@ -207,12 +215,15 @@ Public Class F_Monedas
         API_CoinGecko_Detalle(T_SlugAPI_Moneda.Text, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
         VerMoneda(L_Fila_Moneda.Text)
         '
-        L_CurentPrice.Text = current_price
-        L_Hight24h.Text = high_24h
-        L_Low24h.Text = low_24h
-        L_PriceChange24h.Text = price_change_24h
-        L_PriceChangePor24h.Text = price_change_percentage_24h
-        L_CirculatingSupply.Text = circulating_supply
+        L_CurentPrice.Text = FormatoChileno(current_price, 6)
+        L_Hight24h.Text = FormatoChileno(high_24h, 6)
+        L_Low24h.Text = FormatoChileno(low_24h, 6)
+        L_PriceChange24h.Text = FormatoChileno(price_change_24h)
+        L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h)
+        L_CirculatingSupply.Text = FormatoChileno(circulating_supply, 0)
+
+
+
         '
         L_Mensaje.Text = "Moneda Actualizada y Guardada correctamente"
     End Sub
