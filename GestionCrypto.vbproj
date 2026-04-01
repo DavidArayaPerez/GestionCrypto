@@ -321,10 +321,34 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F_Billetera.Designer.vb">
+      <DependentUpon>F_Billetera.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Billetera.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Compras.Designer.vb">
+      <DependentUpon>F_Compras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Compras.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Depositos.Designer.vb">
+      <DependentUpon>F_Depositos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Depositos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Dolar.Designer.vb">
       <DependentUpon>F_Dolar.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Dolar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Exchange.Designer.vb">
+      <DependentUpon>F_Exchange.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Exchange.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Monedas.Designer.vb">
@@ -333,10 +357,34 @@
     <Compile Include="F_Monedas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_Movimientos.Designer.vb">
+      <DependentUpon>F_Movimientos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Movimientos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_PoolLiquidez.Designer.vb">
+      <DependentUpon>F_PoolLiquidez.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_PoolLiquidez.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Red.Designer.vb">
       <DependentUpon>F_Red.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Red.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Traspaso.Designer.vb">
+      <DependentUpon>F_Traspaso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Traspaso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_ValorMonedas.Designer.vb">
+      <DependentUpon>F_ValorMonedas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_ValorMonedas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="zAPI_CoinGecko.vb" />
@@ -361,6 +409,7 @@
     <Compile Include="zAPI_CMF_Chile.vb" />
     <Compile Include="xFunciones_Archivo.vb" />
     <Compile Include="xFunciones_Carpeta.vb" />
+    <Compile Include="zCargaInicia.vb" />
     <Compile Include="zCrearCodigoUnico.vb" />
     <Compile Include="xFunciones Fechas.vb" />
     <Compile Include="xFunciones Texto.vb" />
@@ -381,14 +430,38 @@
     <Compile Include="zVariables Globales.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_Billetera.resx">
+      <DependentUpon>F_Billetera.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Compras.resx">
+      <DependentUpon>F_Compras.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Depositos.resx">
+      <DependentUpon>F_Depositos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Dolar.resx">
       <DependentUpon>F_Dolar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Exchange.resx">
+      <DependentUpon>F_Exchange.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Monedas.resx">
       <DependentUpon>F_Monedas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_Movimientos.resx">
+      <DependentUpon>F_Movimientos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_PoolLiquidez.resx">
+      <DependentUpon>F_PoolLiquidez.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Red.resx">
       <DependentUpon>F_Red.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Traspaso.resx">
+      <DependentUpon>F_Traspaso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_ValorMonedas.resx">
+      <DependentUpon>F_ValorMonedas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_zPrincipal.resx">
       <DependentUpon>F_zPrincipal.vb</DependentUpon>

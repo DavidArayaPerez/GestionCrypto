@@ -430,7 +430,7 @@ Partial Class F_Red
         '
         Me.B_NuevoRed.BackColor = System.Drawing.SystemColors.Control
         Me.B_NuevoRed.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoRed.Location = New System.Drawing.Point(767, 26)
+        Me.B_NuevoRed.Location = New System.Drawing.Point(117, 12)
         Me.B_NuevoRed.Name = "B_NuevoRed"
         Me.B_NuevoRed.Size = New System.Drawing.Size(99, 23)
         Me.B_NuevoRed.TabIndex = 627
@@ -451,7 +451,7 @@ Partial Class F_Red
         '
         Me.B_GrabarRed.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarRed.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarRed.Location = New System.Drawing.Point(872, 26)
+        Me.B_GrabarRed.Location = New System.Drawing.Point(12, 12)
         Me.B_GrabarRed.Name = "B_GrabarRed"
         Me.B_GrabarRed.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarRed.TabIndex = 625
@@ -484,7 +484,7 @@ Partial Class F_Red
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(872, 579)
+        Me.B_Cerrar.Location = New System.Drawing.Point(872, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 661
