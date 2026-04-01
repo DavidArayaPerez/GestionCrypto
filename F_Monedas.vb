@@ -212,7 +212,7 @@ Public Class F_Monedas
         Dim price_change_percentage_24h As String = ""
         Dim circulating_supply As String = ""
         '
-        API_CoinGecko_Detalle(T_SlugAPI_Moneda.Text, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
+        API_CoinGecko_ActualizaValor(T_SlugAPI_Moneda.Text, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
         VerMoneda(L_Fila_Moneda.Text)
         '
         L_CurentPrice.Text = FormatoChileno(current_price, 6)

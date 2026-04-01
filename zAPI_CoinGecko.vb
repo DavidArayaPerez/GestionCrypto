@@ -4,7 +4,7 @@
 Imports System.Net
 Imports System.Text.Json
 Imports System.Text.Json.Nodes
-Imports System.Globalization
+'Imports System.Globalization
 '
 '
 '
@@ -107,7 +107,7 @@ Module zAPI_CoinGecko
     ' ---------------------------------------------------------------
     '  Detalle de una moneda por slug — genera una fila por red
     ' ---------------------------------------------------------------
-    Public Sub API_CoinGecko_Detalle(ByVal slug As String,
+    Public Sub API_CoinGecko_ActualizaValor(ByVal slug As String,
                                   ByRef current_price As String,
                                   ByRef high_24h As String,
                                   ByRef low_24h As String,
