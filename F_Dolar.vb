@@ -18,7 +18,7 @@ Public Class F_Dolar
 
         '
         Dim T As String
-        For i As Integer = 1 To Matriz_ValorUSDTF
+        For i As Integer = Matriz_ValorUSDTF To 1 Step -1
             T = Matriz_ValorUSD(i, 0) & " = " & Matriz_ValorUSD(i, 1) & " (" & i & ")"
             L_Dolar.Items.Add(T)
         Next i

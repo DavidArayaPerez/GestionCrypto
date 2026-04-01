@@ -7,6 +7,7 @@ Public Class F_Red
     '
     '
     Private Sub LimpiezaRedes(Optional Habilitar As Boolean = False)
+        L_Fila_Red.Text = ""
         'REDES
         L_IDRed_Red.Text = ""
         T_ChainID_Red.Text = ""
@@ -48,29 +49,8 @@ Public Class F_Red
     Private Sub VerRedes(F As Integer)
         LimpiezaRedes(True)
         If F < 1 Then Exit Sub
-        '0      ID_Interno
-        '1      Chain_ID               Identificador único para redes EVM
-        '2      Nombre_Oficial         Nombre completo
-        '3      Nombre_Corto           Para mostrar en pantalla
-        '4      Slug_API               Identificador en APIs como CoinGecko
-        '5      Tipo_Capa              Arquitectura de la red, L1 / L2 / Sidechain
-        '6      L1_Padre               Solo aplica si es L2 — a qué L1 está anclada
-        '7      Tipo_Rollup            Solo aplica a L2s
-        '8      Compatible_EVM         Define si usa el estándar de Ethereum           Sí / No
-        '9      Mecanismo_Consenso     Cómo valida la red                              PoW, PoS, PoH
-        '10     Token_Nativo           En ARB el token nativo es ETH, no ARB.
-        '                            El token ARB existe, pero es el token de gobernanza del protocolo,
-        '                                no el que se usa para pagar el gas.
-        '                                Esto aplica también a otras redes como Base y Optimism,
-        '                                    que también usan ETH como gas aunque tengan su propio token de gobernanza.
-        '11     Decimales              Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
-        '12     Tiempo_Bloque          Velocidad de confirmación                       12 seg, 0.4 seg
-        '13     Color_Marca            Para mostrar en la UI                           #627EEA                     
-        '14     URL_Explorador         Para consultar transacciones                    etherscan.io
-        '15     URL_Logo               Ícono de la red                                 https://...
-        '16     URL_RPC                Para conectarse a la red programáticamente      https://...
-        '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
-        '
+
+        L_IDRed_Red.Text = F
         L_IDRed_Red.Text = Matriz_Redes(F, 0)
         T_ChainID_Red.Text = Matriz_Redes(F, 1)
         T_NomOficial_Red.Text = Matriz_Redes(F, 2)
@@ -107,6 +87,29 @@ Public Class F_Red
         Else
             CB_Activo_Red.Checked = False
         End If
+        '0      ID_Interno
+        '1      Chain_ID               Identificador único para redes EVM
+        '2      Nombre_Oficial         Nombre completo
+        '3      Nombre_Corto           Para mostrar en pantalla
+        '4      Slug_API               Identificador en APIs como CoinGecko
+        '5      Tipo_Capa              Arquitectura de la red, L1 / L2 / Sidechain
+        '6      L1_Padre               Solo aplica si es L2 — a qué L1 está anclada
+        '7      Tipo_Rollup            Solo aplica a L2s
+        '8      Compatible_EVM         Define si usa el estándar de Ethereum           Sí / No
+        '9      Mecanismo_Consenso     Cómo valida la red                              PoW, PoS, PoH
+        '10     Token_Nativo           En ARB el token nativo es ETH, no ARB.
+        '                            El token ARB existe, pero es el token de gobernanza del protocolo,
+        '                                no el que se usa para pagar el gas.
+        '                                Esto aplica también a otras redes como Base y Optimism,
+        '                                    que también usan ETH como gas aunque tengan su propio token de gobernanza.
+        '11     Decimales              Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
+        '12     Tiempo_Bloque          Velocidad de confirmación                       12 seg, 0.4 seg
+        '13     Color_Marca            Para mostrar en la UI                           #627EEA                     
+        '14     URL_Explorador         Para consultar transacciones                    etherscan.io
+        '15     URL_Logo               Ícono de la red                                 https://...
+        '16     URL_RPC                Para conectarse a la red programáticamente      https://...
+        '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
+        '
     End Sub
 
 
@@ -116,9 +119,6 @@ Public Class F_Red
     Private Sub F_Red_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim T As String
         LimpiezaRedes()
-
-
-        '2      Nombre_Oficial         Nombre completo
         OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
         L_Red.Items.Clear()
         For i As Integer = 1 To Matriz_RedesTF
