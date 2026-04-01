@@ -72,7 +72,26 @@ Module zCargaInicia
         ArchivoFinal(Contador + 4) = "ACTUALIZACION_DOLAR" & vbTab & ACTUALIZACION_DOLAR
         GuardarParametros(zParametrosTXT, ArchivoFinal)
     End Sub
+    Public Sub GuardarParametros(ByVal RutaArchivo As String, ByVal Arreglo() As String)
+        Dim ArregloSinEspacios(1) As String
+        Dim Contador As Integer = -1
+        For i As Integer = 0 To Arreglo.Length - 1
+            If Not Arreglo(i) Is Nothing Then
+                Contador += 1
+                If Contador > 1 Then ReDim Preserve ArregloSinEspacios(Contador)
+                ArregloSinEspacios(Contador) = Arreglo(i)
+            End If
+        Next i
+        '
+        File.WriteAllLines(RutaArchivo, ArregloSinEspacios, System.Text.Encoding.UTF8)
+        '
+        'File.WriteAllText(NombreArchivo, Mensaje)
+        'No utilizo WriteAllText porque No agrega saltos de línea automáticamente
 
+        'En cambio la instruccion   File.WriteAllLines(
+        'Cada elemento del array se escribe como una línea separada en el archivo
+        'Agrega saltos de línea automáticamente entre cada elemento
+    End Sub
 
     '
     '

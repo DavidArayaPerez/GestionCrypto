@@ -107,7 +107,15 @@ Module zAPI_CoinGecko
     ' ---------------------------------------------------------------
     '  Detalle de una moneda por slug — genera una fila por red
     ' ---------------------------------------------------------------
-    Public Sub API_CoinGecko_Detalle(ByVal slug As String)
+    Public Sub API_CoinGecko_Detalle(
+                                        ByVal slug As String,
+                                        ByRef current_price As String,
+                                        ByRef high_24h As String,
+                                        ByRef low_24h As String,
+                                        ByRef price_change_24h As String,
+                                        ByRef price_change_percentage_24h As String,
+                                        ByRef circulating_supply As String)
+        '
         Dim url As String = CG_BASE_URL & $"coins/{slug}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         Try
@@ -118,6 +126,13 @@ Module zAPI_CoinGecko
             Dim Simbolo As String = ValorSeguro(item("symbol")).ToUpper()
             Dim Nombre As String = ValorSeguro(item("name"))
             Dim MarketCapRank As String = ValorSeguro(item("market_cap_rank"))
+            '
+            current_price = ValorSeguro(item("current_price"))
+            high_24h = ValorSeguro(item("high_24h"))
+            low_24h = ValorSeguro(item("low_24h"))
+            price_change_24h = ValorSeguro(item("price_change_24h "))
+            price_change_percentage_24h = ValorSeguro(item("price_change_percentage_24h"))
+            circulating_supply = ValorSeguro(item("circulating_supply"))
             '
             Dim supplyNode As JsonNode = item("market_data")?("max_supply")
             Dim Supply_Maximo As Long = 0

@@ -405,7 +405,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="wObjetos_MensajeBarra.vb" />
     <Compile Include="zAPI_CMF_Chile.vb" />
     <Compile Include="xFunciones_Archivo.vb" />
     <Compile Include="xFunciones_Carpeta.vb" />

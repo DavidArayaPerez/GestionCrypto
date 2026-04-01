@@ -58,10 +58,22 @@ Partial Class F_Monedas
         Me.T_SlugAPI_Moneda = New System.Windows.Forms.TextBox()
         Me.T_NombreOficial_Moneda = New System.Windows.Forms.TextBox()
         Me.B_GrabarMoneda = New System.Windows.Forms.Button()
-        Me.rT_NotaMoneda = New System.Windows.Forms.RichTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.B_Actualiza_Moneda = New System.Windows.Forms.Button()
+        Me.rT_NotaMoneda = New System.Windows.Forms.RichTextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.L_Hight24h = New System.Windows.Forms.Label()
+        Me.L_Low24h = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.L_CurentPrice = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.L_PriceChangePor24h = New System.Windows.Forms.Label()
+        Me.L_CirculatingSupply = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.L_PriceChange24h = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'B_Cerrar
@@ -79,7 +91,7 @@ Partial Class F_Monedas
         '
         Me.L_IDdespliegue_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_IDdespliegue_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_IDdespliegue_Moneda.Location = New System.Drawing.Point(462, 527)
+        Me.L_IDdespliegue_Moneda.Location = New System.Drawing.Point(737, 426)
         Me.L_IDdespliegue_Moneda.Name = "L_IDdespliegue_Moneda"
         Me.L_IDdespliegue_Moneda.Size = New System.Drawing.Size(170, 13)
         Me.L_IDdespliegue_Moneda.TabIndex = 647
@@ -87,9 +99,9 @@ Partial Class F_Monedas
         '
         'L_Fila_Moneda
         '
-        Me.L_Fila_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Fila_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_Fila_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_Fila_Moneda.Location = New System.Drawing.Point(462, 550)
+        Me.L_Fila_Moneda.Location = New System.Drawing.Point(737, 449)
         Me.L_Fila_Moneda.Name = "L_Fila_Moneda"
         Me.L_Fila_Moneda.Size = New System.Drawing.Size(170, 13)
         Me.L_Fila_Moneda.TabIndex = 646
@@ -133,7 +145,7 @@ Partial Class F_Monedas
         Me.Label80.AutoSize = True
         Me.Label80.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label80.ForeColor = System.Drawing.Color.Blue
-        Me.Label80.Location = New System.Drawing.Point(356, 320)
+        Me.Label80.Location = New System.Drawing.Point(356, 323)
         Me.Label80.Name = "Label80"
         Me.Label80.Size = New System.Drawing.Size(91, 13)
         Me.Label80.TabIndex = 642
@@ -144,7 +156,7 @@ Partial Class F_Monedas
         '
         Me.T_MarketCapRank_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_MarketCapRank_Moneda.Location = New System.Drawing.Point(462, 317)
-        Me.T_MarketCapRank_Moneda.MaxLength = 6
+        Me.T_MarketCapRank_Moneda.MaxLength = 60
         Me.T_MarketCapRank_Moneda.Name = "T_MarketCapRank_Moneda"
         Me.T_MarketCapRank_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_MarketCapRank_Moneda.TabIndex = 641
@@ -155,7 +167,7 @@ Partial Class F_Monedas
         Me.Label81.AutoSize = True
         Me.Label81.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label81.ForeColor = System.Drawing.Color.Blue
-        Me.Label81.Location = New System.Drawing.Point(359, 372)
+        Me.Label81.Location = New System.Drawing.Point(359, 375)
         Me.Label81.Name = "Label81"
         Me.Label81.Size = New System.Drawing.Size(88, 13)
         Me.Label81.TabIndex = 640
@@ -167,7 +179,7 @@ Partial Class F_Monedas
         Me.Label82.AutoSize = True
         Me.Label82.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label82.ForeColor = System.Drawing.Color.Blue
-        Me.Label82.Location = New System.Drawing.Point(369, 346)
+        Me.Label82.Location = New System.Drawing.Point(369, 349)
         Me.Label82.Name = "Label82"
         Me.Label82.Size = New System.Drawing.Size(78, 13)
         Me.Label82.TabIndex = 639
@@ -178,7 +190,7 @@ Partial Class F_Monedas
         '
         Me.T_ContractAddress_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_ContractAddress_Moneda.Location = New System.Drawing.Point(462, 369)
-        Me.T_ContractAddress_Moneda.MaxLength = 6
+        Me.T_ContractAddress_Moneda.MaxLength = 60
         Me.T_ContractAddress_Moneda.Name = "T_ContractAddress_Moneda"
         Me.T_ContractAddress_Moneda.Size = New System.Drawing.Size(278, 20)
         Me.T_ContractAddress_Moneda.TabIndex = 638
@@ -188,7 +200,7 @@ Partial Class F_Monedas
         '
         Me.T_SupplyMaximo_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_SupplyMaximo_Moneda.Location = New System.Drawing.Point(462, 343)
-        Me.T_SupplyMaximo_Moneda.MaxLength = 6
+        Me.T_SupplyMaximo_Moneda.MaxLength = 60
         Me.T_SupplyMaximo_Moneda.Name = "T_SupplyMaximo_Moneda"
         Me.T_SupplyMaximo_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_SupplyMaximo_Moneda.TabIndex = 637
@@ -199,7 +211,7 @@ Partial Class F_Monedas
         Me.Label61.AutoSize = True
         Me.Label61.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label61.ForeColor = System.Drawing.Color.Blue
-        Me.Label61.Location = New System.Drawing.Point(372, 398)
+        Me.Label61.Location = New System.Drawing.Point(372, 401)
         Me.Label61.Name = "Label61"
         Me.Label61.Size = New System.Drawing.Size(75, 13)
         Me.Label61.TabIndex = 636
@@ -211,7 +223,7 @@ Partial Class F_Monedas
         Me.T_IDredNativa_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_IDredNativa_Moneda.ForeColor = System.Drawing.Color.Red
         Me.T_IDredNativa_Moneda.Location = New System.Drawing.Point(462, 395)
-        Me.T_IDredNativa_Moneda.MaxLength = 6
+        Me.T_IDredNativa_Moneda.MaxLength = 60
         Me.T_IDredNativa_Moneda.Name = "T_IDredNativa_Moneda"
         Me.T_IDredNativa_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_IDredNativa_Moneda.TabIndex = 635
@@ -222,7 +234,7 @@ Partial Class F_Monedas
         Me.Label76.AutoSize = True
         Me.Label76.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label76.ForeColor = System.Drawing.Color.Blue
-        Me.Label76.Location = New System.Drawing.Point(350, 294)
+        Me.Label76.Location = New System.Drawing.Point(350, 297)
         Me.Label76.Name = "Label76"
         Me.Label76.Size = New System.Drawing.Size(97, 13)
         Me.Label76.TabIndex = 634
@@ -234,7 +246,7 @@ Partial Class F_Monedas
         Me.Label77.AutoSize = True
         Me.Label77.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label77.ForeColor = System.Drawing.Color.Blue
-        Me.Label77.Location = New System.Drawing.Point(382, 268)
+        Me.Label77.Location = New System.Drawing.Point(382, 271)
         Me.Label77.Name = "Label77"
         Me.Label77.Size = New System.Drawing.Size(65, 13)
         Me.Label77.TabIndex = 633
@@ -246,7 +258,7 @@ Partial Class F_Monedas
         Me.Label78.AutoSize = True
         Me.Label78.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label78.ForeColor = System.Drawing.Color.Blue
-        Me.Label78.Location = New System.Drawing.Point(362, 239)
+        Me.Label78.Location = New System.Drawing.Point(362, 242)
         Me.Label78.Name = "Label78"
         Me.Label78.Size = New System.Drawing.Size(85, 13)
         Me.Label78.TabIndex = 632
@@ -257,7 +269,7 @@ Partial Class F_Monedas
         '
         Me.T_MonedaParidad_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_MonedaParidad_Moneda.Location = New System.Drawing.Point(462, 239)
-        Me.T_MonedaParidad_Moneda.MaxLength = 6
+        Me.T_MonedaParidad_Moneda.MaxLength = 60
         Me.T_MonedaParidad_Moneda.Name = "T_MonedaParidad_Moneda"
         Me.T_MonedaParidad_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_MonedaParidad_Moneda.TabIndex = 631
@@ -268,7 +280,7 @@ Partial Class F_Monedas
         Me.Label79.AutoSize = True
         Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label79.ForeColor = System.Drawing.Color.Blue
-        Me.Label79.Location = New System.Drawing.Point(351, 213)
+        Me.Label79.Location = New System.Drawing.Point(351, 216)
         Me.Label79.Name = "Label79"
         Me.Label79.Size = New System.Drawing.Size(96, 13)
         Me.Label79.TabIndex = 630
@@ -279,7 +291,7 @@ Partial Class F_Monedas
         '
         Me.T_ActivoSubyacente_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_ActivoSubyacente_Moneda.Location = New System.Drawing.Point(462, 291)
-        Me.T_ActivoSubyacente_Moneda.MaxLength = 6
+        Me.T_ActivoSubyacente_Moneda.MaxLength = 60
         Me.T_ActivoSubyacente_Moneda.Name = "T_ActivoSubyacente_Moneda"
         Me.T_ActivoSubyacente_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_ActivoSubyacente_Moneda.TabIndex = 629
@@ -289,7 +301,7 @@ Partial Class F_Monedas
         '
         Me.T_Centralizada_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_Centralizada_Moneda.Location = New System.Drawing.Point(462, 265)
-        Me.T_Centralizada_Moneda.MaxLength = 6
+        Me.T_Centralizada_Moneda.MaxLength = 60
         Me.T_Centralizada_Moneda.Name = "T_Centralizada_Moneda"
         Me.T_Centralizada_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_Centralizada_Moneda.TabIndex = 628
@@ -299,7 +311,7 @@ Partial Class F_Monedas
         '
         Me.T_SubtipoStablecoin_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_SubtipoStablecoin_Moneda.Location = New System.Drawing.Point(462, 213)
-        Me.T_SubtipoStablecoin_Moneda.MaxLength = 6
+        Me.T_SubtipoStablecoin_Moneda.MaxLength = 60
         Me.T_SubtipoStablecoin_Moneda.Name = "T_SubtipoStablecoin_Moneda"
         Me.T_SubtipoStablecoin_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_SubtipoStablecoin_Moneda.TabIndex = 627
@@ -310,7 +322,7 @@ Partial Class F_Monedas
         Me.Label55.AutoSize = True
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label55.ForeColor = System.Drawing.Color.Blue
-        Me.Label55.Location = New System.Drawing.Point(386, 190)
+        Me.Label55.Location = New System.Drawing.Point(386, 193)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(61, 13)
         Me.Label55.TabIndex = 626
@@ -321,7 +333,7 @@ Partial Class F_Monedas
         '
         Me.T_TipoActivo_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_TipoActivo_Moneda.Location = New System.Drawing.Point(462, 187)
-        Me.T_TipoActivo_Moneda.MaxLength = 6
+        Me.T_TipoActivo_Moneda.MaxLength = 60
         Me.T_TipoActivo_Moneda.Name = "T_TipoActivo_Moneda"
         Me.T_TipoActivo_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_TipoActivo_Moneda.TabIndex = 625
@@ -332,7 +344,7 @@ Partial Class F_Monedas
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label39.ForeColor = System.Drawing.Color.Blue
-        Me.Label39.Location = New System.Drawing.Point(399, 164)
+        Me.Label39.Location = New System.Drawing.Point(399, 167)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(48, 13)
         Me.Label39.TabIndex = 624
@@ -344,7 +356,7 @@ Partial Class F_Monedas
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label38.ForeColor = System.Drawing.Color.Blue
-        Me.Label38.Location = New System.Drawing.Point(371, 138)
+        Me.Label38.Location = New System.Drawing.Point(371, 141)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(76, 13)
         Me.Label38.TabIndex = 623
@@ -356,7 +368,7 @@ Partial Class F_Monedas
         Me.Label75.AutoSize = True
         Me.Label75.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label75.ForeColor = System.Drawing.Color.Blue
-        Me.Label75.Location = New System.Drawing.Point(403, 109)
+        Me.Label75.Location = New System.Drawing.Point(403, 112)
         Me.Label75.Name = "Label75"
         Me.Label75.Size = New System.Drawing.Size(44, 13)
         Me.Label75.TabIndex = 622
@@ -367,7 +379,7 @@ Partial Class F_Monedas
         '
         Me.T_Simbolo_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_Simbolo_Moneda.Location = New System.Drawing.Point(462, 109)
-        Me.T_Simbolo_Moneda.MaxLength = 6
+        Me.T_Simbolo_Moneda.MaxLength = 60
         Me.T_Simbolo_Moneda.Name = "T_Simbolo_Moneda"
         Me.T_Simbolo_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_Simbolo_Moneda.TabIndex = 621
@@ -378,7 +390,7 @@ Partial Class F_Monedas
         Me.Label42.AutoSize = True
         Me.Label42.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label42.ForeColor = System.Drawing.Color.Black
-        Me.Label42.Location = New System.Drawing.Point(373, 527)
+        Me.Label42.Location = New System.Drawing.Point(648, 426)
         Me.Label42.Name = "Label42"
         Me.Label42.Size = New System.Drawing.Size(74, 13)
         Me.Label42.TabIndex = 620
@@ -389,7 +401,7 @@ Partial Class F_Monedas
         '
         Me.L_IDmoneda_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_IDmoneda_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_IDmoneda_Moneda.Location = New System.Drawing.Point(462, 503)
+        Me.L_IDmoneda_Moneda.Location = New System.Drawing.Point(737, 402)
         Me.L_IDmoneda_Moneda.Name = "L_IDmoneda_Moneda"
         Me.L_IDmoneda_Moneda.Size = New System.Drawing.Size(170, 13)
         Me.L_IDmoneda_Moneda.TabIndex = 619
@@ -400,7 +412,7 @@ Partial Class F_Monedas
         Me.Label74.AutoSize = True
         Me.Label74.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label74.ForeColor = System.Drawing.Color.Black
-        Me.Label74.Location = New System.Drawing.Point(393, 503)
+        Me.Label74.Location = New System.Drawing.Point(668, 402)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(54, 13)
         Me.Label74.TabIndex = 618
@@ -431,9 +443,10 @@ Partial Class F_Monedas
         'T_SlugAPI_Moneda
         '
         Me.T_SlugAPI_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_SlugAPI_Moneda.Enabled = False
         Me.T_SlugAPI_Moneda.ForeColor = System.Drawing.Color.Red
         Me.T_SlugAPI_Moneda.Location = New System.Drawing.Point(462, 161)
-        Me.T_SlugAPI_Moneda.MaxLength = 6
+        Me.T_SlugAPI_Moneda.MaxLength = 60
         Me.T_SlugAPI_Moneda.Name = "T_SlugAPI_Moneda"
         Me.T_SlugAPI_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_SlugAPI_Moneda.TabIndex = 615
@@ -443,7 +456,7 @@ Partial Class F_Monedas
         '
         Me.T_NombreOficial_Moneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_NombreOficial_Moneda.Location = New System.Drawing.Point(462, 135)
-        Me.T_NombreOficial_Moneda.MaxLength = 6
+        Me.T_NombreOficial_Moneda.MaxLength = 60
         Me.T_NombreOficial_Moneda.Name = "T_NombreOficial_Moneda"
         Me.T_NombreOficial_Moneda.Size = New System.Drawing.Size(170, 20)
         Me.T_NombreOficial_Moneda.TabIndex = 614
@@ -460,24 +473,12 @@ Partial Class F_Monedas
         Me.B_GrabarMoneda.Text = "Grabar"
         Me.B_GrabarMoneda.UseVisualStyleBackColor = False
         '
-        'rT_NotaMoneda
-        '
-        Me.rT_NotaMoneda.AcceptsTab = True
-        Me.rT_NotaMoneda.AutoWordSelection = True
-        Me.rT_NotaMoneda.BackColor = System.Drawing.Color.White
-        Me.rT_NotaMoneda.Location = New System.Drawing.Point(656, 109)
-        Me.rT_NotaMoneda.Name = "rT_NotaMoneda"
-        Me.rT_NotaMoneda.ReadOnly = True
-        Me.rT_NotaMoneda.Size = New System.Drawing.Size(334, 252)
-        Me.rT_NotaMoneda.TabIndex = 612
-        Me.rT_NotaMoneda.Text = "rT_NotaMoneda"
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(424, 550)
+        Me.Label1.Location = New System.Drawing.Point(699, 449)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(23, 13)
         Me.Label1.TabIndex = 648
@@ -487,7 +488,7 @@ Partial Class F_Monedas
         'L_Mensaje
         '
         Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
-        Me.L_Mensaje.Location = New System.Drawing.Point(359, 580)
+        Me.L_Mensaje.Location = New System.Drawing.Point(356, 641)
         Me.L_Mensaje.Name = "L_Mensaje"
         Me.L_Mensaje.Size = New System.Drawing.Size(623, 16)
         Me.L_Mensaje.TabIndex = 649
@@ -497,19 +498,172 @@ Partial Class F_Monedas
         '
         Me.B_Actualiza_Moneda.BackColor = System.Drawing.SystemColors.Control
         Me.B_Actualiza_Moneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Actualiza_Moneda.Location = New System.Drawing.Point(465, 421)
+        Me.B_Actualiza_Moneda.Location = New System.Drawing.Point(462, 421)
         Me.B_Actualiza_Moneda.Name = "B_Actualiza_Moneda"
         Me.B_Actualiza_Moneda.Size = New System.Drawing.Size(99, 23)
         Me.B_Actualiza_Moneda.TabIndex = 650
         Me.B_Actualiza_Moneda.Text = "Actualiza"
         Me.B_Actualiza_Moneda.UseVisualStyleBackColor = False
         '
+        'rT_NotaMoneda
+        '
+        Me.rT_NotaMoneda.Location = New System.Drawing.Point(656, 111)
+        Me.rT_NotaMoneda.Name = "rT_NotaMoneda"
+        Me.rT_NotaMoneda.Size = New System.Drawing.Size(267, 248)
+        Me.rT_NotaMoneda.TabIndex = 651
+        Me.rT_NotaMoneda.Text = "rT_NotaMoneda"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Black
+        Me.Label2.Location = New System.Drawing.Point(399, 508)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(48, 13)
+        Me.Label2.TabIndex = 657
+        Me.Label2.Text = "Low 24h"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_Hight24h
+        '
+        Me.L_Hight24h.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Hight24h.ForeColor = System.Drawing.Color.Black
+        Me.L_Hight24h.Location = New System.Drawing.Point(462, 483)
+        Me.L_Hight24h.Name = "L_Hight24h"
+        Me.L_Hight24h.Size = New System.Drawing.Size(170, 13)
+        Me.L_Hight24h.TabIndex = 656
+        Me.L_Hight24h.Text = "L_Hight24h"
+        '
+        'L_Low24h
+        '
+        Me.L_Low24h.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Low24h.ForeColor = System.Drawing.Color.Black
+        Me.L_Low24h.Location = New System.Drawing.Point(462, 506)
+        Me.L_Low24h.Name = "L_Low24h"
+        Me.L_Low24h.Size = New System.Drawing.Size(170, 13)
+        Me.L_Low24h.TabIndex = 655
+        Me.L_Low24h.Text = "L_Low24h"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.Black
+        Me.Label5.Location = New System.Drawing.Point(397, 483)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(50, 13)
+        Me.Label5.TabIndex = 654
+        Me.Label5.Text = "High 24h"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_CurentPrice
+        '
+        Me.L_CurentPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_CurentPrice.ForeColor = System.Drawing.Color.Black
+        Me.L_CurentPrice.Location = New System.Drawing.Point(462, 459)
+        Me.L_CurentPrice.Name = "L_CurentPrice"
+        Me.L_CurentPrice.Size = New System.Drawing.Size(170, 13)
+        Me.L_CurentPrice.TabIndex = 653
+        Me.L_CurentPrice.Text = "L_CurentPrice"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.Black
+        Me.Label7.Location = New System.Drawing.Point(379, 459)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(68, 13)
+        Me.Label7.TabIndex = 652
+        Me.Label7.Text = "Current Price"
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.Black
+        Me.Label8.Location = New System.Drawing.Point(356, 580)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(91, 13)
+        Me.Label8.TabIndex = 663
+        Me.Label8.Text = "Circulating Supply"
+        Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_PriceChangePor24h
+        '
+        Me.L_PriceChangePor24h.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_PriceChangePor24h.ForeColor = System.Drawing.Color.Black
+        Me.L_PriceChangePor24h.Location = New System.Drawing.Point(462, 555)
+        Me.L_PriceChangePor24h.Name = "L_PriceChangePor24h"
+        Me.L_PriceChangePor24h.Size = New System.Drawing.Size(170, 13)
+        Me.L_PriceChangePor24h.TabIndex = 662
+        Me.L_PriceChangePor24h.Text = "L_PriceChangePor24h"
+        '
+        'L_CirculatingSupply
+        '
+        Me.L_CirculatingSupply.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_CirculatingSupply.ForeColor = System.Drawing.Color.Black
+        Me.L_CirculatingSupply.Location = New System.Drawing.Point(462, 578)
+        Me.L_CirculatingSupply.Name = "L_CirculatingSupply"
+        Me.L_CirculatingSupply.Size = New System.Drawing.Size(170, 13)
+        Me.L_CirculatingSupply.TabIndex = 661
+        Me.L_CirculatingSupply.Text = "L_CirculatingSupply"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.Black
+        Me.Label11.Location = New System.Drawing.Point(345, 555)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(102, 13)
+        Me.Label11.TabIndex = 660
+        Me.Label11.Text = "Price change % 24h"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_PriceChange24h
+        '
+        Me.L_PriceChange24h.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_PriceChange24h.ForeColor = System.Drawing.Color.Black
+        Me.L_PriceChange24h.Location = New System.Drawing.Point(462, 531)
+        Me.L_PriceChange24h.Name = "L_PriceChange24h"
+        Me.L_PriceChange24h.Size = New System.Drawing.Size(170, 13)
+        Me.L_PriceChange24h.TabIndex = 659
+        Me.L_PriceChange24h.Text = "L_PriceChange24h"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.Black
+        Me.Label13.Location = New System.Drawing.Point(355, 531)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(92, 13)
+        Me.Label13.TabIndex = 658
+        Me.Label13.Text = "Price Change 24h"
+        Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'F_Monedas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(1002, 605)
+        Me.ClientSize = New System.Drawing.Size(1002, 699)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.L_PriceChangePor24h)
+        Me.Controls.Add(Me.L_CirculatingSupply)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.L_PriceChange24h)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.L_Hight24h)
+        Me.Controls.Add(Me.L_Low24h)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.L_CurentPrice)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.rT_NotaMoneda)
         Me.Controls.Add(Me.B_Actualiza_Moneda)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.Label1)
@@ -548,7 +702,6 @@ Partial Class F_Monedas
         Me.Controls.Add(Me.T_SlugAPI_Moneda)
         Me.Controls.Add(Me.T_NombreOficial_Moneda)
         Me.Controls.Add(Me.B_GrabarMoneda)
-        Me.Controls.Add(Me.rT_NotaMoneda)
         Me.Controls.Add(Me.B_Cerrar)
         Me.MaximizeBox = False
         Me.Name = "F_Monedas"
@@ -595,8 +748,20 @@ Partial Class F_Monedas
     Friend WithEvents T_SlugAPI_Moneda As TextBox
     Friend WithEvents T_NombreOficial_Moneda As TextBox
     Friend WithEvents B_GrabarMoneda As Button
-    Friend WithEvents rT_NotaMoneda As RichTextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents L_Mensaje As Label
     Friend WithEvents B_Actualiza_Moneda As Button
+    Friend WithEvents rT_NotaMoneda As RichTextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents L_Hight24h As Label
+    Friend WithEvents L_Low24h As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents L_CurentPrice As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents L_PriceChangePor24h As Label
+    Friend WithEvents L_CirculatingSupply As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents L_PriceChange24h As Label
+    Friend WithEvents Label13 As Label
 End Class

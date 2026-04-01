@@ -30,7 +30,7 @@ Public Class F_Monedas
         '
         T_Simbolo_Moneda.Enabled = Habilitar
         T_NombreOficial_Moneda.Enabled = Habilitar
-        T_SlugAPI_Moneda.Enabled = Habilitar
+        'T_SlugAPI_Moneda.Enabled = Habilitar
         T_TipoActivo_Moneda.Enabled = Habilitar
         T_SubtipoStablecoin_Moneda.Enabled = Habilitar
         T_MonedaParidad_Moneda.Enabled = Habilitar
@@ -41,6 +41,8 @@ Public Class F_Monedas
         T_ContractAddress_Moneda.Enabled = Habilitar
         T_IDredNativa_Moneda.Enabled = Habilitar
         rT_NotaMoneda.Enabled = Habilitar
+        '
+        B_Actualiza_Moneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
         LimpiezaMoneda(True)
@@ -84,8 +86,8 @@ Public Class F_Monedas
             T_IDredNativa_Moneda.Text = Matriz_Redes(FilaRed, 2)
         End If
         '
-        'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
-        'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
+        Dim NombreNota As String = "Moneda" & T_Simbolo_Moneda.Text & "_Nota.rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_NotaMoneda)
     End Sub
     Private Sub GrabarMoneda()
         '   0       ID_Moneda
@@ -121,11 +123,12 @@ Public Class F_Monedas
         Matriz_Monedas(F, 12) = T_ContractAddress_Moneda.Text
         Matriz_Monedas(F, 13) = T_MarketCapRank_Moneda.Text
         '
-        '
         Guardar_Matrices("Monedas")
+        '
+        Dim NombreNota As String = "Moneda" & T_Simbolo_Moneda.Text & "_Nota.rtf"
+        GuardarRTF(RutaLocal, NombreNota, rT_NotaMoneda)
+        '
         L_Mensaje.Text = "Moneda guardada correctamente"
-        'Dim NombreNota As String = "Moneda" & T_AcronimoMoneda.Text & "_Nota.rtf"
-        'CargaRTF(RutaLocal, NombreNota, rT_NotaPool)
     End Sub
 
 
@@ -137,6 +140,9 @@ Public Class F_Monedas
 
 
     Private Sub F_Monedas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ReCarga_Monedas()
+    End Sub
+    Private Sub ReCarga_Monedas()
         LimpiezaMoneda()
         '
         L_Monedas.Items.Clear()
@@ -146,7 +152,6 @@ Public Class F_Monedas
             L_Monedas.Items.Add(T)
         Next i
         T_Busqueda_Monedas.Text = ""
-
     End Sub
 
     Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs) Handles T_Busqueda_Monedas.KeyUp
@@ -188,11 +193,27 @@ Public Class F_Monedas
 
     Private Sub B_Actualizar_Monedas_Click_1(sender As Object, e As EventArgs) Handles B_ActualizaTODO_Monedas.Click
         ActualizarMonedas()
-        OrdenarMatriz_Monedas()
-        Guardar_Matrices("Monedas")
+        ReCarga_Monedas()
     End Sub
 
     Private Sub B_Actualiza_Moneda_Click(sender As Object, e As EventArgs) Handles B_Actualiza_Moneda.Click
-        API_CoinGecko_Detalle(T_SlugAPI_Moneda.Text)
+        Dim current_price As String = ""
+        Dim high_24h As String = ""
+        Dim low_24h As String = ""
+        Dim price_change_24h As String = ""
+        Dim price_change_percentage_24h As String = ""
+        Dim circulating_supply As String = ""
+        '
+        API_CoinGecko_Detalle(T_SlugAPI_Moneda.Text, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
+        VerMoneda(L_Fila_Moneda.Text)
+        '
+        L_CurentPrice.Text = current_price
+        L_Hight24h.Text = high_24h
+        L_Low24h.Text = low_24h
+        L_PriceChange24h.Text = price_change_24h
+        L_PriceChangePor24h.Text = price_change_percentage_24h
+        L_CirculatingSupply.Text = circulating_supply
+        '
+        L_Mensaje.Text = "Moneda Actualizada y Guardada correctamente"
     End Sub
 End Class
