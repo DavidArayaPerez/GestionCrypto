@@ -159,4 +159,19 @@ Public Class F_Red
         Dim URL As String = "http://" & T_URLlogo_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
+
+    Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub L_Red_Click(sender As Object, e As EventArgs) Handles L_Red.Click
+        If VariableDeInicio Then Exit Sub
+        Dim T As String = L_Red.Text
+        Dim x As Integer = InStr(T, "(")
+        If x = 0 Then Exit Sub
+        VerRedes(Mid(T, x + 1, Len(T) - x - 1))
+    End Sub
+    '
+    '
+    '
 End Class

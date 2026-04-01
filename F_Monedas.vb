@@ -178,12 +178,15 @@ Public Class F_Monedas
         OrdenarMatriz_Monedas()
         Guardar_Matrices("Monedas")
     End Sub
-    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+    Private Sub L_Monedas_Click(sender As Object, e As EventArgs) Handles L_Monedas.Click
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Monedas.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
+    End Sub
+    Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
+
     End Sub
     Private Sub B_NuevoMoneda_Click_1(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
         Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
