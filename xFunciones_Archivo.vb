@@ -29,7 +29,7 @@ Module xFunciones_Archivo
         Dim ColMatriz As Integer
         '
         If Not ExisteArchivo(Ruta) Then End
-        Dim Lineas() As String = File.ReadAllLines(Ruta, Encoding.GetEncoding(1252))
+        Dim Lineas() As String = File.ReadAllLines(Ruta, System.Text.Encoding.UTF8)
         '
         Dim TotalFilas As Integer = Lineas.Length
         If TotalFilas = 0 Then
