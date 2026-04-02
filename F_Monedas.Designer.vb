@@ -74,6 +74,7 @@ Partial Class F_Monedas
         Me.Label11 = New System.Windows.Forms.Label()
         Me.L_PriceChange24h = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.L_TotalMonedas = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'B_Cerrar
@@ -645,12 +646,24 @@ Partial Class F_Monedas
         Me.Label13.Text = "Price Change 24h"
         Me.Label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'L_TotalMonedas
+        '
+        Me.L_TotalMonedas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_TotalMonedas.ForeColor = System.Drawing.Color.Black
+        Me.L_TotalMonedas.Location = New System.Drawing.Point(219, 656)
+        Me.L_TotalMonedas.Name = "L_TotalMonedas"
+        Me.L_TotalMonedas.Size = New System.Drawing.Size(118, 13)
+        Me.L_TotalMonedas.TabIndex = 664
+        Me.L_TotalMonedas.Text = "L_TotalMonedas"
+        Me.L_TotalMonedas.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'F_Monedas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(1002, 699)
+        Me.Controls.Add(Me.L_TotalMonedas)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.L_PriceChangePor24h)
         Me.Controls.Add(Me.L_CirculatingSupply)
@@ -765,4 +778,5 @@ Partial Class F_Monedas
     Friend WithEvents Label11 As Label
     Friend WithEvents L_PriceChange24h As Label
     Friend WithEvents Label13 As Label
+    Friend WithEvents L_TotalMonedas As Label
 End Class

@@ -147,13 +147,18 @@ Public Class F_Monedas
         Dim circulating_supply As String = ""
         '
         API_CoinGecko_ActualizaValor(SlugAPI, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
-        VerMoneda(Fila)
+        '
+        If Fila > 0 Then
+            VerMoneda(Fila)
+        Else
+
+        End If
         '
         L_CurentPrice.Text = FormatoChileno(current_price, 6)
         L_Hight24h.Text = FormatoChileno(high_24h, 6)
         L_Low24h.Text = FormatoChileno(low_24h, 6)
         L_PriceChange24h.Text = FormatoChileno(price_change_24h)
-        L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h)
+        L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h, 0) & " %"
         L_CirculatingSupply.Text = FormatoChileno(circulating_supply, 0)
         '
         L_Mensaje.Text = "Moneda Actualizada y Guardada correctamente"
@@ -178,6 +183,7 @@ Public Class F_Monedas
     Private Sub ReCarga_Monedas()
         LimpiezaMoneda()
         '
+        L_TotalMonedas.Text = Matriz_MonedasTF - 1
         L_Monedas.Items.Clear()
         Dim T As String
         For i As Integer = 1 To Matriz_MonedasTF
@@ -214,7 +220,7 @@ Public Class F_Monedas
     End Sub
     Private Sub B_NuevoMoneda_Click_1(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
         Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
-        Dim Acronimo As String = UCase(InputBox(T, "Nueva Moneda")).Trim
+        Dim Acronimo As String = UCase(InputBox(T, "Nueva Moneda")).ToLower
         '
         LimpiezaMoneda()
         Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
