@@ -210,6 +210,48 @@ Module zAPI_CoinGecko
                 If Matriz_Monedas(i, 11) = "0" AndAlso Supply_Maximo > 0 Then
                     Matriz_Monedas(i, 11) = Supply_Maximo
                 End If
+                '
+                ' ── Agregar filas faltantes por red ──
+                Dim ID_Moneda As String = Matriz_Monedas(i, 0)  ' Reutilizar ID_Moneda existente
+                If platforms IsNot Nothing AndAlso platforms.Count > 0 Then
+                    For Each plat As KeyValuePair(Of String, JsonNode) In platforms
+                        Dim address As String = If(plat.Value IsNot Nothing, plat.Value.ToString(), "0")
+                        If String.IsNullOrWhiteSpace(address) Then address = "0"
+                        '
+                        ' Verificar si ya existe esta combinación Simbolo + Contract_Address
+                        Dim SWContrato As Boolean = True
+                        For k As Integer = 1 To Matriz_MonedasTF
+                            If Matriz_Monedas(k, 2).ToUpper() = Simbolo AndAlso
+                               Matriz_Monedas(k, 12) = address Then
+                                SWContrato = False
+                                Exit For
+                            End If
+                        Next
+                        '
+                        If SWContrato Then
+                            ' Mapear slug de red al ID_Interno de Matriz_Redes
+                            Dim ID_Red As String = "0"
+                            For j As Integer = 1 To Matriz_RedesTF
+                                If Matriz_Redes(j, 4).ToLower() = plat.Key.ToLower() Then
+                                    ID_Red = Matriz_Redes(j, 0)
+                                    Exit For
+                                End If
+                            Next
+                            '
+                            Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                            Matriz_Monedas(NuevaFila, 0) = ID_Moneda                '0  ID_Moneda      (mismo para todas las redes)
+                            Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()     '1  ID_Despliegue  (único por fila)
+                            Matriz_Monedas(NuevaFila, 2) = Simbolo                  '2  Simbolo
+                            Matriz_Monedas(NuevaFila, 3) = Nombre                   '3  Nombre_Oficial
+                            Matriz_Monedas(NuevaFila, 4) = slugAPI                  '4  Slug_API
+                            Matriz_Monedas(NuevaFila, 5) = "token_defi"             '5  Tipo_Activo
+                            Matriz_Monedas(NuevaFila, 10) = ID_Red                  '10 ID_Red_Nativa
+                            Matriz_Monedas(NuevaFila, 11) = Supply_Maximo           '11 Supply_Maximo
+                            Matriz_Monedas(NuevaFila, 12) = address                 '12 Contract_Address
+                            Matriz_Monedas(NuevaFila, 13) = MarketCapRank           '13 Market_cap_rank
+                        End If
+                    Next
+                End If
                 Guardar_Matrices("Monedas")
             End If
             '

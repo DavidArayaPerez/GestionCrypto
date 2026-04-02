@@ -151,7 +151,14 @@ Public Class F_Monedas
         If Fila > 0 Then
             VerMoneda(Fila)
         Else
-
+            Fila = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 4, SlugAPI)
+            If Fila > 0 Then
+                VerMoneda(Fila)
+            Else
+                LimpiezaMoneda()
+                L_Mensaje.Text = "Moneda no encontrada en la Matriz, revise el Slug API ingresado"
+                Exit Sub
+            End If
         End If
         '
         L_CurentPrice.Text = FormatoChileno(current_price, 6)

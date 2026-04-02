@@ -10,7 +10,7 @@ Module xFunciones_Matriz
     '
     '
     Public Function BuscarCualquierValorEnCuaquierMatriz(MatrizOrigen(,) As String, TotalFilas As Integer, NumeroColumnaBuscada As Integer, ElementoBuscado As String) As Integer
-        'Devuelve la posicion
+        'Devuelve la FILA
         Dim Matriz(,) As String = MatrizOrigen
         For i As Integer = 1 To TotalFilas
             If ElementoBuscado = Matriz(i, NumeroColumnaBuscada) Then Return i
