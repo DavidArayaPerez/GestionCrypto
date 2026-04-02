@@ -112,7 +112,7 @@ Module zAPI_CoinGecko
                                             ByRef price_change_24h As String,
                                             ByRef price_change_percentage_24h As String,
                                             ByRef circulating_supply As String)
-        Dim url As String = CG_BASE_URL & $"coins/{slug}" &
+        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" &
                             $"?localization=false&tickers=false" &
                             $"&market_data=true&community_data=false&developer_data=false" &
                             $"&x_cg_demo_api_key={CG_API_KEY}"
@@ -212,17 +212,17 @@ Module zAPI_CoinGecko
                 End If
                 '
                 ' ── Agregar filas faltantes por red ──
-                Dim ID_Moneda As String = Matriz_Monedas(i, 0)  ' Reutilizar ID_Moneda existente
+                Dim ID_Moneda As String = Matriz_Monedas(i, 0)
                 If platforms IsNot Nothing AndAlso platforms.Count > 0 Then
                     For Each plat As KeyValuePair(Of String, JsonNode) In platforms
                         Dim address As String = If(plat.Value IsNot Nothing, plat.Value.ToString(), "0")
                         If String.IsNullOrWhiteSpace(address) Then address = "0"
                         '
-                        ' Verificar si ya existe esta combinación Simbolo + Contract_Address
+                        ' Verificar si ya existe esta combinación Simbolo + Contract_Address (sin distinción de mayúsculas)
                         Dim SWContrato As Boolean = True
                         For k As Integer = 1 To Matriz_MonedasTF
                             If Matriz_Monedas(k, 2).ToUpper() = Simbolo AndAlso
-                               Matriz_Monedas(k, 12) = address Then
+                               Matriz_Monedas(k, 12).ToLower() = address.ToLower() Then
                                 SWContrato = False
                                 Exit For
                             End If
