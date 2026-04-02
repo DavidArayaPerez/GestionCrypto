@@ -29,14 +29,14 @@ Module zAPI_CoinGecko
         Public Property Contract_Address As String
         Public Property Activa As String
     End Class
-
+    '
     ' ============================================================
     '  Servicio CoinGecko — estilo WebClient + Function síncrona
     ' ============================================================
-
+    '
     Private Const CG_API_KEY As String = "CG-yZ2PmLgi8HqjvmqefkWdbZfk"
     Private Const CG_BASE_URL As String = "https://api.coingecko.com/api/v3/"
-
+    '
     ' ---------------------------------------------------------------
     '  Lista general de monedas ordenadas por market cap
     ' ---------------------------------------------------------------
@@ -120,8 +120,7 @@ Module zAPI_CoinGecko
                         $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         ' Inicializar ByRef en caso de error
-        current_price = "0" : high_24h = "0" : low_24h = "0"
-        price_change_24h = "0" : price_change_percentage_24h = "0" : circulating_supply = "0"
+        current_price = "0" : high_24h = "0" : low_24h = "0" : price_change_24h = "0" : price_change_percentage_24h = "0" : circulating_supply = "0"
         '
         Try
             Dim json As String = New WebClient().DownloadString(New Uri(url))

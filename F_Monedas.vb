@@ -166,6 +166,12 @@ Public Class F_Monedas
 
 
 
+
+
+
+    '
+    '
+    '
     Private Sub F_Monedas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReCarga_Monedas()
     End Sub
