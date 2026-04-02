@@ -138,7 +138,26 @@ Public Class F_Monedas
         '
         L_Mensaje.Text = "Moneda guardada correctamente"
     End Sub
-
+    Private Sub ActualizaMoneda(SlugAPI As String, Fila As String)
+        Dim current_price As String = ""
+        Dim high_24h As String = ""
+        Dim low_24h As String = ""
+        Dim price_change_24h As String = ""
+        Dim price_change_percentage_24h As String = ""
+        Dim circulating_supply As String = ""
+        '
+        API_CoinGecko_ActualizaValor(SlugAPI, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
+        VerMoneda(Fila)
+        '
+        L_CurentPrice.Text = FormatoChileno(current_price, 6)
+        L_Hight24h.Text = FormatoChileno(high_24h, 6)
+        L_Low24h.Text = FormatoChileno(low_24h, 6)
+        L_PriceChange24h.Text = FormatoChileno(price_change_24h)
+        L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h)
+        L_CirculatingSupply.Text = FormatoChileno(circulating_supply, 0)
+        '
+        L_Mensaje.Text = "Moneda Actualizada y Guardada correctamente"
+    End Sub
 
 
 
@@ -185,46 +204,28 @@ Public Class F_Monedas
         VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
     Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
-
+        '
     End Sub
     Private Sub B_NuevoMoneda_Click_1(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
         Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
-        Dim Acronimo As String = InputBox(T, "Nueva Moneda")
+        Dim Acronimo As String = UCase(InputBox(T, "Nueva Moneda")).Trim
         '
+        LimpiezaMoneda()
         Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
-        If Fila > 0 Then VerMoneda(Fila)
+        If Fila > 0 Then
+            VerMoneda(Fila)
+        Else
+            ActualizaMoneda(Acronimo, "0")
+        End If
     End Sub
-
     Private Sub B_GrabarMoneda_Click_1(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
         GrabarMoneda()
     End Sub
-
     Private Sub B_Actualizar_Monedas_Click_1(sender As Object, e As EventArgs) Handles B_ActualizaTODO_Monedas.Click
         ActualizarMonedas()
         ReCarga_Monedas()
     End Sub
-
     Private Sub B_Actualiza_Moneda_Click(sender As Object, e As EventArgs) Handles B_Actualiza_Moneda.Click
-        Dim current_price As String = ""
-        Dim high_24h As String = ""
-        Dim low_24h As String = ""
-        Dim price_change_24h As String = ""
-        Dim price_change_percentage_24h As String = ""
-        Dim circulating_supply As String = ""
-        '
-        API_CoinGecko_ActualizaValor(T_SlugAPI_Moneda.Text, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
-        VerMoneda(L_Fila_Moneda.Text)
-        '
-        L_CurentPrice.Text = FormatoChileno(current_price, 6)
-        L_Hight24h.Text = FormatoChileno(high_24h, 6)
-        L_Low24h.Text = FormatoChileno(low_24h, 6)
-        L_PriceChange24h.Text = FormatoChileno(price_change_24h)
-        L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h)
-        L_CirculatingSupply.Text = FormatoChileno(circulating_supply, 0)
-
-
-
-        '
-        L_Mensaje.Text = "Moneda Actualizada y Guardada correctamente"
+        ActualizaMoneda(T_SlugAPI_Moneda.Text, L_Fila_Moneda.Text)
     End Sub
 End Class
