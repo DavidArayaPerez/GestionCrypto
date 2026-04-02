@@ -112,10 +112,7 @@ Module zAPI_CoinGecko
                                             ByRef price_change_24h As String,
                                             ByRef price_change_percentage_24h As String,
                                             ByRef circulating_supply As String)
-        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" &
-                            $"?localization=false&tickers=false" &
-                            $"&market_data=true&community_data=false&developer_data=false" &
-                            $"&x_cg_demo_api_key={CG_API_KEY}"
+        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         ' Inicializar ByRef en caso de error
         current_price = "0" : high_24h = "0" : low_24h = "0"

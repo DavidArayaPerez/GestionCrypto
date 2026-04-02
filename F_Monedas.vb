@@ -31,7 +31,7 @@ Public Class F_Monedas
         '
         T_Simbolo_Moneda.Enabled = Habilitar
         T_NombreOficial_Moneda.Enabled = Habilitar
-        'T_SlugAPI_Moneda.Enabled = Habilitar
+        T_SlugAPI_Moneda.Enabled = Habilitar
         T_TipoActivo_Moneda.Enabled = Habilitar
         T_SubtipoStablecoin_Moneda.Enabled = Habilitar
         T_MonedaParidad_Moneda.Enabled = Habilitar

@@ -418,7 +418,7 @@ Partial Class F_zPrincipal
         Me.Controls.Add(Me.B_Redes)
         Me.Controls.Add(Me.B_Monedas)
         Me.Controls.Add(Me.B_Cerrar)
-        Me.Location = New System.Drawing.Point(100, 100)
+        Me.Location = New System.Drawing.Point(50, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "F_zPrincipal"
