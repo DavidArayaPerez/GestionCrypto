@@ -20,7 +20,7 @@ Module mCompras
     '   8   Comision
     '   9   Gas
     '   10  Precio
-    '
+    '   xx
     Public Function Crear_Compras() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)
