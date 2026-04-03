@@ -1,9 +1,6 @@
 ﻿'
 '
 '
-Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook
-Imports Microsoft.SharePoint.Client
-
 Public Class F_Monedas
     '
     '

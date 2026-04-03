@@ -20,7 +20,7 @@ Module mValorUSD
         Dim TotalFilas As Integer = Matriz_ValorUSDTF
         For i As Integer = 1 To TotalFilas
             Dim FechaAux As String = TransformarFecha_TextoNumero_YYYYmmDD(Matriz(i, 0))
-            If FechaAux > 1 Then Matriz(i, 1) = FechaAux
+            If FechaAux > 1 Then Matriz(i, 0) = FechaAux
         Next i
         Matriz_ValorUSD = Matriz
     End Sub

@@ -411,7 +411,6 @@
     <Compile Include="zCargaInicia.vb" />
     <Compile Include="zCrearCodigoUnico.vb" />
     <Compile Include="xFunciones Fechas.vb" />
-    <Compile Include="xFunciones Texto.vb" />
     <Compile Include="xFunciones Matematicas.vb" />
     <Compile Include="xFunciones_Matriz.vb" />
     <Compile Include="F_zPrincipal.Designer.vb">
