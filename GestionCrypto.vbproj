@@ -389,7 +389,7 @@
     </Compile>
     <Compile Include="zAPI_CoinGecko.vb" />
     <Compile Include="mCompras.vb" />
-    <Compile Include="mDespositos.vb" />
+    <Compile Include="mDepositos.vb" />
     <Compile Include="mExchange.vb" />
     <Compile Include="mMonedas.vb" />
     <Compile Include="mMovimientos.vb" />

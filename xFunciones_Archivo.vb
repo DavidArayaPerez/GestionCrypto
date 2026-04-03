@@ -78,6 +78,7 @@ Module xFunciones_Archivo
             Case "PoolLiquidez" : ColMatriz = Matriz_PoolLiquidezTC
             Case "Traspasos" : ColMatriz = Matriz_TraspasosTC
             Case "Redes" : ColMatriz = Matriz_RedesTC
+            Case "ValorUSD" : ColMatriz = Matriz_ValorUSDTC
             Case Else
                 ColMatriz = 0
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
@@ -96,6 +97,7 @@ Module xFunciones_Archivo
             Case "PoolLiquidez" : Matriz_PoolLiquidezTF = Filas
             Case "Traspasos" : Matriz_TraspasosTF = Filas
             Case "Redes" : Matriz_RedesTF = Filas
+            Case "ValorUSD" : Matriz_ValorUSDTF = Filas
             Case Else
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
         End Select

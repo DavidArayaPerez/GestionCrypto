@@ -30,6 +30,9 @@ Public Class F_zPrincipal
         Parametros()
         LogTiempo("Parametros()")
 
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
+
+
         CargarTXT("Exchange", Matriz_Exchange)
         CargarTXT("Billeteras", Matriz_Billeteras)
         LogTiempo("Exchange+Billeteras")
@@ -56,7 +59,6 @@ Public Class F_zPrincipal
 
         CargarTXT("Redes", Matriz_Redes)
         CargarTXT("Monedas", Matriz_Monedas)
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
         LogTiempo("Redes+Monedas+USD")
         '
         'VariableDeInicio = False
@@ -89,7 +91,7 @@ Public Class F_zPrincipal
         F_Billetera.Show()
     End Sub
     Private Sub B_Compras_Click(sender As Object, e As EventArgs) Handles B_Compras.Click
-        F_Billetera.Show()
+        F_Compras.Show()
     End Sub
 
     Private Sub B_Depositos_Click(sender As Object, e As EventArgs) Handles B_Depositos.Click

@@ -20,7 +20,7 @@ Module xFunciones_Matriz
     Public Sub OrdenarMatriz(ByRef MatrizOrigen(,) As String, TotalFilas As Integer, TotalColumnas As Integer, NumeroColumnaOrden As Integer, Optional TipoOrden As String = "ASC")
         For i As Integer = 1 To TotalFilas - 1
             For j As Integer = i + 1 To TotalFilas
-                If TipoOrden = "ASC" Then
+                If TipoOrden <> "ASC" Then
                     If MatrizOrigen(i, NumeroColumnaOrden) < MatrizOrigen(j, NumeroColumnaOrden) Then
                         For k As Integer = 0 To TotalColumnas - 1
                             Dim Temp As String = MatrizOrigen(i, k)

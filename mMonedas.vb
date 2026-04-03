@@ -42,8 +42,8 @@ Module mMonedas
     Public Sub OrdenarMatriz_Monedas()
         Dim V1, V2 As Integer
         For i As Integer = 1 To Matriz_MonedasTF - 1
-            V1 = Val(Matriz_Monedas(i, 13))
             For j As Integer = i + 1 To Matriz_MonedasTF
+                V1 = Val(Matriz_Monedas(i, 13))
                 V2 = Matriz_Monedas(j, 13)
                 If V2 > 0 Then
                     If V1 > V2 Then

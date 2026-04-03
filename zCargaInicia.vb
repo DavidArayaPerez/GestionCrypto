@@ -57,9 +57,13 @@ Module zCargaInicia
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
                 Case "API_CMF"
-                    API_CMF = "b51b2c4ee645a68cdd565cd345082d34a227cadc"
+                    API_CMF = Elementos(1)
+                    Contador += 1
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
                 Case "API_COINGEKO"
-                    API_COINGEKO = "CG-yZ2PmLgi8HqjvmqefkWdbZfk"
+                    API_COINGEKO = Elementos(1)
+                    Contador += 1
+                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
             End Select
         Next Fila
         '
