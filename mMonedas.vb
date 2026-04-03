@@ -38,15 +38,7 @@ Module mMonedas
     '
     '
     '
-    Public Sub ActualizarMonedas()
-        'Carga valores actualizados de MONEDAS
-        API_CoinGecko_Monedas(250, 1)
-        API_CoinGecko_Monedas(250, 2)
-        API_CoinGecko_Monedas(250, 3)
-        API_CoinGecko_Monedas(250, 4)
-        API_CoinGecko_Monedas(250, 5)
-        MsgBox("Monedas actualizadas correctamente")
-    End Sub
+
     Public Sub OrdenarMatriz_Monedas()
         Dim V1, V2 As Integer
         For i As Integer = 1 To Matriz_MonedasTF - 1
