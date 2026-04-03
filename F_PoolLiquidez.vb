@@ -82,7 +82,15 @@ Public Class F_PoolLiquidez
         '   16  Maximo
         '
     End Sub
-
+    '
+    '
+    '
+    '---------------------------------------------------------------------------------------------------------------------
+    'EVENTOS
+    '---------------------------------------------------------------------------------------------------------------------
+    '
+    '
+    '
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
     End Sub

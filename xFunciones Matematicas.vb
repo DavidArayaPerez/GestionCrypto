@@ -7,17 +7,21 @@ Module zFuncionesMatematicas
     '
     '
     '
-
-    Public Function FormatoChileno(ByVal valor As String, Optional ByVal decimales As Integer = 2) As String
-        If String.IsNullOrWhiteSpace(valor) Then Return "0"
+    'FormatoChileno(Texto , Decimales)
+    'ValidaTXT_Numero(Texto)
+    'Valida_NumeroConFormato(Texto)
+    '
+    '
+    Public Function FormatoChileno(ByVal Texto As String, Optional ByVal Decimales As Integer = 2) As String
+        If String.IsNullOrWhiteSpace(Texto) Then Return "0"
         '
         Dim numero As Double
-        If Not Double.TryParse(valor, System.Globalization.NumberStyles.Any,
+        If Not Double.TryParse(Texto, System.Globalization.NumberStyles.Any,
                            System.Globalization.CultureInfo.InvariantCulture, numero) Then
-            Return valor
+            Return Texto
         End If
         '
-        Return numero.ToString("N" & decimales, System.Globalization.CultureInfo.GetCultureInfo("es-CL"))
+        Return numero.ToString("N" & Decimales, System.Globalization.CultureInfo.GetCultureInfo("es-CL"))
     End Function
 
 
@@ -35,6 +39,7 @@ Module zFuncionesMatematicas
         T = NumeroDoble.ToString("#,###.########", CulturaChilena)
         Return T
     End Function
+
     Public Function Valida_NumeroConFormatoSinDecimales(Texto As String) As String
         If Not IsNumeric(Texto) Then Return "0"
         If Val(Texto) = 0 Then Return "0"
@@ -75,80 +80,6 @@ Module zFuncionesMatematicas
             NumeroTXT2 = Numero.ToString("#,###." & FormatoNumeroDecimales, CulturaChilena)
             Return NumeroTXT
         End If
-    End Function
-    '
-    '
-    '
-    Public Function NumeroLimitado(ByVal Texto As String, ByVal NumeroInferior As Integer, ByVal NumeroSuperior As Integer) As Integer
-        Dim Numero As Integer
-        If Not IsNumeric(Texto) Then Return 0
-        '
-        Numero = CInt(Texto)
-        If Numero >= NumeroInferior Or Numero <= NumeroSuperior Then
-            Return Numero
-        Else
-            Return 0
-        End If
-    End Function
-    Public Function ValidaNumeroDoble(Texto As String) As Double
-        'El Tipo INT es de 32bit
-        '   +-2.147.483.648.-
-        'El tipo LONG es de 64bit
-        '   Enteros de 64 bits con signo.
-        '   Rango +- 9.223.372.036.854.775.808.-
-        '   Tiene 19 Caracteres
-        '
-        If Not IsNumeric(Texto) Then Return 0
-        If Len(Texto) > 18 Then Return 0
-        Dim NumeroDoble As Double
-        NumeroDoble = CDbl(Texto)
-        Return NumeroDoble
-    End Function
-    Public Function ValidarPeriodo(Texto As String) As Integer
-        'Valida que el periodo este entre 2000/01 y el 2050/12
-        Dim Numero As Integer = Val(Texto)
-        If Numero < 200001 Then Return 0  '200001 =   2000/01
-        If Numero > 205012 Then Return 0  '205012 =   2050/12
-        Return Numero
-    End Function
-    Public Function ValidaRUTNumerico(ByVal Texto As String) As String
-        Texto = Replace(Texto, ".", "")
-        Dim x As String = InStr(Texto, "-")
-        If x > 0 Then Texto = Mid(Texto, 1, x - 1)
-        '
-        If Not IsNumeric(Texto) Then Return "0"
-        If Len(Texto) > 8 Then Return "0"
-        '
-        Dim Numero As Long = Texto
-        If Numero = 0 Then Return "0"
-        If Numero < 1000000 Then Return "0"
-        If Numero > 99999999 Then Return "0"
-        Return Str(Numero).Trim
-    End Function
-    Public Function DigitoVerificador(RUTnum As String) As String
-        If Not IsNumeric(RUTnum) Then Return "X"
-        If Val(RUTnum) = 0 Then Return "X"
-        If Val(RUTnum) < 1000 And RUTnum > 99999999 Then Return "X"
-
-        Dim Suma, RUT As Long
-        Dim i As Byte
-        Dim DV As String
-
-        RUT = ValidaRUTNumerico(RUTnum)
-        Suma = 0
-        For i = 1 To 8
-            Suma += Val(Mid(RUT, i, 1)) * Val(Mid("32765432", i, 1))
-        Next i
-        DV = 11 - (Suma Mod 11)
-
-        If DV = 10 Then
-            DV = "K"
-        ElseIf DV = 11 Then
-            DV = 0
-        Else
-            'Sin Cambios
-        End If
-        Return DV
     End Function
     '
     '

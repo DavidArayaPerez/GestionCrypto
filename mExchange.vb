@@ -7,10 +7,11 @@ Module mExchange
     '
     Public Matriz_Exchange(,) As String
     Public Matriz_ExchangeTF As Integer
-    Public Matriz_ExchangeTC As Integer = 2
+    Public Matriz_ExchangeTC As Integer = 3
     '
     '   0   ID
     '   1   Nombre
+    '   2   Link
     '
     Public Function Crear_Exchange() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno

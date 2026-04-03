@@ -64,7 +64,15 @@ Public Class F_Traspaso
         'Dim NombreNota As String = T_FechaTraspaso.Text & "_" & T_HoraTraspaso.Text & "_" & "Traspasos" & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaTraspaso)
     End Sub
-
+    '
+    '
+    '
+    '---------------------------------------------------------------------------------------------------------------------
+    'EVENTOS
+    '---------------------------------------------------------------------------------------------------------------------
+    '
+    '
+    '
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
     End Sub

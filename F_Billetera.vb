@@ -49,7 +49,7 @@ Public Class F_Billetera
     Private Sub Grabar()
         Dim F As Integer = L_Fila.Text
         If F = 0 Then Exit Sub
-
+        '
         Matriz_Billeteras(F, 0) = T_CodigoBilletera.Text
         Matriz_Billeteras(F, 1) = T_NombreBilletera.Text
         '
@@ -59,16 +59,22 @@ Public Class F_Billetera
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         L_Mensaje.Text = "Moneda guardada correctamente"
+        '   0   Codigo Billetera
+        '   1   Nombre
     End Sub
     Public Sub CopiarAlPortapapeles(ByVal txt As Control)
         If Not String.IsNullOrWhiteSpace(txt.Text) Then
             Clipboard.SetText(txt.Text)
         End If
     End Sub
-
-
-
-
+    '
+    '
+    '
+    '---------------------------------------------------------------------------------------------------------------------
+    'EVENTOS
+    '---------------------------------------------------------------------------------------------------------------------
+    '
+    '
     Private Sub F_Billetera_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Inicializar()
     End Sub

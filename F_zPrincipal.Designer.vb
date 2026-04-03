@@ -68,6 +68,7 @@ Partial Class F_zPrincipal
         Me.B_PoolLiquidez = New System.Windows.Forms.Button()
         Me.B_Movimientos = New System.Windows.Forms.Button()
         Me.B_Traspasos = New System.Windows.Forms.Button()
+        Me.B_Exchange = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Menu_Agregar
@@ -340,7 +341,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Depositos.BackColor = System.Drawing.SystemColors.Control
         Me.B_Depositos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Depositos.Location = New System.Drawing.Point(12, 181)
+        Me.B_Depositos.Location = New System.Drawing.Point(12, 219)
         Me.B_Depositos.Name = "B_Depositos"
         Me.B_Depositos.Size = New System.Drawing.Size(99, 23)
         Me.B_Depositos.TabIndex = 430
@@ -351,18 +352,18 @@ Partial Class F_zPrincipal
         '
         Me.B_Compras.BackColor = System.Drawing.SystemColors.Control
         Me.B_Compras.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Compras.Location = New System.Drawing.Point(12, 152)
+        Me.B_Compras.Location = New System.Drawing.Point(12, 190)
         Me.B_Compras.Name = "B_Compras"
         Me.B_Compras.Size = New System.Drawing.Size(99, 23)
         Me.B_Compras.TabIndex = 429
-        Me.B_Compras.Text = "Compras"
+        Me.B_Compras.Text = "Compras FIAT"
         Me.B_Compras.UseVisualStyleBackColor = False
         '
         'B_Billetera
         '
         Me.B_Billetera.BackColor = System.Drawing.SystemColors.Control
         Me.B_Billetera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Billetera.Location = New System.Drawing.Point(12, 99)
+        Me.B_Billetera.Location = New System.Drawing.Point(12, 127)
         Me.B_Billetera.Name = "B_Billetera"
         Me.B_Billetera.Size = New System.Drawing.Size(99, 23)
         Me.B_Billetera.TabIndex = 428
@@ -373,7 +374,7 @@ Partial Class F_zPrincipal
         '
         Me.B_PoolLiquidez.BackColor = System.Drawing.SystemColors.Control
         Me.B_PoolLiquidez.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 239)
+        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 277)
         Me.B_PoolLiquidez.Name = "B_PoolLiquidez"
         Me.B_PoolLiquidez.Size = New System.Drawing.Size(99, 23)
         Me.B_PoolLiquidez.TabIndex = 432
@@ -384,7 +385,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Movimientos.BackColor = System.Drawing.SystemColors.Control
         Me.B_Movimientos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Movimientos.Location = New System.Drawing.Point(12, 210)
+        Me.B_Movimientos.Location = New System.Drawing.Point(12, 248)
         Me.B_Movimientos.Name = "B_Movimientos"
         Me.B_Movimientos.Size = New System.Drawing.Size(99, 23)
         Me.B_Movimientos.TabIndex = 431
@@ -395,12 +396,23 @@ Partial Class F_zPrincipal
         '
         Me.B_Traspasos.BackColor = System.Drawing.SystemColors.Control
         Me.B_Traspasos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Traspasos.Location = New System.Drawing.Point(12, 268)
+        Me.B_Traspasos.Location = New System.Drawing.Point(12, 306)
         Me.B_Traspasos.Name = "B_Traspasos"
         Me.B_Traspasos.Size = New System.Drawing.Size(99, 23)
         Me.B_Traspasos.TabIndex = 433
         Me.B_Traspasos.Text = "Traspasos"
         Me.B_Traspasos.UseVisualStyleBackColor = False
+        '
+        'B_Exchange
+        '
+        Me.B_Exchange.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Exchange.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Exchange.Location = New System.Drawing.Point(12, 98)
+        Me.B_Exchange.Name = "B_Exchange"
+        Me.B_Exchange.Size = New System.Drawing.Size(99, 23)
+        Me.B_Exchange.TabIndex = 434
+        Me.B_Exchange.Text = "Exchange"
+        Me.B_Exchange.UseVisualStyleBackColor = False
         '
         'F_zPrincipal
         '
@@ -408,6 +420,7 @@ Partial Class F_zPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(137, 413)
+        Me.Controls.Add(Me.B_Exchange)
         Me.Controls.Add(Me.B_Traspasos)
         Me.Controls.Add(Me.B_PoolLiquidez)
         Me.Controls.Add(Me.B_Movimientos)
@@ -473,4 +486,5 @@ Partial Class F_zPrincipal
     Friend WithEvents B_PoolLiquidez As Button
     Friend WithEvents B_Movimientos As Button
     Friend WithEvents B_Traspasos As Button
+    Friend WithEvents B_Exchange As Button
 End Class

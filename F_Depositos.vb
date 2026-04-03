@@ -5,7 +5,7 @@ Public Class F_Depositos
     '
     '
     '
-    Private Sub LimpiezaDeposito(Optional Habilitar As Boolean = False)
+    Private Sub Limpiar(Optional Habilitar As Boolean = False)
         'DEPOSITO
         T_FechaDeposito.Text = ""
         T_HoraDeposito.Text = ""
@@ -29,8 +29,8 @@ Public Class F_Depositos
         L_PrecioMonedaDeposito.Enabled = Habilitar
         rT_NotaDeposito.Enabled = Habilitar
     End Sub
-    Private Sub VerDepositos(F As Integer)
-        LimpiezaDeposito(True)
+    Private Sub Ver(F As Integer)
+        Limpiar(True)
         If F < 1 Then Exit Sub
         '   0   ID
         '   1   Fecha
@@ -63,11 +63,17 @@ Public Class F_Depositos
         'Dim NombreNota As String = T_FechaDeposito.Text & "_" & T_HoraDeposito.Text & "_" & "Depositos" & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaDeposito)
     End Sub
-
+    '
+    '
+    '
+    '---------------------------------------------------------------------------------------------------------------------
+    'EVENTOS
+    '---------------------------------------------------------------------------------------------------------------------
+    '
+    '
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
     End Sub
-
     '
     '
     '

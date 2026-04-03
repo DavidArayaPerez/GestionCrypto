@@ -111,11 +111,15 @@ Public Class F_Red
         '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
         '
     End Sub
-
-
-
-
-
+    '
+    '
+    '
+    '---------------------------------------------------------------------------------------------------------------------
+    'EVENTOS
+    '---------------------------------------------------------------------------------------------------------------------
+    '
+    '
+    '
     Private Sub F_Red_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim T As String
         LimpiezaRedes()
@@ -159,11 +163,9 @@ Public Class F_Red
         Dim URL As String = "http://" & T_URLlogo_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
-
     Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
 
     End Sub
-
     Private Sub L_Red_Click(sender As Object, e As EventArgs) Handles L_Red.Click
         If VariableDeInicio Then Exit Sub
         Dim T As String = L_Red.Text

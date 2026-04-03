@@ -29,7 +29,7 @@ Public Class F_Monedas
         L_Fila_Moneda.Text = ""
         'MONEDA
         T_ContractAddress_Moneda.Text = ""
-
+        '
         L_Simbolo_Moneda.Text = ""
         L_NombreOficial_Moneda.Text = ""
         L_SlugAPI_Moneda.Text = ""
@@ -45,7 +45,7 @@ Public Class F_Monedas
         L_PriceChangePor24h.Text = ""
         L_CirculatingSupply.Text = ""
         L_FechaActualizacion.Text = ""
-
+        '
         CB_ActualizacionAutomatica.Checked = False
         rT_NotaMoneda.Text = ""
         '
@@ -152,7 +152,7 @@ Public Class F_Monedas
         Else
             Matriz_Monedas(F, 22) = "N"
         End If
-
+        '
         Guardar_Matrices("Monedas")
         '
         Dim NombreNota As String = "Moneda" & L_Simbolo_Moneda.Text & "_Nota.rtf"
@@ -177,7 +177,9 @@ Public Class F_Monedas
     '
     '
     '
-
+    '---------------------------------------------------------------------------------------------------------------------
+    'EVENTOS
+    '---------------------------------------------------------------------------------------------------------------------
     '
     '
     '
