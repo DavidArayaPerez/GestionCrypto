@@ -12,14 +12,14 @@ Module zCargaInicia
     Public zCargaInicialTXT As String = Application.StartupPath & "\zCargaInicial.txt"
     Public zParametrosTXT As String = Application.StartupPath & "\zParametros.txt"
     Public API_CMF, API_COINGEKO As String
+    Public RutaLocal As String              'Variable para trabajar en forma local, o forma nativa.
     '
     '
     '
 
     Public Sub Parametros()
-        Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto As String
-        Dim Fila, Total, Contador As Integer
-        Dim ACTUALIZACION_DOLAR As String = "SI"
+        Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto, Columna1, Columna2 As String
+        Dim Fila, Total As Integer
         '
         If Not ExisteArchivo(zParametrosTXT) Then
             Texto = "El archivo de configuracion no fue encontrado" & vbCrLf
@@ -37,35 +37,31 @@ Module zCargaInicia
         End If
         '
         ReDim ArchivoFinal(Total)
-        Contador = -1
         '
         For Fila = 0 To Total - 1
             Linea = Lineas(Fila)
             If Linea.Trim = "" Then Continue For
             '
             Elementos = Linea.Split(vbTab)
-            Select Case Elementos(0)
+            Columna1 = Elementos(0)
+            Columna2 = Elementos(1)
+            Select Case Columna1
                 Case "RUTA_LOCAL"
-                    RutaLocal = Elementos(1)
-                    Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & Elementos(1)
-                Case "DOLAR"
-                    If ValorUSD = 0 Then
-                        ValorUSD = CDbl(Elementos(1))
-                        ACTUALIZACION_DOLAR = "NO"
-                    End If
-                    Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
+                    RutaLocal = Columna2
+                    ArchivoFinal(0) = Columna1 & vbTab & Columna2   'Fila 0
+
                 Case "API_CMF"
-                    API_CMF = Elementos(1)
-                    Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
+                    API_CMF = Columna2
+                    ArchivoFinal(1) = Columna1 & vbTab & Columna2   'Fila 1
+
                 Case "API_COINGEKO"
-                    API_COINGEKO = Elementos(1)
-                    Contador += 1
-                    ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
+                    API_COINGEKO = Columna2
+                    ArchivoFinal(2) = Columna1 & vbTab & Columna2   'Fila 2
+
             End Select
         Next Fila
+        '
+        ArchivoFinal(3) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()    'Fila 3
         '
         If RutaLocal = "" Then
             Texto = "No fue encontrada la variable RUTA local" & vbCrLf
@@ -73,9 +69,6 @@ Module zCargaInicia
             End
         End If
         '
-        ReDim Preserve ArchivoFinal(Contador + 4)
-        ArchivoFinal(Contador + 1) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()
-        ArchivoFinal(Contador + 4) = "ACTUALIZACION_DOLAR" & vbTab & ACTUALIZACION_DOLAR
         GuardarParametros(zParametrosTXT, ArchivoFinal)
     End Sub
     Public Sub GuardarParametros(ByVal RutaArchivo As String, ByVal Arreglo() As String)

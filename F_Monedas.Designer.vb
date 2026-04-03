@@ -191,7 +191,7 @@ Partial Class F_Monedas
         Me.Label79.AutoSize = True
         Me.Label79.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label79.ForeColor = System.Drawing.Color.Blue
-        Me.Label79.Location = New System.Drawing.Point(259, 187)
+        Me.Label79.Location = New System.Drawing.Point(259, 185)
         Me.Label79.Name = "Label79"
         Me.Label79.Size = New System.Drawing.Size(96, 13)
         Me.Label79.TabIndex = 630
@@ -203,7 +203,7 @@ Partial Class F_Monedas
         Me.Label55.AutoSize = True
         Me.Label55.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label55.ForeColor = System.Drawing.Color.Blue
-        Me.Label55.Location = New System.Drawing.Point(294, 162)
+        Me.Label55.Location = New System.Drawing.Point(294, 158)
         Me.Label55.Name = "Label55"
         Me.Label55.Size = New System.Drawing.Size(61, 13)
         Me.Label55.TabIndex = 626
@@ -586,7 +586,7 @@ Partial Class F_Monedas
         '
         Me.L_SubtipoStablecoin_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_SubtipoStablecoin_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_SubtipoStablecoin_Moneda.Location = New System.Drawing.Point(361, 187)
+        Me.L_SubtipoStablecoin_Moneda.Location = New System.Drawing.Point(361, 185)
         Me.L_SubtipoStablecoin_Moneda.Name = "L_SubtipoStablecoin_Moneda"
         Me.L_SubtipoStablecoin_Moneda.Size = New System.Drawing.Size(170, 13)
         Me.L_SubtipoStablecoin_Moneda.TabIndex = 675
@@ -596,7 +596,7 @@ Partial Class F_Monedas
         '
         Me.L_TipoActivo_Moneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_TipoActivo_Moneda.ForeColor = System.Drawing.Color.Black
-        Me.L_TipoActivo_Moneda.Location = New System.Drawing.Point(361, 162)
+        Me.L_TipoActivo_Moneda.Location = New System.Drawing.Point(361, 158)
         Me.L_TipoActivo_Moneda.Name = "L_TipoActivo_Moneda"
         Me.L_TipoActivo_Moneda.Size = New System.Drawing.Size(170, 13)
         Me.L_TipoActivo_Moneda.TabIndex = 674

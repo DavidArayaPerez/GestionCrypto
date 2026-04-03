@@ -55,7 +55,7 @@ Public Class F_Billetera
         '
         Guardar_Matrices("Billeteras")
         '
-        Dim NombreNota As String = "Billetera_" & T_NombreBilletera.Text & "_Nota.rtf"
+        Dim NombreNota As String = "B_" & T_CodigoBilletera.Text & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         L_Mensaje.Text = "Moneda guardada correctamente"

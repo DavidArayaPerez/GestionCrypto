@@ -28,12 +28,14 @@ Partial Class F_Exchange
         Me.rT_NotaExchange = New System.Windows.Forms.RichTextBox()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
+        Me.T_LinkCoinGeko = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'L_Exchange
         '
         Me.L_Exchange.FormattingEnabled = True
-        Me.L_Exchange.Location = New System.Drawing.Point(27, 70)
+        Me.L_Exchange.Location = New System.Drawing.Point(12, 49)
         Me.L_Exchange.Name = "L_Exchange"
         Me.L_Exchange.Size = New System.Drawing.Size(316, 433)
         Me.L_Exchange.TabIndex = 570
@@ -42,7 +44,7 @@ Partial Class F_Exchange
         '
         Me.B_GrabarExchange.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarExchange.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarExchange.Location = New System.Drawing.Point(375, 12)
+        Me.B_GrabarExchange.Location = New System.Drawing.Point(353, 12)
         Me.B_GrabarExchange.Name = "B_GrabarExchange"
         Me.B_GrabarExchange.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarExchange.TabIndex = 569
@@ -52,7 +54,7 @@ Partial Class F_Exchange
         'T_NomExchange
         '
         Me.T_NomExchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NomExchange.Location = New System.Drawing.Point(375, 83)
+        Me.T_NomExchange.Location = New System.Drawing.Point(353, 70)
         Me.T_NomExchange.MaxLength = 6
         Me.T_NomExchange.Name = "T_NomExchange"
         Me.T_NomExchange.Size = New System.Drawing.Size(191, 20)
@@ -64,18 +66,18 @@ Partial Class F_Exchange
         Me.rT_NotaExchange.AcceptsTab = True
         Me.rT_NotaExchange.AutoWordSelection = True
         Me.rT_NotaExchange.BackColor = System.Drawing.Color.White
-        Me.rT_NotaExchange.Location = New System.Drawing.Point(376, 125)
+        Me.rT_NotaExchange.Location = New System.Drawing.Point(353, 153)
         Me.rT_NotaExchange.Name = "rT_NotaExchange"
         Me.rT_NotaExchange.ReadOnly = True
-        Me.rT_NotaExchange.Size = New System.Drawing.Size(457, 378)
+        Me.rT_NotaExchange.Size = New System.Drawing.Size(441, 329)
         Me.rT_NotaExchange.TabIndex = 566
-        Me.rT_NotaExchange.Text = "rT_NotaExchange"
+        Me.rT_NotaExchange.Text = "rT_Nota"
         '
         'Label43
         '
         Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label43.ForeColor = System.Drawing.Color.Blue
-        Me.Label43.Location = New System.Drawing.Point(372, 67)
+        Me.Label43.Location = New System.Drawing.Point(353, 54)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(126, 13)
         Me.Label43.TabIndex = 567
@@ -85,18 +87,44 @@ Partial Class F_Exchange
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(27, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 9)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 571
         Me.B_Cerrar.Text = "Cerrar"
         Me.B_Cerrar.UseVisualStyleBackColor = False
         '
+        'T_LinkCoinGeko
+        '
+        Me.T_LinkCoinGeko.BackColor = System.Drawing.Color.White
+        Me.T_LinkCoinGeko.Location = New System.Drawing.Point(558, 70)
+        Me.T_LinkCoinGeko.MaxLength = 60
+        Me.T_LinkCoinGeko.Multiline = True
+        Me.T_LinkCoinGeko.Name = "T_LinkCoinGeko"
+        Me.T_LinkCoinGeko.ReadOnly = True
+        Me.T_LinkCoinGeko.Size = New System.Drawing.Size(236, 49)
+        Me.T_LinkCoinGeko.TabIndex = 668
+        Me.T_LinkCoinGeko.Text = "T_LinkCoinGeko"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Magenta
+        Me.Label3.Location = New System.Drawing.Point(558, 54)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(78, 13)
+        Me.Label3.TabIndex = 667
+        Me.Label3.Text = "Link Exchange"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'F_Exchange
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(845, 518)
+        Me.Controls.Add(Me.T_LinkCoinGeko)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Exchange)
         Me.Controls.Add(Me.B_GrabarExchange)
@@ -118,4 +146,6 @@ Partial Class F_Exchange
     Friend WithEvents rT_NotaExchange As RichTextBox
     Friend WithEvents Label43 As Label
     Friend WithEvents B_Cerrar As Button
+    Friend WithEvents T_LinkCoinGeko As TextBox
+    Friend WithEvents Label3 As Label
 End Class
