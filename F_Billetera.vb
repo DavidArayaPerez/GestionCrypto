@@ -1,6 +1,8 @@
 ﻿'
 '
 '
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+
 Public Class F_Billetera
     '
     '
@@ -12,7 +14,7 @@ Public Class F_Billetera
         L_Billeteras.Items.Clear()
         Dim T As String
         For i As Integer = 1 To Matriz_BilleterasTF
-            T = Matriz_Billeteras(i, 2) & " " & "(" & i & ")"
+            T = Matriz_Billeteras(i, 0) & " " & "(" & i & ")"
             L_Billeteras.Items.Add(T)
         Next i
         VariableDeInicio = False
@@ -58,7 +60,11 @@ Public Class F_Billetera
         '
         L_Mensaje.Text = "Moneda guardada correctamente"
     End Sub
-
+    Public Sub CopiarAlPortapapeles(ByVal txt As Control)
+        If Not String.IsNullOrWhiteSpace(txt.Text) Then
+            Clipboard.SetText(txt.Text)
+        End If
+    End Sub
 
 
 
@@ -84,11 +90,13 @@ Public Class F_Billetera
         Dim Fila = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
         Matriz_Billeteras(Fila, 0) = CodigoBilletera
         Matriz_Billeteras(Fila, 1) = ""
+        Guardar_Matrices("Billeteras")
+        Inicializar()
     End Sub
     Private Sub L_Billeteras_Click(sender As Object, e As EventArgs) Handles L_Billeteras.Click
         If VariableDeInicio Then Exit Sub
         '
-        Dim T As String = T_NombreBilletera.Text
+        Dim T As String = L_Billeteras.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
         Ver(Mid(T, x + 1, Len(T) - x - 1))
@@ -98,6 +106,10 @@ Public Class F_Billetera
     End Sub
     Private Sub B_GrabarBilletera_Click(sender As Object, e As EventArgs) Handles B_Grabar.Click
         Grabar()
+    End Sub
+
+    Private Sub B_Copiar_Click(sender As Object, e As EventArgs) Handles B_Copiar.Click
+        CopiarAlPortapapeles(T_CodigoBilletera)
     End Sub
 
 

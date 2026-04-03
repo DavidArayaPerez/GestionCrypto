@@ -120,7 +120,7 @@ Module xFunciones_Archivo
         ReDim ArchivoFinal(TotalFilas)
         Contador = -1
         For i = 0 To TotalFilas
-            If MatrizAuxActual(i, 1) = "" Then
+            If MatrizAuxActual(i, 0) = "" Then
                 Continue For
             Else
                 T = MatrizAuxActual(i, 0)

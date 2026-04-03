@@ -35,6 +35,7 @@ Partial Class F_Billetera
         Me.Label2 = New System.Windows.Forms.Label()
         Me.L_Fila = New System.Windows.Forms.Label()
         Me.L_Mensaje = New System.Windows.Forms.Label()
+        Me.B_Copiar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'B_Nuevo
@@ -79,22 +80,23 @@ Partial Class F_Billetera
         '
         'T_CodigoBilletera
         '
-        Me.T_CodigoBilletera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_CodigoBilletera.BackColor = System.Drawing.Color.White
         Me.T_CodigoBilletera.Location = New System.Drawing.Point(585, 75)
-        Me.T_CodigoBilletera.MaxLength = 6
+        Me.T_CodigoBilletera.MaxLength = 0
+        Me.T_CodigoBilletera.Multiline = True
         Me.T_CodigoBilletera.Name = "T_CodigoBilletera"
-        Me.T_CodigoBilletera.Size = New System.Drawing.Size(217, 20)
+        Me.T_CodigoBilletera.Size = New System.Drawing.Size(217, 45)
         Me.T_CodigoBilletera.TabIndex = 570
         Me.T_CodigoBilletera.Text = "T_CodigoBilletera"
         '
         'T_NombreBilletera
         '
-        Me.T_NombreBilletera.BackColor = System.Drawing.Color.White
+        Me.T_NombreBilletera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_NombreBilletera.Location = New System.Drawing.Point(363, 75)
-        Me.T_NombreBilletera.MaxLength = 6
+        Me.T_NombreBilletera.MaxLength = 60
+        Me.T_NombreBilletera.Multiline = True
         Me.T_NombreBilletera.Name = "T_NombreBilletera"
-        Me.T_NombreBilletera.ReadOnly = True
-        Me.T_NombreBilletera.Size = New System.Drawing.Size(191, 20)
+        Me.T_NombreBilletera.Size = New System.Drawing.Size(191, 45)
         Me.T_NombreBilletera.TabIndex = 568
         Me.T_NombreBilletera.Text = "T_NombreBilletera"
         '
@@ -146,7 +148,7 @@ Partial Class F_Billetera
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Blue
-        Me.Label2.Location = New System.Drawing.Point(363, 107)
+        Me.Label2.Location = New System.Drawing.Point(363, 128)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(23, 13)
         Me.Label2.TabIndex = 650
@@ -157,7 +159,7 @@ Partial Class F_Billetera
         '
         Me.L_Fila.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_Fila.ForeColor = System.Drawing.Color.Black
-        Me.L_Fila.Location = New System.Drawing.Point(400, 107)
+        Me.L_Fila.Location = New System.Drawing.Point(400, 128)
         Me.L_Fila.Name = "L_Fila"
         Me.L_Fila.Size = New System.Drawing.Size(170, 13)
         Me.L_Fila.TabIndex = 649
@@ -172,11 +174,23 @@ Partial Class F_Billetera
         Me.L_Mensaje.TabIndex = 651
         Me.L_Mensaje.Text = "L_Mensaje"
         '
+        'B_Copiar
+        '
+        Me.B_Copiar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Copiar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Copiar.Location = New System.Drawing.Point(703, 46)
+        Me.B_Copiar.Name = "B_Copiar"
+        Me.B_Copiar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Copiar.TabIndex = 652
+        Me.B_Copiar.Text = "Copiar"
+        Me.B_Copiar.UseVisualStyleBackColor = False
+        '
         'F_Billetera
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(846, 505)
+        Me.Controls.Add(Me.B_Copiar)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.L_Fila)
@@ -212,4 +226,5 @@ Partial Class F_Billetera
     Friend WithEvents Label2 As Label
     Friend WithEvents L_Fila As Label
     Friend WithEvents L_Mensaje As Label
+    Friend WithEvents B_Copiar As Button
 End Class
