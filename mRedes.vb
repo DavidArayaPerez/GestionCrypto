@@ -11,8 +11,8 @@ Module mRedes
     '
 
     Public Matriz_Redes(,) As String
-    Public Matriz_RedesTF As String
-    Public Matriz_RedesTC As String = 18
+    Public Matriz_RedesTF As Integer
+    Public Matriz_RedesTC As Integer = 18
 
     '0      ID_Interno
     '1      Chain_ID               Identificador único para redes EVM

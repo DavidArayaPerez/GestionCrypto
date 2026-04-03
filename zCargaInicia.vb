@@ -11,14 +11,12 @@ Module zCargaInicia
     '
     Public zCargaInicialTXT As String = Application.StartupPath & "\zCargaInicial.txt"
     Public zParametrosTXT As String = Application.StartupPath & "\zParametros.txt"
+    Public API_CMF, API_COINGEKO As String
     '
     '
     '
 
     Public Sub Parametros()
-        'Dim NombreArchivo As String =
-        'Dim CarpetaInicio As String = Application.StartupPath
-        'Dim RutaArchivo As String = CarpetaInicio & "\" & NombreArchivo
         Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto As String
         Dim Fila, Total, Contador As Integer
         Dim ACTUALIZACION_DOLAR As String = "SI"
@@ -58,6 +56,10 @@ Module zCargaInicia
                     End If
                     Contador += 1
                     ArchivoFinal(Contador) = Elementos(0) & vbTab & ValorUSD
+                Case "API_CMF"
+                    API_CMF = "b51b2c4ee645a68cdd565cd345082d34a227cadc"
+                Case "API_COINGEKO"
+                    API_COINGEKO = "CG-yZ2PmLgi8HqjvmqefkWdbZfk"
             End Select
         Next Fila
         '

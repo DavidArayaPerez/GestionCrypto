@@ -23,8 +23,7 @@ Module zAPI_CMF_Chile
     ' Nueva función: lee la API de dólares en formato XML y devuelve una lista Fecha/Valor
     Public Function APICMF_DOLAR_XML(Optional ByVal year As Integer = 2026) As List(Of KeyValuePair(Of String, Double))
         Dim result As New List(Of KeyValuePair(Of String, Double))()
-        Dim apiKey As String = "b51b2c4ee645a68cdd565cd345082d34a227cadc"
-        Dim url As String = $"https://api.cmfchile.cl/api-sbifv3/recursos_api/dolar/{year}?apikey={apiKey}&formato=xml"
+        Dim url As String = $"https://api.cmfchile.cl/api-sbifv3/recursos_api/dolar/{year}?apikey={API_CMF}&formato=xml"
         Try
             Dim xml As String = New WebClient().DownloadString(New Uri(url))
             Dim doc As New XmlDocument()

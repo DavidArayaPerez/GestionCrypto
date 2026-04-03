@@ -6,8 +6,8 @@ Module mMonedas
     '
     '
     Public Matriz_Monedas(,) As String
-    Public Matriz_MonedasTF As String
-    Public Matriz_MonedasTC As String = 23
+    Public Matriz_MonedasTF As Integer
+    Public Matriz_MonedasTC As Integer = 23
     '
     '   0       ID_Moneda
     '   1       ID_Despliegue

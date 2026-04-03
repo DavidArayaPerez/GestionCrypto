@@ -6,8 +6,8 @@ Module mMovimientos
     '
     '
     Public Matriz_Movimientos(,) As String
-    Public Matriz_MovimientosTF As String
-    Public Matriz_MovimientosTC As String = 11
+    Public Matriz_MovimientosTF As Integer
+    Public Matriz_MovimientosTC As Integer = 11
     '
     '   0   ID
     '   1   Fecha

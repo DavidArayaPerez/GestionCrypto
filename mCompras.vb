@@ -8,8 +8,8 @@ Module mCompras
     '
     '
     Public Matriz_Compras(,) As String
-    Public Matriz_ComprasTF As String
-    Public Matriz_ComprasTC As String = 11
+    Public Matriz_ComprasTF As Integer
+    Public Matriz_ComprasTC As Integer = 11
     '
     '   0   ID
     '   1   Fecha

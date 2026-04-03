@@ -34,7 +34,6 @@ Module zAPI_CoinGecko
     '  Servicio CoinGecko — estilo WebClient + Sub síncrono
     ' ============================================================
     '
-    Private Const CG_API_KEY As String = "CG-yZ2PmLgi8HqjvmqefkWdbZfk"
     Private Const CG_BASE_URL As String = "https://api.coingecko.com/api/v3/"
     '
     ' ------------------------------------------------------------
@@ -51,7 +50,7 @@ Module zAPI_CoinGecko
     End Sub
     Public Sub API_CoinGecko_Monedas(Optional ByVal cantidad As Integer = 50, Optional ByVal pagina As Integer = 1)
         'Caputura las monedas ordenadas por Market CAP con un limite de 250 por pagina que es el max que permite la API de COINGEKO separado por paginas
-        Dim url As String = CG_BASE_URL & $"coins/markets" & $"?vs_currency=usd" & $"&order=market_cap_desc" & $"&per_page={cantidad}" & $"&page={pagina}" & $"&sparkline=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
+        Dim url As String = CG_BASE_URL & $"coins/markets" & $"?vs_currency=usd" & $"&order=market_cap_desc" & $"&per_page={cantidad}" & $"&page={pagina}" & $"&sparkline=false" & $"&x_cg_demo_api_key={API_COINGEKO}"
         If cantidad < 1 Then cantidad = 1
         If cantidad > 250 Then cantidad = 250
         '
@@ -144,7 +143,7 @@ Module zAPI_CoinGecko
             Return False
         End If
 
-        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
+        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={API_COINGEKO}"
         '
         Try
             Dim client As New WebClient()
@@ -186,7 +185,7 @@ Module zAPI_CoinGecko
         End Try
     End Function
     Public Function API_CoinGecko_NuevaMoneda(ByVal slug As String) As Integer
-        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
+        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={API_COINGEKO}"
         '
         'Agrega una nueva MONEDA
         For i As Integer = 1 To Matriz_MonedasTF
