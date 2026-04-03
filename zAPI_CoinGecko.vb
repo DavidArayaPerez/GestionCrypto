@@ -1,6 +1,7 @@
 ﻿'
 '
 '
+Imports System.Globalization
 Imports System.Net
 Imports System.Text.Json
 Imports System.Text.Json.Nodes
@@ -112,11 +113,11 @@ Module zAPI_CoinGecko
                 'Si ya existe actualiza los precios de mercado
                 Matriz_Monedas(Fila, 13) = ValorSeguro(item("market_cap_rank"))                '13 Market_cap_rank
                 Matriz_Monedas(Fila, 14) = LinkCoinGecko                                       '14 Link CoinGecko
-                Matriz_Monedas(Fila, 15) = ValorSeguro(item("Current_Price"))                  '15 Current_Price
-                Matriz_Monedas(Fila, 16) = ValorSeguro(item("hight_24h"))                      '16 Hight24h
+                Matriz_Monedas(Fila, 15) = ValorSeguro(item("current_price"))                  '15 Current_Price
+                Matriz_Monedas(Fila, 16) = ValorSeguro(item("high_24h"))                       '16 Hight24h
                 Matriz_Monedas(Fila, 17) = ValorSeguro(item("low_24h"))                        '17 Low24h
                 Matriz_Monedas(Fila, 18) = ValorSeguro(item("price_change_24h"))               '18 Price Change 24h
-                Matriz_Monedas(Fila, 19) = ValorSeguro(item("proce_change_percentage_24h"))    '19 Price Change Percentage 24h
+                Matriz_Monedas(Fila, 19) = ValorSeguro(item("price_change_percentage_24h"))    '19 Price Change Percentage 24h
                 Matriz_Monedas(Fila, 20) = ValorSeguro(item("circulating_supply"))             '20 Circulating Supply
                 Matriz_Monedas(Fila, 21) = ValorSeguro(item("last_updated"))                   '21 Fecha Actualizacion
                 'Matriz_Monedas(Fila, 22) = "0"                                                '22 Actualizacion Automatica (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
@@ -244,6 +245,17 @@ Module zAPI_CoinGecko
     End Function
     Private Function ValorSeguro(node As JsonNode) As String
         Return If(node Is Nothing, "0", node.ToString())
+    End Function
+    Public Function ConvertirFechaUTCaChile(ByVal fechaISO As String) As String
+        Try
+            If fechaISO = "0" OrElse String.IsNullOrWhiteSpace(fechaISO) Then Return ""
+            Dim fechaUTC As DateTime = DateTime.Parse(fechaISO, Nothing, DateTimeStyles.RoundtripKind)
+            Dim zonaChile As TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("Pacific SA Standard Time")
+            Dim fechaChile As DateTime = TimeZoneInfo.ConvertTime(fechaUTC, zonaChile)
+            Return fechaChile.ToString("dd-MM-yyyy HH:mm:ss", New CultureInfo("es-CL"))
+        Catch
+            Return fechaISO ' si falla, devuelve el valor original sin explotar
+        End Try
     End Function
     '
     '

@@ -90,7 +90,7 @@ Public Class F_Monedas
         L_PriceChange24h.Text = FormatoChileno(Matriz_Monedas(F, 18))
         L_PriceChangePor24h.Text = FormatoChileno(Matriz_Monedas(F, 19), 0) & " %"
         L_CirculatingSupply.Text = FormatoChileno(Matriz_Monedas(F, 20), 0)
-        L_FechaActualizacion.Text = Matriz_Monedas(F, 21)
+        L_FechaActualizacion.Text = ConvertirFechaUTCaChile(Matriz_Monedas(F, 21))
         If Matriz_Monedas(F, 22) = "S" Then
             CB_ActualizacionAutomatica.Checked = True
         Else

@@ -5,17 +5,10 @@ Public Class F_Dolar
     '
     '
     '
-
-
-
-
-
     Private Sub F_Dolar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Carga valores actualizados del DOLAR
         'GuardarValorUSD(2022)  GuardarValorUSD(2023)   GuardarValorUSD(2024)   GuardarValorUSD(2025)
-
-
-
+        GuardarValorUSD(2026)
         '
         Dim T As String
         For i As Integer = Matriz_ValorUSDTF To 1 Step -1
