@@ -55,6 +55,7 @@ Partial Class F_PoolLiquidez
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
+        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'L_PoolLiquidez
@@ -252,7 +253,7 @@ Partial Class F_PoolLiquidez
         '
         Me.B_GrabarPool.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarPool.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarPool.Location = New System.Drawing.Point(12, 12)
+        Me.B_GrabarPool.Location = New System.Drawing.Point(356, 12)
         Me.B_GrabarPool.Name = "B_GrabarPool"
         Me.B_GrabarPool.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarPool.TabIndex = 546
@@ -394,11 +395,23 @@ Partial Class F_PoolLiquidez
         Me.B_Cerrar.Text = "Cerrar"
         Me.B_Cerrar.UseVisualStyleBackColor = False
         '
+        'B_NuevoBilletera
+        '
+        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(461, 12)
+        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
+        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoBilletera.TabIndex = 575
+        Me.B_NuevoBilletera.Text = "Nuevo"
+        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        '
         'F_PoolLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 520)
+        Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_PoolLiquidez)
         Me.Controls.Add(Me.T_MaxPool)
@@ -472,4 +485,5 @@ Partial Class F_PoolLiquidez
     Friend WithEvents Label9 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents B_Cerrar As Button
+    Friend WithEvents B_NuevoBilletera As Button
 End Class

@@ -31,7 +31,7 @@ Partial Class F_Dolar
         Me.L_Dolar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_Dolar.FormattingEnabled = True
         Me.L_Dolar.ItemHeight = 15
-        Me.L_Dolar.Location = New System.Drawing.Point(12, 27)
+        Me.L_Dolar.Location = New System.Drawing.Point(12, 57)
         Me.L_Dolar.Name = "L_Dolar"
         Me.L_Dolar.Size = New System.Drawing.Size(219, 529)
         Me.L_Dolar.TabIndex = 627
@@ -40,7 +40,7 @@ Partial Class F_Dolar
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(26, 573)
+        Me.B_Cerrar.Location = New System.Drawing.Point(132, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 662
@@ -52,7 +52,7 @@ Partial Class F_Dolar
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(243, 608)
+        Me.ClientSize = New System.Drawing.Size(256, 608)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Dolar)
         Me.MaximizeBox = False

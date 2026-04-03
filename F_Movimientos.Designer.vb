@@ -47,6 +47,7 @@ Partial Class F_Movimientos
         Me.Label36 = New System.Windows.Forms.Label()
         Me.Label37 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
+        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'L_Movimientos
@@ -164,7 +165,7 @@ Partial Class F_Movimientos
         '
         Me.B_GrabarMovimiento.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarMovimiento.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarMovimiento.Location = New System.Drawing.Point(12, 12)
+        Me.B_GrabarMovimiento.Location = New System.Drawing.Point(363, 12)
         Me.B_GrabarMovimiento.Name = "B_GrabarMovimiento"
         Me.B_GrabarMovimiento.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarMovimiento.TabIndex = 560
@@ -306,11 +307,23 @@ Partial Class F_Movimientos
         Me.B_Cerrar.Text = "Cerrar"
         Me.B_Cerrar.UseVisualStyleBackColor = False
         '
+        'B_NuevoBilletera
+        '
+        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(468, 12)
+        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
+        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoBilletera.TabIndex = 575
+        Me.B_NuevoBilletera.Text = "Nuevo"
+        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        '
         'F_Movimientos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(836, 513)
+        Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Movimientos)
         Me.Controls.Add(Me.C_BilleteraMovimiento)
@@ -368,4 +381,5 @@ Partial Class F_Movimientos
     Friend WithEvents Label36 As Label
     Friend WithEvents Label37 As Label
     Friend WithEvents B_Cerrar As Button
+    Friend WithEvents B_NuevoBilletera As Button
 End Class

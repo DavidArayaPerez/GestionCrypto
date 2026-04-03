@@ -42,7 +42,7 @@ Partial Class F_Exchange
         '
         Me.B_GrabarExchange.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarExchange.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarExchange.Location = New System.Drawing.Point(12, 12)
+        Me.B_GrabarExchange.Location = New System.Drawing.Point(375, 12)
         Me.B_GrabarExchange.Name = "B_GrabarExchange"
         Me.B_GrabarExchange.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarExchange.TabIndex = 569
@@ -52,7 +52,7 @@ Partial Class F_Exchange
         'T_NomExchange
         '
         Me.T_NomExchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_NomExchange.Location = New System.Drawing.Point(375, 100)
+        Me.T_NomExchange.Location = New System.Drawing.Point(375, 83)
         Me.T_NomExchange.MaxLength = 6
         Me.T_NomExchange.Name = "T_NomExchange"
         Me.T_NomExchange.Size = New System.Drawing.Size(191, 20)
@@ -64,10 +64,10 @@ Partial Class F_Exchange
         Me.rT_NotaExchange.AcceptsTab = True
         Me.rT_NotaExchange.AutoWordSelection = True
         Me.rT_NotaExchange.BackColor = System.Drawing.Color.White
-        Me.rT_NotaExchange.Location = New System.Drawing.Point(375, 139)
+        Me.rT_NotaExchange.Location = New System.Drawing.Point(376, 125)
         Me.rT_NotaExchange.Name = "rT_NotaExchange"
         Me.rT_NotaExchange.ReadOnly = True
-        Me.rT_NotaExchange.Size = New System.Drawing.Size(457, 364)
+        Me.rT_NotaExchange.Size = New System.Drawing.Size(457, 378)
         Me.rT_NotaExchange.TabIndex = 566
         Me.rT_NotaExchange.Text = "rT_NotaExchange"
         '
@@ -75,7 +75,7 @@ Partial Class F_Exchange
         '
         Me.Label43.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label43.ForeColor = System.Drawing.Color.Blue
-        Me.Label43.Location = New System.Drawing.Point(372, 75)
+        Me.Label43.Location = New System.Drawing.Point(372, 67)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(126, 13)
         Me.Label43.TabIndex = 567

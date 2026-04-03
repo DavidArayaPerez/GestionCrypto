@@ -284,7 +284,7 @@ Partial Class F_Monedas
         '
         Me.B_NuevoMoneda.BackColor = System.Drawing.SystemColors.Control
         Me.B_NuevoMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoMoneda.Location = New System.Drawing.Point(117, 12)
+        Me.B_NuevoMoneda.Location = New System.Drawing.Point(372, 12)
         Me.B_NuevoMoneda.Name = "B_NuevoMoneda"
         Me.B_NuevoMoneda.Size = New System.Drawing.Size(99, 23)
         Me.B_NuevoMoneda.TabIndex = 617
@@ -305,7 +305,7 @@ Partial Class F_Monedas
         '
         Me.B_GrabarMoneda.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarMoneda.Location = New System.Drawing.Point(12, 12)
+        Me.B_GrabarMoneda.Location = New System.Drawing.Point(267, 12)
         Me.B_GrabarMoneda.Name = "B_GrabarMoneda"
         Me.B_GrabarMoneda.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarMoneda.TabIndex = 613

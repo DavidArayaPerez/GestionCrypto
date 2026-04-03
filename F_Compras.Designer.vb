@@ -47,6 +47,7 @@ Partial Class F_Compras
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
+        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'L_Compras
@@ -164,7 +165,7 @@ Partial Class F_Compras
         '
         Me.B_GrabarCompra.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarCompra.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarCompra.Location = New System.Drawing.Point(12, 12)
+        Me.B_GrabarCompra.Location = New System.Drawing.Point(355, 12)
         Me.B_GrabarCompra.Name = "B_GrabarCompra"
         Me.B_GrabarCompra.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarCompra.TabIndex = 495
@@ -306,11 +307,23 @@ Partial Class F_Compras
         Me.B_Cerrar.Text = "Cerrar"
         Me.B_Cerrar.UseVisualStyleBackColor = False
         '
+        'B_NuevoBilletera
+        '
+        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
+        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(460, 12)
+        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
+        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
+        Me.B_NuevoBilletera.TabIndex = 575
+        Me.B_NuevoBilletera.Text = "Nuevo"
+        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        '
         'F_Compras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(830, 521)
+        Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Compras)
         Me.Controls.Add(Me.Label45)
@@ -368,4 +381,5 @@ Partial Class F_Compras
     Friend WithEvents Label13 As Label
     Friend WithEvents Label14 As Label
     Friend WithEvents B_Cerrar As Button
+    Friend WithEvents B_NuevoBilletera As Button
 End Class
