@@ -11,11 +11,15 @@ Public Class F_Monedas
         L_TotalMonedas.Text = Matriz_MonedasTF - 1
         L_Monedas.Items.Clear()
         Dim T As String
+        Dim Contador As Integer = 0
         For i As Integer = 1 To Matriz_MonedasTF
             T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
             L_Monedas.Items.Add(T)
             If Matriz_Monedas(i, 22) = "S" Then
-                API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
+                If Contador < 30 Then
+                    API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
+                    Contador += 1
+                End If
             End If
         Next i
         T_Busqueda_Monedas.Text = ""
