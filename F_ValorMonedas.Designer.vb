@@ -35,7 +35,7 @@ Partial Class F_ValorMonedas
         'T_ValorValorMonedas
         '
         Me.T_ValorValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorValorMonedas.Location = New System.Drawing.Point(491, 126)
+        Me.T_ValorValorMonedas.Location = New System.Drawing.Point(347, 180)
         Me.T_ValorValorMonedas.MaxLength = 4
         Me.T_ValorValorMonedas.Name = "T_ValorValorMonedas"
         Me.T_ValorValorMonedas.Size = New System.Drawing.Size(79, 20)
@@ -46,7 +46,7 @@ Partial Class F_ValorMonedas
         'T_FechaValorMonedas
         '
         Me.T_FechaValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_FechaValorMonedas.Location = New System.Drawing.Point(377, 126)
+        Me.T_FechaValorMonedas.Location = New System.Drawing.Point(347, 120)
         Me.T_FechaValorMonedas.MaxLength = 6
         Me.T_FechaValorMonedas.Name = "T_FechaValorMonedas"
         Me.T_FechaValorMonedas.Size = New System.Drawing.Size(80, 20)
@@ -57,7 +57,7 @@ Partial Class F_ValorMonedas
         '
         Me.Label53.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label53.ForeColor = System.Drawing.Color.Blue
-        Me.Label53.Location = New System.Drawing.Point(488, 110)
+        Me.Label53.Location = New System.Drawing.Point(347, 164)
         Me.Label53.Name = "Label53"
         Me.Label53.Size = New System.Drawing.Size(59, 13)
         Me.Label53.TabIndex = 577
@@ -69,7 +69,7 @@ Partial Class F_ValorMonedas
         Me.Label54.BackColor = System.Drawing.Color.Transparent
         Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label54.ForeColor = System.Drawing.Color.Blue
-        Me.Label54.Location = New System.Drawing.Point(377, 110)
+        Me.Label54.Location = New System.Drawing.Point(347, 104)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(80, 13)
         Me.Label54.TabIndex = 576
@@ -79,7 +79,7 @@ Partial Class F_ValorMonedas
         'L_FechaValorMonedas
         '
         Me.L_FechaValorMonedas.FormattingEnabled = True
-        Me.L_FechaValorMonedas.Location = New System.Drawing.Point(25, 110)
+        Me.L_FechaValorMonedas.Location = New System.Drawing.Point(12, 102)
         Me.L_FechaValorMonedas.Name = "L_FechaValorMonedas"
         Me.L_FechaValorMonedas.Size = New System.Drawing.Size(316, 368)
         Me.L_FechaValorMonedas.TabIndex = 573
@@ -88,7 +88,7 @@ Partial Class F_ValorMonedas
         '
         Me.C_MonedasValorMonedas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_MonedasValorMonedas.FormattingEnabled = True
-        Me.C_MonedasValorMonedas.Location = New System.Drawing.Point(25, 74)
+        Me.C_MonedasValorMonedas.Location = New System.Drawing.Point(12, 66)
         Me.C_MonedasValorMonedas.Name = "C_MonedasValorMonedas"
         Me.C_MonedasValorMonedas.Size = New System.Drawing.Size(212, 21)
         Me.C_MonedasValorMonedas.TabIndex = 572
@@ -98,7 +98,7 @@ Partial Class F_ValorMonedas
         '
         Me.Label52.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label52.ForeColor = System.Drawing.Color.Blue
-        Me.Label52.Location = New System.Drawing.Point(25, 58)
+        Me.Label52.Location = New System.Drawing.Point(12, 50)
         Me.Label52.Name = "Label52"
         Me.Label52.Size = New System.Drawing.Size(126, 13)
         Me.Label52.TabIndex = 571
@@ -108,7 +108,7 @@ Partial Class F_ValorMonedas
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(471, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 578
@@ -119,7 +119,7 @@ Partial Class F_ValorMonedas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(611, 507)
+        Me.ClientSize = New System.Drawing.Size(449, 507)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.T_ValorValorMonedas)
         Me.Controls.Add(Me.T_FechaValorMonedas)

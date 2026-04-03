@@ -40,7 +40,7 @@ Partial Class F_Dolar
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(132, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 662

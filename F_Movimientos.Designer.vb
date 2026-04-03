@@ -300,7 +300,7 @@ Partial Class F_Movimientos
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(721, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 567
@@ -311,7 +311,7 @@ Partial Class F_Movimientos
         '
         Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
         Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoBilletera.Location = New System.Drawing.Point(468, 12)
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(229, 12)
         Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
         Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
         Me.B_NuevoBilletera.TabIndex = 575
@@ -350,7 +350,7 @@ Partial Class F_Movimientos
         Me.Controls.Add(Me.Label36)
         Me.Controls.Add(Me.Label37)
         Me.Name = "F_Movimientos"
-        Me.Text = "F_Movimientos"
+        Me.Text = "Movimientos"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

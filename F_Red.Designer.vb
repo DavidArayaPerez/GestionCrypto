@@ -70,10 +70,10 @@ Partial Class F_Red
         Me.rT_NotaRed.AcceptsTab = True
         Me.rT_NotaRed.AutoWordSelection = True
         Me.rT_NotaRed.BackColor = System.Drawing.Color.White
-        Me.rT_NotaRed.Location = New System.Drawing.Point(651, 114)
+        Me.rT_NotaRed.Location = New System.Drawing.Point(651, 58)
         Me.rT_NotaRed.Name = "rT_NotaRed"
         Me.rT_NotaRed.ReadOnly = True
-        Me.rT_NotaRed.Size = New System.Drawing.Size(320, 265)
+        Me.rT_NotaRed.Size = New System.Drawing.Size(320, 321)
         Me.rT_NotaRed.TabIndex = 660
         Me.rT_NotaRed.Text = "rT_NotaRed"
         '
@@ -431,7 +431,7 @@ Partial Class F_Red
         '
         Me.B_NuevoRed.BackColor = System.Drawing.SystemColors.Control
         Me.B_NuevoRed.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoRed.Location = New System.Drawing.Point(451, 12)
+        Me.B_NuevoRed.Location = New System.Drawing.Point(229, 12)
         Me.B_NuevoRed.Name = "B_NuevoRed"
         Me.B_NuevoRed.Size = New System.Drawing.Size(99, 23)
         Me.B_NuevoRed.TabIndex = 627
@@ -485,7 +485,7 @@ Partial Class F_Red
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(872, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 661

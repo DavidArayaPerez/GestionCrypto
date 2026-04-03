@@ -18,6 +18,7 @@ Public Class F_Billetera
         VariableDeInicio = False
     End Sub
     Private Sub Limpieza(Optional Habilitar As Boolean = False)
+        L_Mensaje.Text = ""
         'BILLETERA
         T_NombreBilletera.Text = ""
         T_CodigoBilletera.Text = ""
@@ -27,6 +28,7 @@ Public Class F_Billetera
         T_NombreBilletera.Enabled = Habilitar
         T_CodigoBilletera.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
+        B_Grabar.Enabled = Habilitar
     End Sub
     Private Sub Ver(F As Integer)
         Limpieza(True)
@@ -35,7 +37,6 @@ Public Class F_Billetera
         L_Fila.Text = F
         T_CodigoBilletera.Text = Matriz_Billeteras(F, 0)
         T_NombreBilletera.Text = Matriz_Billeteras(F, 1)
-
         '
         Dim NombreNota As String = "Moneda" & T_NombreBilletera.Text & "_Nota.rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
@@ -69,7 +70,7 @@ Public Class F_Billetera
         Me.Close()
     End Sub
 
-    Private Sub B_NuevoBilletera_Click(sender As Object, e As EventArgs) Handles B_NuevoBilletera.Click
+    Private Sub B_NuevoBilletera_Click(sender As Object, e As EventArgs) Handles B_Nuevo.Click
         Limpieza()
         '
         Dim CodigoBilletera As String = InputBox("Ingrese el código de la billetera", "Nueva Billetera")
@@ -84,8 +85,7 @@ Public Class F_Billetera
         Matriz_Billeteras(Fila, 0) = CodigoBilletera
         Matriz_Billeteras(Fila, 1) = ""
     End Sub
-
-    Private Sub L_Billeteras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Billeteras.SelectedIndexChanged
+    Private Sub L_Billeteras_Click(sender As Object, e As EventArgs) Handles L_Billeteras.Click
         If VariableDeInicio Then Exit Sub
         '
         Dim T As String = T_NombreBilletera.Text
@@ -93,10 +93,14 @@ Public Class F_Billetera
         If x = 0 Then Exit Sub
         Ver(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
+    Private Sub L_Billeteras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Billeteras.SelectedIndexChanged
 
-    Private Sub B_GrabarBilletera_Click(sender As Object, e As EventArgs) Handles B_GrabarBilletera.Click
+    End Sub
+    Private Sub B_GrabarBilletera_Click(sender As Object, e As EventArgs) Handles B_Grabar.Click
         Grabar()
     End Sub
+
+
 
 
 

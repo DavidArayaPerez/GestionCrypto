@@ -85,7 +85,7 @@ Partial Class F_Exchange
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(733, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(27, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 571
@@ -106,7 +106,7 @@ Partial Class F_Exchange
         Me.Location = New System.Drawing.Point(200, 100)
         Me.Name = "F_Exchange"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
-        Me.Text = "F_Exchange"
+        Me.Text = "Exchange"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

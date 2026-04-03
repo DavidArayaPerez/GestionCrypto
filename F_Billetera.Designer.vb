@@ -22,10 +22,10 @@ Partial Class F_Billetera
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
+        Me.B_Nuevo = New System.Windows.Forms.Button()
         Me.L_Billeteras = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.B_GrabarBilletera = New System.Windows.Forms.Button()
+        Me.B_Grabar = New System.Windows.Forms.Button()
         Me.T_CodigoBilletera = New System.Windows.Forms.TextBox()
         Me.T_NombreBilletera = New System.Windows.Forms.TextBox()
         Me.rT_Nota = New System.Windows.Forms.RichTextBox()
@@ -37,16 +37,16 @@ Partial Class F_Billetera
         Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'B_NuevoBilletera
+        'B_Nuevo
         '
-        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
-        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoBilletera.Location = New System.Drawing.Point(471, 12)
-        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
-        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
-        Me.B_NuevoBilletera.TabIndex = 574
-        Me.B_NuevoBilletera.Text = "Nuevo"
-        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        Me.B_Nuevo.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Nuevo.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Nuevo.Location = New System.Drawing.Point(232, 12)
+        Me.B_Nuevo.Name = "B_Nuevo"
+        Me.B_Nuevo.Size = New System.Drawing.Size(99, 23)
+        Me.B_Nuevo.TabIndex = 574
+        Me.B_Nuevo.Text = "Nuevo"
+        Me.B_Nuevo.UseVisualStyleBackColor = False
         '
         'L_Billeteras
         '
@@ -66,16 +66,16 @@ Partial Class F_Billetera
         Me.Label1.TabIndex = 572
         Me.Label1.Text = "No escriba tu CLAVE semilla NO LO HAGAS"
         '
-        'B_GrabarBilletera
+        'B_Grabar
         '
-        Me.B_GrabarBilletera.BackColor = System.Drawing.SystemColors.Control
-        Me.B_GrabarBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarBilletera.Location = New System.Drawing.Point(366, 12)
-        Me.B_GrabarBilletera.Name = "B_GrabarBilletera"
-        Me.B_GrabarBilletera.Size = New System.Drawing.Size(99, 23)
-        Me.B_GrabarBilletera.TabIndex = 571
-        Me.B_GrabarBilletera.Text = "Grabar"
-        Me.B_GrabarBilletera.UseVisualStyleBackColor = False
+        Me.B_Grabar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Grabar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Grabar.Location = New System.Drawing.Point(366, 12)
+        Me.B_Grabar.Name = "B_Grabar"
+        Me.B_Grabar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Grabar.TabIndex = 571
+        Me.B_Grabar.Text = "Grabar"
+        Me.B_Grabar.UseVisualStyleBackColor = False
         '
         'T_CodigoBilletera
         '
@@ -134,7 +134,7 @@ Partial Class F_Billetera
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(721, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(15, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 575
@@ -181,10 +181,10 @@ Partial Class F_Billetera
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.L_Fila)
         Me.Controls.Add(Me.B_Cerrar)
-        Me.Controls.Add(Me.B_NuevoBilletera)
+        Me.Controls.Add(Me.B_Nuevo)
         Me.Controls.Add(Me.L_Billeteras)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.B_GrabarBilletera)
+        Me.Controls.Add(Me.B_Grabar)
         Me.Controls.Add(Me.T_CodigoBilletera)
         Me.Controls.Add(Me.T_NombreBilletera)
         Me.Controls.Add(Me.rT_Nota)
@@ -199,10 +199,10 @@ Partial Class F_Billetera
 
     End Sub
 
-    Friend WithEvents B_NuevoBilletera As Button
+    Friend WithEvents B_Nuevo As Button
     Friend WithEvents L_Billeteras As ListBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents B_GrabarBilletera As Button
+    Friend WithEvents B_Grabar As Button
     Friend WithEvents T_CodigoBilletera As TextBox
     Friend WithEvents T_NombreBilletera As TextBox
     Friend WithEvents rT_Nota As RichTextBox

@@ -388,7 +388,7 @@ Partial Class F_PoolLiquidez
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(688, 12)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 12)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 561
@@ -399,7 +399,7 @@ Partial Class F_PoolLiquidez
         '
         Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
         Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoBilletera.Location = New System.Drawing.Point(461, 12)
+        Me.B_NuevoBilletera.Location = New System.Drawing.Point(229, 12)
         Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
         Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
         Me.B_NuevoBilletera.TabIndex = 575
