@@ -45,7 +45,11 @@ Module zAPI_CoinGecko
         If cantidad > 250 Then cantidad = 250
         '
         Try
-            Dim json As String = New WebClient().DownloadString(New Uri(url))
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(url))
+            '
+            '
             Dim monedas As JsonArray = JsonNode.Parse(json).AsArray()
             Dim Simbolo As String
             Dim Supply_Maximo As Long
@@ -73,20 +77,20 @@ Module zAPI_CoinGecko
                     End If
                     '
                     Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
-                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()          '0  ID_Moneda
-                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()          '1  ID_Despliegue
-                    Matriz_Monedas(NuevaFila, 2) = Simbolo                       '2  Simbolo
-                    Matriz_Monedas(NuevaFila, 3) = ValorSeguro(item("name"))     '3  Nombre_Oficial
-                    Matriz_Monedas(NuevaFila, 4) = ValorSeguro(item("id"))       '4  Slug_API
-                    'Matriz_Monedas(NuevaFila, 5) = 0                            '5  Tipo_Activo
-                    'Matriz_Monedas(NuevaFila, 6) = 0                            '6  Subtipo_Stablecoin
-                    'Matriz_Monedas(NuevaFila, 7) = 0                            '7  Moneda_Paridad
-                    'Matriz_Monedas(NuevaFila, 8) = 0                            '8  Centralizada
-                    'Matriz_Monedas(NuevaFila, 9) = 0                            '9  Activo_Subyacente
-                    'Matriz_Monedas(NuevaFila, 10) = 0                           '10 ID_Red_Nativa
-                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                '11 Supply_Maximo
-                    'Matriz_Monedas(NuevaFila, 12) = 0                           '12 Contract_Address
-                    Matriz_Monedas(NuevaFila, 13) = MarketCapRank                '13 Market_cap_rank
+                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()                     '0  ID_Moneda
+                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()                     '1  ID_Despliegue
+                    Matriz_Monedas(NuevaFila, 2) = Simbolo                                  '2  Simbolo
+                    Matriz_Monedas(NuevaFila, 3) = LimpiarTexto(ValorSeguro(item("name")))  '3  Nombre_Oficial
+                    Matriz_Monedas(NuevaFila, 4) = ValorSeguro(item("id"))                  '4  Slug_API
+                    'Matriz_Monedas(NuevaFila, 5) = 0                                       '5  Tipo_Activo
+                    'Matriz_Monedas(NuevaFila, 6) = 0                                       '6  Subtipo_Stablecoin
+                    'Matriz_Monedas(NuevaFila, 7) = 0                                       '7  Moneda_Paridad
+                    'Matriz_Monedas(NuevaFila, 8) = 0                                       '8  Centralizada
+                    'Matriz_Monedas(NuevaFila, 9) = 0                                       '9  Activo_Subyacente
+                    'Matriz_Monedas(NuevaFila, 10) = 0                                      '10 ID_Red_Nativa
+                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                           '11 Supply_Maximo
+                    'Matriz_Monedas(NuevaFila, 12) = 0                                      '12 Contract_Address
+                    Matriz_Monedas(NuevaFila, 13) = MarketCapRank                           '13 Market_cap_rank
                     Guardar_Matrices("Monedas")
                 Else
                     ' Moneda existente — actualizar rank si cambió
@@ -105,13 +109,7 @@ Module zAPI_CoinGecko
     '  Detalle de una moneda por slug
     '  Obtiene precios en tiempo real (ByRef) y gestiona la matriz
     ' ---------------------------------------------------------------
-    Public Sub API_CoinGecko_ActualizaValor(ByVal slug As String,
-                                            ByRef current_price As String,
-                                            ByRef high_24h As String,
-                                            ByRef low_24h As String,
-                                            ByRef price_change_24h As String,
-                                            ByRef price_change_percentage_24h As String,
-                                            ByRef circulating_supply As String)
+    Public Sub API_CoinGecko_ActualizaValor(ByVal slug As String, ByRef current_price As String, ByRef high_24h As String, ByRef low_24h As String, ByRef price_change_24h As String, ByRef price_change_percentage_24h As String, ByRef circulating_supply As String)
         Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         ' Inicializar ByRef en caso de error
@@ -119,7 +117,12 @@ Module zAPI_CoinGecko
         price_change_24h = "0" : price_change_percentage_24h = "0" : circulating_supply = "0"
         '
         Try
-            Dim json As String = New WebClient().DownloadString(New Uri(url))
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(url))
+            '
+            '
+            '
             Dim item As JsonNode = JsonNode.Parse(json)
             '
             Dim slugAPI As String = ValorSeguro(item("id"))
@@ -174,29 +177,29 @@ Module zAPI_CoinGecko
                         Next
                         '
                         Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
-                        Matriz_Monedas(NuevaFila, 0) = ID_Moneda                '0  ID_Moneda      (mismo para todas las redes)
-                        Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()     '1  ID_Despliegue  (único por fila)
-                        Matriz_Monedas(NuevaFila, 2) = Simbolo                  '2  Simbolo
-                        Matriz_Monedas(NuevaFila, 3) = Nombre                   '3  Nombre_Oficial
-                        Matriz_Monedas(NuevaFila, 4) = slugAPI                  '4  Slug_API
-                        Matriz_Monedas(NuevaFila, 5) = "token_defi"             '5  Tipo_Activo
-                        Matriz_Monedas(NuevaFila, 10) = ID_Red                  '10 ID_Red_Nativa
-                        Matriz_Monedas(NuevaFila, 11) = Supply_Maximo           '11 Supply_Maximo
-                        Matriz_Monedas(NuevaFila, 12) = address                 '12 Contract_Address
-                        Matriz_Monedas(NuevaFila, 13) = MarketCapRank           '13 Market_cap_rank
+                        Matriz_Monedas(NuevaFila, 0) = ID_Moneda                                '0  ID_Moneda      (mismo para todas las redes)
+                        Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()                     '1  ID_Despliegue  (único por fila)
+                        Matriz_Monedas(NuevaFila, 2) = Simbolo                                  '2  Simbolo
+                        Matriz_Monedas(NuevaFila, 3) = LimpiarTexto(ValorSeguro(item("name")))  '3  Nombre_Oficial
+                        Matriz_Monedas(NuevaFila, 4) = slugAPI                                  '4  Slug_API
+                        Matriz_Monedas(NuevaFila, 5) = "token_defi"                             '5  Tipo_Activo
+                        Matriz_Monedas(NuevaFila, 10) = ID_Red                                  '10 ID_Red_Nativa
+                        Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                           '11 Supply_Maximo
+                        Matriz_Monedas(NuevaFila, 12) = address                                 '12 Contract_Address
+                        Matriz_Monedas(NuevaFila, 13) = MarketCapRank                           '13 Market_cap_rank
                     Next
                 Else
                     ' Sin contratos — es coin_nativa
                     Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
-                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()         '0  ID_Moneda
-                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()         '1  ID_Despliegue
-                    Matriz_Monedas(NuevaFila, 2) = Simbolo                      '2  Simbolo
-                    Matriz_Monedas(NuevaFila, 3) = Nombre                       '3  Nombre_Oficial
-                    Matriz_Monedas(NuevaFila, 4) = slugAPI                      '4  Slug_API
-                    Matriz_Monedas(NuevaFila, 5) = "coin_nativa"                '5  Tipo_Activo
-                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo               '11 Supply_Maximo
-                    Matriz_Monedas(NuevaFila, 12) = "0"                         '12 Contract_Address
-                    Matriz_Monedas(NuevaFila, 13) = MarketCapRank               '13 Market_cap_rank
+                    Matriz_Monedas(NuevaFila, 0) = CrearCodigoInterno()                         '0  ID_Moneda
+                    Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()                         '1  ID_Despliegue
+                    Matriz_Monedas(NuevaFila, 2) = Simbolo                                      '2  Simbolo
+                    Matriz_Monedas(NuevaFila, 3) = LimpiarTexto(ValorSeguro(item("name")))      '3  Nombre_Oficial
+                    Matriz_Monedas(NuevaFila, 4) = slugAPI                                      '4  Slug_API
+                    Matriz_Monedas(NuevaFila, 5) = "coin_nativa"                                '5  Tipo_Activo
+                    Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                               '11 Supply_Maximo
+                    Matriz_Monedas(NuevaFila, 12) = "0"                                         '12 Contract_Address
+                    Matriz_Monedas(NuevaFila, 13) = MarketCapRank                               '13 Market_cap_rank
                 End If
                 Guardar_Matrices("Monedas")
             Else
@@ -236,16 +239,16 @@ Module zAPI_CoinGecko
                             Next
                             '
                             Dim NuevaFila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
-                            Matriz_Monedas(NuevaFila, 0) = ID_Moneda                '0  ID_Moneda      (mismo para todas las redes)
-                            Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()     '1  ID_Despliegue  (único por fila)
-                            Matriz_Monedas(NuevaFila, 2) = Simbolo                  '2  Simbolo
-                            Matriz_Monedas(NuevaFila, 3) = Nombre                   '3  Nombre_Oficial
-                            Matriz_Monedas(NuevaFila, 4) = slugAPI                  '4  Slug_API
-                            Matriz_Monedas(NuevaFila, 5) = "token_defi"             '5  Tipo_Activo
-                            Matriz_Monedas(NuevaFila, 10) = ID_Red                  '10 ID_Red_Nativa
-                            Matriz_Monedas(NuevaFila, 11) = Supply_Maximo           '11 Supply_Maximo
-                            Matriz_Monedas(NuevaFila, 12) = address                 '12 Contract_Address
-                            Matriz_Monedas(NuevaFila, 13) = MarketCapRank           '13 Market_cap_rank
+                            Matriz_Monedas(NuevaFila, 0) = ID_Moneda                                '0  ID_Moneda      (mismo para todas las redes)
+                            Matriz_Monedas(NuevaFila, 1) = CrearCodigoInterno()                     '1  ID_Despliegue  (único por fila)
+                            Matriz_Monedas(NuevaFila, 2) = Simbolo                                  '2  Simbolo
+                            Matriz_Monedas(NuevaFila, 3) = LimpiarTexto(ValorSeguro(item("name")))  '3  Nombre_Oficial
+                            Matriz_Monedas(NuevaFila, 4) = slugAPI                                  '4  Slug_API
+                            Matriz_Monedas(NuevaFila, 5) = "token_defi"                             '5  Tipo_Activo
+                            Matriz_Monedas(NuevaFila, 10) = ID_Red                                  '10 ID_Red_Nativa
+                            Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                           '11 Supply_Maximo
+                            Matriz_Monedas(NuevaFila, 12) = address                                 '12 Contract_Address
+                            Matriz_Monedas(NuevaFila, 13) = MarketCapRank                           '13 Market_cap_rank
                         End If
                     Next
                 End If
@@ -256,6 +259,13 @@ Module zAPI_CoinGecko
             MsgBox("Error leyendo API CoinGecko (Detalle): " & ex.Message)
         End Try
     End Sub
+    Private Function LimpiarTexto(ByVal texto As String) As String
+        Dim resultado As String = ""
+        For Each c As Char In texto
+            If Asc(c) <= 127 Then resultado &= c
+        Next
+        Return resultado
+    End Function
     '
     ' ── Helpers ────────────────────────────────────────────────────
     '

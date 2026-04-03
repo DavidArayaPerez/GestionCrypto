@@ -7,7 +7,7 @@ Module mMonedas
     '
     Public Matriz_Monedas(,) As String
     Public Matriz_MonedasTF As String
-    Public Matriz_MonedasTC As String = 14
+    Public Matriz_MonedasTC As String = 15
     '
     '   0       ID_Moneda
     '   1       ID_Despliegue
@@ -23,6 +23,7 @@ Module mMonedas
     '   11      Supply_Maximo
     '   12      Contract_Address
     '   13      market_cap_rank
+    '   14      Link CoinGecko
     '
     '
     'Dim monedas = Await CoinGeckoService.ObtenerMonedasAsync(cantidad:=100)

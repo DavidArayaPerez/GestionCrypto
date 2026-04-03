@@ -24,6 +24,7 @@ Public Class F_Monedas
         T_SupplyMaximo_Moneda.Text = ""
         T_ContractAddress_Moneda.Text = ""
         T_IDredNativa_Moneda.Text = ""
+        T_LinkCoinGeko.Text = ""
         rT_NotaMoneda.Text = ""
         '
         L_IDmoneda_Moneda.Text = ""
@@ -41,6 +42,7 @@ Public Class F_Monedas
         T_SupplyMaximo_Moneda.Enabled = Habilitar
         T_ContractAddress_Moneda.Enabled = Habilitar
         T_IDredNativa_Moneda.Enabled = Habilitar
+        T_LinkCoinGeko.Enabled = Habilitar
         rT_NotaMoneda.Enabled = Habilitar
         '
         B_Actualiza_Moneda.Enabled = Habilitar
@@ -85,6 +87,7 @@ Public Class F_Monedas
         T_SupplyMaximo_Moneda.Text = Matriz_Monedas(F, 11)
         T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
         T_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
+        T_LinkCoinGeko.Text = "https://www.coingecko.com/es/monedas/" & T_SlugAPI_Moneda.Text
         '
         '
         Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, T_IDredNativa_Moneda.Text)
@@ -112,6 +115,7 @@ Public Class F_Monedas
         '   11      Supply_Maximo
         '   12      Contract_Address
         '   13     market_cap_rank
+        '   14      Link CoinGecko
         '
         Dim F As Integer = L_Fila_Moneda.Text
         If F = 0 Then Exit Sub
@@ -130,6 +134,7 @@ Public Class F_Monedas
         Matriz_Monedas(F, 11) = T_SupplyMaximo_Moneda.Text
         Matriz_Monedas(F, 12) = T_ContractAddress_Moneda.Text
         Matriz_Monedas(F, 13) = T_MarketCapRank_Moneda.Text
+        Matriz_Monedas(F, 14) = T_LinkCoinGeko.Text
         '
         Guardar_Matrices("Monedas")
         '
@@ -246,5 +251,13 @@ Public Class F_Monedas
     End Sub
     Private Sub B_Actualiza_Moneda_Click(sender As Object, e As EventArgs) Handles B_Actualiza_Moneda.Click
         ActualizaMoneda(T_SlugAPI_Moneda.Text, L_Fila_Moneda.Text)
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+        If VariableDeInicio Then Exit Sub
+        If Len(T_LinkCoinGeko.Text) < 3 Then Exit Sub
+        '
+        Dim URL As String = T_LinkCoinGeko.Text
+        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
 End Class

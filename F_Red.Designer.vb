@@ -131,7 +131,7 @@ Partial Class F_Red
         '
         Me.Label72.AutoSize = True
         Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label72.ForeColor = System.Drawing.Color.DarkViolet
+        Me.Label72.ForeColor = System.Drawing.Color.Magenta
         Me.Label72.Location = New System.Drawing.Point(400, 449)
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(54, 13)
@@ -153,7 +153,7 @@ Partial Class F_Red
         '
         Me.Label73.AutoSize = True
         Me.Label73.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label73.ForeColor = System.Drawing.Color.DarkViolet
+        Me.Label73.ForeColor = System.Drawing.Color.Magenta
         Me.Label73.Location = New System.Drawing.Point(398, 419)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(56, 13)
@@ -175,7 +175,7 @@ Partial Class F_Red
         '
         Me.Label65.AutoSize = True
         Me.Label65.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label65.ForeColor = System.Drawing.Color.BlueViolet
+        Me.Label65.ForeColor = System.Drawing.Color.Magenta
         Me.Label65.Location = New System.Drawing.Point(372, 392)
         Me.Label65.Name = "Label65"
         Me.Label65.Size = New System.Drawing.Size(82, 13)
