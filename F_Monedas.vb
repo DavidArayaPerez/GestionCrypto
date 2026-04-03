@@ -12,41 +12,33 @@ Public Class F_Monedas
         L_Mensaje.Text = ""
         L_Fila_Moneda.Text = ""
         'MONEDA
+        T_ContractAddress_Moneda.Text = ""
+
         L_Simbolo_Moneda.Text = ""
         L_NombreOficial_Moneda.Text = ""
         L_SlugAPI_Moneda.Text = ""
         L_TipoActivo_Moneda.Text = ""
         L_SubtipoStablecoin_Moneda.Text = ""
         L_MarketCapRank_Moneda.Text = ""
-        T_ContractAddress_Moneda.Text = ""
         L_IDredNativa_Moneda.Text = ""
         T_LinkCoinGeko.Text = ""
-        CB_ActualizacionAutomatica.Checked = False
-        rT_NotaMoneda.Text = ""
-        '
-        L_IDmoneda_Moneda.Text = ""
-        L_IDdespliegue_Moneda.Text = ""
-        '
-        L_Simbolo_Moneda.Enabled = Habilitar
-        L_NombreOficial_Moneda.Enabled = Habilitar
-        L_SlugAPI_Moneda.Enabled = Habilitar
-        L_TipoActivo_Moneda.Enabled = Habilitar
-        L_SubtipoStablecoin_Moneda.Enabled = Habilitar
-        L_MarketCapRank_Moneda.Enabled = Habilitar
-        T_ContractAddress_Moneda.Enabled = Habilitar
-        L_IDredNativa_Moneda.Enabled = Habilitar
-        T_LinkCoinGeko.Enabled = Habilitar
-        CB_ActualizacionAutomatica.Enabled = Habilitar
-        rT_NotaMoneda.Enabled = Habilitar
-        '
-        B_Actualiza_Moneda.Enabled = Habilitar
-        '
         L_CurentPrice.Text = ""
         L_Hight24h.Text = ""
         L_Low24h.Text = ""
         L_PriceChange24h.Text = ""
         L_PriceChangePor24h.Text = ""
         L_CirculatingSupply.Text = ""
+        L_FechaActualizacion.Text = ""
+
+        CB_ActualizacionAutomatica.Checked = False
+        rT_NotaMoneda.Text = ""
+        '
+        L_IDmoneda_Moneda.Text = ""
+        L_IDdespliegue_Moneda.Text = ""
+        '
+        CB_ActualizacionAutomatica.Enabled = Habilitar
+        rT_NotaMoneda.Enabled = Habilitar
+        B_Actualiza_Moneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
         LimpiezaMoneda(True)
@@ -152,42 +144,10 @@ Public Class F_Monedas
         '
         L_Mensaje.Text = "Moneda guardada correctamente"
     End Sub
-    Private Sub ActualizaMoneda(SlugAPI As String, Fila As String)
-        Dim current_price As String = ""
-        Dim high_24h As String = ""
-        Dim low_24h As String = ""
-        Dim price_change_24h As String = ""
-        Dim price_change_percentage_24h As String = ""
-        Dim circulating_supply As String = ""
-        '
-        API_CoinGecko_ActualizaValor(SlugAPI)
-        '
-        If Fila > 0 Then
-            VerMoneda(Fila)
-        Else
-            Fila = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 4, SlugAPI)
-            If Fila > 0 Then
-                VerMoneda(Fila)
-            Else
-                LimpiezaMoneda()
-                L_Mensaje.Text = "Moneda no encontrada en la Matriz, revise el Slug API ingresado"
-                Exit Sub
-            End If
-        End If
-        '
-        L_CurentPrice.Text = FormatoChileno(current_price, 6)
-        L_Hight24h.Text = FormatoChileno(high_24h, 6)
-        L_Low24h.Text = FormatoChileno(low_24h, 6)
-        L_PriceChange24h.Text = FormatoChileno(price_change_24h)
-        L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h, 0) & " %"
-        L_CirculatingSupply.Text = FormatoChileno(circulating_supply, 0)
-        '
-        L_Mensaje.Text = "Moneda Actualizada y Guardada correctamente"
-    End Sub
     Private Sub CreaNuevaMoneda()
         LimpiezaMoneda()
         '
-        Dim T As String = "Ingrese el acronimo de la moneda" & vbCrLf & "Ejemplo: USDT, BTC, ETH, USDT, MATIC,  etc"
+        Dim T As String = "Ingrese el nombre de la moneda, de acuerdo al estandar de COINGEKO (minusculas)" & vbCrLf & "Ejemplo: bitcoin, tether, ripple, tron"
         Dim Acronimo As String = UCase(InputBox(T, "Nueva Moneda")).ToLower
         Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
         If Fila > 0 Then
@@ -196,36 +156,7 @@ Public Class F_Monedas
             Exit Sub
         End If
         '
-        '
-        Dim current_price As String = ""
-        Dim high_24h As String = ""
-        Dim low_24h As String = ""
-        Dim price_change_24h As String = ""
-        Dim price_change_percentage_24h As String = ""
-        Dim circulating_supply As String = ""
-        If API_CoinGecko_ActualizaValor(Acronimo, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply) Then
-
-            'L_SlugAPI_Moneda.Text = SlugAPI
-            'L_CurentPrice.Text = FormatoChileno(current_price, 6)
-            'L_Hight24h.Text = FormatoChileno(high_24h, 6)
-            'L_Low24h.Text = FormatoChileno(low_24h, 6)
-            'L_PriceChange24h.Text = FormatoChileno(price_change_24h)
-            'L_PriceChangePor24h.Text = FormatoChileno(price_change_percentage_24h, 0) & " %"
-            'L_CirculatingSupply.Text = FormatoChileno(circulating_supply, 0)
-
-
-        End If
-
-        '
-
-
-
-
-        '
-
-        '
-
-
+        VerMoneda(API_CoinGecko_NuevaMoneda(Acronimo))
     End Sub
 
 
@@ -254,8 +185,7 @@ Public Class F_Monedas
             T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
             L_Monedas.Items.Add(T)
             If Matriz_Monedas(i, 22) = "S" Then
-                ActualizaMoneda(L_SlugAPI_Moneda.Text, L_Fila_Moneda.Text)
-
+                API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
             End If
         Next i
         T_Busqueda_Monedas.Text = ""
@@ -293,11 +223,14 @@ Public Class F_Monedas
         GrabarMoneda()
     End Sub
     Private Sub B_Actualizar_Monedas_Click_1(sender As Object, e As EventArgs) Handles B_ActualizaTODO_Monedas.Click
+        Me.Enabled = False
         ActualizarMonedas()
         ReCarga_Monedas()
+        Me.Enabled = True
     End Sub
     Private Sub B_Actualiza_Moneda_Click(sender As Object, e As EventArgs) Handles B_Actualiza_Moneda.Click
-        ActualizaMoneda(L_SlugAPI_Moneda.Text, L_Fila_Moneda.Text)
+        API_CoinGecko_ActualizaValor(L_SlugAPI_Moneda.Text)
+        VerMoneda(L_Fila_Moneda.Text)
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click

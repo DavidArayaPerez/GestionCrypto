@@ -36,9 +36,9 @@ Module zAPI_CoinGecko
     Private Const CG_API_KEY As String = "CG-yZ2PmLgi8HqjvmqefkWdbZfk"
     Private Const CG_BASE_URL As String = "https://api.coingecko.com/api/v3/"
     '
-    ' ---------------------------------------------------------------
+    ' ------------------------------------------------------------
     '  Lista general de monedas ordenadas por market cap
-    ' ---------------------------------------------------------------
+    ' ------------------------------------------------------------
     Public Sub ActualizarMonedas()
         'Carga valores actualizados de MONEDAS
         API_CoinGecko_Monedas(250, 1)
@@ -71,10 +71,13 @@ Module zAPI_CoinGecko
             For Each item As JsonNode In monedas
                 Simbolo = ValorSeguro(item("symbol")).ToUpper()
                 LinkCoinGecko = "https://www.coingecko.com/es/monedas/" & ValorSeguro(item("id"))
-                Supply_Maximo = 0
-
+                '
                 Dim supplyNode As JsonNode = item("max_supply")
-                If Not supplyNode Is Nothing OrElse supplyNode.GetValueKind() = JsonValueKind.Null Then Supply_Maximo = CLng(supplyNode.GetValue(Of Double)())
+                If supplyNode Is Nothing OrElse supplyNode.GetValueKind() = JsonValueKind.Null Then
+                    Supply_Maximo = 0
+                Else
+                    Supply_Maximo = CLng(supplyNode.GetValue(Of Double)())
+                End If
                 '
                 '
                 'Recorre la matriz para saber si ya existe la moneda
@@ -129,7 +132,7 @@ Module zAPI_CoinGecko
         Dim SW As Boolean = True
         Dim Fila As Integer = 0
         For i As Integer = 1 To Matriz_MonedasTF
-            If Matriz_Monedas(i, 2).ToUpper() = slug Then
+            If Matriz_Monedas(i, 4) = slug Then
                 SW = False
                 Fila = i
                 Exit For
@@ -181,16 +184,16 @@ Module zAPI_CoinGecko
             Return False
         End Try
     End Function
-    Public Function API_CoinGecko_NuevaMoneda(ByVal slug As String) As Boolean
+    Public Function API_CoinGecko_NuevaMoneda(ByVal slug As String) As Integer
+        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
+        '
         'Agrega una nueva MONEDA
         For i As Integer = 1 To Matriz_MonedasTF
             If Matriz_Monedas(i, 2).ToUpper() = slug Then
                 MsgBox("La moneda " & slug & " YA EXISTE en la matriz.")
-                Return False
+                Return 0
             End If
         Next
-        '
-        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         Try
             Dim client As New WebClient()
@@ -199,22 +202,23 @@ Module zAPI_CoinGecko
             Dim item As JsonNode = JsonNode.Parse(json)
             Dim marketData As JsonNode = item("market_data")
             '
-            '0  ID_Moneda
-            '1  ID_Despliegue
-            '2  Simbolo
-            '3  Nombre_Oficial
-            '4  Slug_API
-            '5  Tipo_Activo
-            '6  Subtipo_Stablecoin
-            '7  Moneda_Paridad
-            '8  Centralizada
-            '9  Activo_Subyacente
-            '10 ID_Red_Nativa
-            '11 Supply_Maximo
-            '12 Contract_Address
-            '13 Market_cap_rank
-            '14 Link CoinGecko
-            Matriz_Monedas(Fila, 15) = ValorSeguro(marketData?("current_price")?("usd"))            '15 Current_Price
+            Dim Fila = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+            Matriz_Monedas(Fila, 0) = CrearCodigoInterno()                                          '0  ID_Moneda
+            Matriz_Monedas(Fila, 1) = CrearCodigoInterno()                                          '1  ID_Despliegue
+            Matriz_Monedas(Fila, 2) = ValorSeguro(marketData?("symbol"))                            '2  Simbolo
+            Matriz_Monedas(Fila, 3) = ValorSeguro(marketData?("name"))                              '3  Nombre_Oficial
+            Matriz_Monedas(Fila, 4) = ValorSeguro(marketData?("slug"))                              '4  Slug_API
+            Matriz_Monedas(Fila, 5) = ""                                                            '5  Tipo_Activo
+            Matriz_Monedas(Fila, 6) = ""                                                            '6  Subtipo_Stablecoin
+            Matriz_Monedas(Fila, 7) = ""                                                            '7  Moneda_Paridad
+            Matriz_Monedas(Fila, 8) = ""                                                            '8  Centralizada
+            Matriz_Monedas(Fila, 9) = ""                                                            '9  Activo_Subyacente
+            Matriz_Monedas(Fila, 10) = ""                                                           '10 ID_Red_Nativa
+            Matriz_Monedas(Fila, 11) = ""                                                           '11 Supply_Maximo
+            Matriz_Monedas(Fila, 12) = ""                                                           '12 Contract_Address
+            Matriz_Monedas(Fila, 13) = ValorSeguro(marketData?("current_price"))                    '13 Market_cap_rank
+            Matriz_Monedas(Fila, 14) = ValorSeguro(marketData?("current_price"))                    '14 Link CoinGecko
+            Matriz_Monedas(Fila, 15) = ValorSeguro(marketData?("current_price"))                    '15 Current_Price
             Matriz_Monedas(Fila, 16) = ValorSeguro(marketData?("high_24h")?("usd"))                 '16 Hight24h
             Matriz_Monedas(Fila, 17) = ValorSeguro(marketData?("low_24h")?("usd"))                  '17 Low24h
             Matriz_Monedas(Fila, 18) = ValorSeguro(marketData?("price_change_24h"))                 '18 Price Change 24h
@@ -223,7 +227,7 @@ Module zAPI_CoinGecko
             Matriz_Monedas(Fila, 21) = ValorSeguro(marketData?("last_updated"))                     '21 Fecha Actualizacion
             'Matriz_Monedas(Fila, 22) = "0"                                                         '22 Actualizacion Automatica
             Guardar_Matrices("Monedas")
-            Return True
+            Return Fila
             '
             '
         Catch ex As Exception
