@@ -40,6 +40,7 @@ Module zAPI_CoinGecko
     '  Lista general de monedas ordenadas por market cap
     ' ---------------------------------------------------------------
     Public Sub API_CoinGecko_Monedas(Optional ByVal cantidad As Integer = 50, Optional ByVal pagina As Integer = 1)
+        'Caputura las monedas ordenadas por Market CAP con un limite de 250 por pagina que es el max que permite la API de COINGEKO separado por paginas
         Dim url As String = CG_BASE_URL & $"coins/markets" & $"?vs_currency=usd" & $"&order=market_cap_desc" & $"&per_page={cantidad}" & $"&page={pagina}" & $"&sparkline=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         If cantidad < 1 Then cantidad = 1
         If cantidad > 250 Then cantidad = 250
@@ -91,6 +92,15 @@ Module zAPI_CoinGecko
                     Matriz_Monedas(NuevaFila, 11) = Supply_Maximo                           '11 Supply_Maximo
                     'Matriz_Monedas(NuevaFila, 12) = 0                                      '12 Contract_Address
                     Matriz_Monedas(NuevaFila, 13) = MarketCapRank                           '13 Market_cap_rank
+                    Matriz_Monedas(NuevaFila, 14) = "0"                                     '14 Link CoinGecko
+                    Matriz_Monedas(NuevaFila, 15) = "0"                                     '15 Current_Price
+                    Matriz_Monedas(NuevaFila, 16) = "0"                                     '16 Hight24h
+                    Matriz_Monedas(NuevaFila, 17) = "0"                                     '17 Low24h
+                    Matriz_Monedas(NuevaFila, 18) = "0"                                     '18 Price Change 24h
+                    Matriz_Monedas(NuevaFila, 19) = "0"                                     '19 Price Change Percentage 24h
+                    Matriz_Monedas(NuevaFila, 20) = "0"                                     '20 Circulating Supply
+                    Matriz_Monedas(NuevaFila, 21) = "0"                                     '21 Fecha Actualizacion
+                    'Matriz_Monedas(NuevaFila, 22) = "0"                                     '22 Actualizacion Automatica (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
                     Guardar_Matrices("Monedas")
                 Else
                     ' Moneda existente — actualizar rank si cambió
@@ -109,7 +119,7 @@ Module zAPI_CoinGecko
     '  Detalle de una moneda por slug
     '  Obtiene precios en tiempo real (ByRef) y gestiona la matriz
     ' ---------------------------------------------------------------
-    Public Sub API_CoinGecko_ActualizaValor(ByVal slug As String, ByRef current_price As String, ByRef high_24h As String, ByRef low_24h As String, ByRef price_change_24h As String, ByRef price_change_percentage_24h As String, ByRef circulating_supply As String)
+    Public Function API_CoinGecko_ActualizaValor(ByVal slug As String, ByRef current_price As String, ByRef high_24h As String, ByRef low_24h As String, ByRef price_change_24h As String, ByRef price_change_percentage_24h As String, ByRef circulating_supply As String) As Boolean
         Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
         '
         ' Inicializar ByRef en caso de error
@@ -254,11 +264,14 @@ Module zAPI_CoinGecko
                 End If
                 Guardar_Matrices("Monedas")
             End If
+            Return True
+            '
             '
         Catch ex As Exception
             MsgBox("Error leyendo API CoinGecko (Detalle): " & ex.Message)
+            Return False
         End Try
-    End Sub
+    End Function
     Private Function LimpiarTexto(ByVal texto As String) As String
         Dim resultado As String = ""
         For Each c As Char In texto

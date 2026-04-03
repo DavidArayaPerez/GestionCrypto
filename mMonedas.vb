@@ -7,7 +7,7 @@ Module mMonedas
     '
     Public Matriz_Monedas(,) As String
     Public Matriz_MonedasTF As String
-    Public Matriz_MonedasTC As String = 15
+    Public Matriz_MonedasTC As String = 23
     '
     '   0       ID_Moneda
     '   1       ID_Despliegue
@@ -24,7 +24,15 @@ Module mMonedas
     '   12      Contract_Address
     '   13      market_cap_rank
     '   14      Link CoinGecko
-    '
+    '   15      Current_Price
+    '   16      Hight24h
+    '   17      Low24h
+    '   18      Price Change 24h
+    '   19      Price Change Percentage 24h
+    '   20      Circulating Supply
+    '   21      Fecha Actualizacion
+    '   22      Actualizacion Automatica (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
+    '   23
     '
     'Dim monedas = Await CoinGeckoService.ObtenerMonedasAsync(cantidad:=100)
     '
