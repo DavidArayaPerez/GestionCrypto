@@ -16,7 +16,7 @@ Public Class F_Monedas
             T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
             L_Monedas.Items.Add(T)
             If Matriz_Monedas(i, 22) = "S" Then
-                If Contador < 30 Then
+                If Contador < 50 Then
                     API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
                     Contador += 1
                 End If
