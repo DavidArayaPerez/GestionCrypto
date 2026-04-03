@@ -123,12 +123,9 @@ Module zAPI_CoinGecko
             MsgBox("Error leyendo API CoinGecko (Monedas): " & ex.Message)
         End Try
     End Sub
-
-    ' ---------------------------------------------------------------
-    '  Detalle de una moneda por slug
-    '  Obtiene precios en tiempo real (ByRef) y gestiona la matriz
-    ' ---------------------------------------------------------------
+    '
     Public Function API_CoinGecko_ActualizaValor(ByVal slug As String) As Boolean
+        'Actualiza solo el valor de mercado
         Dim SW As Boolean = True
         Dim Fila As Integer = 0
         For i As Integer = 1 To Matriz_MonedasTF
@@ -184,59 +181,56 @@ Module zAPI_CoinGecko
             Return False
         End Try
     End Function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Public Function API_CoinGecko_NuevaMoneda(ByVal slug As String) As Boolean
+        'Agrega una nueva MONEDA
+        For i As Integer = 1 To Matriz_MonedasTF
+            If Matriz_Monedas(i, 2).ToUpper() = slug Then
+                MsgBox("La moneda " & slug & " YA EXISTE en la matriz.")
+                Return False
+            End If
+        Next
+        '
+        Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" & $"?localization=false&tickers=false" & $"&market_data=true&community_data=false&developer_data=false" & $"&x_cg_demo_api_key={CG_API_KEY}"
+        '
+        Try
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(url))
+            Dim item As JsonNode = JsonNode.Parse(json)
+            Dim marketData As JsonNode = item("market_data")
+            '
+            '0  ID_Moneda
+            '1  ID_Despliegue
+            '2  Simbolo
+            '3  Nombre_Oficial
+            '4  Slug_API
+            '5  Tipo_Activo
+            '6  Subtipo_Stablecoin
+            '7  Moneda_Paridad
+            '8  Centralizada
+            '9  Activo_Subyacente
+            '10 ID_Red_Nativa
+            '11 Supply_Maximo
+            '12 Contract_Address
+            '13 Market_cap_rank
+            '14 Link CoinGecko
+            Matriz_Monedas(Fila, 15) = ValorSeguro(marketData?("current_price")?("usd"))            '15 Current_Price
+            Matriz_Monedas(Fila, 16) = ValorSeguro(marketData?("high_24h")?("usd"))                 '16 Hight24h
+            Matriz_Monedas(Fila, 17) = ValorSeguro(marketData?("low_24h")?("usd"))                  '17 Low24h
+            Matriz_Monedas(Fila, 18) = ValorSeguro(marketData?("price_change_24h"))                 '18 Price Change 24h
+            Matriz_Monedas(Fila, 19) = ValorSeguro(marketData?("price_change_percentage_24h"))      '19 Price Change Percentage 24h
+            Matriz_Monedas(Fila, 20) = ValorSeguro(marketData?("circulating_supply"))               '20 Circulating Supply
+            Matriz_Monedas(Fila, 21) = ValorSeguro(marketData?("last_updated"))                     '21 Fecha Actualizacion
+            'Matriz_Monedas(Fila, 22) = "0"                                                         '22 Actualizacion Automatica
+            Guardar_Matrices("Monedas")
+            Return True
+            '
+            '
+        Catch ex As Exception
+            MsgBox("Error leyendo API CoinGecko (Detalle): " & ex.Message)
+            Return False
+        End Try
+    End Function
     Private Function LimpiarTexto(ByVal texto As String) As String
         Dim resultado As String = ""
         For Each c As Char In texto
@@ -244,9 +238,6 @@ Module zAPI_CoinGecko
         Next
         Return resultado
     End Function
-    '
-    ' ── Helpers ────────────────────────────────────────────────────
-    '
     Private Function ValorSeguro(node As JsonNode) As String
         Return If(node Is Nothing, "0", node.ToString())
     End Function

@@ -160,7 +160,7 @@ Public Class F_Monedas
         Dim price_change_percentage_24h As String = ""
         Dim circulating_supply As String = ""
         '
-        API_CoinGecko_ActualizaValor(SlugAPI, current_price, high_24h, low_24h, price_change_24h, price_change_percentage_24h, circulating_supply)
+        API_CoinGecko_ActualizaValor(SlugAPI)
         '
         If Fila > 0 Then
             VerMoneda(Fila)
