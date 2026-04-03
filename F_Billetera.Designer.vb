@@ -28,10 +28,13 @@ Partial Class F_Billetera
         Me.B_GrabarBilletera = New System.Windows.Forms.Button()
         Me.T_CodigoBilletera = New System.Windows.Forms.TextBox()
         Me.T_NombreBilletera = New System.Windows.Forms.TextBox()
-        Me.rT_NotaBilletera = New System.Windows.Forms.RichTextBox()
+        Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.L_Fila = New System.Windows.Forms.Label()
+        Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'B_NuevoBilletera
@@ -57,7 +60,7 @@ Partial Class F_Billetera
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(363, 110)
+        Me.Label1.Location = New System.Drawing.Point(363, 153)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(457, 25)
         Me.Label1.TabIndex = 572
@@ -95,17 +98,17 @@ Partial Class F_Billetera
         Me.T_NombreBilletera.TabIndex = 568
         Me.T_NombreBilletera.Text = "T_NombreBilletera"
         '
-        'rT_NotaBilletera
+        'rT_Nota
         '
-        Me.rT_NotaBilletera.AcceptsTab = True
-        Me.rT_NotaBilletera.AutoWordSelection = True
-        Me.rT_NotaBilletera.BackColor = System.Drawing.Color.White
-        Me.rT_NotaBilletera.Location = New System.Drawing.Point(363, 138)
-        Me.rT_NotaBilletera.Name = "rT_NotaBilletera"
-        Me.rT_NotaBilletera.ReadOnly = True
-        Me.rT_NotaBilletera.Size = New System.Drawing.Size(457, 340)
-        Me.rT_NotaBilletera.TabIndex = 566
-        Me.rT_NotaBilletera.Text = "rT_NotaBilletera"
+        Me.rT_Nota.AcceptsTab = True
+        Me.rT_Nota.AutoWordSelection = True
+        Me.rT_Nota.BackColor = System.Drawing.Color.White
+        Me.rT_Nota.Location = New System.Drawing.Point(363, 181)
+        Me.rT_Nota.Name = "rT_Nota"
+        Me.rT_Nota.ReadOnly = True
+        Me.rT_Nota.Size = New System.Drawing.Size(457, 267)
+        Me.rT_Nota.TabIndex = 566
+        Me.rT_Nota.Text = "rT_Nota"
         '
         'Label17
         '
@@ -138,11 +141,45 @@ Partial Class F_Billetera
         Me.B_Cerrar.Text = "Cerrar"
         Me.B_Cerrar.UseVisualStyleBackColor = False
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Blue
+        Me.Label2.Location = New System.Drawing.Point(363, 107)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(23, 13)
+        Me.Label2.TabIndex = 650
+        Me.Label2.Text = "Fila"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_Fila
+        '
+        Me.L_Fila.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Fila.ForeColor = System.Drawing.Color.Black
+        Me.L_Fila.Location = New System.Drawing.Point(400, 107)
+        Me.L_Fila.Name = "L_Fila"
+        Me.L_Fila.Size = New System.Drawing.Size(170, 13)
+        Me.L_Fila.TabIndex = 649
+        Me.L_Fila.Text = "L_Fila"
+        '
+        'L_Mensaje
+        '
+        Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
+        Me.L_Mensaje.Location = New System.Drawing.Point(363, 462)
+        Me.L_Mensaje.Name = "L_Mensaje"
+        Me.L_Mensaje.Size = New System.Drawing.Size(457, 16)
+        Me.L_Mensaje.TabIndex = 651
+        Me.L_Mensaje.Text = "L_Mensaje"
+        '
         'F_Billetera
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(846, 505)
+        Me.Controls.Add(Me.L_Mensaje)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.L_Fila)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.L_Billeteras)
@@ -150,11 +187,13 @@ Partial Class F_Billetera
         Me.Controls.Add(Me.B_GrabarBilletera)
         Me.Controls.Add(Me.T_CodigoBilletera)
         Me.Controls.Add(Me.T_NombreBilletera)
-        Me.Controls.Add(Me.rT_NotaBilletera)
+        Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label19)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.Name = "F_Billetera"
-        Me.Text = "F_Billetera"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
+        Me.Text = "Billetera"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -166,8 +205,11 @@ Partial Class F_Billetera
     Friend WithEvents B_GrabarBilletera As Button
     Friend WithEvents T_CodigoBilletera As TextBox
     Friend WithEvents T_NombreBilletera As TextBox
-    Friend WithEvents rT_NotaBilletera As RichTextBox
+    Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents Label17 As Label
     Friend WithEvents Label19 As Label
     Friend WithEvents B_Cerrar As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents L_Fila As Label
+    Friend WithEvents L_Mensaje As Label
 End Class

@@ -103,7 +103,9 @@ Partial Class F_Exchange
         Me.Controls.Add(Me.T_NomExchange)
         Me.Controls.Add(Me.rT_NotaExchange)
         Me.Controls.Add(Me.Label43)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.Name = "F_Exchange"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "F_Exchange"
         Me.ResumeLayout(False)
         Me.PerformLayout()

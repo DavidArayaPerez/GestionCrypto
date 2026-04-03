@@ -8,6 +8,21 @@ Public Class F_Monedas
     '
     '
     '
+    Private Sub ReCarga_Monedas()
+        LimpiezaMoneda()
+        '
+        L_TotalMonedas.Text = Matriz_MonedasTF - 1
+        L_Monedas.Items.Clear()
+        Dim T As String
+        For i As Integer = 1 To Matriz_MonedasTF
+            T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
+            L_Monedas.Items.Add(T)
+            If Matriz_Monedas(i, 22) = "S" Then
+                API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
+            End If
+        Next i
+        T_Busqueda_Monedas.Text = ""
+    End Sub
     Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)
         L_Mensaje.Text = ""
         L_Fila_Moneda.Text = ""
@@ -158,16 +173,9 @@ Public Class F_Monedas
         '
         VerMoneda(API_CoinGecko_NuevaMoneda(Acronimo))
     End Sub
-
-
-
-
-
-
-
-
-
-
+    '
+    '
+    '
 
     '
     '
@@ -175,22 +183,6 @@ Public Class F_Monedas
     Private Sub F_Monedas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ReCarga_Monedas()
     End Sub
-    Private Sub ReCarga_Monedas()
-        LimpiezaMoneda()
-        '
-        L_TotalMonedas.Text = Matriz_MonedasTF - 1
-        L_Monedas.Items.Clear()
-        Dim T As String
-        For i As Integer = 1 To Matriz_MonedasTF
-            T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
-            L_Monedas.Items.Add(T)
-            If Matriz_Monedas(i, 22) = "S" Then
-                API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
-            End If
-        Next i
-        T_Busqueda_Monedas.Text = ""
-    End Sub
-
     Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs) Handles T_Busqueda_Monedas.KeyUp
         If VariableDeInicio Then Exit Sub
         Dim Filtro As String = T_Busqueda_Monedas.Text.Trim().ToUpper()

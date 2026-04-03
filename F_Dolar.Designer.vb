@@ -55,10 +55,11 @@ Partial Class F_Dolar
         Me.ClientSize = New System.Drawing.Size(256, 608)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Dolar)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "F_Dolar"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Dolar"
         Me.ResumeLayout(False)
 

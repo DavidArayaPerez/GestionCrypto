@@ -561,9 +561,10 @@ Partial Class F_Red
         Me.Controls.Add(Me.B_GrabarRed)
         Me.Controls.Add(Me.T_ChainID_Red)
         Me.Controls.Add(Me.Label59)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.Name = "F_Red"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Red"
         Me.ResumeLayout(False)
         Me.PerformLayout()
