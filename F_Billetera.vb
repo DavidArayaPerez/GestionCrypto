@@ -1,8 +1,6 @@
 ﻿'
 '
 '
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
-
 Public Class F_Billetera
     '
     '

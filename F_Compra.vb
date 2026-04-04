@@ -1,8 +1,6 @@
 ﻿'
 '
 '
-Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
-
 Public Class F_Compra
     '
     '
@@ -165,7 +163,7 @@ Public Class F_Compra
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
     End Sub
-    Private Sub F_Compras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub F_Compra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Inicializar()
     End Sub
     Private Sub B_NuevoBilletera_Click(sender As Object, e As EventArgs) Handles B_NuevoBilletera.Click
