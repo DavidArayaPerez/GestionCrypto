@@ -97,9 +97,6 @@ Public Class F_zPrincipal
     Private Sub B_Compras_Click(sender As Object, e As EventArgs) Handles B_Compras.Click
         F_Compra.Show()
     End Sub
-    Private Sub B_Movimientos_Click(sender As Object, e As EventArgs) Handles B_Movimientos.Click
-        F_Movimientos.Show()
-    End Sub
     Private Sub B_PoolLiquidez_Click(sender As Object, e As EventArgs) Handles B_PoolLiquidez.Click
         F_PoolLiquidez.Show()
     End Sub

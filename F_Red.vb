@@ -1,72 +1,74 @@
 ﻿'
 '
 '
+Imports Microsoft.Graph.Admin
+
 Public Class F_Red
     '
     '
     '
-    '
-    Private Sub LimpiezaRedes(Optional Habilitar As Boolean = False)
-        L_Fila_Red.Text = ""
+    Private Sub Inicializar()
+        Dim T As String
+        Limpiar()
+        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
+        L_Red.Items.Clear()
+        For i As Integer = 1 To Matriz_RedesTF
+            T = Matriz_Redes(i, 2) & " (" & i & ")"
+            L_Red.Items.Add(T)
+        Next i
+    End Sub
+    Private Sub Limpiar(Optional Habilitar As Boolean = False)
+        L_Fila.Text = ""
         'REDES
-        L_IDRed_Red.Text = ""
-        T_ChainID_Red.Text = ""
-        T_NomOficial_Red.Text = ""
-        T_NomCorto_Red.Text = ""
-        T_APIcg_Red.Text = ""
-        T_L1padre_Red.Text = ""
-        T_TipoRollup_Red.Text = ""
-        T_TokenNativo_Red.Text = ""
-        T_Decimales_Red.Text = ""
-        T_TipoBloque_Red.Text = ""
-        T_Color_Red.Text = ""
+        L_ID.Text = ""
+        L_ChainID.Text = ""
+        L_NomOficial.Text = ""
+        L_NomCorto.Text = ""
+        L_APIcg.Text = ""
+        L_L1padre.Text = ""
+        L_TipoRollup.Text = ""
+        L_TokenNativo.Text = ""
         T_URLexplorador_Red.Text = ""
-        T_URLlogo_Red.Text = ""
         T_URLrpc_Red.Text = ""
-        T_TipoCapa_Red.Text = ""
-        T_MecanismoConsenso_Red.Text = ""
+        L_TipoCapa.Text = ""
+        L_MecanismoConsenso.Text = ""
         rT_Nota.Text = ""
         '
-        L_IDRed_Red.Enabled = Habilitar
-        T_ChainID_Red.Enabled = Habilitar
-        T_NomOficial_Red.Enabled = Habilitar
-        T_NomCorto_Red.Enabled = Habilitar
-        T_APIcg_Red.Enabled = Habilitar
-        T_L1padre_Red.Enabled = Habilitar
-        T_TipoRollup_Red.Enabled = Habilitar
-        T_TokenNativo_Red.Enabled = Habilitar
-        T_Decimales_Red.Enabled = Habilitar
-        T_TipoBloque_Red.Enabled = Habilitar
-        T_Color_Red.Enabled = Habilitar
+        L_ID.Enabled = Habilitar
+        L_ChainID.Enabled = Habilitar
+        L_NomOficial.Enabled = Habilitar
+        L_NomCorto.Enabled = Habilitar
+        L_APIcg.Enabled = Habilitar
+        L_L1padre.Enabled = Habilitar
+        L_TipoRollup.Enabled = Habilitar
+        L_TokenNativo.Enabled = Habilitar
         T_URLexplorador_Red.Enabled = Habilitar
-        T_URLlogo_Red.Enabled = Habilitar
         T_URLrpc_Red.Enabled = Habilitar
-        T_TipoCapa_Red.Enabled = Habilitar
-        T_MecanismoConsenso_Red.Enabled = Habilitar
+        L_TipoCapa.Enabled = Habilitar
+        L_MecanismoConsenso.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
-
     End Sub
-    Private Sub VerRedes(F As Integer)
-        LimpiezaRedes(True)
+    Private Sub Ver(F As Integer)
+        Limpiar(True)
         If F < 1 Then Exit Sub
 
-        L_IDRed_Red.Text = F
-        L_IDRed_Red.Text = Matriz_Redes(F, 0)
-        T_ChainID_Red.Text = Matriz_Redes(F, 1)
-        T_NomOficial_Red.Text = Matriz_Redes(F, 2)
-        T_NomCorto_Red.Text = Matriz_Redes(F, 3)
-        T_APIcg_Red.Text = Matriz_Redes(F, 4)
-        T_TipoCapa_Red.Text = Matriz_Redes(F, 5)
-        T_L1padre_Red.Text = Matriz_Redes(F, 6)
-        T_TipoRollup_Red.Text = Matriz_Redes(F, 7)
+        L_ID.Text = F
+        L_ID.Text = Matriz_Redes(F, 0)
+        L_ChainID.Text = Matriz_Redes(F, 1)
+        L_NomOficial.Text = Matriz_Redes(F, 2)
+        L_NomCorto.Text = Matriz_Redes(F, 3)
+        L_APIcg.Text = Matriz_Redes(F, 4)
+        L_TipoCapa.Text = Matriz_Redes(F, 5)
+        L_L1padre.Text = Matriz_Redes(F, 6)
+        L_TipoRollup.Text = Matriz_Redes(F, 7)
         '8 EVM
-        T_MecanismoConsenso_Red.Text = Matriz_Redes(F, 9)
-        T_TokenNativo_Red.Text = Matriz_Redes(F, 10)
-        T_Decimales_Red.Text = Matriz_Redes(F, 11)
-        T_TipoBloque_Red.Text = Matriz_Redes(F, 12)
-        T_Color_Red.Text = Matriz_Redes(F, 13)
+        L_MecanismoConsenso.Text = Matriz_Redes(F, 9)
+        L_TokenNativo.Text = Matriz_Redes(F, 10)
+        'T_Decimales_Red.Text = Matriz_Redes(F, 11)
+        'T_TipoBloque_Red.Text = Matriz_Redes(F, 12)
+        'T_Color_Red.Text = Matriz_Redes(F, 13)
         T_URLexplorador_Red.Text = Matriz_Redes(F, 14)
-        T_URLlogo_Red.Text = Matriz_Redes(F, 15)
+        'T_URLlogo_Red.Text = Matriz_Redes(F, 15)
         T_URLrpc_Red.Text = Matriz_Redes(F, 16)
         '17 Activo
         '
@@ -87,6 +89,10 @@ Public Class F_Red
         Else
             CB_Activo_Red.Checked = False
         End If
+        '
+        Dim NombreNota As String = "Chain_" & Matriz_Redes(F, 4) & ".rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_Nota)
+        '
         '0      ID_Interno
         '1      Chain_ID               Identificador único para redes EVM
         '2      Nombre_Oficial         Nombre completo
@@ -111,6 +117,53 @@ Public Class F_Red
         '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
         '
     End Sub
+    Private Function DatosNoValidos() As Boolean
+        Return False
+    End Function
+    Private Sub Grabar()
+        If DatosNoValidos() Then Exit Sub
+        '
+        Dim F As Integer = L_Fila.Text
+        If F = 0 Then
+            L_Mensaje.Text = "No existen datos para guardar"
+            Exit Sub
+        End If
+        '
+        If CB_Activo_Red.Checked Then
+            Matriz_Redes(F, 17) = "SI"
+        Else
+            Matriz_Redes(F, 17) = "NO"
+        End If
+        '
+        Guardar_Matrices("Redes")
+        '
+        Dim NombreNota As String = "Chain_" & Matriz_Redes(F, 4) & ".rtf"
+        GuardarRTF(RutaLocal, NombreNota, rT_Nota)
+        '
+        L_Mensaje.Text = "Compra guardada correctamente"
+        '0      ID_Interno
+        '1      Chain_ID               Identificador único para redes EVM
+        '2      Nombre_Oficial         Nombre completo
+        '3      Nombre_Corto           Para mostrar en pantalla
+        '4      Slug_API               Identificador en APIs como CoinGecko
+        '5      Tipo_Capa              Arquitectura de la red, L1 / L2 / Sidechain
+        '6      L1_Padre               Solo aplica si es L2 — a qué L1 está anclada
+        '7      Tipo_Rollup            Solo aplica a L2s
+        '8      Compatible_EVM         Define si usa el estándar de Ethereum           Sí / No
+        '9      Mecanismo_Consenso     Cómo valida la red                              PoW, PoS, PoH
+        '10     Token_Nativo           En ARB el token nativo es ETH, no ARB.
+        '                            El token ARB existe, pero es el token de gobernanza del protocolo,
+        '                                no el que se usa para pagar el gas.
+        '                                Esto aplica también a otras redes como Base y Optimism,
+        '                                    que también usan ETH como gas aunque tengan su propio token de gobernanza.
+        '11     Decimales              Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
+        '12     Tiempo_Bloque          Velocidad de confirmación                       12 seg, 0.4 seg
+        '13     Color_Marca            Para mostrar en la UI                           #627EEA                     
+        '14     URL_Explorador         Para consultar transacciones                    etherscan.io
+        '15     URL_Logo               Ícono de la red                                 https://...
+        '16     URL_RPC                Para conectarse a la red programáticamente      https://...
+        '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
+    End Sub
     '
     '
     '
@@ -121,14 +174,7 @@ Public Class F_Red
     '
     '
     Private Sub F_Red_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim T As String
-        LimpiezaRedes()
-        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
-        L_Red.Items.Clear()
-        For i As Integer = 1 To Matriz_RedesTF
-            T = Matriz_Redes(i, 2) & " (" & i & ")"
-            L_Red.Items.Add(T)
-        Next i
+        Inicializar()
     End Sub
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
@@ -147,20 +193,13 @@ Public Class F_Red
         Dim T As String = L_Red.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
-        VerRedes(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
     Private Sub Label72_Click_1(sender As Object, e As EventArgs) Handles Label72.Click
         If VariableDeInicio Then Exit Sub
         If Len(T_URLrpc_Red.Text) < 3 Then Exit Sub
         '
         Dim URL As String = "http://" & T_URLrpc_Red.Text
-        Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
-    End Sub
-    Private Sub Label73_Click_1(sender As Object, e As EventArgs) Handles Label73.Click
-        If VariableDeInicio Then Exit Sub
-        If Len(T_URLlogo_Red.Text) < 3 Then Exit Sub
-        '
-        Dim URL As String = "http://" & T_URLlogo_Red.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
     Private Sub L_Red_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Red.SelectedIndexChanged
@@ -171,11 +210,11 @@ Public Class F_Red
         Dim T As String = L_Red.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
-        VerRedes(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
 
-    Private Sub B_NuevoRed_Click(sender As Object, e As EventArgs) Handles B_NuevoRed.Click
-
+    Private Sub B_GrabarRed_Click(sender As Object, e As EventArgs) Handles B_GrabarRed.Click
+        Grabar()
     End Sub
     '
     '

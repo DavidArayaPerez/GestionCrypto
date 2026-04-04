@@ -65,7 +65,6 @@ Partial Class F_zPrincipal
         Me.B_Compras = New System.Windows.Forms.Button()
         Me.B_Billetera = New System.Windows.Forms.Button()
         Me.B_PoolLiquidez = New System.Windows.Forms.Button()
-        Me.B_Movimientos = New System.Windows.Forms.Button()
         Me.B_Traspasos = New System.Windows.Forms.Button()
         Me.B_Exchange = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -369,17 +368,6 @@ Partial Class F_zPrincipal
         Me.B_PoolLiquidez.Text = "Pool Liquidez"
         Me.B_PoolLiquidez.UseVisualStyleBackColor = False
         '
-        'B_Movimientos
-        '
-        Me.B_Movimientos.BackColor = System.Drawing.SystemColors.Control
-        Me.B_Movimientos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Movimientos.Location = New System.Drawing.Point(12, 248)
-        Me.B_Movimientos.Name = "B_Movimientos"
-        Me.B_Movimientos.Size = New System.Drawing.Size(99, 23)
-        Me.B_Movimientos.TabIndex = 431
-        Me.B_Movimientos.Text = "Movimientos"
-        Me.B_Movimientos.UseVisualStyleBackColor = False
-        '
         'B_Traspasos
         '
         Me.B_Traspasos.BackColor = System.Drawing.SystemColors.Control
@@ -411,7 +399,6 @@ Partial Class F_zPrincipal
         Me.Controls.Add(Me.B_Exchange)
         Me.Controls.Add(Me.B_Traspasos)
         Me.Controls.Add(Me.B_PoolLiquidez)
-        Me.Controls.Add(Me.B_Movimientos)
         Me.Controls.Add(Me.B_Compras)
         Me.Controls.Add(Me.B_Billetera)
         Me.Controls.Add(Me.B_Dolar)
@@ -470,7 +457,6 @@ Partial Class F_zPrincipal
     Friend WithEvents B_Compras As Button
     Friend WithEvents B_Billetera As Button
     Friend WithEvents B_PoolLiquidez As Button
-    Friend WithEvents B_Movimientos As Button
     Friend WithEvents B_Traspasos As Button
     Friend WithEvents B_Exchange As Button
 End Class

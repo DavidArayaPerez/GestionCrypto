@@ -18,6 +18,13 @@ Module mBilleteras
         Dim Fila As Integer = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
         Return Fila
     End Function
+    Public Function Buscar_Billetera(T As String) As String
+        Dim SW As Boolean = True
+        For i As Integer = 1 To Matriz_BilleterasTF
+            If T = Matriz_Billeteras(i, 1) Then Return "S" 'Si existe
+        Next i
+        Return "N" 'No existe
+    End Function
     Public Sub Llenar_Billetera(ByRef Combo As ComboBox)
         Dim T As String
         Combo.Items.Clear()

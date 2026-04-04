@@ -482,9 +482,11 @@ Partial Class F_PoolLiquidez
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label28)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "F_PoolLiquidez"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "F_PoolLiquidez"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -384,9 +384,11 @@ Partial Class F_Traspaso
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.Label27)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "F_Traspaso"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "F_Traspaso"
         Me.ResumeLayout(False)
         Me.PerformLayout()

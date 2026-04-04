@@ -6,7 +6,6 @@ Public Class F_PoolLiquidez
     '
     '
     Private Sub Inicializar()
-        Dim T As String
         VariableDeInicio = True
         '
         Limpiar()
@@ -93,6 +92,12 @@ Public Class F_PoolLiquidez
         '   16  Maximo
     End Sub
     Private Function DatosNoValidos() As Boolean
+        '
+        If Buscar_Exchange(C_Exchange.Text) = "N" Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If Buscar_Billetera(C_Billetera.Text) = "N" Then L_Mensaje.Text = "Billetera no válida" : Return True
+        If Buscar_Moneda(C_Moneda1.Text) = "N" Then L_Mensaje.Text = "Moneda 1 no válida" : Return True
+        If Buscar_Moneda(C_Moneda2.Text) = "N" Then L_Mensaje.Text = "Moneda 2 no válida" : Return True
+        '
         Return False
     End Function
     Private Sub Grabar()
@@ -114,7 +119,7 @@ Public Class F_PoolLiquidez
         Matriz_PoolLiquidez(F, 9) = T_Comision.Text
         Matriz_PoolLiquidez(F, 10) = T_Gas.Text
         Matriz_PoolLiquidez(F, 11) = T_ValorMoneda1Resultante.Text
-        Matriz_PoolLiquidez(F, 12) = T_ValorMoneda2Resultante.Text = 
+        Matriz_PoolLiquidez(F, 12) = T_ValorMoneda2Resultante.Text
         '13
         '14
         Matriz_PoolLiquidez(F, 15) = T_Min.Text
@@ -150,6 +155,15 @@ Public Class F_PoolLiquidez
     '
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
+    End Sub
+    Private Sub B_GrabarPool_Click(sender As Object, e As EventArgs) Handles B_GrabarPool.Click
+        Grabar()
+    End Sub
+    Private Sub B_Nuevo_Click(sender As Object, e As EventArgs) Handles B_Nuevo.Click
+        Limpiar(True)
+        T_Fecha.Text = DateTime.Now.ToString("yyyyMMdd")
+        T_Hora.Text = DateTime.Now.ToString("HHmmss")
+        C_Exchange.Focus()
     End Sub
     '
     '
@@ -214,16 +228,9 @@ Public Class F_PoolLiquidez
         If SoloNumero_KeyPress(T_Gas, sender, e) Then e.Handled = True
     End Sub
 
-    Private Sub B_Nuevo_Click(sender As Object, e As EventArgs) Handles B_Nuevo.Click
-        Limpiar(True)
-        T_Fecha.Text = DateTime.Now.ToString("yyyyMMdd")
-        T_Hora.Text = DateTime.Now.ToString("HHmmss")
-        C_Exchange.Focus()
-    End Sub
 
-    Private Sub B_GrabarPool_Click(sender As Object, e As EventArgs) Handles B_GrabarPool.Click
-        Grabar()
-    End Sub
+
+
     '
     '
     '

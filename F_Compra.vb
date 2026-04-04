@@ -6,7 +6,6 @@ Public Class F_Compra
     '
     '
     Private Sub Inicializar()
-        Dim T As String
         VariableDeInicio = True
         '
         Limpiar()

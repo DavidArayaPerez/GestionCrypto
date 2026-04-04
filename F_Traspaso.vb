@@ -6,7 +6,6 @@ Public Class F_Traspaso
     '
     '
     Private Sub Inicializar()
-        Dim T As String
         VariableDeInicio = True
         '
         Limpiar()
