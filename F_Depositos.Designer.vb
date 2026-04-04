@@ -37,7 +37,7 @@ Partial Class F_Depositos
         Me.C_MonedaDestinoDeposito = New System.Windows.Forms.ComboBox()
         Me.Label04 = New System.Windows.Forms.Label()
         Me.Label02 = New System.Windows.Forms.Label()
-        Me.C_MonedaOrigenDeposito = New System.Windows.Forms.ComboBox()
+        Me.C_MonedaOrigen = New System.Windows.Forms.ComboBox()
         Me.Label01 = New System.Windows.Forms.Label()
         Me.C_ExchangeDeposito = New System.Windows.Forms.ComboBox()
         Me.Cal_FechaDeposito = New System.Windows.Forms.DateTimePicker()
@@ -200,15 +200,15 @@ Partial Class F_Depositos
         Me.Label02.TabIndex = 464
         Me.Label02.Text = "Valor Moneda Origen"
         '
-        'C_MonedaOrigenDeposito
+        'C_MonedaOrigen
         '
-        Me.C_MonedaOrigenDeposito.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_MonedaOrigenDeposito.FormattingEnabled = True
-        Me.C_MonedaOrigenDeposito.Location = New System.Drawing.Point(361, 161)
-        Me.C_MonedaOrigenDeposito.Name = "C_MonedaOrigenDeposito"
-        Me.C_MonedaOrigenDeposito.Size = New System.Drawing.Size(123, 21)
-        Me.C_MonedaOrigenDeposito.TabIndex = 463
-        Me.C_MonedaOrigenDeposito.Text = "C_MonedaOrigenDeposito"
+        Me.C_MonedaOrigen.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_MonedaOrigen.FormattingEnabled = True
+        Me.C_MonedaOrigen.Location = New System.Drawing.Point(361, 161)
+        Me.C_MonedaOrigen.Name = "C_MonedaOrigen"
+        Me.C_MonedaOrigen.Size = New System.Drawing.Size(123, 21)
+        Me.C_MonedaOrigen.TabIndex = 463
+        Me.C_MonedaOrigen.Text = "C_MonedaOrigenDeposito"
         '
         'Label01
         '
@@ -318,7 +318,7 @@ Partial Class F_Depositos
         Me.Controls.Add(Me.C_MonedaDestinoDeposito)
         Me.Controls.Add(Me.Label04)
         Me.Controls.Add(Me.Label02)
-        Me.Controls.Add(Me.C_MonedaOrigenDeposito)
+        Me.Controls.Add(Me.C_MonedaOrigen)
         Me.Controls.Add(Me.Label01)
         Me.Controls.Add(Me.C_ExchangeDeposito)
         Me.Controls.Add(Me.Cal_FechaDeposito)
@@ -347,7 +347,7 @@ Partial Class F_Depositos
     Friend WithEvents C_MonedaDestinoDeposito As ComboBox
     Friend WithEvents Label04 As Label
     Friend WithEvents Label02 As Label
-    Friend WithEvents C_MonedaOrigenDeposito As ComboBox
+    Friend WithEvents C_MonedaOrigen As ComboBox
     Friend WithEvents Label01 As Label
     Friend WithEvents C_ExchangeDeposito As ComboBox
     Friend WithEvents Cal_FechaDeposito As DateTimePicker

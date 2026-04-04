@@ -49,6 +49,8 @@ Partial Class F_CompraFIAT
         Me.Label2 = New System.Windows.Forms.Label()
         Me.L_Fila = New System.Windows.Forms.Label()
         Me.L_Mensaje = New System.Windows.Forms.Label()
+        Me.T_Gas = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'L_Compras
@@ -161,7 +163,7 @@ Partial Class F_CompraFIAT
         Me.Label05.Name = "Label05"
         Me.Label05.Size = New System.Drawing.Size(123, 13)
         Me.Label05.TabIndex = 494
-        Me.Label05.Text = "Comisión"
+        Me.Label05.Text = "Valor Comisión"
         '
         'Label08
         '
@@ -302,7 +304,7 @@ Partial Class F_CompraFIAT
         '
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.Blue
-        Me.Label2.Location = New System.Drawing.Point(354, 343)
+        Me.Label2.Location = New System.Drawing.Point(357, 424)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(123, 13)
         Me.Label2.TabIndex = 652
@@ -313,7 +315,7 @@ Partial Class F_CompraFIAT
         '
         Me.L_Fila.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_Fila.ForeColor = System.Drawing.Color.Black
-        Me.L_Fila.Location = New System.Drawing.Point(354, 360)
+        Me.L_Fila.Location = New System.Drawing.Point(357, 441)
         Me.L_Fila.Name = "L_Fila"
         Me.L_Fila.Size = New System.Drawing.Size(123, 13)
         Me.L_Fila.TabIndex = 651
@@ -328,11 +330,33 @@ Partial Class F_CompraFIAT
         Me.L_Mensaje.TabIndex = 653
         Me.L_Mensaje.Text = "L_Mensaje"
         '
+        'T_Gas
+        '
+        Me.T_Gas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Gas.Location = New System.Drawing.Point(357, 356)
+        Me.T_Gas.MaxLength = 6
+        Me.T_Gas.Name = "T_Gas"
+        Me.T_Gas.Size = New System.Drawing.Size(123, 20)
+        Me.T_Gas.TabIndex = 655
+        Me.T_Gas.Text = "T_Gas"
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Blue
+        Me.Label1.Location = New System.Drawing.Point(357, 339)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(123, 13)
+        Me.Label1.TabIndex = 654
+        Me.Label1.Text = "Valor Gas"
+        '
         'F_CompraFIAT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(999, 526)
+        Me.Controls.Add(Me.T_Gas)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.L_Fila)
@@ -394,4 +418,6 @@ Partial Class F_CompraFIAT
     Friend WithEvents Label2 As Label
     Friend WithEvents L_Fila As Label
     Friend WithEvents L_Mensaje As Label
+    Friend WithEvents T_Gas As TextBox
+    Friend WithEvents Label1 As Label
 End Class

@@ -173,6 +173,10 @@ Public Class F_Red
         If x = 0 Then Exit Sub
         VerRedes(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
+
+    Private Sub B_NuevoRed_Click(sender As Object, e As EventArgs) Handles B_NuevoRed.Click
+
+    End Sub
     '
     '
     '

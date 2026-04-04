@@ -23,14 +23,14 @@ Partial Class F_Exchange
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.L_Exchange = New System.Windows.Forms.ListBox()
-        Me.B_GrabarExchange = New System.Windows.Forms.Button()
+        Me.B_Grabar = New System.Windows.Forms.Button()
         Me.T_Nom = New System.Windows.Forms.TextBox()
         Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.Label43 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.T_Link = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
+        Me.B_Nuevo = New System.Windows.Forms.Button()
         Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.L_Fila = New System.Windows.Forms.Label()
@@ -44,16 +44,16 @@ Partial Class F_Exchange
         Me.L_Exchange.Size = New System.Drawing.Size(316, 433)
         Me.L_Exchange.TabIndex = 570
         '
-        'B_GrabarExchange
+        'B_Grabar
         '
-        Me.B_GrabarExchange.BackColor = System.Drawing.SystemColors.Control
-        Me.B_GrabarExchange.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarExchange.Location = New System.Drawing.Point(353, 9)
-        Me.B_GrabarExchange.Name = "B_GrabarExchange"
-        Me.B_GrabarExchange.Size = New System.Drawing.Size(99, 23)
-        Me.B_GrabarExchange.TabIndex = 569
-        Me.B_GrabarExchange.Text = "Grabar"
-        Me.B_GrabarExchange.UseVisualStyleBackColor = False
+        Me.B_Grabar.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Grabar.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Grabar.Location = New System.Drawing.Point(353, 9)
+        Me.B_Grabar.Name = "B_Grabar"
+        Me.B_Grabar.Size = New System.Drawing.Size(99, 23)
+        Me.B_Grabar.TabIndex = 569
+        Me.B_Grabar.Text = "Grabar"
+        Me.B_Grabar.UseVisualStyleBackColor = False
         '
         'T_Nom
         '
@@ -70,10 +70,10 @@ Partial Class F_Exchange
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
         Me.rT_Nota.BackColor = System.Drawing.Color.White
-        Me.rT_Nota.Location = New System.Drawing.Point(357, 174)
+        Me.rT_Nota.Location = New System.Drawing.Point(357, 145)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(441, 273)
+        Me.rT_Nota.Size = New System.Drawing.Size(441, 302)
         Me.rT_Nota.TabIndex = 566
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -105,7 +105,6 @@ Partial Class F_Exchange
         Me.T_Link.MaxLength = 60
         Me.T_Link.Multiline = True
         Me.T_Link.Name = "T_Link"
-        Me.T_Link.ReadOnly = True
         Me.T_Link.Size = New System.Drawing.Size(236, 49)
         Me.T_Link.TabIndex = 668
         Me.T_Link.Text = "T_Link"
@@ -122,16 +121,16 @@ Partial Class F_Exchange
         Me.Label3.Text = "Link Exchange"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'B_NuevoBilletera
+        'B_Nuevo
         '
-        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
-        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoBilletera.Location = New System.Drawing.Point(229, 9)
-        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
-        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
-        Me.B_NuevoBilletera.TabIndex = 669
-        Me.B_NuevoBilletera.Text = "Nuevo"
-        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        Me.B_Nuevo.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Nuevo.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Nuevo.Location = New System.Drawing.Point(229, 9)
+        Me.B_Nuevo.Name = "B_Nuevo"
+        Me.B_Nuevo.Size = New System.Drawing.Size(99, 23)
+        Me.B_Nuevo.TabIndex = 669
+        Me.B_Nuevo.Text = "Nuevo"
+        Me.B_Nuevo.UseVisualStyleBackColor = False
         '
         'L_Mensaje
         '
@@ -172,12 +171,12 @@ Partial Class F_Exchange
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.L_Fila)
         Me.Controls.Add(Me.L_Mensaje)
-        Me.Controls.Add(Me.B_NuevoBilletera)
+        Me.Controls.Add(Me.B_Nuevo)
         Me.Controls.Add(Me.T_Link)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Exchange)
-        Me.Controls.Add(Me.B_GrabarExchange)
+        Me.Controls.Add(Me.B_Grabar)
         Me.Controls.Add(Me.T_Nom)
         Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.Label43)
@@ -191,14 +190,14 @@ Partial Class F_Exchange
     End Sub
 
     Friend WithEvents L_Exchange As ListBox
-    Friend WithEvents B_GrabarExchange As Button
+    Friend WithEvents B_Grabar As Button
     Friend WithEvents T_Nom As TextBox
     Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents Label43 As Label
     Friend WithEvents B_Cerrar As Button
     Friend WithEvents T_Link As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents B_NuevoBilletera As Button
+    Friend WithEvents B_Nuevo As Button
     Friend WithEvents L_Mensaje As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents L_Fila As Label

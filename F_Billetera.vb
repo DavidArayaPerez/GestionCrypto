@@ -85,16 +85,18 @@ Public Class F_Billetera
     Private Sub B_NuevoBilletera_Click(sender As Object, e As EventArgs) Handles B_Nuevo.Click
         Limpieza()
         '
-        Dim CodigoBilletera As String = InputBox("Ingrese el código de la billetera", "Nueva Billetera")
+        Dim Codigo As String = InputBox("Ingrese el código de la billetera", "Nueva Billetera")
+        If Codigo = "" Then Exit Sub
+        '
         For i As Integer = 1 To Matriz_BilleterasTF
-            If Matriz_Billeteras(i, 0) = CodigoBilletera Then
+            If Matriz_Billeteras(i, 0) = Codigo Then
                 MsgBox("El código de billetera ya existe. Por favor, ingrese un código diferente.", MsgBoxStyle.Exclamation)
                 Exit Sub
             End If
         Next i
         '
         Dim Fila = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
-        Matriz_Billeteras(Fila, 0) = CodigoBilletera
+        Matriz_Billeteras(Fila, 0) = Codigo
         Matriz_Billeteras(Fila, 1) = ""
         Guardar_Matrices("Billeteras")
         Inicializar()

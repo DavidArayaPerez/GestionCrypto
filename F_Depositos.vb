@@ -5,11 +5,16 @@ Public Class F_Depositos
     '
     '
     '
+    Private Sub Inicializar()
+        Limpiar()
+
+
+    End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
         'DEPOSITO
         T_FechaDeposito.Text = ""
         T_HoraDeposito.Text = ""
-        C_MonedaOrigenDeposito.Text = ""
+        C_MonedaOrigen.Text = ""
         C_MonedaDestinoDeposito.Text = ""
         T_ValorOrigenDeposito.Text = ""
         T_ValorDestinoDeposito.Text = ""
@@ -20,7 +25,7 @@ Public Class F_Depositos
         '
         T_FechaDeposito.Enabled = Habilitar
         T_HoraDeposito.Enabled = Habilitar
-        C_MonedaOrigenDeposito.Enabled = Habilitar
+        C_MonedaOrigen.Enabled = Habilitar
         C_MonedaDestinoDeposito.Enabled = Habilitar
         T_ValorOrigenDeposito.Enabled = Habilitar
         T_ValorDestinoDeposito.Enabled = Habilitar
@@ -49,7 +54,7 @@ Public Class F_Depositos
         T_HoraDeposito.Text = Matriz_Depositos(F, 2)
         C_ExchangeDeposito.Text = Matriz_Depositos(F, 3)
         C_BilleteraDeposito.Text = Matriz_Depositos(F, 4)
-        C_MonedaOrigenDeposito.Text = Matriz_Depositos(F, 5)
+        C_MonedaOrigen.Text = Matriz_Depositos(F, 5)
         T_ValorOrigenDeposito.Text = Matriz_Depositos(F, 6)
         C_MonedaDestinoDeposito.Text = Matriz_Depositos(F, 7)
         T_ValorDestinoDeposito.Text = Matriz_Depositos(F, 8)
@@ -73,6 +78,10 @@ Public Class F_Depositos
     '
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
+    End Sub
+
+    Private Sub B_NuevoBilletera_Click(sender As Object, e As EventArgs) Handles B_NuevoBilletera.Click
+
     End Sub
     '
     '

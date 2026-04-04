@@ -11,7 +11,7 @@ Module mBilleteras
     '
     '   0   Codigo Billetera
     '   1   Nombre
-    '
+    '   2   Link
 
     Public Function Crear_Billeteras() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno

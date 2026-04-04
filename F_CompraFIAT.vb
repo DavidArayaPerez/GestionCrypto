@@ -99,9 +99,7 @@ Public Class F_CompraFIAT
         'Matriz_Compras(F, 9) = T_GasCompra.Text
         Matriz_Compras(F, 10) = L_PrecioMoneda.Text
         '
-
         L_PrecioMoneda.Text = T_CantidadCryptos.Text
-
         '
         Guardar_Matrices("Compras")
         '
@@ -153,8 +151,9 @@ Public Class F_CompraFIAT
         Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
         Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
         Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
+        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
         '
-        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision
+        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
     End Sub
     Private Sub T_CantidadCryptos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_CantidadCryptos.KeyPress
         If VariableDeInicio Then Exit Sub
@@ -165,8 +164,9 @@ Public Class F_CompraFIAT
         Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
         Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
         Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
+        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
         '
-        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision
+        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
     End Sub
     Private Sub T_Comision_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Comision.KeyPress
         If VariableDeInicio Then Exit Sub
@@ -177,14 +177,14 @@ Public Class F_CompraFIAT
         Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
         Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
         Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
+        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
         '
-        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision
+        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
     End Sub
     Private Sub T_MontoOrigen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_MontoOrigen.KeyPress
         If VariableDeInicio Then Exit Sub
         Texto_KeyPress(T_MontoOrigen, sender, e)
     End Sub
-
     Private Sub Cal_Fecha_ValueChanged(sender As Object, e As EventArgs) Handles Cal_Fecha.ValueChanged
         T_Fecha.Text = DateTime.Parse(Cal_Fecha.Value).ToString("yyyyMMdd")
     End Sub

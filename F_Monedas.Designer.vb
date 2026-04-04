@@ -131,7 +131,7 @@ Partial Class F_Monedas
         '
         Me.B_ActualizaTODO_Monedas.BackColor = System.Drawing.SystemColors.Control
         Me.B_ActualizaTODO_Monedas.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_ActualizaTODO_Monedas.Location = New System.Drawing.Point(613, 12)
+        Me.B_ActualizaTODO_Monedas.Location = New System.Drawing.Point(714, 12)
         Me.B_ActualizaTODO_Monedas.Name = "B_ActualizaTODO_Monedas"
         Me.B_ActualizaTODO_Monedas.Size = New System.Drawing.Size(99, 23)
         Me.B_ActualizaTODO_Monedas.TabIndex = 643
