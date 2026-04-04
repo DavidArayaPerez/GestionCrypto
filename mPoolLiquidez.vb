@@ -59,22 +59,6 @@ Module mPoolLiquidez
         Next i
         Matriz_PoolLiquidez = Matriz
     End Sub
-    Public Sub Ordenar_PoolLiquidez()
-        Dim Matriz(,) As String = Matriz_PoolLiquidez
-        Dim TotalFilas As Integer = Matriz_PoolLiquidezTF
-        Dim TotalColumnas As Integer = Matriz_PoolLiquidezTC
-        For i As Integer = 1 To TotalFilas - 1
-            For j As Integer = i + 1 To TotalFilas
-                If Matriz(i, 1) & Matriz(i, 2) < Matriz(j, 1) & Matriz(j, 2) Then
-                    For k As Integer = 0 To TotalColumnas - 1
-                        Dim Temp As String = Matriz(i, k)
-                        Matriz(i, k) = Matriz(j, k)
-                        Matriz(j, k) = Temp
-                    Next k
-                End If
-            Next j
-        Next i
-    End Sub
     '
     '
     '

@@ -23,20 +23,20 @@ Partial Class F_PoolLiquidez
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.L_PoolLiquidez = New System.Windows.Forms.ListBox()
-        Me.T_MaxPool = New System.Windows.Forms.TextBox()
-        Me.T_MinPool = New System.Windows.Forms.TextBox()
-        Me.T_ValorMoneda2ResultantePool = New System.Windows.Forms.TextBox()
-        Me.T_ValorMoneda1ResultantePool = New System.Windows.Forms.TextBox()
-        Me.T_GasPool = New System.Windows.Forms.TextBox()
-        Me.T_ComisionPool = New System.Windows.Forms.TextBox()
-        Me.T_ValorMoneda2Pool = New System.Windows.Forms.TextBox()
-        Me.T_ValorMoneda1Pool = New System.Windows.Forms.TextBox()
+        Me.T_Max = New System.Windows.Forms.TextBox()
+        Me.T_Min = New System.Windows.Forms.TextBox()
+        Me.T_ValorMoneda2Resultante = New System.Windows.Forms.TextBox()
+        Me.T_ValorMoneda1Resultante = New System.Windows.Forms.TextBox()
+        Me.T_Gas = New System.Windows.Forms.TextBox()
+        Me.T_Comision = New System.Windows.Forms.TextBox()
+        Me.T_ValorMoneda2 = New System.Windows.Forms.TextBox()
+        Me.T_ValorMoneda1 = New System.Windows.Forms.TextBox()
         Me.rT_Nota = New System.Windows.Forms.RichTextBox()
-        Me.T_HoraPool = New System.Windows.Forms.TextBox()
-        Me.T_FechaPool = New System.Windows.Forms.TextBox()
+        Me.T_Hora = New System.Windows.Forms.TextBox()
+        Me.T_Fecha = New System.Windows.Forms.TextBox()
         Me.Label49 = New System.Windows.Forms.Label()
         Me.Label50 = New System.Windows.Forms.Label()
-        Me.C_BilleteraPool = New System.Windows.Forms.ComboBox()
+        Me.C_Billetera = New System.Windows.Forms.ComboBox()
         Me.Label48 = New System.Windows.Forms.Label()
         Me.Label46 = New System.Windows.Forms.Label()
         Me.Label47 = New System.Windows.Forms.Label()
@@ -44,12 +44,12 @@ Partial Class F_PoolLiquidez
         Me.B_GrabarPool = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.C_Moneda2Pool = New System.Windows.Forms.ComboBox()
+        Me.C_Moneda2 = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.C_Moneda1Pool = New System.Windows.Forms.ComboBox()
+        Me.C_Moneda1 = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.C_ExchangePool = New System.Windows.Forms.ComboBox()
+        Me.C_Exchange = New System.Windows.Forms.ComboBox()
         Me.CalFechaPool = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -66,85 +66,85 @@ Partial Class F_PoolLiquidez
         Me.L_PoolLiquidez.Size = New System.Drawing.Size(316, 433)
         Me.L_PoolLiquidez.TabIndex = 560
         '
-        'T_MaxPool
+        'T_Max
         '
-        Me.T_MaxPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_MaxPool.Location = New System.Drawing.Point(500, 304)
-        Me.T_MaxPool.MaxLength = 6
-        Me.T_MaxPool.Name = "T_MaxPool"
-        Me.T_MaxPool.Size = New System.Drawing.Size(123, 20)
-        Me.T_MaxPool.TabIndex = 559
-        Me.T_MaxPool.Text = "T_MaxPool"
+        Me.T_Max.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Max.Location = New System.Drawing.Point(500, 304)
+        Me.T_Max.MaxLength = 6
+        Me.T_Max.Name = "T_Max"
+        Me.T_Max.Size = New System.Drawing.Size(123, 20)
+        Me.T_Max.TabIndex = 559
+        Me.T_Max.Text = "T_Max"
         '
-        'T_MinPool
+        'T_Min
         '
-        Me.T_MinPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_MinPool.Location = New System.Drawing.Point(356, 301)
-        Me.T_MinPool.MaxLength = 6
-        Me.T_MinPool.Name = "T_MinPool"
-        Me.T_MinPool.Size = New System.Drawing.Size(123, 20)
-        Me.T_MinPool.TabIndex = 557
-        Me.T_MinPool.Text = "T_MinPool"
+        Me.T_Min.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Min.Location = New System.Drawing.Point(356, 301)
+        Me.T_Min.MaxLength = 6
+        Me.T_Min.Name = "T_Min"
+        Me.T_Min.Size = New System.Drawing.Size(123, 20)
+        Me.T_Min.TabIndex = 557
+        Me.T_Min.Text = "T_Min"
         '
-        'T_ValorMoneda2ResultantePool
+        'T_ValorMoneda2Resultante
         '
-        Me.T_ValorMoneda2ResultantePool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorMoneda2ResultantePool.Location = New System.Drawing.Point(639, 234)
-        Me.T_ValorMoneda2ResultantePool.MaxLength = 6
-        Me.T_ValorMoneda2ResultantePool.Name = "T_ValorMoneda2ResultantePool"
-        Me.T_ValorMoneda2ResultantePool.Size = New System.Drawing.Size(123, 20)
-        Me.T_ValorMoneda2ResultantePool.TabIndex = 553
-        Me.T_ValorMoneda2ResultantePool.Text = "T_ValorMoneda2ResultantePool"
+        Me.T_ValorMoneda2Resultante.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorMoneda2Resultante.Location = New System.Drawing.Point(639, 234)
+        Me.T_ValorMoneda2Resultante.MaxLength = 6
+        Me.T_ValorMoneda2Resultante.Name = "T_ValorMoneda2Resultante"
+        Me.T_ValorMoneda2Resultante.Size = New System.Drawing.Size(123, 20)
+        Me.T_ValorMoneda2Resultante.TabIndex = 553
+        Me.T_ValorMoneda2Resultante.Text = "T_ValorMoneda2Resultante"
         '
-        'T_ValorMoneda1ResultantePool
+        'T_ValorMoneda1Resultante
         '
-        Me.T_ValorMoneda1ResultantePool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorMoneda1ResultantePool.Location = New System.Drawing.Point(639, 175)
-        Me.T_ValorMoneda1ResultantePool.MaxLength = 6
-        Me.T_ValorMoneda1ResultantePool.Name = "T_ValorMoneda1ResultantePool"
-        Me.T_ValorMoneda1ResultantePool.Size = New System.Drawing.Size(123, 20)
-        Me.T_ValorMoneda1ResultantePool.TabIndex = 551
-        Me.T_ValorMoneda1ResultantePool.Text = "T_ValorMoneda1ResultantePool"
+        Me.T_ValorMoneda1Resultante.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorMoneda1Resultante.Location = New System.Drawing.Point(639, 175)
+        Me.T_ValorMoneda1Resultante.MaxLength = 6
+        Me.T_ValorMoneda1Resultante.Name = "T_ValorMoneda1Resultante"
+        Me.T_ValorMoneda1Resultante.Size = New System.Drawing.Size(123, 20)
+        Me.T_ValorMoneda1Resultante.TabIndex = 551
+        Me.T_ValorMoneda1Resultante.Text = "T_ValorMoneda1Resultante"
         '
-        'T_GasPool
+        'T_Gas
         '
-        Me.T_GasPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_GasPool.Location = New System.Drawing.Point(500, 361)
-        Me.T_GasPool.MaxLength = 6
-        Me.T_GasPool.Name = "T_GasPool"
-        Me.T_GasPool.Size = New System.Drawing.Size(123, 20)
-        Me.T_GasPool.TabIndex = 549
-        Me.T_GasPool.Text = "T_GasPool"
+        Me.T_Gas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Gas.Location = New System.Drawing.Point(500, 361)
+        Me.T_Gas.MaxLength = 6
+        Me.T_Gas.Name = "T_Gas"
+        Me.T_Gas.Size = New System.Drawing.Size(123, 20)
+        Me.T_Gas.TabIndex = 549
+        Me.T_Gas.Text = "T_Gas"
         '
-        'T_ComisionPool
+        'T_Comision
         '
-        Me.T_ComisionPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ComisionPool.Location = New System.Drawing.Point(356, 361)
-        Me.T_ComisionPool.MaxLength = 6
-        Me.T_ComisionPool.Name = "T_ComisionPool"
-        Me.T_ComisionPool.Size = New System.Drawing.Size(123, 20)
-        Me.T_ComisionPool.TabIndex = 547
-        Me.T_ComisionPool.Text = "T_ComisionPool"
+        Me.T_Comision.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Comision.Location = New System.Drawing.Point(356, 361)
+        Me.T_Comision.MaxLength = 6
+        Me.T_Comision.Name = "T_Comision"
+        Me.T_Comision.Size = New System.Drawing.Size(123, 20)
+        Me.T_Comision.TabIndex = 547
+        Me.T_Comision.Text = "T_Comision"
         '
-        'T_ValorMoneda2Pool
+        'T_ValorMoneda2
         '
-        Me.T_ValorMoneda2Pool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorMoneda2Pool.Location = New System.Drawing.Point(500, 234)
-        Me.T_ValorMoneda2Pool.MaxLength = 6
-        Me.T_ValorMoneda2Pool.Name = "T_ValorMoneda2Pool"
-        Me.T_ValorMoneda2Pool.Size = New System.Drawing.Size(123, 20)
-        Me.T_ValorMoneda2Pool.TabIndex = 544
-        Me.T_ValorMoneda2Pool.Text = "T_ValorMoneda2Pool"
+        Me.T_ValorMoneda2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorMoneda2.Location = New System.Drawing.Point(500, 234)
+        Me.T_ValorMoneda2.MaxLength = 6
+        Me.T_ValorMoneda2.Name = "T_ValorMoneda2"
+        Me.T_ValorMoneda2.Size = New System.Drawing.Size(123, 20)
+        Me.T_ValorMoneda2.TabIndex = 544
+        Me.T_ValorMoneda2.Text = "T_ValorMoneda2"
         '
-        'T_ValorMoneda1Pool
+        'T_ValorMoneda1
         '
-        Me.T_ValorMoneda1Pool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorMoneda1Pool.Location = New System.Drawing.Point(500, 175)
-        Me.T_ValorMoneda1Pool.MaxLength = 6
-        Me.T_ValorMoneda1Pool.Name = "T_ValorMoneda1Pool"
-        Me.T_ValorMoneda1Pool.Size = New System.Drawing.Size(123, 20)
-        Me.T_ValorMoneda1Pool.TabIndex = 540
-        Me.T_ValorMoneda1Pool.Text = "T_ValorMoneda1Pool"
+        Me.T_ValorMoneda1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorMoneda1.Location = New System.Drawing.Point(500, 175)
+        Me.T_ValorMoneda1.MaxLength = 6
+        Me.T_ValorMoneda1.Name = "T_ValorMoneda1"
+        Me.T_ValorMoneda1.Size = New System.Drawing.Size(123, 20)
+        Me.T_ValorMoneda1.TabIndex = 540
+        Me.T_ValorMoneda1.Text = "T_ValorMoneda1"
         '
         'rT_Nota
         '
@@ -158,26 +158,26 @@ Partial Class F_PoolLiquidez
         Me.rT_Nota.TabIndex = 536
         Me.rT_Nota.Text = "rT_Nota"
         '
-        'T_HoraPool
+        'T_Hora
         '
-        Me.T_HoraPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_HoraPool.Location = New System.Drawing.Point(443, 88)
-        Me.T_HoraPool.MaxLength = 4
-        Me.T_HoraPool.Name = "T_HoraPool"
-        Me.T_HoraPool.Size = New System.Drawing.Size(56, 20)
-        Me.T_HoraPool.TabIndex = 530
-        Me.T_HoraPool.Text = "T_HoraPool"
-        Me.T_HoraPool.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.T_Hora.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Hora.Location = New System.Drawing.Point(443, 88)
+        Me.T_Hora.MaxLength = 4
+        Me.T_Hora.Name = "T_Hora"
+        Me.T_Hora.Size = New System.Drawing.Size(56, 20)
+        Me.T_Hora.TabIndex = 530
+        Me.T_Hora.Text = "T_Hora"
+        Me.T_Hora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'T_FechaPool
+        'T_Fecha
         '
-        Me.T_FechaPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_FechaPool.Location = New System.Drawing.Point(356, 88)
-        Me.T_FechaPool.MaxLength = 6
-        Me.T_FechaPool.Name = "T_FechaPool"
-        Me.T_FechaPool.Size = New System.Drawing.Size(80, 20)
-        Me.T_FechaPool.TabIndex = 529
-        Me.T_FechaPool.Text = "T_FechaPool"
+        Me.T_Fecha.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Fecha.Location = New System.Drawing.Point(356, 88)
+        Me.T_Fecha.MaxLength = 6
+        Me.T_Fecha.Name = "T_Fecha"
+        Me.T_Fecha.Size = New System.Drawing.Size(80, 20)
+        Me.T_Fecha.TabIndex = 529
+        Me.T_Fecha.Text = "T_Fecha"
         '
         'Label49
         '
@@ -199,15 +199,15 @@ Partial Class F_PoolLiquidez
         Me.Label50.TabIndex = 556
         Me.Label50.Text = "Minimo"
         '
-        'C_BilleteraPool
+        'C_Billetera
         '
-        Me.C_BilleteraPool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_BilleteraPool.FormattingEnabled = True
-        Me.C_BilleteraPool.Location = New System.Drawing.Point(654, 87)
-        Me.C_BilleteraPool.Name = "C_BilleteraPool"
-        Me.C_BilleteraPool.Size = New System.Drawing.Size(123, 21)
-        Me.C_BilleteraPool.TabIndex = 555
-        Me.C_BilleteraPool.Text = "C_BilleteraPool"
+        Me.C_Billetera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_Billetera.FormattingEnabled = True
+        Me.C_Billetera.Location = New System.Drawing.Point(654, 87)
+        Me.C_Billetera.Name = "C_Billetera"
+        Me.C_Billetera.Size = New System.Drawing.Size(123, 21)
+        Me.C_Billetera.TabIndex = 555
+        Me.C_Billetera.Text = "C_Billetera"
         '
         'Label48
         '
@@ -280,15 +280,15 @@ Partial Class F_PoolLiquidez
         Me.Label4.TabIndex = 543
         Me.Label4.Text = "Valor Moneda2"
         '
-        'C_Moneda2Pool
+        'C_Moneda2
         '
-        Me.C_Moneda2Pool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_Moneda2Pool.FormattingEnabled = True
-        Me.C_Moneda2Pool.Location = New System.Drawing.Point(356, 234)
-        Me.C_Moneda2Pool.Name = "C_Moneda2Pool"
-        Me.C_Moneda2Pool.Size = New System.Drawing.Size(123, 21)
-        Me.C_Moneda2Pool.TabIndex = 542
-        Me.C_Moneda2Pool.Text = "C_Moneda2Pool"
+        Me.C_Moneda2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_Moneda2.FormattingEnabled = True
+        Me.C_Moneda2.Location = New System.Drawing.Point(356, 234)
+        Me.C_Moneda2.Name = "C_Moneda2"
+        Me.C_Moneda2.Size = New System.Drawing.Size(123, 21)
+        Me.C_Moneda2.TabIndex = 542
+        Me.C_Moneda2.Text = "C_Moneda2"
         '
         'Label5
         '
@@ -310,15 +310,15 @@ Partial Class F_PoolLiquidez
         Me.Label6.TabIndex = 539
         Me.Label6.Text = "Valor Moneda1"
         '
-        'C_Moneda1Pool
+        'C_Moneda1
         '
-        Me.C_Moneda1Pool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_Moneda1Pool.FormattingEnabled = True
-        Me.C_Moneda1Pool.Location = New System.Drawing.Point(356, 175)
-        Me.C_Moneda1Pool.Name = "C_Moneda1Pool"
-        Me.C_Moneda1Pool.Size = New System.Drawing.Size(123, 21)
-        Me.C_Moneda1Pool.TabIndex = 538
-        Me.C_Moneda1Pool.Text = "C_Moneda1Pool"
+        Me.C_Moneda1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_Moneda1.FormattingEnabled = True
+        Me.C_Moneda1.Location = New System.Drawing.Point(356, 175)
+        Me.C_Moneda1.Name = "C_Moneda1"
+        Me.C_Moneda1.Size = New System.Drawing.Size(123, 21)
+        Me.C_Moneda1.TabIndex = 538
+        Me.C_Moneda1.Text = "C_Moneda1"
         '
         'Label7
         '
@@ -330,15 +330,15 @@ Partial Class F_PoolLiquidez
         Me.Label7.TabIndex = 537
         Me.Label7.Text = "Moneda1"
         '
-        'C_ExchangePool
+        'C_Exchange
         '
-        Me.C_ExchangePool.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_ExchangePool.FormattingEnabled = True
-        Me.C_ExchangePool.Location = New System.Drawing.Point(510, 87)
-        Me.C_ExchangePool.Name = "C_ExchangePool"
-        Me.C_ExchangePool.Size = New System.Drawing.Size(123, 21)
-        Me.C_ExchangePool.TabIndex = 535
-        Me.C_ExchangePool.Text = "C_ExchangePool"
+        Me.C_Exchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_Exchange.FormattingEnabled = True
+        Me.C_Exchange.Location = New System.Drawing.Point(510, 87)
+        Me.C_Exchange.Name = "C_Exchange"
+        Me.C_Exchange.Size = New System.Drawing.Size(123, 21)
+        Me.C_Exchange.TabIndex = 535
+        Me.C_Exchange.Text = "C_Exchange"
         '
         'CalFechaPool
         '
@@ -410,24 +410,24 @@ Partial Class F_PoolLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 520)
+        Me.ClientSize = New System.Drawing.Size(845, 520)
         Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_PoolLiquidez)
-        Me.Controls.Add(Me.T_MaxPool)
-        Me.Controls.Add(Me.T_MinPool)
-        Me.Controls.Add(Me.T_ValorMoneda2ResultantePool)
-        Me.Controls.Add(Me.T_ValorMoneda1ResultantePool)
-        Me.Controls.Add(Me.T_GasPool)
-        Me.Controls.Add(Me.T_ComisionPool)
-        Me.Controls.Add(Me.T_ValorMoneda2Pool)
-        Me.Controls.Add(Me.T_ValorMoneda1Pool)
+        Me.Controls.Add(Me.T_Max)
+        Me.Controls.Add(Me.T_Min)
+        Me.Controls.Add(Me.T_ValorMoneda2Resultante)
+        Me.Controls.Add(Me.T_ValorMoneda1Resultante)
+        Me.Controls.Add(Me.T_Gas)
+        Me.Controls.Add(Me.T_Comision)
+        Me.Controls.Add(Me.T_ValorMoneda2)
+        Me.Controls.Add(Me.T_ValorMoneda1)
         Me.Controls.Add(Me.rT_Nota)
-        Me.Controls.Add(Me.T_HoraPool)
-        Me.Controls.Add(Me.T_FechaPool)
+        Me.Controls.Add(Me.T_Hora)
+        Me.Controls.Add(Me.T_Fecha)
         Me.Controls.Add(Me.Label49)
         Me.Controls.Add(Me.Label50)
-        Me.Controls.Add(Me.C_BilleteraPool)
+        Me.Controls.Add(Me.C_Billetera)
         Me.Controls.Add(Me.Label48)
         Me.Controls.Add(Me.Label46)
         Me.Controls.Add(Me.Label47)
@@ -435,12 +435,12 @@ Partial Class F_PoolLiquidez
         Me.Controls.Add(Me.B_GrabarPool)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.C_Moneda2Pool)
+        Me.Controls.Add(Me.C_Moneda2)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.C_Moneda1Pool)
+        Me.Controls.Add(Me.C_Moneda1)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.C_ExchangePool)
+        Me.Controls.Add(Me.C_Exchange)
         Me.Controls.Add(Me.CalFechaPool)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label9)
@@ -453,20 +453,20 @@ Partial Class F_PoolLiquidez
     End Sub
 
     Friend WithEvents L_PoolLiquidez As ListBox
-    Friend WithEvents T_MaxPool As TextBox
-    Friend WithEvents T_MinPool As TextBox
-    Friend WithEvents T_ValorMoneda2ResultantePool As TextBox
-    Friend WithEvents T_ValorMoneda1ResultantePool As TextBox
-    Friend WithEvents T_GasPool As TextBox
-    Friend WithEvents T_ComisionPool As TextBox
-    Friend WithEvents T_ValorMoneda2Pool As TextBox
-    Friend WithEvents T_ValorMoneda1Pool As TextBox
+    Friend WithEvents T_Max As TextBox
+    Friend WithEvents T_Min As TextBox
+    Friend WithEvents T_ValorMoneda2Resultante As TextBox
+    Friend WithEvents T_ValorMoneda1Resultante As TextBox
+    Friend WithEvents T_Gas As TextBox
+    Friend WithEvents T_Comision As TextBox
+    Friend WithEvents T_ValorMoneda2 As TextBox
+    Friend WithEvents T_ValorMoneda1 As TextBox
     Friend WithEvents rT_Nota As RichTextBox
-    Friend WithEvents T_HoraPool As TextBox
-    Friend WithEvents T_FechaPool As TextBox
+    Friend WithEvents T_Hora As TextBox
+    Friend WithEvents T_Fecha As TextBox
     Friend WithEvents Label49 As Label
     Friend WithEvents Label50 As Label
-    Friend WithEvents C_BilleteraPool As ComboBox
+    Friend WithEvents C_Billetera As ComboBox
     Friend WithEvents Label48 As Label
     Friend WithEvents Label46 As Label
     Friend WithEvents Label47 As Label
@@ -474,12 +474,12 @@ Partial Class F_PoolLiquidez
     Friend WithEvents B_GrabarPool As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents C_Moneda2Pool As ComboBox
+    Friend WithEvents C_Moneda2 As ComboBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
-    Friend WithEvents C_Moneda1Pool As ComboBox
+    Friend WithEvents C_Moneda1 As ComboBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents C_ExchangePool As ComboBox
+    Friend WithEvents C_Exchange As ComboBox
     Friend WithEvents CalFechaPool As DateTimePicker
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label

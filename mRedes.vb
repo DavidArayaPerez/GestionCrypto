@@ -47,6 +47,12 @@ Module mRedes
         Next i
         Guardar_Matrices("Redes")
     End Sub
+    Public Function Buscar_Redes(T As String) As String
+        For i As Integer = 1 To Matriz_RedesTF
+            If T = Matriz_Redes(i, 4) Then Return "S" 'Si existe
+        Next i
+        Return "N" 'No existe
+    End Function
     '
     '
     '

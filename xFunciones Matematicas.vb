@@ -48,11 +48,6 @@ Module zFuncionesMatematicas
         NumeroDoble = CDbl(Texto)
         Return NumeroDoble.ToString("N0", CulturaChilena)
     End Function
-    Public Function ConvierteNumero_ConDecimalesLimitados(Numero As Double, NumeroDecimales As Integer) As String
-        Dim FormatoNumeroDecimales = New String("#"c, NumeroDecimales)
-        Dim NumeroTXT = Numero.ToString("#,###." & FormatoNumeroDecimales, CulturaChilena)
-        Return NumeroTXT
-    End Function
     Public Function ConvierteNumero_ConDecimalesLimitadosAnchoFijo(NumeroTXT As String, Anchofjo As Integer) As String
         'Si el ancho fijo es 5 y la parte entera es 1.000 (4 caracteres) se le suma un decimal, es decir: 1.000,0
         'Si el ancho fijo es 7 y la parte entera es 1.000 (4 caracteres) se le suma tres decimales, es decir: 1.000,000

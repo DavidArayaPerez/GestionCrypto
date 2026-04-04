@@ -34,11 +34,6 @@ Module mMonedas
     '   22      Actualizacion Automatica (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
     '   23
     '
-    'Dim monedas = Await CoinGeckoService.ObtenerMonedasAsync(cantidad:=100)
-    '
-    '
-    '
-
     Public Sub OrdenarMatriz_Monedas()
         Dim V1, V2 As Integer
         For i As Integer = 1 To Matriz_MonedasTF - 1
@@ -58,6 +53,12 @@ Module mMonedas
         Next i
         Guardar_Matrices("Monedas")
     End Sub
+    Public Function Buscar_Moneda(T As String) As String
+        For i As Integer = 1 To Matriz_MonedasTF
+            If T = Matriz_Monedas(i, 2) Then Return "S" 'Si existe
+        Next i
+        Return "N" 'No existe
+    End Function
     '
     '
     '

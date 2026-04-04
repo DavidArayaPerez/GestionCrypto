@@ -89,21 +89,12 @@ Public Class F_Compra
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
     End Sub
     Private Function DatosNoValidos() As Boolean
-        Dim SW As Boolean
         '
-        SW = True
-        For i As Integer = 1 To Matriz_ExchangeTF
-            If C_Exchange.Text = Matriz_Exchange(i, 1) Then SW = False : Exit For
-        Next i
-        If SW Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If Buscar_Exchange(C_Exchange.Text) = "N" Then L_Mensaje.Text = "Plataforma no válida" : Return True
         '
-        If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If Buscar_Moneda(C_MonedaDestino.Text) = "N" Then L_Mensaje.Text = "Moneda no válida" : Return True
         '
-        SW = True
-        For i As Integer = 1 To Matriz_MonedasTF
-            If C_MonedaDestino.Text = Matriz_Monedas(i, 2) Then SW = False : Exit For
-        Next i
-        If SW Then L_Mensaje.Text = "Moneda no válida" : Return True
+        If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Moneda Local no válida" : Return True
         '
         Return False
     End Function

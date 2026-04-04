@@ -47,23 +47,12 @@ Module mCompras
         Next i
         Matriz_Compras = Matriz
     End Sub
-    Public Sub Ordenar_Compras()
-        Dim Matriz(,) As String = Matriz_Compras
-        Dim TotalFilas As Integer = Matriz_ComprasTF
-        Dim TotalColumnas As Integer = Matriz_ComprasTC
-        For i As Integer = 1 To TotalFilas - 1
-            For j As Integer = i + 1 To TotalFilas
-                If Matriz(i, 1) & Matriz(i, 2) < Matriz(j, 1) & Matriz(j, 2) Then
-                    For k As Integer = 0 To TotalColumnas - 1
-                        Dim Temp As String = Matriz(i, k)
-                        Matriz(i, k) = Matriz(j, k)
-                        Matriz(j, k) = Temp
-                    Next k
-                End If
-            Next j
-        Next i
-    End Sub
-
+    'Public Function Buscar_Compras(T As String) As String
+    '    For i As Integer = 1 To Matriz_ComprasTF
+    '        If T = Matriz_Compras(i, 4) Then Return "S" 'Si existe
+    '    Next i
+    '    Return "N" 'No existe
+    'End Function
     '
     '
     '
