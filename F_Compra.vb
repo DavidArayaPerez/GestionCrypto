@@ -97,7 +97,7 @@ Public Class F_Compra
         Next i
         If SW Then L_Mensaje.Text = "Plataforma no válida" : Return True
         '
-        If C_MonedaOrigen.Text <> "CLP" Or C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Plataforma no válida" : Return True
         '
         SW = True
         For i As Integer = 1 To Matriz_MonedasTF
@@ -112,7 +112,7 @@ Public Class F_Compra
         '
         Dim F As Integer = L_Fila.Text
         If F = 0 Then
-            F = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
+            F = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)
             Matriz_Compras(F, 0) = CrearCodigoInterno()
         End If
         Matriz_Compras(F, 1) = T_Fecha.Text

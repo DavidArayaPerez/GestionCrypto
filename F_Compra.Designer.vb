@@ -117,7 +117,7 @@ Partial Class F_Compra
         '
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
-        Me.rT_Nota.BackColor = System.Drawing.Color.White
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.rT_Nota.Location = New System.Drawing.Point(672, 56)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
@@ -372,7 +372,7 @@ Partial Class F_Compra
         Me.Label40.TabIndex = 656
         Me.Label40.Text = "Billetera"
         '
-        'F_CompraFIAT
+        'F_Compra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -408,7 +408,7 @@ Partial Class F_Compra
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
-        Me.Name = "F_CompraFIAT"
+        Me.Name = "F_Compra"
         Me.Text = "Compra"
         Me.ResumeLayout(False)
         Me.PerformLayout()

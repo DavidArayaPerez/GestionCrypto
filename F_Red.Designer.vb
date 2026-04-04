@@ -22,7 +22,7 @@ Partial Class F_Red
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.rT_NotaRed = New System.Windows.Forms.RichTextBox()
+        Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.T_MecanismoConsenso_Red = New System.Windows.Forms.TextBox()
         Me.T_TipoCapa_Red = New System.Windows.Forms.TextBox()
         Me.CB_EVM_Red = New System.Windows.Forms.CheckBox()
@@ -65,17 +65,17 @@ Partial Class F_Red
         Me.Label1 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'rT_NotaRed
+        'rT_Nota
         '
-        Me.rT_NotaRed.AcceptsTab = True
-        Me.rT_NotaRed.AutoWordSelection = True
-        Me.rT_NotaRed.BackColor = System.Drawing.Color.White
-        Me.rT_NotaRed.Location = New System.Drawing.Point(651, 58)
-        Me.rT_NotaRed.Name = "rT_NotaRed"
-        Me.rT_NotaRed.ReadOnly = True
-        Me.rT_NotaRed.Size = New System.Drawing.Size(320, 321)
-        Me.rT_NotaRed.TabIndex = 660
-        Me.rT_NotaRed.Text = "rT_NotaRed"
+        Me.rT_Nota.AcceptsTab = True
+        Me.rT_Nota.AutoWordSelection = True
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.rT_Nota.Location = New System.Drawing.Point(651, 58)
+        Me.rT_Nota.Name = "rT_Nota"
+        Me.rT_Nota.ReadOnly = True
+        Me.rT_Nota.Size = New System.Drawing.Size(320, 321)
+        Me.rT_Nota.TabIndex = 660
+        Me.rT_Nota.Text = "rT_Nota"
         '
         'T_MecanismoConsenso_Red
         '
@@ -523,7 +523,7 @@ Partial Class F_Red
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.L_Fila_Red)
         Me.Controls.Add(Me.B_Cerrar)
-        Me.Controls.Add(Me.rT_NotaRed)
+        Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.T_MecanismoConsenso_Red)
         Me.Controls.Add(Me.T_TipoCapa_Red)
         Me.Controls.Add(Me.CB_EVM_Red)
@@ -571,7 +571,7 @@ Partial Class F_Red
 
     End Sub
 
-    Friend WithEvents rT_NotaRed As RichTextBox
+    Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents T_MecanismoConsenso_Red As TextBox
     Friend WithEvents T_TipoCapa_Red As TextBox
     Friend WithEvents CB_EVM_Red As CheckBox

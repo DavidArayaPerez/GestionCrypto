@@ -7,7 +7,7 @@ Module mBilleteras
     '
     Public Matriz_Billeteras(,) As String
     Public Matriz_BilleterasTF As Integer
-    Public Matriz_BilleterasTC As Integer = 2
+    Public Matriz_BilleterasTC As Integer = 4
     '
     '   0   Codigo Billetera
     '   1   Nombre

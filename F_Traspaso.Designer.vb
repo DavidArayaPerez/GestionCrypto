@@ -31,7 +31,7 @@ Partial Class F_Traspaso
         Me.T_ComisionTraspaso = New System.Windows.Forms.TextBox()
         Me.T_ValorDestinoTraspaso = New System.Windows.Forms.TextBox()
         Me.T_ValorOrigenTraspaso = New System.Windows.Forms.TextBox()
-        Me.rT_NotaTraspaso = New System.Windows.Forms.RichTextBox()
+        Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.T_HoraTraspaso = New System.Windows.Forms.TextBox()
         Me.T_FechaTraspaso = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
@@ -140,17 +140,17 @@ Partial Class F_Traspaso
         Me.T_ValorOrigenTraspaso.TabIndex = 512
         Me.T_ValorOrigenTraspaso.Text = "T_ValorOrigenTraspaso"
         '
-        'rT_NotaTraspaso
+        'rT_Nota
         '
-        Me.rT_NotaTraspaso.AcceptsTab = True
-        Me.rT_NotaTraspaso.AutoWordSelection = True
-        Me.rT_NotaTraspaso.BackColor = System.Drawing.Color.White
-        Me.rT_NotaTraspaso.Location = New System.Drawing.Point(360, 347)
-        Me.rT_NotaTraspaso.Name = "rT_NotaTraspaso"
-        Me.rT_NotaTraspaso.ReadOnly = True
-        Me.rT_NotaTraspaso.Size = New System.Drawing.Size(457, 154)
-        Me.rT_NotaTraspaso.TabIndex = 508
-        Me.rT_NotaTraspaso.Text = "rT_NotaTraspaso"
+        Me.rT_Nota.AcceptsTab = True
+        Me.rT_Nota.AutoWordSelection = True
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.rT_Nota.Location = New System.Drawing.Point(360, 347)
+        Me.rT_Nota.Name = "rT_Nota"
+        Me.rT_Nota.ReadOnly = True
+        Me.rT_Nota.Size = New System.Drawing.Size(457, 154)
+        Me.rT_Nota.TabIndex = 508
+        Me.rT_Nota.Text = "rT_Nota"
         '
         'T_HoraTraspaso
         '
@@ -356,7 +356,7 @@ Partial Class F_Traspaso
         Me.Controls.Add(Me.T_ComisionTraspaso)
         Me.Controls.Add(Me.T_ValorDestinoTraspaso)
         Me.Controls.Add(Me.T_ValorOrigenTraspaso)
-        Me.Controls.Add(Me.rT_NotaTraspaso)
+        Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.T_HoraTraspaso)
         Me.Controls.Add(Me.T_FechaTraspaso)
         Me.Controls.Add(Me.Label15)
@@ -389,7 +389,7 @@ Partial Class F_Traspaso
     Friend WithEvents T_ComisionTraspaso As TextBox
     Friend WithEvents T_ValorDestinoTraspaso As TextBox
     Friend WithEvents T_ValorOrigenTraspaso As TextBox
-    Friend WithEvents rT_NotaTraspaso As RichTextBox
+    Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents T_HoraTraspaso As TextBox
     Friend WithEvents T_FechaTraspaso As TextBox
     Friend WithEvents Label15 As Label

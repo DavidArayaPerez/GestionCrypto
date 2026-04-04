@@ -17,7 +17,7 @@ Public Class F_Movimientos
         T_GasMovimiento.Text = ""
         C_ExchangeMovimiento.Text = ""
         C_BilleteraMovimiento.Text = ""
-        rT_NotaMovimiento.Text = ""
+        rT_Nota.Text = ""
         '
         T_FechaMovimiento.Enabled = Habilitar
         T_HoraMovimiento.Enabled = Habilitar
@@ -30,7 +30,7 @@ Public Class F_Movimientos
         C_ExchangeMovimiento.Enabled = Habilitar
         C_BilleteraMovimiento.Enabled = Habilitar
 
-        rT_NotaMovimiento.Enabled = Habilitar
+        rT_Nota.Enabled = Habilitar
     End Sub
     Private Sub VerMovimiento(F As Integer)
         LimpiezaMovimiento(True)

@@ -25,7 +25,7 @@ Public Class F_Red
         T_URLrpc_Red.Text = ""
         T_TipoCapa_Red.Text = ""
         T_MecanismoConsenso_Red.Text = ""
-        rT_NotaRed.Text = ""
+        rT_Nota.Text = ""
         '
         L_IDRed_Red.Enabled = Habilitar
         T_ChainID_Red.Enabled = Habilitar
@@ -43,7 +43,7 @@ Public Class F_Red
         T_URLrpc_Red.Enabled = Habilitar
         T_TipoCapa_Red.Enabled = Habilitar
         T_MecanismoConsenso_Red.Enabled = Habilitar
-        rT_NotaRed.Enabled = Habilitar
+        rT_Nota.Enabled = Habilitar
 
     End Sub
     Private Sub VerRedes(F As Integer)

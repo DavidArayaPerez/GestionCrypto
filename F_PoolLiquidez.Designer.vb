@@ -31,7 +31,7 @@ Partial Class F_PoolLiquidez
         Me.T_ComisionPool = New System.Windows.Forms.TextBox()
         Me.T_ValorMoneda2Pool = New System.Windows.Forms.TextBox()
         Me.T_ValorMoneda1Pool = New System.Windows.Forms.TextBox()
-        Me.rT_NotaPool = New System.Windows.Forms.RichTextBox()
+        Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.T_HoraPool = New System.Windows.Forms.TextBox()
         Me.T_FechaPool = New System.Windows.Forms.TextBox()
         Me.Label49 = New System.Windows.Forms.Label()
@@ -146,17 +146,17 @@ Partial Class F_PoolLiquidez
         Me.T_ValorMoneda1Pool.TabIndex = 540
         Me.T_ValorMoneda1Pool.Text = "T_ValorMoneda1Pool"
         '
-        'rT_NotaPool
+        'rT_Nota
         '
-        Me.rT_NotaPool.AcceptsTab = True
-        Me.rT_NotaPool.AutoWordSelection = True
-        Me.rT_NotaPool.BackColor = System.Drawing.Color.White
-        Me.rT_NotaPool.Location = New System.Drawing.Point(356, 398)
-        Me.rT_NotaPool.Name = "rT_NotaPool"
-        Me.rT_NotaPool.ReadOnly = True
-        Me.rT_NotaPool.Size = New System.Drawing.Size(421, 100)
-        Me.rT_NotaPool.TabIndex = 536
-        Me.rT_NotaPool.Text = "rT_NotaPool"
+        Me.rT_Nota.AcceptsTab = True
+        Me.rT_Nota.AutoWordSelection = True
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.rT_Nota.Location = New System.Drawing.Point(356, 398)
+        Me.rT_Nota.Name = "rT_Nota"
+        Me.rT_Nota.ReadOnly = True
+        Me.rT_Nota.Size = New System.Drawing.Size(421, 100)
+        Me.rT_Nota.TabIndex = 536
+        Me.rT_Nota.Text = "rT_Nota"
         '
         'T_HoraPool
         '
@@ -422,7 +422,7 @@ Partial Class F_PoolLiquidez
         Me.Controls.Add(Me.T_ComisionPool)
         Me.Controls.Add(Me.T_ValorMoneda2Pool)
         Me.Controls.Add(Me.T_ValorMoneda1Pool)
-        Me.Controls.Add(Me.rT_NotaPool)
+        Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.T_HoraPool)
         Me.Controls.Add(Me.T_FechaPool)
         Me.Controls.Add(Me.Label49)
@@ -461,7 +461,7 @@ Partial Class F_PoolLiquidez
     Friend WithEvents T_ComisionPool As TextBox
     Friend WithEvents T_ValorMoneda2Pool As TextBox
     Friend WithEvents T_ValorMoneda1Pool As TextBox
-    Friend WithEvents rT_NotaPool As RichTextBox
+    Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents T_HoraPool As TextBox
     Friend WithEvents T_FechaPool As TextBox
     Friend WithEvents Label49 As Label

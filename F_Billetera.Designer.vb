@@ -104,7 +104,7 @@ Partial Class F_Billetera
         '
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
-        Me.rT_Nota.BackColor = System.Drawing.Color.White
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.rT_Nota.Location = New System.Drawing.Point(363, 181)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True

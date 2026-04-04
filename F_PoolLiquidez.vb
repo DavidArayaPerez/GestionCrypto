@@ -22,7 +22,7 @@ Public Class F_PoolLiquidez
         T_ValorMoneda1ResultantePool.Text = ""
         T_ValorMoneda2ResultantePool.Text = ""
 
-        rT_NotaPool.Text = ""
+        rT_Nota.Text = ""
         '
         T_FechaPool.Enabled = Habilitar
         T_HoraPool.Enabled = Habilitar
@@ -37,7 +37,7 @@ Public Class F_PoolLiquidez
         T_ValorMoneda1ResultantePool.Enabled = Habilitar
         T_ValorMoneda2ResultantePool.Enabled = Habilitar
 
-        rT_NotaPool.Enabled = Habilitar
+        rT_Nota.Enabled = Habilitar
     End Sub
     Private Sub VerPool(F As Integer)
         LimpiezaPool(True)

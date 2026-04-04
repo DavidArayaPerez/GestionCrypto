@@ -46,7 +46,7 @@ Partial Class F_Monedas
         Me.Label1 = New System.Windows.Forms.Label()
         Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.B_Actualiza_Moneda = New System.Windows.Forms.Button()
-        Me.rT_NotaMoneda = New System.Windows.Forms.RichTextBox()
+        Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.L_Hight24h = New System.Windows.Forms.Label()
         Me.L_Low24h = New System.Windows.Forms.Label()
@@ -344,14 +344,14 @@ Partial Class F_Monedas
         Me.B_Actualiza_Moneda.Text = "Actualiza"
         Me.B_Actualiza_Moneda.UseVisualStyleBackColor = False
         '
-        'rT_NotaMoneda
+        'rT_Nota
         '
-        Me.rT_NotaMoneda.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.rT_NotaMoneda.Location = New System.Drawing.Point(582, 55)
-        Me.rT_NotaMoneda.Name = "rT_NotaMoneda"
-        Me.rT_NotaMoneda.Size = New System.Drawing.Size(236, 420)
-        Me.rT_NotaMoneda.TabIndex = 651
-        Me.rT_NotaMoneda.Text = "rT_NotaMoneda"
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.rT_Nota.Location = New System.Drawing.Point(582, 55)
+        Me.rT_Nota.Name = "rT_Nota"
+        Me.rT_Nota.Size = New System.Drawing.Size(236, 420)
+        Me.rT_Nota.TabIndex = 651
+        Me.rT_Nota.Text = "rT_Nota"
         '
         'Label2
         '
@@ -653,7 +653,7 @@ Partial Class F_Monedas
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.L_CurentPrice)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.rT_NotaMoneda)
+        Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.B_Actualiza_Moneda)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.Label1)
@@ -712,7 +712,7 @@ Partial Class F_Monedas
     Friend WithEvents Label1 As Label
     Friend WithEvents L_Mensaje As Label
     Friend WithEvents B_Actualiza_Moneda As Button
-    Friend WithEvents rT_NotaMoneda As RichTextBox
+    Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents L_Hight24h As Label
     Friend WithEvents L_Low24h As Label

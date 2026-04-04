@@ -29,7 +29,7 @@ Partial Class F_Movimientos
         Me.T_ComisionMovimiento = New System.Windows.Forms.TextBox()
         Me.T_ValorDestinoMovimiento = New System.Windows.Forms.TextBox()
         Me.T_ValorOrigenMovimiento = New System.Windows.Forms.TextBox()
-        Me.rT_NotaMovimiento = New System.Windows.Forms.RichTextBox()
+        Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.T_HoraMovimiento = New System.Windows.Forms.TextBox()
         Me.T_FechaMovimiento = New System.Windows.Forms.TextBox()
         Me.Label29 = New System.Windows.Forms.Label()
@@ -118,17 +118,17 @@ Partial Class F_Movimientos
         Me.T_ValorOrigenMovimiento.TabIndex = 554
         Me.T_ValorOrigenMovimiento.Text = "T_ValorOrigenMovimiento"
         '
-        'rT_NotaMovimiento
+        'rT_Nota
         '
-        Me.rT_NotaMovimiento.AcceptsTab = True
-        Me.rT_NotaMovimiento.AutoWordSelection = True
-        Me.rT_NotaMovimiento.BackColor = System.Drawing.Color.White
-        Me.rT_NotaMovimiento.Location = New System.Drawing.Point(363, 334)
-        Me.rT_NotaMovimiento.Name = "rT_NotaMovimiento"
-        Me.rT_NotaMovimiento.ReadOnly = True
-        Me.rT_NotaMovimiento.Size = New System.Drawing.Size(457, 154)
-        Me.rT_NotaMovimiento.TabIndex = 550
-        Me.rT_NotaMovimiento.Text = "rT_NotaMovimiento"
+        Me.rT_Nota.AcceptsTab = True
+        Me.rT_Nota.AutoWordSelection = True
+        Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.rT_Nota.Location = New System.Drawing.Point(363, 334)
+        Me.rT_Nota.Name = "rT_Nota"
+        Me.rT_Nota.ReadOnly = True
+        Me.rT_Nota.Size = New System.Drawing.Size(457, 154)
+        Me.rT_Nota.TabIndex = 550
+        Me.rT_Nota.Text = "rT_Nota"
         '
         'T_HoraMovimiento
         '
@@ -332,7 +332,7 @@ Partial Class F_Movimientos
         Me.Controls.Add(Me.T_ComisionMovimiento)
         Me.Controls.Add(Me.T_ValorDestinoMovimiento)
         Me.Controls.Add(Me.T_ValorOrigenMovimiento)
-        Me.Controls.Add(Me.rT_NotaMovimiento)
+        Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.T_HoraMovimiento)
         Me.Controls.Add(Me.T_FechaMovimiento)
         Me.Controls.Add(Me.Label29)
@@ -363,7 +363,7 @@ Partial Class F_Movimientos
     Friend WithEvents T_ComisionMovimiento As TextBox
     Friend WithEvents T_ValorDestinoMovimiento As TextBox
     Friend WithEvents T_ValorOrigenMovimiento As TextBox
-    Friend WithEvents rT_NotaMovimiento As RichTextBox
+    Friend WithEvents rT_Nota As RichTextBox
     Friend WithEvents T_HoraMovimiento As TextBox
     Friend WithEvents T_FechaMovimiento As TextBox
     Friend WithEvents Label29 As Label

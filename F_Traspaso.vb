@@ -18,7 +18,7 @@ Public Class F_Traspaso
         T_GasTraspaso.Text = ""
         C_BilleteraOrigenTraspaso.Text = ""
         C_BilleteraDestinoTraspaso.Text = ""
-        rT_NotaTraspaso.Text = ""
+        rT_Nota.Text = ""
         '
         T_FechaTraspaso.Enabled = Habilitar
         T_HoraTraspaso.Enabled = Habilitar
@@ -31,7 +31,7 @@ Public Class F_Traspaso
         T_GasTraspaso.Enabled = Habilitar
         C_BilleteraOrigenTraspaso.Enabled = Habilitar
         C_BilleteraDestinoTraspaso.Enabled = Habilitar
-        rT_NotaTraspaso.Enabled = Habilitar
+        rT_Nota.Enabled = Habilitar
     End Sub
     Private Sub VerTraspasos(F As Integer)
         LimpiezaTraspaso(True)

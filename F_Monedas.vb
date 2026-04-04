@@ -47,13 +47,13 @@ Public Class F_Monedas
         L_FechaActualizacion.Text = ""
         '
         CB_ActualizacionAutomatica.Checked = False
-        rT_NotaMoneda.Text = ""
+        rT_Nota.Text = ""
         '
         L_IDmoneda_Moneda.Text = ""
         L_IDdespliegue_Moneda.Text = ""
         '
         CB_ActualizacionAutomatica.Enabled = Habilitar
-        rT_NotaMoneda.Enabled = Habilitar
+        rT_Nota.Enabled = Habilitar
         B_Actualiza_Moneda.Enabled = Habilitar
     End Sub
     Private Sub VerMoneda(F As Integer)
@@ -117,8 +117,8 @@ Public Class F_Monedas
         Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, L_IDredNativa_Moneda.Text)
         If FilaRed > 0 Then L_IDredNativa_Moneda.Text = Matriz_Redes(FilaRed, 2)
         '
-        Dim NombreNota As String = "Moneda" & L_Simbolo_Moneda.Text & "_Nota.rtf"
-        CargaRTF(RutaLocal, NombreNota, rT_NotaMoneda)
+        Dim NombreNota As String = "Curr_" & L_Simbolo_Moneda.Text & ".rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_Nota)
     End Sub
     Private Sub GrabarMoneda()
         Dim F As Integer = L_Fila_Moneda.Text
@@ -155,8 +155,8 @@ Public Class F_Monedas
         '
         Guardar_Matrices("Monedas")
         '
-        Dim NombreNota As String = "Moneda" & L_Simbolo_Moneda.Text & "_Nota.rtf"
-        GuardarRTF(RutaLocal, NombreNota, rT_NotaMoneda)
+        Dim NombreNota As String = "Curr_" & L_Simbolo_Moneda.Text & ".rtf"
+        GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         L_Mensaje.Text = "Moneda guardada correctamente"
     End Sub
