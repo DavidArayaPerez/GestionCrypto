@@ -181,6 +181,8 @@ Partial Class F_Exchange
         Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.Label43)
         Me.Location = New System.Drawing.Point(200, 100)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Exchange"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Exchange"

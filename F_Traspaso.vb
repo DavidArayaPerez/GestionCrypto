@@ -5,36 +5,50 @@ Public Class F_Traspaso
     '
     '
     '
-    Private Sub LimpiezaTraspaso(Optional Habilitar As Boolean = False)
+    Private Sub Inicializar()
+        Dim T As String
+        VariableDeInicio = True
+        '
+        Limpiar()
+        '
+        Llenar_Exchange(C_Exchange)
+        Llenar_Billetera(C_BilleteraOrigen)
+        Llenar_Billetera(C_BilleteraDestino)
+        Llenar_Monedas(C_MonedaOrigen)
+        Llenar_Monedas(C_MonedaDestino)
+        '
+        VariableDeInicio = False
+    End Sub
+    Private Sub Limpiar(Optional Habilitar As Boolean = False)
         'TRASPASO
-        T_FechaTraspaso.Text = ""
-        T_HoraTraspaso.Text = ""
-        C_MonedaOrigenTraspaso.Text = ""
-        C_MonedaDestinoTraspaso.Text = ""
-        T_ValorOrigenTraspaso.Text = ""
-        T_ValorDestinoTraspaso.Text = ""
-        C_ExchangeTraspaso.Text = ""
-        T_ComisionTraspaso.Text = ""
-        T_GasTraspaso.Text = ""
-        C_BilleteraOrigenTraspaso.Text = ""
-        C_BilleteraDestinoTraspaso.Text = ""
+        T_Fecha.Text = ""
+        T_Hora.Text = ""
+        C_MonedaOrigen.Text = ""
+        C_MonedaDestino.Text = ""
+        T_ValorOrigen.Text = ""
+        T_ValorDestino.Text = ""
+        C_Exchange.Text = ""
+        T_Comision.Text = ""
+        T_Gas.Text = ""
+        C_BilleteraOrigen.Text = ""
+        C_BilleteraDestino.Text = ""
         rT_Nota.Text = ""
         '
-        T_FechaTraspaso.Enabled = Habilitar
-        T_HoraTraspaso.Enabled = Habilitar
-        C_MonedaOrigenTraspaso.Enabled = Habilitar
-        C_MonedaDestinoTraspaso.Enabled = Habilitar
-        T_ValorOrigenTraspaso.Enabled = Habilitar
-        T_ValorDestinoTraspaso.Enabled = Habilitar
-        C_ExchangeTraspaso.Enabled = Habilitar
-        T_ComisionTraspaso.Enabled = Habilitar
-        T_GasTraspaso.Enabled = Habilitar
-        C_BilleteraOrigenTraspaso.Enabled = Habilitar
-        C_BilleteraDestinoTraspaso.Enabled = Habilitar
+        T_Fecha.Enabled = Habilitar
+        T_Hora.Enabled = Habilitar
+        C_MonedaOrigen.Enabled = Habilitar
+        C_MonedaDestino.Enabled = Habilitar
+        T_ValorOrigen.Enabled = Habilitar
+        T_ValorDestino.Enabled = Habilitar
+        C_Exchange.Enabled = Habilitar
+        T_Comision.Enabled = Habilitar
+        T_Gas.Enabled = Habilitar
+        C_BilleteraOrigen.Enabled = Habilitar
+        C_BilleteraDestino.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
     End Sub
-    Private Sub VerTraspasos(F As Integer)
-        LimpiezaTraspaso(True)
+    Private Sub Ver(F As Integer)
+        Limpiar(True)
         If F < 1 Then Exit Sub
         '   0   ID
         '   1   Fecha
@@ -46,24 +60,38 @@ Public Class F_Traspaso
         '   7   Billetera_Destino
         '   8   Moneda_Destino
         '   9   Valor_Destino
-        '   10   Comision
+        '   10  Comision
         '   11  Gas
         '
-        T_FechaTraspaso.Text = Matriz_Traspasos(F, 1)
-        T_HoraTraspaso.Text = Matriz_Traspasos(F, 2)
-        C_ExchangeTraspaso.Text = Matriz_Traspasos(F, 3)
-        C_BilleteraOrigenTraspaso.Text = Matriz_Traspasos(F, 4)
-        C_MonedaOrigenTraspaso.Text = Matriz_Traspasos(F, 5)
-        T_ValorOrigenTraspaso.Text = Matriz_Traspasos(F, 6)
-        C_BilleteraDestinoTraspaso.Text = Matriz_Traspasos(F, 7)
-        C_MonedaDestinoTraspaso.Text = Matriz_Traspasos(F, 8)
-        T_ValorDestinoTraspaso.Text = Matriz_Traspasos(F, 9)
-        T_ComisionTraspaso.Text = Matriz_Traspasos(F, 10)
-        T_GasTraspaso.Text = Matriz_Traspasos(F, 11)
+        T_Fecha.Text = Matriz_Traspasos(F, 1)
+        T_Hora.Text = Matriz_Traspasos(F, 2)
+        C_Exchange.Text = Matriz_Traspasos(F, 3)
+        C_BilleteraOrigen.Text = Matriz_Traspasos(F, 4)
+        C_MonedaOrigen.Text = Matriz_Traspasos(F, 5)
+        T_ValorOrigen.Text = Matriz_Traspasos(F, 6)
+        C_BilleteraDestino.Text = Matriz_Traspasos(F, 7)
+        C_MonedaDestino.Text = Matriz_Traspasos(F, 8)
+        T_ValorDestino.Text = Matriz_Traspasos(F, 9)
+        T_Comision.Text = Matriz_Traspasos(F, 10)
+        T_Gas.Text = Matriz_Traspasos(F, 11)
         '
-        'Dim NombreNota As String = T_FechaTraspaso.Text & "_" & T_HoraTraspaso.Text & "_" & "Traspasos" & "_Nota.rtf"
-        'CargaRTF(RutaLocal, NombreNota, rT_NotaTraspaso)
+        Dim NombreNota As String = "Tras_" & T_Fecha.Text & " " & T_Hora.Text & ".rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_Nota)
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     '
     '
     '
@@ -76,7 +104,39 @@ Public Class F_Traspaso
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
     End Sub
-
+    '
+    '
+    Private Sub T_ValorOrigen_TextChanged(sender As Object, e As EventArgs) Handles T_ValorOrigen.TextChanged
+        '
+    End Sub
+    Private Sub T_ValorDestino_TextChanged(sender As Object, e As EventArgs) Handles T_ValorDestino.TextChanged
+        '
+    End Sub
+    Private Sub T_Comision_TextChanged(sender As Object, e As EventArgs) Handles T_Comision.TextChanged
+        '
+    End Sub
+    Private Sub T_Gas_TextChanged(sender As Object, e As EventArgs) Handles T_Gas.TextChanged
+        '
+    End Sub
+    '
+    '
+    '
+    Private Sub T_ValorOrigen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_ValorOrigen.KeyPress
+        If VariableDeInicio Then Exit Sub
+        If SoloNumero_KeyPress(T_ValorOrigen, sender, e) Then e.Handled = True
+    End Sub
+    Private Sub T_ValorDestino_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_ValorDestino.KeyPress
+        If VariableDeInicio Then Exit Sub
+        If SoloNumero_KeyPress(T_ValorDestino, sender, e) Then e.Handled = True
+    End Sub
+    Private Sub T_Comision_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Comision.KeyPress
+        If VariableDeInicio Then Exit Sub
+        If SoloNumero_KeyPress(T_Comision, sender, e) Then e.Handled = True
+    End Sub
+    Private Sub T_Gas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Gas.KeyPress
+        If VariableDeInicio Then Exit Sub
+        If SoloNumero_KeyPress(T_Gas, sender, e) Then e.Handled = True
+    End Sub
     '
     '
     '

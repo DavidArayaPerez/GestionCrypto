@@ -55,7 +55,10 @@ Partial Class F_PoolLiquidez
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
-        Me.B_NuevoBilletera = New System.Windows.Forms.Button()
+        Me.B_Nuevo = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.L_Fila = New System.Windows.Forms.Label()
+        Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'L_PoolLiquidez
@@ -154,7 +157,7 @@ Partial Class F_PoolLiquidez
         Me.rT_Nota.Location = New System.Drawing.Point(356, 398)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(421, 100)
+        Me.rT_Nota.Size = New System.Drawing.Size(421, 68)
         Me.rT_Nota.TabIndex = 536
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -382,7 +385,7 @@ Partial Class F_PoolLiquidez
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(126, 13)
         Me.Label28.TabIndex = 531
-        Me.Label28.Text = "Plataforma"
+        Me.Label28.Text = "Exchange"
         '
         'B_Cerrar
         '
@@ -395,23 +398,57 @@ Partial Class F_PoolLiquidez
         Me.B_Cerrar.Text = "Cerrar"
         Me.B_Cerrar.UseVisualStyleBackColor = False
         '
-        'B_NuevoBilletera
+        'B_Nuevo
         '
-        Me.B_NuevoBilletera.BackColor = System.Drawing.SystemColors.Control
-        Me.B_NuevoBilletera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_NuevoBilletera.Location = New System.Drawing.Point(229, 12)
-        Me.B_NuevoBilletera.Name = "B_NuevoBilletera"
-        Me.B_NuevoBilletera.Size = New System.Drawing.Size(99, 23)
-        Me.B_NuevoBilletera.TabIndex = 575
-        Me.B_NuevoBilletera.Text = "Nuevo"
-        Me.B_NuevoBilletera.UseVisualStyleBackColor = False
+        Me.B_Nuevo.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Nuevo.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Nuevo.Location = New System.Drawing.Point(229, 12)
+        Me.B_Nuevo.Name = "B_Nuevo"
+        Me.B_Nuevo.Size = New System.Drawing.Size(99, 23)
+        Me.B_Nuevo.TabIndex = 575
+        Me.B_Nuevo.Text = "Nuevo"
+        Me.B_Nuevo.UseVisualStyleBackColor = False
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.Blue
+        Me.Label1.Location = New System.Drawing.Point(639, 284)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(23, 13)
+        Me.Label1.TabIndex = 652
+        Me.Label1.Text = "Fila"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'L_Fila
+        '
+        Me.L_Fila.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_Fila.ForeColor = System.Drawing.Color.Black
+        Me.L_Fila.Location = New System.Drawing.Point(639, 311)
+        Me.L_Fila.Name = "L_Fila"
+        Me.L_Fila.Size = New System.Drawing.Size(123, 13)
+        Me.L_Fila.TabIndex = 651
+        Me.L_Fila.Text = "L_Fila"
+        '
+        'L_Mensaje
+        '
+        Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
+        Me.L_Mensaje.Location = New System.Drawing.Point(356, 479)
+        Me.L_Mensaje.Name = "L_Mensaje"
+        Me.L_Mensaje.Size = New System.Drawing.Size(422, 16)
+        Me.L_Mensaje.TabIndex = 653
+        Me.L_Mensaje.Text = "L_Mensaje"
         '
         'F_PoolLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(845, 520)
-        Me.Controls.Add(Me.B_NuevoBilletera)
+        Me.Controls.Add(Me.L_Mensaje)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.L_Fila)
+        Me.Controls.Add(Me.B_Nuevo)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_PoolLiquidez)
         Me.Controls.Add(Me.T_Max)
@@ -445,6 +482,8 @@ Partial Class F_PoolLiquidez
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label28)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_PoolLiquidez"
         Me.Text = "F_PoolLiquidez"
         Me.ResumeLayout(False)
@@ -485,5 +524,8 @@ Partial Class F_PoolLiquidez
     Friend WithEvents Label9 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents B_Cerrar As Button
-    Friend WithEvents B_NuevoBilletera As Button
+    Friend WithEvents B_Nuevo As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents L_Fila As Label
+    Friend WithEvents L_Mensaje As Label
 End Class

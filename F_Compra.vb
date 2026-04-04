@@ -11,22 +11,13 @@ Public Class F_Compra
         '
         Limpiar()
         '
-        C_Exchange.Items.Clear()
-        For i As Integer = 1 To Matriz_ExchangeTF
-            T = Matriz_Exchange(i, 1)
-            C_Exchange.Items.Add(T)
-        Next i
+        Llenar_Exchange(C_Exchange)
+        Llenar_Monedas(C_MonedaOrigen)
+        Llenar_Monedas(C_MonedaDestino)
         '
         C_MonedaOrigen.Items.Clear()
         C_MonedaOrigen.Items.Add("CLP")
         C_MonedaOrigen.Items.Add("USDT")
-        '
-        C_MonedaDestino.Items.Clear()
-        For i As Integer = 1 To Matriz_MonedasTF
-            T = Matriz_Monedas(i, 2)
-            C_MonedaOrigen.Items.Add(T)
-            C_MonedaDestino.Items.Add(T)
-        Next i
         '
         VariableDeInicio = False
     End Sub

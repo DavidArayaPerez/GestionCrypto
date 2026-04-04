@@ -59,6 +59,14 @@ Module mMonedas
         Next i
         Return "N" 'No existe
     End Function
+    Public Sub Llenar_Monedas(ByRef Combo As ComboBox)
+        Dim T As String
+        Combo.Items.Clear()
+        For i As Integer = 1 To Matriz_MonedasTF
+            T = Matriz_Monedas(i, 1)
+            Combo.Items.Add(T)
+        Next i
+    End Sub
     '
     '
     '

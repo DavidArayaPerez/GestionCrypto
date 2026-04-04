@@ -18,6 +18,14 @@ Module mBilleteras
         Dim Fila As Integer = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
         Return Fila
     End Function
+    Public Sub Llenar_Billetera(ByRef Combo As ComboBox)
+        Dim T As String
+        Combo.Items.Clear()
+        For i As Integer = 1 To Matriz_BilleterasTF
+            T = Matriz_Billeteras(i, 1)
+            Combo.Items.Add(T)
+        Next i
+    End Sub
     '
     '
     '

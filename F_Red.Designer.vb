@@ -563,6 +563,7 @@ Partial Class F_Red
         Me.Controls.Add(Me.Label59)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Red"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Red"

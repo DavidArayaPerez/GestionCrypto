@@ -205,6 +205,8 @@ Partial Class F_Billetera
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label19)
         Me.Location = New System.Drawing.Point(200, 100)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Billetera"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Billetera"

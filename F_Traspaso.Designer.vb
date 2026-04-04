@@ -23,33 +23,34 @@ Partial Class F_Traspaso
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.L_Traspasos = New System.Windows.Forms.ListBox()
-        Me.C_BilleteraDestinoTraspaso = New System.Windows.Forms.ComboBox()
+        Me.C_BilleteraDestino = New System.Windows.Forms.ComboBox()
         Me.Label44 = New System.Windows.Forms.Label()
-        Me.C_BilleteraOrigenTraspaso = New System.Windows.Forms.ComboBox()
+        Me.C_BilleteraOrigen = New System.Windows.Forms.ComboBox()
         Me.Label41 = New System.Windows.Forms.Label()
-        Me.T_GasTraspaso = New System.Windows.Forms.TextBox()
-        Me.T_ComisionTraspaso = New System.Windows.Forms.TextBox()
-        Me.T_ValorDestinoTraspaso = New System.Windows.Forms.TextBox()
-        Me.T_ValorOrigenTraspaso = New System.Windows.Forms.TextBox()
+        Me.T_Gas = New System.Windows.Forms.TextBox()
+        Me.T_Comision = New System.Windows.Forms.TextBox()
+        Me.T_ValorDestino = New System.Windows.Forms.TextBox()
+        Me.T_ValorOrigen = New System.Windows.Forms.TextBox()
         Me.rT_Nota = New System.Windows.Forms.RichTextBox()
-        Me.T_HoraTraspaso = New System.Windows.Forms.TextBox()
-        Me.T_FechaTraspaso = New System.Windows.Forms.TextBox()
+        Me.T_Hora = New System.Windows.Forms.TextBox()
+        Me.T_Fecha = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.B_GrabarTraspaso = New System.Windows.Forms.Button()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.C_MonedaDestinoTraspaso = New System.Windows.Forms.ComboBox()
+        Me.C_MonedaDestino = New System.Windows.Forms.ComboBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.C_MonedaOrigenTraspaso = New System.Windows.Forms.ComboBox()
+        Me.C_MonedaOrigen = New System.Windows.Forms.ComboBox()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.C_ExchangeTraspaso = New System.Windows.Forms.ComboBox()
+        Me.C_Exchange = New System.Windows.Forms.ComboBox()
         Me.Cal_FechaTraspaso = New System.Windows.Forms.DateTimePicker()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.B_NuevoBilletera = New System.Windows.Forms.Button()
+        Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'L_Traspasos
@@ -60,15 +61,15 @@ Partial Class F_Traspaso
         Me.L_Traspasos.Size = New System.Drawing.Size(316, 433)
         Me.L_Traspasos.TabIndex = 526
         '
-        'C_BilleteraDestinoTraspaso
+        'C_BilleteraDestino
         '
-        Me.C_BilleteraDestinoTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_BilleteraDestinoTraspaso.FormattingEnabled = True
-        Me.C_BilleteraDestinoTraspaso.Location = New System.Drawing.Point(360, 243)
-        Me.C_BilleteraDestinoTraspaso.Name = "C_BilleteraDestinoTraspaso"
-        Me.C_BilleteraDestinoTraspaso.Size = New System.Drawing.Size(123, 21)
-        Me.C_BilleteraDestinoTraspaso.TabIndex = 525
-        Me.C_BilleteraDestinoTraspaso.Text = "C_BilleteraDestinoTraspaso"
+        Me.C_BilleteraDestino.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_BilleteraDestino.FormattingEnabled = True
+        Me.C_BilleteraDestino.Location = New System.Drawing.Point(360, 243)
+        Me.C_BilleteraDestino.Name = "C_BilleteraDestino"
+        Me.C_BilleteraDestino.Size = New System.Drawing.Size(123, 21)
+        Me.C_BilleteraDestino.TabIndex = 525
+        Me.C_BilleteraDestino.Text = "C_BilleteraDestino"
         '
         'Label44
         '
@@ -80,15 +81,15 @@ Partial Class F_Traspaso
         Me.Label44.TabIndex = 524
         Me.Label44.Text = "Billetera Destino"
         '
-        'C_BilleteraOrigenTraspaso
+        'C_BilleteraOrigen
         '
-        Me.C_BilleteraOrigenTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_BilleteraOrigenTraspaso.FormattingEnabled = True
-        Me.C_BilleteraOrigenTraspaso.Location = New System.Drawing.Point(360, 180)
-        Me.C_BilleteraOrigenTraspaso.Name = "C_BilleteraOrigenTraspaso"
-        Me.C_BilleteraOrigenTraspaso.Size = New System.Drawing.Size(123, 21)
-        Me.C_BilleteraOrigenTraspaso.TabIndex = 523
-        Me.C_BilleteraOrigenTraspaso.Text = "C_BilleteraOrigenTraspaso"
+        Me.C_BilleteraOrigen.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_BilleteraOrigen.FormattingEnabled = True
+        Me.C_BilleteraOrigen.Location = New System.Drawing.Point(360, 180)
+        Me.C_BilleteraOrigen.Name = "C_BilleteraOrigen"
+        Me.C_BilleteraOrigen.Size = New System.Drawing.Size(123, 21)
+        Me.C_BilleteraOrigen.TabIndex = 523
+        Me.C_BilleteraOrigen.Text = "C_BilleteraOrigen"
         '
         'Label41
         '
@@ -100,45 +101,45 @@ Partial Class F_Traspaso
         Me.Label41.TabIndex = 522
         Me.Label41.Text = "Billetera Origen"
         '
-        'T_GasTraspaso
+        'T_Gas
         '
-        Me.T_GasTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_GasTraspaso.Location = New System.Drawing.Point(659, 305)
-        Me.T_GasTraspaso.MaxLength = 6
-        Me.T_GasTraspaso.Name = "T_GasTraspaso"
-        Me.T_GasTraspaso.Size = New System.Drawing.Size(123, 20)
-        Me.T_GasTraspaso.TabIndex = 521
-        Me.T_GasTraspaso.Text = "T_GasTraspaso"
+        Me.T_Gas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Gas.Location = New System.Drawing.Point(659, 305)
+        Me.T_Gas.MaxLength = 6
+        Me.T_Gas.Name = "T_Gas"
+        Me.T_Gas.Size = New System.Drawing.Size(123, 20)
+        Me.T_Gas.TabIndex = 521
+        Me.T_Gas.Text = "T_Gas"
         '
-        'T_ComisionTraspaso
+        'T_Comision
         '
-        Me.T_ComisionTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ComisionTraspaso.Location = New System.Drawing.Point(505, 306)
-        Me.T_ComisionTraspaso.MaxLength = 6
-        Me.T_ComisionTraspaso.Name = "T_ComisionTraspaso"
-        Me.T_ComisionTraspaso.Size = New System.Drawing.Size(123, 20)
-        Me.T_ComisionTraspaso.TabIndex = 519
-        Me.T_ComisionTraspaso.Text = "T_ComisionTraspaso"
+        Me.T_Comision.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Comision.Location = New System.Drawing.Point(505, 306)
+        Me.T_Comision.MaxLength = 6
+        Me.T_Comision.Name = "T_Comision"
+        Me.T_Comision.Size = New System.Drawing.Size(123, 20)
+        Me.T_Comision.TabIndex = 519
+        Me.T_Comision.Text = "T_Comision"
         '
-        'T_ValorDestinoTraspaso
+        'T_ValorDestino
         '
-        Me.T_ValorDestinoTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorDestinoTraspaso.Location = New System.Drawing.Point(659, 244)
-        Me.T_ValorDestinoTraspaso.MaxLength = 6
-        Me.T_ValorDestinoTraspaso.Name = "T_ValorDestinoTraspaso"
-        Me.T_ValorDestinoTraspaso.Size = New System.Drawing.Size(123, 20)
-        Me.T_ValorDestinoTraspaso.TabIndex = 516
-        Me.T_ValorDestinoTraspaso.Text = "T_ValorDestinoTraspaso"
+        Me.T_ValorDestino.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorDestino.Location = New System.Drawing.Point(659, 244)
+        Me.T_ValorDestino.MaxLength = 6
+        Me.T_ValorDestino.Name = "T_ValorDestino"
+        Me.T_ValorDestino.Size = New System.Drawing.Size(123, 20)
+        Me.T_ValorDestino.TabIndex = 516
+        Me.T_ValorDestino.Text = "T_ValorDestino"
         '
-        'T_ValorOrigenTraspaso
+        'T_ValorOrigen
         '
-        Me.T_ValorOrigenTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_ValorOrigenTraspaso.Location = New System.Drawing.Point(659, 180)
-        Me.T_ValorOrigenTraspaso.MaxLength = 6
-        Me.T_ValorOrigenTraspaso.Name = "T_ValorOrigenTraspaso"
-        Me.T_ValorOrigenTraspaso.Size = New System.Drawing.Size(123, 20)
-        Me.T_ValorOrigenTraspaso.TabIndex = 512
-        Me.T_ValorOrigenTraspaso.Text = "T_ValorOrigenTraspaso"
+        Me.T_ValorOrigen.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ValorOrigen.Location = New System.Drawing.Point(659, 180)
+        Me.T_ValorOrigen.MaxLength = 6
+        Me.T_ValorOrigen.Name = "T_ValorOrigen"
+        Me.T_ValorOrigen.Size = New System.Drawing.Size(123, 20)
+        Me.T_ValorOrigen.TabIndex = 512
+        Me.T_ValorOrigen.Text = "T_ValorOrigen"
         '
         'rT_Nota
         '
@@ -148,30 +149,30 @@ Partial Class F_Traspaso
         Me.rT_Nota.Location = New System.Drawing.Point(360, 347)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(457, 154)
+        Me.rT_Nota.Size = New System.Drawing.Size(425, 119)
         Me.rT_Nota.TabIndex = 508
         Me.rT_Nota.Text = "rT_Nota"
         '
-        'T_HoraTraspaso
+        'T_Hora
         '
-        Me.T_HoraTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_HoraTraspaso.Location = New System.Drawing.Point(480, 98)
-        Me.T_HoraTraspaso.MaxLength = 4
-        Me.T_HoraTraspaso.Name = "T_HoraTraspaso"
-        Me.T_HoraTraspaso.Size = New System.Drawing.Size(56, 20)
-        Me.T_HoraTraspaso.TabIndex = 502
-        Me.T_HoraTraspaso.Text = "T_HoraTraspaso"
-        Me.T_HoraTraspaso.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.T_Hora.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Hora.Location = New System.Drawing.Point(480, 98)
+        Me.T_Hora.MaxLength = 4
+        Me.T_Hora.Name = "T_Hora"
+        Me.T_Hora.Size = New System.Drawing.Size(56, 20)
+        Me.T_Hora.TabIndex = 502
+        Me.T_Hora.Text = "T_Hora"
+        Me.T_Hora.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'T_FechaTraspaso
+        'T_Fecha
         '
-        Me.T_FechaTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_FechaTraspaso.Location = New System.Drawing.Point(360, 98)
-        Me.T_FechaTraspaso.MaxLength = 6
-        Me.T_FechaTraspaso.Name = "T_FechaTraspaso"
-        Me.T_FechaTraspaso.Size = New System.Drawing.Size(80, 20)
-        Me.T_FechaTraspaso.TabIndex = 501
-        Me.T_FechaTraspaso.Text = "T_FechaTraspaso"
+        Me.T_Fecha.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Fecha.Location = New System.Drawing.Point(360, 98)
+        Me.T_Fecha.MaxLength = 6
+        Me.T_Fecha.Name = "T_Fecha"
+        Me.T_Fecha.Size = New System.Drawing.Size(80, 20)
+        Me.T_Fecha.TabIndex = 501
+        Me.T_Fecha.Text = "T_Fecha"
         '
         'Label15
         '
@@ -214,15 +215,15 @@ Partial Class F_Traspaso
         Me.Label18.TabIndex = 515
         Me.Label18.Text = "Valor Moneda Destino"
         '
-        'C_MonedaDestinoTraspaso
+        'C_MonedaDestino
         '
-        Me.C_MonedaDestinoTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_MonedaDestinoTraspaso.FormattingEnabled = True
-        Me.C_MonedaDestinoTraspaso.Location = New System.Drawing.Point(505, 243)
-        Me.C_MonedaDestinoTraspaso.Name = "C_MonedaDestinoTraspaso"
-        Me.C_MonedaDestinoTraspaso.Size = New System.Drawing.Size(123, 21)
-        Me.C_MonedaDestinoTraspaso.TabIndex = 514
-        Me.C_MonedaDestinoTraspaso.Text = "C_MonedaDestinoTraspaso"
+        Me.C_MonedaDestino.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_MonedaDestino.FormattingEnabled = True
+        Me.C_MonedaDestino.Location = New System.Drawing.Point(505, 243)
+        Me.C_MonedaDestino.Name = "C_MonedaDestino"
+        Me.C_MonedaDestino.Size = New System.Drawing.Size(123, 21)
+        Me.C_MonedaDestino.TabIndex = 514
+        Me.C_MonedaDestino.Text = "C_MonedaDestino"
         '
         'Label22
         '
@@ -244,15 +245,15 @@ Partial Class F_Traspaso
         Me.Label23.TabIndex = 511
         Me.Label23.Text = "Valor Moneda Origen"
         '
-        'C_MonedaOrigenTraspaso
+        'C_MonedaOrigen
         '
-        Me.C_MonedaOrigenTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_MonedaOrigenTraspaso.FormattingEnabled = True
-        Me.C_MonedaOrigenTraspaso.Location = New System.Drawing.Point(505, 179)
-        Me.C_MonedaOrigenTraspaso.Name = "C_MonedaOrigenTraspaso"
-        Me.C_MonedaOrigenTraspaso.Size = New System.Drawing.Size(123, 21)
-        Me.C_MonedaOrigenTraspaso.TabIndex = 510
-        Me.C_MonedaOrigenTraspaso.Text = "C_MonedaOrigenTraspaso"
+        Me.C_MonedaOrigen.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_MonedaOrigen.FormattingEnabled = True
+        Me.C_MonedaOrigen.Location = New System.Drawing.Point(505, 179)
+        Me.C_MonedaOrigen.Name = "C_MonedaOrigen"
+        Me.C_MonedaOrigen.Size = New System.Drawing.Size(123, 21)
+        Me.C_MonedaOrigen.TabIndex = 510
+        Me.C_MonedaOrigen.Text = "C_MonedaOrigen"
         '
         'Label24
         '
@@ -264,15 +265,15 @@ Partial Class F_Traspaso
         Me.Label24.TabIndex = 509
         Me.Label24.Text = "Moneda Origen"
         '
-        'C_ExchangeTraspaso
+        'C_Exchange
         '
-        Me.C_ExchangeTraspaso.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.C_ExchangeTraspaso.FormattingEnabled = True
-        Me.C_ExchangeTraspaso.Location = New System.Drawing.Point(558, 98)
-        Me.C_ExchangeTraspaso.Name = "C_ExchangeTraspaso"
-        Me.C_ExchangeTraspaso.Size = New System.Drawing.Size(123, 21)
-        Me.C_ExchangeTraspaso.TabIndex = 507
-        Me.C_ExchangeTraspaso.Text = "C_ExchangeTraspaso"
+        Me.C_Exchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_Exchange.FormattingEnabled = True
+        Me.C_Exchange.Location = New System.Drawing.Point(558, 98)
+        Me.C_Exchange.Name = "C_Exchange"
+        Me.C_Exchange.Size = New System.Drawing.Size(123, 21)
+        Me.C_Exchange.TabIndex = 507
+        Me.C_Exchange.Text = "C_Exchange"
         '
         'Cal_FechaTraspaso
         '
@@ -340,39 +341,51 @@ Partial Class F_Traspaso
         Me.B_NuevoBilletera.Text = "Nuevo"
         Me.B_NuevoBilletera.UseVisualStyleBackColor = False
         '
+        'L_Mensaje
+        '
+        Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
+        Me.L_Mensaje.Location = New System.Drawing.Point(360, 485)
+        Me.L_Mensaje.Name = "L_Mensaje"
+        Me.L_Mensaje.Size = New System.Drawing.Size(422, 16)
+        Me.L_Mensaje.TabIndex = 652
+        Me.L_Mensaje.Text = "L_Mensaje"
+        '
         'F_Traspaso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(840, 520)
+        Me.ClientSize = New System.Drawing.Size(803, 520)
+        Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.B_NuevoBilletera)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Traspasos)
-        Me.Controls.Add(Me.C_BilleteraDestinoTraspaso)
+        Me.Controls.Add(Me.C_BilleteraDestino)
         Me.Controls.Add(Me.Label44)
-        Me.Controls.Add(Me.C_BilleteraOrigenTraspaso)
+        Me.Controls.Add(Me.C_BilleteraOrigen)
         Me.Controls.Add(Me.Label41)
-        Me.Controls.Add(Me.T_GasTraspaso)
-        Me.Controls.Add(Me.T_ComisionTraspaso)
-        Me.Controls.Add(Me.T_ValorDestinoTraspaso)
-        Me.Controls.Add(Me.T_ValorOrigenTraspaso)
+        Me.Controls.Add(Me.T_Gas)
+        Me.Controls.Add(Me.T_Comision)
+        Me.Controls.Add(Me.T_ValorDestino)
+        Me.Controls.Add(Me.T_ValorOrigen)
         Me.Controls.Add(Me.rT_Nota)
-        Me.Controls.Add(Me.T_HoraTraspaso)
-        Me.Controls.Add(Me.T_FechaTraspaso)
+        Me.Controls.Add(Me.T_Hora)
+        Me.Controls.Add(Me.T_Fecha)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.B_GrabarTraspaso)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.Label18)
-        Me.Controls.Add(Me.C_MonedaDestinoTraspaso)
+        Me.Controls.Add(Me.C_MonedaDestino)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.Label23)
-        Me.Controls.Add(Me.C_MonedaOrigenTraspaso)
+        Me.Controls.Add(Me.C_MonedaOrigen)
         Me.Controls.Add(Me.Label24)
-        Me.Controls.Add(Me.C_ExchangeTraspaso)
+        Me.Controls.Add(Me.C_Exchange)
         Me.Controls.Add(Me.Cal_FechaTraspaso)
         Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.Label27)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Traspaso"
         Me.Text = "F_Traspaso"
         Me.ResumeLayout(False)
@@ -381,31 +394,32 @@ Partial Class F_Traspaso
     End Sub
 
     Friend WithEvents L_Traspasos As ListBox
-    Friend WithEvents C_BilleteraDestinoTraspaso As ComboBox
+    Friend WithEvents C_BilleteraDestino As ComboBox
     Friend WithEvents Label44 As Label
-    Friend WithEvents C_BilleteraOrigenTraspaso As ComboBox
+    Friend WithEvents C_BilleteraOrigen As ComboBox
     Friend WithEvents Label41 As Label
-    Friend WithEvents T_GasTraspaso As TextBox
-    Friend WithEvents T_ComisionTraspaso As TextBox
-    Friend WithEvents T_ValorDestinoTraspaso As TextBox
-    Friend WithEvents T_ValorOrigenTraspaso As TextBox
+    Friend WithEvents T_Gas As TextBox
+    Friend WithEvents T_Comision As TextBox
+    Friend WithEvents T_ValorDestino As TextBox
+    Friend WithEvents T_ValorOrigen As TextBox
     Friend WithEvents rT_Nota As RichTextBox
-    Friend WithEvents T_HoraTraspaso As TextBox
-    Friend WithEvents T_FechaTraspaso As TextBox
+    Friend WithEvents T_Hora As TextBox
+    Friend WithEvents T_Fecha As TextBox
     Friend WithEvents Label15 As Label
     Friend WithEvents B_GrabarTraspaso As Button
     Friend WithEvents Label16 As Label
     Friend WithEvents Label18 As Label
-    Friend WithEvents C_MonedaDestinoTraspaso As ComboBox
+    Friend WithEvents C_MonedaDestino As ComboBox
     Friend WithEvents Label22 As Label
     Friend WithEvents Label23 As Label
-    Friend WithEvents C_MonedaOrigenTraspaso As ComboBox
+    Friend WithEvents C_MonedaOrigen As ComboBox
     Friend WithEvents Label24 As Label
-    Friend WithEvents C_ExchangeTraspaso As ComboBox
+    Friend WithEvents C_Exchange As ComboBox
     Friend WithEvents Cal_FechaTraspaso As DateTimePicker
     Friend WithEvents Label25 As Label
     Friend WithEvents Label26 As Label
     Friend WithEvents Label27 As Label
     Friend WithEvents B_Cerrar As Button
     Friend WithEvents B_NuevoBilletera As Button
+    Friend WithEvents L_Mensaje As Label
 End Class

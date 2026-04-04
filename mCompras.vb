@@ -47,6 +47,7 @@ Module mCompras
         Next i
         Matriz_Compras = Matriz
     End Sub
+
     'Public Function Buscar_Compras(T As String) As String
     '    For i As Integer = 1 To Matriz_ComprasTF
     '        If T = Matriz_Compras(i, 4) Then Return "S" 'Si existe

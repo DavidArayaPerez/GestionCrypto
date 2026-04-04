@@ -2,6 +2,7 @@
 '
 '
 Imports Microsoft.Graph.Admin
+Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
 
 Module mExchange
     '
@@ -23,8 +24,6 @@ Module mExchange
         Matriz_Exchange(Fila, 1) = ""
         Return Fila
     End Function
-
-
     Public Function Buscar_Exchange(T As String) As String
         Dim SW As Boolean = True
         For i As Integer = 1 To Matriz_ExchangeTF
@@ -32,6 +31,14 @@ Module mExchange
         Next i
         Return "N" 'No existe
     End Function
+    Public Sub Llenar_Exchange(ByRef Combo As ComboBox)
+        Dim T As String
+        Combo.Items.Clear()
+        For i As Integer = 1 To Matriz_ExchangeTF
+            T = Matriz_Exchange(i, 1)
+            Combo.Items.Add(T)
+        Next i
+    End Sub
 
 
 

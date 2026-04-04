@@ -408,6 +408,8 @@ Partial Class F_Compra
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Compra"
         Me.Text = "Compra"
         Me.ResumeLayout(False)

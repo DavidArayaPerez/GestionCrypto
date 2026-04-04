@@ -680,6 +680,7 @@ Partial Class F_Monedas
         Me.Controls.Add(Me.B_Cerrar)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_Monedas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Monedas"

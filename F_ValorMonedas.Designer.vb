@@ -128,6 +128,8 @@ Partial Class F_ValorMonedas
         Me.Controls.Add(Me.L_FechaValorMonedas)
         Me.Controls.Add(Me.C_MonedasValorMonedas)
         Me.Controls.Add(Me.Label52)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "F_ValorMonedas"
         Me.Text = "F_ValorMonedas"
         Me.ResumeLayout(False)
