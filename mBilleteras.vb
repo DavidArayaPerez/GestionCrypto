@@ -33,6 +33,14 @@ Module mBilleteras
             Combo.Items.Add(T)
         Next i
     End Sub
+    Public Sub LlenarList_Billetera(ByRef Lista As ListBox)
+        Dim T As String
+        Lista.Items.Clear()
+        For i As Integer = 1 To Matriz_BilleterasTF
+            T = Matriz_Billeteras(i, 1)
+            Lista.Items.Add(T)
+        Next i
+    End Sub
     '
     '
     '

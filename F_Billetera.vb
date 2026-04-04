@@ -9,12 +9,7 @@ Public Class F_Billetera
         VariableDeInicio = True
         Limpieza()
         '
-        L_Billeteras.Items.Clear()
-        Dim T As String
-        For i As Integer = 1 To Matriz_BilleterasTF
-            T = Matriz_Billeteras(i, 0) & " " & "(" & i & ")"
-            L_Billeteras.Items.Add(T)
-        Next i
+        LlenarList_Billetera(L_Billeteras)
         VariableDeInicio = False
     End Sub
     Private Sub Limpieza(Optional Habilitar As Boolean = False)

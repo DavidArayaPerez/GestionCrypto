@@ -11,12 +11,9 @@ Public Class F_Compra
         Limpiar()
         '
         Llenar_Exchange(C_Exchange)
-        Llenar_Monedas(C_MonedaOrigen)
+        Llenar_Monedas(C_MonedaOrigen) : C_MonedaOrigen.Items.Add("CLP") : C_MonedaOrigen.Items.Add("USDT")
         Llenar_Monedas(C_MonedaDestino)
-        '
-        C_MonedaOrigen.Items.Clear()
-        C_MonedaOrigen.Items.Add("CLP")
-        C_MonedaOrigen.Items.Add("USDT")
+        Llenar_Billetera(C_Billetera)
         '
         VariableDeInicio = False
     End Sub

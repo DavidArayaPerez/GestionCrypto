@@ -9,19 +9,7 @@ Public Class F_Monedas
         LimpiezaMoneda()
         '
         L_TotalMonedas.Text = Matriz_MonedasTF - 1
-        L_Monedas.Items.Clear()
-        Dim T As String
-        Dim Contador As Integer = 0
-        For i As Integer = 1 To Matriz_MonedasTF
-            T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
-            L_Monedas.Items.Add(T)
-            If Matriz_Monedas(i, 22) = "S" Then
-                If Contador < 50 Then
-                    API_CoinGecko_ActualizaValor(Matriz_Monedas(i, 4))
-                    Contador += 1
-                End If
-            End If
-        Next i
+        LlenarList_Monedas(L_Monedas)
         T_Busqueda_Monedas.Text = ""
     End Sub
     Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)

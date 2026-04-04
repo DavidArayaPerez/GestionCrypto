@@ -343,7 +343,7 @@ Partial Class F_zPrincipal
         Me.B_Compras.Name = "B_Compras"
         Me.B_Compras.Size = New System.Drawing.Size(99, 23)
         Me.B_Compras.TabIndex = 429
-        Me.B_Compras.Text = "Compras FIAT"
+        Me.B_Compras.Text = "Compras"
         Me.B_Compras.UseVisualStyleBackColor = False
         '
         'B_Billetera

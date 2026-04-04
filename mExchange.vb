@@ -39,12 +39,14 @@ Module mExchange
             Combo.Items.Add(T)
         Next i
     End Sub
-
-
-
-
-
-
+    Public Sub LlenarList_Exchange(ByRef Lista As ListBox)
+        Dim T As String
+        Lista.Items.Clear()
+        For i As Integer = 1 To Matriz_ExchangeTF
+            T = Matriz_Exchange(i, 1)
+            Lista.Items.Add(T)
+        Next i
+    End Sub
     '
     '
     '

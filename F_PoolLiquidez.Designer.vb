@@ -446,6 +446,7 @@ Partial Class F_PoolLiquidez
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(845, 520)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.Label1)

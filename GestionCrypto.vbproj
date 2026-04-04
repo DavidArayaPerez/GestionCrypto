@@ -378,7 +378,7 @@
     <Compile Include="mPoolLiquidez.vb" />
     <Compile Include="mRedes.vb" />
     <Compile Include="mTraspasos.vb" />
-    <Compile Include="mValorDolar.vb" />
+    <Compile Include="mValorUSD.vb" />
     <Compile Include="wObjeto_Calendario.vb" />
     <Compile Include="wObjeto_CajaTexto.vb" />
     <Compile Include="mBilleteras.vb" />

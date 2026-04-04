@@ -378,6 +378,7 @@ Partial Class F_Compra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(999, 526)
         Me.Controls.Add(Me.C_Billetera)
         Me.Controls.Add(Me.Label40)
@@ -410,9 +411,11 @@ Partial Class F_Compra
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
+        Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "F_Compra"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Compra"
         Me.ResumeLayout(False)
         Me.PerformLayout()

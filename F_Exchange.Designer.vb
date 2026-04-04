@@ -169,6 +169,7 @@ Partial Class F_Exchange
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(845, 518)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.L_Fila)
