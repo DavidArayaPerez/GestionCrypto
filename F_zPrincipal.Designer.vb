@@ -62,7 +62,6 @@ Partial Class F_zPrincipal
         Me.B_Monedas = New System.Windows.Forms.Button()
         Me.B_Redes = New System.Windows.Forms.Button()
         Me.B_Dolar = New System.Windows.Forms.Button()
-        Me.B_Depositos = New System.Windows.Forms.Button()
         Me.B_Compras = New System.Windows.Forms.Button()
         Me.B_Billetera = New System.Windows.Forms.Button()
         Me.B_PoolLiquidez = New System.Windows.Forms.Button()
@@ -337,17 +336,6 @@ Partial Class F_zPrincipal
         Me.B_Dolar.Text = "Dolar"
         Me.B_Dolar.UseVisualStyleBackColor = False
         '
-        'B_Depositos
-        '
-        Me.B_Depositos.BackColor = System.Drawing.SystemColors.Control
-        Me.B_Depositos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Depositos.Location = New System.Drawing.Point(12, 219)
-        Me.B_Depositos.Name = "B_Depositos"
-        Me.B_Depositos.Size = New System.Drawing.Size(99, 23)
-        Me.B_Depositos.TabIndex = 430
-        Me.B_Depositos.Text = "Depositos"
-        Me.B_Depositos.UseVisualStyleBackColor = False
-        '
         'B_Compras
         '
         Me.B_Compras.BackColor = System.Drawing.SystemColors.Control
@@ -424,7 +412,6 @@ Partial Class F_zPrincipal
         Me.Controls.Add(Me.B_Traspasos)
         Me.Controls.Add(Me.B_PoolLiquidez)
         Me.Controls.Add(Me.B_Movimientos)
-        Me.Controls.Add(Me.B_Depositos)
         Me.Controls.Add(Me.B_Compras)
         Me.Controls.Add(Me.B_Billetera)
         Me.Controls.Add(Me.B_Dolar)
@@ -480,7 +467,6 @@ Partial Class F_zPrincipal
     Friend WithEvents B_Monedas As Button
     Friend WithEvents B_Redes As Button
     Friend WithEvents B_Dolar As Button
-    Friend WithEvents B_Depositos As Button
     Friend WithEvents B_Compras As Button
     Friend WithEvents B_Billetera As Button
     Friend WithEvents B_PoolLiquidez As Button

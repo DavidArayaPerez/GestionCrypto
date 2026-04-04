@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class F_CompraFIAT
+Partial Class F_Compra
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -409,7 +409,7 @@ Partial Class F_CompraFIAT
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
         Me.Name = "F_CompraFIAT"
-        Me.Text = "Compra FIAT"
+        Me.Text = "Compra"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

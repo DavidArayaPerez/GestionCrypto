@@ -327,10 +327,10 @@
     <Compile Include="F_Billetera.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_CompraFIAT.Designer.vb">
-      <DependentUpon>F_CompraFIAT.vb</DependentUpon>
+    <Compile Include="F_Compra.Designer.vb">
+      <DependentUpon>F_Compra.vb</DependentUpon>
     </Compile>
-    <Compile Include="F_CompraFIAT.vb">
+    <Compile Include="F_Compra.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Dolar.Designer.vb">
@@ -425,8 +425,8 @@
     <EmbeddedResource Include="F_Billetera.resx">
       <DependentUpon>F_Billetera.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F_CompraFIAT.resx">
-      <DependentUpon>F_CompraFIAT.vb</DependentUpon>
+    <EmbeddedResource Include="F_Compra.resx">
+      <DependentUpon>F_Compra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Dolar.resx">
       <DependentUpon>F_Dolar.vb</DependentUpon>

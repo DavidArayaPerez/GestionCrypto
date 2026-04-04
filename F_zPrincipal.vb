@@ -95,10 +95,7 @@ Public Class F_zPrincipal
         F_Billetera.Show()
     End Sub
     Private Sub B_Compras_Click(sender As Object, e As EventArgs) Handles B_Compras.Click
-        F_CompraFIAT.Show()
-    End Sub
-    Private Sub B_Depositos_Click(sender As Object, e As EventArgs) Handles B_Depositos.Click
-        F_Depositos.Show()
+        F_Compra.Show()
     End Sub
     Private Sub B_Movimientos_Click(sender As Object, e As EventArgs) Handles B_Movimientos.Click
         F_Movimientos.Show()

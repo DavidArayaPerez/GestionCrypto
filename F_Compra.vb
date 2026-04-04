@@ -3,7 +3,7 @@
 '
 Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
 
-Public Class F_CompraFIAT
+Public Class F_Compra
     '
     '
     '
