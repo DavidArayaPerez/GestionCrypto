@@ -57,10 +57,12 @@ Partial Class F_Compra
         '
         'L_Compras
         '
+        Me.L_Compras.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.L_Compras.FormattingEnabled = True
+        Me.L_Compras.ItemHeight = 15
         Me.L_Compras.Location = New System.Drawing.Point(12, 56)
         Me.L_Compras.Name = "L_Compras"
-        Me.L_Compras.Size = New System.Drawing.Size(316, 446)
+        Me.L_Compras.Size = New System.Drawing.Size(316, 439)
         Me.L_Compras.TabIndex = 501
         '
         'Label45

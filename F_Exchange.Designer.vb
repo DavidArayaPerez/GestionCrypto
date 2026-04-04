@@ -38,10 +38,12 @@ Partial Class F_Exchange
         '
         'L_Exchange
         '
+        Me.L_Exchange.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.L_Exchange.FormattingEnabled = True
+        Me.L_Exchange.ItemHeight = 15
         Me.L_Exchange.Location = New System.Drawing.Point(12, 49)
         Me.L_Exchange.Name = "L_Exchange"
-        Me.L_Exchange.Size = New System.Drawing.Size(316, 433)
+        Me.L_Exchange.Size = New System.Drawing.Size(316, 424)
         Me.L_Exchange.TabIndex = 570
         '
         'B_Grabar

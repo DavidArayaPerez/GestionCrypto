@@ -51,7 +51,9 @@ Partial Class F_Billetera
         '
         'L_Billeteras
         '
+        Me.L_Billeteras.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.L_Billeteras.FormattingEnabled = True
+        Me.L_Billeteras.ItemHeight = 15
         Me.L_Billeteras.Location = New System.Drawing.Point(15, 84)
         Me.L_Billeteras.Name = "L_Billeteras"
         Me.L_Billeteras.Size = New System.Drawing.Size(316, 394)
