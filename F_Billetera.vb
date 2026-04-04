@@ -40,7 +40,7 @@ Public Class F_Billetera
         T_CodigoBilletera.Text = Matriz_Billeteras(F, 0)
         T_NombreBilletera.Text = Matriz_Billeteras(F, 1)
         '
-        Dim NombreNota As String = "Moneda" & T_NombreBilletera.Text & "_Nota.rtf"
+        Dim NombreNota As String = "Wall_" & T_NombreBilletera.Text & ".rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
         '   0   Codigo Billetera
         '   1   Nombre
@@ -55,7 +55,7 @@ Public Class F_Billetera
         '
         Guardar_Matrices("Billeteras")
         '
-        Dim NombreNota As String = "B_" & T_CodigoBilletera.Text & ".rtf"
+        Dim NombreNota As String = "Wall_" & T_CodigoBilletera.Text & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         L_Mensaje.Text = "Moneda guardada correctamente"

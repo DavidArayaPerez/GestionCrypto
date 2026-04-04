@@ -51,21 +51,23 @@ Partial Class F_CompraFIAT
         Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.T_Gas = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.C_Billetera = New System.Windows.Forms.ComboBox()
+        Me.Label40 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'L_Compras
         '
         Me.L_Compras.FormattingEnabled = True
-        Me.L_Compras.Location = New System.Drawing.Point(12, 69)
+        Me.L_Compras.Location = New System.Drawing.Point(12, 56)
         Me.L_Compras.Name = "L_Compras"
-        Me.L_Compras.Size = New System.Drawing.Size(316, 433)
+        Me.L_Compras.Size = New System.Drawing.Size(316, 446)
         Me.L_Compras.TabIndex = 501
         '
         'Label45
         '
         Me.Label45.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label45.ForeColor = System.Drawing.Color.Blue
-        Me.Label45.Location = New System.Drawing.Point(528, 280)
+        Me.Label45.Location = New System.Drawing.Point(357, 358)
         Me.Label45.Name = "Label45"
         Me.Label45.Size = New System.Drawing.Size(126, 13)
         Me.Label45.TabIndex = 500
@@ -75,7 +77,7 @@ Partial Class F_CompraFIAT
         '
         Me.L_PrecioMoneda.BackColor = System.Drawing.Color.LightGray
         Me.L_PrecioMoneda.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.L_PrecioMoneda.Location = New System.Drawing.Point(528, 298)
+        Me.L_PrecioMoneda.Location = New System.Drawing.Point(357, 376)
         Me.L_PrecioMoneda.Name = "L_PrecioMoneda"
         Me.L_PrecioMoneda.Size = New System.Drawing.Size(120, 20)
         Me.L_PrecioMoneda.TabIndex = 499
@@ -84,7 +86,7 @@ Partial Class F_CompraFIAT
         'T_Comision
         '
         Me.T_Comision.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_Comision.Location = New System.Drawing.Point(357, 298)
+        Me.T_Comision.Location = New System.Drawing.Point(357, 276)
         Me.T_Comision.MaxLength = 12
         Me.T_Comision.Name = "T_Comision"
         Me.T_Comision.Size = New System.Drawing.Size(123, 20)
@@ -94,7 +96,7 @@ Partial Class F_CompraFIAT
         'T_CantidadCryptos
         '
         Me.T_CantidadCryptos.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_CantidadCryptos.Location = New System.Drawing.Point(528, 249)
+        Me.T_CantidadCryptos.Location = New System.Drawing.Point(528, 221)
         Me.T_CantidadCryptos.MaxLength = 12
         Me.T_CantidadCryptos.Name = "T_CantidadCryptos"
         Me.T_CantidadCryptos.Size = New System.Drawing.Size(123, 20)
@@ -104,7 +106,7 @@ Partial Class F_CompraFIAT
         'T_MontoOrigen
         '
         Me.T_MontoOrigen.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_MontoOrigen.Location = New System.Drawing.Point(528, 188)
+        Me.T_MontoOrigen.Location = New System.Drawing.Point(528, 172)
         Me.T_MontoOrigen.MaxLength = 12
         Me.T_MontoOrigen.Name = "T_MontoOrigen"
         Me.T_MontoOrigen.Size = New System.Drawing.Size(123, 20)
@@ -116,10 +118,10 @@ Partial Class F_CompraFIAT
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
         Me.rT_Nota.BackColor = System.Drawing.Color.White
-        Me.rT_Nota.Location = New System.Drawing.Point(672, 69)
+        Me.rT_Nota.Location = New System.Drawing.Point(672, 56)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(303, 385)
+        Me.rT_Nota.Size = New System.Drawing.Size(303, 446)
         Me.rT_Nota.TabIndex = 485
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -159,7 +161,7 @@ Partial Class F_CompraFIAT
         '
         Me.Label05.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label05.ForeColor = System.Drawing.Color.Blue
-        Me.Label05.Location = New System.Drawing.Point(357, 281)
+        Me.Label05.Location = New System.Drawing.Point(357, 259)
         Me.Label05.Name = "Label05"
         Me.Label05.Size = New System.Drawing.Size(123, 13)
         Me.Label05.TabIndex = 494
@@ -169,7 +171,7 @@ Partial Class F_CompraFIAT
         '
         Me.Label08.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label08.ForeColor = System.Drawing.Color.Blue
-        Me.Label08.Location = New System.Drawing.Point(528, 233)
+        Me.Label08.Location = New System.Drawing.Point(528, 205)
         Me.Label08.Name = "Label08"
         Me.Label08.Size = New System.Drawing.Size(123, 13)
         Me.Label08.TabIndex = 492
@@ -179,7 +181,7 @@ Partial Class F_CompraFIAT
         '
         Me.C_MonedaDestino.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_MonedaDestino.FormattingEnabled = True
-        Me.C_MonedaDestino.Location = New System.Drawing.Point(357, 248)
+        Me.C_MonedaDestino.Location = New System.Drawing.Point(357, 221)
         Me.C_MonedaDestino.Name = "C_MonedaDestino"
         Me.C_MonedaDestino.Size = New System.Drawing.Size(123, 21)
         Me.C_MonedaDestino.TabIndex = 491
@@ -189,7 +191,7 @@ Partial Class F_CompraFIAT
         '
         Me.Label09.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label09.ForeColor = System.Drawing.Color.Blue
-        Me.Label09.Location = New System.Drawing.Point(357, 232)
+        Me.Label09.Location = New System.Drawing.Point(357, 205)
         Me.Label09.Name = "Label09"
         Me.Label09.Size = New System.Drawing.Size(126, 13)
         Me.Label09.TabIndex = 490
@@ -199,7 +201,7 @@ Partial Class F_CompraFIAT
         '
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label10.ForeColor = System.Drawing.Color.Blue
-        Me.Label10.Location = New System.Drawing.Point(528, 172)
+        Me.Label10.Location = New System.Drawing.Point(528, 156)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(123, 13)
         Me.Label10.TabIndex = 488
@@ -209,7 +211,7 @@ Partial Class F_CompraFIAT
         '
         Me.C_MonedaOrigen.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_MonedaOrigen.FormattingEnabled = True
-        Me.C_MonedaOrigen.Location = New System.Drawing.Point(357, 187)
+        Me.C_MonedaOrigen.Location = New System.Drawing.Point(357, 172)
         Me.C_MonedaOrigen.Name = "C_MonedaOrigen"
         Me.C_MonedaOrigen.Size = New System.Drawing.Size(123, 21)
         Me.C_MonedaOrigen.TabIndex = 487
@@ -219,17 +221,17 @@ Partial Class F_CompraFIAT
         '
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.Color.Blue
-        Me.Label11.Location = New System.Drawing.Point(357, 171)
+        Me.Label11.Location = New System.Drawing.Point(357, 156)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(123, 13)
         Me.Label11.TabIndex = 486
-        Me.Label11.Text = "Moneda Origen"
+        Me.Label11.Text = "Moneda Local"
         '
         'C_Exchange
         '
         Me.C_Exchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_Exchange.FormattingEnabled = True
-        Me.C_Exchange.Location = New System.Drawing.Point(528, 91)
+        Me.C_Exchange.Location = New System.Drawing.Point(528, 276)
         Me.C_Exchange.Name = "C_Exchange"
         Me.C_Exchange.Size = New System.Drawing.Size(123, 21)
         Me.C_Exchange.TabIndex = 484
@@ -272,7 +274,7 @@ Partial Class F_CompraFIAT
         '
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Blue
-        Me.Label14.Location = New System.Drawing.Point(528, 74)
+        Me.Label14.Location = New System.Drawing.Point(528, 259)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(123, 13)
         Me.Label14.TabIndex = 480
@@ -333,7 +335,7 @@ Partial Class F_CompraFIAT
         'T_Gas
         '
         Me.T_Gas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_Gas.Location = New System.Drawing.Point(357, 356)
+        Me.T_Gas.Location = New System.Drawing.Point(357, 325)
         Me.T_Gas.MaxLength = 12
         Me.T_Gas.Name = "T_Gas"
         Me.T_Gas.Size = New System.Drawing.Size(123, 20)
@@ -344,17 +346,39 @@ Partial Class F_CompraFIAT
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Blue
-        Me.Label1.Location = New System.Drawing.Point(357, 339)
+        Me.Label1.Location = New System.Drawing.Point(357, 309)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(123, 13)
         Me.Label1.TabIndex = 654
         Me.Label1.Text = "Valor Gas"
+        '
+        'C_Billetera
+        '
+        Me.C_Billetera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_Billetera.FormattingEnabled = True
+        Me.C_Billetera.Location = New System.Drawing.Point(528, 325)
+        Me.C_Billetera.Name = "C_Billetera"
+        Me.C_Billetera.Size = New System.Drawing.Size(123, 21)
+        Me.C_Billetera.TabIndex = 657
+        Me.C_Billetera.Text = "C_Billetera"
+        '
+        'Label40
+        '
+        Me.Label40.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label40.ForeColor = System.Drawing.Color.Blue
+        Me.Label40.Location = New System.Drawing.Point(528, 309)
+        Me.Label40.Name = "Label40"
+        Me.Label40.Size = New System.Drawing.Size(123, 13)
+        Me.Label40.TabIndex = 656
+        Me.Label40.Text = "Billetera"
         '
         'F_CompraFIAT
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(999, 526)
+        Me.Controls.Add(Me.C_Billetera)
+        Me.Controls.Add(Me.Label40)
         Me.Controls.Add(Me.T_Gas)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.L_Mensaje)
@@ -420,4 +444,6 @@ Partial Class F_CompraFIAT
     Friend WithEvents L_Mensaje As Label
     Friend WithEvents T_Gas As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents C_Billetera As ComboBox
+    Friend WithEvents Label40 As Label
 End Class

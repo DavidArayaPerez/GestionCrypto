@@ -26,6 +26,7 @@ Public Class F_CompraFIAT
         C_MonedaDestino.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
             T = Matriz_Monedas(i, 2)
+            C_MonedaOrigen.Items.Add(T)
             C_MonedaDestino.Items.Add(T)
         Next i
         '
@@ -86,8 +87,8 @@ Public Class F_CompraFIAT
         T_Gas.Text = Matriz_Compras(F, 9)
         L_PrecioMoneda.Text = Matriz_Compras(F, 10)
         '
-        'Dim NombreNota As String = T_FechaCompra.Text & "_" & T_HoraCompra.Text & "_" & "Compras" & "_Nota.rtf"
-        'CargaRTF(RutaLocal, NombreNota, rT_NotaCompra)
+        Dim NombreNota As String = "Fiat_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_Nota)
     End Sub
     Private Function DatosNoValidos() As Boolean
         Dim SW As Boolean
@@ -129,7 +130,7 @@ Public Class F_CompraFIAT
         '
         Guardar_Matrices("Compras")
         '
-        Dim NombreNota As String = "Com_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
+        Dim NombreNota As String = "Fiat_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         L_Mensaje.Text = "Compra guardada correctamente"

@@ -333,12 +333,6 @@
     <Compile Include="F_CompraFIAT.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_Depositos.Designer.vb">
-      <DependentUpon>F_Depositos.vb</DependentUpon>
-    </Compile>
-    <Compile Include="F_Depositos.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="F_Dolar.Designer.vb">
       <DependentUpon>F_Dolar.vb</DependentUpon>
     </Compile>
@@ -433,9 +427,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_CompraFIAT.resx">
       <DependentUpon>F_CompraFIAT.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="F_Depositos.resx">
-      <DependentUpon>F_Depositos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Dolar.resx">
       <DependentUpon>F_Dolar.vb</DependentUpon>
