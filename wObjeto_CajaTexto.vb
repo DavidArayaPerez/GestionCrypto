@@ -5,7 +5,7 @@ Module wObjeto_CajaTexto
     '
     '
     '
-    Public Function Texto_KeyPress(ByRef Control As TextBox, sender As Object, ByRef e As KeyPressEventArgs) As Boolean
+    Public Function SoloNumero_KeyPress(ByRef Control As TextBox, sender As Object, ByRef e As KeyPressEventArgs) As Boolean
         ' Permitir solo dígitos y teclas de control (como Backspace)
         If Char.IsDigit(e.KeyChar) Then
             Return False

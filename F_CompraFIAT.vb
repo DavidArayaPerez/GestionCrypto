@@ -1,6 +1,8 @@
 ﻿'
 '
 '
+Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
+
 Public Class F_CompraFIAT
     '
     '
@@ -13,7 +15,7 @@ Public Class F_CompraFIAT
         '
         C_Exchange.Items.Clear()
         For i As Integer = 1 To Matriz_ExchangeTF
-            T = Matriz_Exchange(i, 0) & " " & "(" & i & ")"
+            T = Matriz_Exchange(i, 1)
             C_Exchange.Items.Add(T)
         Next i
         '
@@ -23,7 +25,7 @@ Public Class F_CompraFIAT
         '
         C_MonedaDestino.Items.Clear()
         For i As Integer = 1 To Matriz_MonedasTF
-            T = Matriz_Monedas(i, 2) & " " & "(" & i & ")"
+            T = Matriz_Monedas(i, 2)
             C_MonedaDestino.Items.Add(T)
         Next i
         '
@@ -42,6 +44,7 @@ Public Class F_CompraFIAT
         T_CantidadCryptos.Text = ""
         C_Exchange.Text = ""
         T_Comision.Text = ""
+        T_Gas.Text = ""
         rT_Nota.Text = ""
         '
         T_Fecha.Enabled = Habilitar
@@ -52,7 +55,10 @@ Public Class F_CompraFIAT
         T_CantidadCryptos.Enabled = Habilitar
         C_Exchange.Enabled = Habilitar
         T_Comision.Enabled = Habilitar
+        T_Gas.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
+        '
+        Cal_Fecha.Enabled = Habilitar
     End Sub
     Private Sub Ver(F As Integer)
         Limpiar(True)
@@ -77,17 +83,39 @@ Public Class F_CompraFIAT
         C_MonedaDestino.Text = Matriz_Compras(F, 6)
         T_CantidadCryptos.Text = Matriz_Compras(F, 7)
         T_Comision.Text = Matriz_Compras(F, 8)
-        'T_GasCompra.Text = Matriz_Compras(F, 9)
+        T_Gas.Text = Matriz_Compras(F, 9)
         L_PrecioMoneda.Text = Matriz_Compras(F, 10)
         '
         'Dim NombreNota As String = T_FechaCompra.Text & "_" & T_HoraCompra.Text & "_" & "Compras" & "_Nota.rtf"
         'CargaRTF(RutaLocal, NombreNota, rT_NotaCompra)
     End Sub
-    Private Sub Grabar()
-        Dim F As Integer = L_Fila.Text
-        If F = 0 Then Exit Sub
+    Private Function DatosNoValidos() As Boolean
+        Dim SW As Boolean
         '
-        'Matriz_Compras(F, 0) = X
+        SW = True
+        For i As Integer = 1 To Matriz_ExchangeTF
+            If C_Exchange.Text = Matriz_Exchange(i, 1) Then SW = False : Exit For
+        Next i
+        If SW Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        '
+        If C_MonedaOrigen.Text <> "CLP" Or C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        '
+        SW = True
+        For i As Integer = 1 To Matriz_MonedasTF
+            If C_MonedaDestino.Text = Matriz_Monedas(i, 2) Then SW = False : Exit For
+        Next i
+        If SW Then L_Mensaje.Text = "Moneda no válida" : Return True
+        '
+        Return False
+    End Function
+    Private Sub Grabar()
+        If DatosNoValidos() Then Exit Sub
+        '
+        Dim F As Integer = L_Fila.Text
+        If F = 0 Then
+            F = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
+            Matriz_Compras(F, 0) = CrearCodigoInterno()
+        End If
         Matriz_Compras(F, 1) = T_Fecha.Text
         Matriz_Compras(F, 2) = T_Hora.Text
         Matriz_Compras(F, 3) = C_Exchange.Text
@@ -96,29 +124,34 @@ Public Class F_CompraFIAT
         Matriz_Compras(F, 6) = C_MonedaDestino.Text
         Matriz_Compras(F, 7) = T_CantidadCryptos.Text
         Matriz_Compras(F, 8) = T_Comision.Text
-        'Matriz_Compras(F, 9) = T_GasCompra.Text
+        Matriz_Compras(F, 9) = T_Gas.Text
         Matriz_Compras(F, 10) = L_PrecioMoneda.Text
-        '
-        L_PrecioMoneda.Text = T_CantidadCryptos.Text
         '
         Guardar_Matrices("Compras")
         '
-        Dim NombreNota As String = "M_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
+        Dim NombreNota As String = "Com_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         L_Mensaje.Text = "Compra guardada correctamente"
-        '   0   ID
-        '   1   Fecha
-        '   2   Hora
-        '   3   Plataforma      MetraMask, Uniswap, etc
-        '   4   Moneda_Origen
-        '   5   Valor_Origen
-        '   6   Moneda_Destino
-        '   7   Valor_Destino
-        '   8   Comision
-        '   9   Gas
-        '   10  Precio
+        'Matriz_Compras(F,0   ID
+        'Matriz_Compras(F,1   Fecha
+        'Matriz_Compras(F,2   Hora
+        'Matriz_Compras(F,3   Plataforma      MetraMask, Uniswap, etc
+        'Matriz_Compras(F,4   Moneda_Origen
+        'Matriz_Compras(F,5   Valor_Origen
+        'Matriz_Compras(F,6   Moneda_Destino
+        'Matriz_Compras(F,7   Valor_Destino
+        'Matriz_Compras(F,8   Comision
+        'Matriz_Compras(F,9   Gas
+        'Matriz_Compras(F,10  Precio
         '
+    End Sub
+    Private Sub CalculoPrecioFinal()
+        Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
+        Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
+        Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
+        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
+        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
     End Sub
     '
     '
@@ -139,7 +172,6 @@ Public Class F_CompraFIAT
         T_Fecha.Text = DateTime.Now.ToString("yyyyMMdd")
         T_Hora.Text = DateTime.Now.ToString("HHmmss")
         C_MonedaOrigen.Text = "CLP"
-
         T_MontoOrigen.Focus()
     End Sub
     Private Sub B_GrabarCompra_Click(sender As Object, e As EventArgs) Handles B_GrabarCompra.Click
@@ -148,46 +180,49 @@ Public Class F_CompraFIAT
 
     Private Sub T_CantidadCryptos_TextChanged(sender As Object, e As EventArgs) Handles T_CantidadCryptos.TextChanged
         If VariableDeInicio Then Exit Sub
-        Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
-        Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
-        Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
-        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
-        '
-        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
+        CalculoPrecioFinal()
     End Sub
-    Private Sub T_CantidadCryptos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_CantidadCryptos.KeyPress
-        If VariableDeInicio Then Exit Sub
-        Texto_KeyPress(T_CantidadCryptos, sender, e)
-    End Sub
+
     Private Sub T_Comision_TextChanged(sender As Object, e As EventArgs) Handles T_Comision.TextChanged
         If VariableDeInicio Then Exit Sub
-        Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
-        Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
-        Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
-        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
-        '
-        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
+        CalculoPrecioFinal()
+    End Sub
+
+    Private Sub T_MontoOrigen_TextChanged(sender As Object, e As EventArgs) Handles T_MontoOrigen.TextChanged
+        If VariableDeInicio Then Exit Sub
+        CalculoPrecioFinal()
+    End Sub
+    Private Sub T_Gas_TextChanged(sender As Object, e As EventArgs) Handles T_Gas.TextChanged
+        If VariableDeInicio Then Exit Sub
+        CalculoPrecioFinal()
+    End Sub
+    '
+    '
+    Private Sub T_CantidadCryptos_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_CantidadCryptos.KeyPress
+        If VariableDeInicio Then Exit Sub
+        If SoloNumero_KeyPress(T_CantidadCryptos, sender, e) Then e.Handled = True
     End Sub
     Private Sub T_Comision_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Comision.KeyPress
         If VariableDeInicio Then Exit Sub
-        Texto_KeyPress(T_CantidadCryptos, sender, e)
-    End Sub
-    Private Sub T_MontoOrigen_TextChanged(sender As Object, e As EventArgs) Handles T_MontoOrigen.TextChanged
-        If VariableDeInicio Then Exit Sub
-        Dim CantidadCryptos As Double = ValidaTXT_Numero(T_CantidadCryptos.Text)
-        Dim MontoOrigen As Double = ValidaTXT_Numero(T_MontoOrigen.Text)
-        Dim Comision As Double = ValidaTXT_Numero(T_Comision.Text)
-        Dim Gas As Double = ValidaTXT_Numero(T_Gas.Text)
-        '
-        L_PrecioMoneda.Text = (MontoOrigen / CantidadCryptos) - Comision - Gas
+        If SoloNumero_KeyPress(T_Comision, sender, e) Then e.Handled = True
     End Sub
     Private Sub T_MontoOrigen_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_MontoOrigen.KeyPress
         If VariableDeInicio Then Exit Sub
-        Texto_KeyPress(T_MontoOrigen, sender, e)
+        If SoloNumero_KeyPress(T_MontoOrigen, sender, e) Then e.Handled = True
     End Sub
+    Private Sub T_Gas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Gas.KeyPress
+        If VariableDeInicio Then Exit Sub
+        If SoloNumero_KeyPress(T_Gas, sender, e) Then e.Handled = True
+    End Sub
+    '
+    '
     Private Sub Cal_Fecha_ValueChanged(sender As Object, e As EventArgs) Handles Cal_Fecha.ValueChanged
         T_Fecha.Text = DateTime.Parse(Cal_Fecha.Value).ToString("yyyyMMdd")
     End Sub
+
+
+
+
     '
     '
     '
