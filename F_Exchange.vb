@@ -8,13 +8,7 @@ Public Class F_Exchange
     Private Sub Inicializar()
         VariableDeInicio = True
         Limpieza()
-        '
-        L_Exchange.Items.Clear()
-        Dim T As String
-        For i As Integer = 1 To Matriz_ExchangeTF
-            T = Matriz_Exchange(i, 1) & " (" & i & ")"
-            L_Exchange.Items.Add(T)
-        Next i
+        LlenarList_Exchange(L_Exchange)
         VariableDeInicio = False
     End Sub
     Private Sub Limpieza(Optional Habilitar As Boolean = False)

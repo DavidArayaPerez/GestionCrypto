@@ -8,7 +8,6 @@ Public Class F_Billetera
     Private Sub Inicializar()
         VariableDeInicio = True
         Limpieza()
-        '
         LlenarList_Billetera(L_Billeteras)
         VariableDeInicio = False
     End Sub

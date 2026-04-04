@@ -7,14 +7,11 @@ Public Class F_PoolLiquidez
     '
     Private Sub Inicializar()
         VariableDeInicio = True
-        '
         Limpiar()
-        '
         Llenar_Exchange(C_Exchange)
         Llenar_Billetera(C_Billetera)
         Llenar_Monedas(C_Moneda1)
         Llenar_Monedas(C_Moneda2)
-        '
         VariableDeInicio = False
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)

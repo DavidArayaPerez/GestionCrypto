@@ -35,33 +35,36 @@ Public Class F_zPrincipal
         'VariableDeInicio = True
         Parametros()
         LogTiempo("Parametros()")
-
+        '
         CargarTXT("ValorUSD", Matriz_ValorUSD)
         CargarTXT("Exchange", Matriz_Exchange)
         CargarTXT("Billeteras", Matriz_Billeteras)
         LogTiempo("ValorUSD+Exchange+Billeteras")
-
+        '
         CargarTXT("Depositos", Matriz_Depositos)
         Transformar_Fechas_Depositos()
         LogTiempo("Depositos+Transform")
-
+        '
         CargarTXT("Compras", Matriz_Compras)
         Transformar_Fechas_Compras()
         LogTiempo("Compras+Transform")
-
+        '
         CargarTXT("Traspasos", Matriz_Traspasos)
         Transformar_Fechas_Traspasos()
         LogTiempo("Traspasos+Transform")
-
+        '
         CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
         Transformar_Fechas_PoolLiquidez()
         LogTiempo("Pool+Transform")
-
+        '
         CargarTXT("Movimientos", Matriz_Movimientos)
         Transformar_Fechas_Movimientos()
         LogTiempo("Movimientos+Transform")
-
+        '
         CargarTXT("Redes", Matriz_Redes)
+        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
+        Guardar_Matrices("Redes")
+        '
         CargarTXT("Monedas", Matriz_Monedas)
         LogTiempo("Redes+Monedas+USD")
         '

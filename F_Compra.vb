@@ -7,14 +7,11 @@ Public Class F_Compra
     '
     Private Sub Inicializar()
         VariableDeInicio = True
-        '
         Limpiar()
-        '
         Llenar_Exchange(C_Exchange)
         Llenar_Monedas(C_MonedaOrigen) : C_MonedaOrigen.Items.Add("CLP") : C_MonedaOrigen.Items.Add("USDT")
         Llenar_Monedas(C_MonedaDestino)
         Llenar_Billetera(C_Billetera)
-        '
         VariableDeInicio = False
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)

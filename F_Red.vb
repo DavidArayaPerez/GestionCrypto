@@ -8,14 +8,8 @@ Public Class F_Red
     '
     '
     Private Sub Inicializar()
-        Dim T As String
         Limpiar()
-        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
-        L_Red.Items.Clear()
-        For i As Integer = 1 To Matriz_RedesTF
-            T = Matriz_Redes(i, 2) & " (" & i & ")"
-            L_Red.Items.Add(T)
-        Next i
+        LlenarList_Redes(L_Red)
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
         L_Fila.Text = ""

@@ -5,14 +5,13 @@ Public Class F_Monedas
     '
     '
     '
-    Private Sub ReCarga_Monedas()
-        LimpiezaMoneda()
-        '
-        L_TotalMonedas.Text = Matriz_MonedasTF - 1
+    Private Sub Inicializar()
+        Limpiar()
         LlenarList_Monedas(L_Monedas)
+        L_TotalMonedas.Text = Matriz_MonedasTF - 1
         T_Busqueda_Monedas.Text = ""
     End Sub
-    Private Sub LimpiezaMoneda(Optional Habilitar As Boolean = False)
+    Private Sub Limpiar(Optional Habilitar As Boolean = False)
         L_Mensaje.Text = ""
         L_Fila_Moneda.Text = ""
         'MONEDA
@@ -44,8 +43,8 @@ Public Class F_Monedas
         rT_Nota.Enabled = Habilitar
         B_Actualiza_Moneda.Enabled = Habilitar
     End Sub
-    Private Sub VerMoneda(F As Integer)
-        LimpiezaMoneda(True)
+    Private Sub Ver(F As Integer)
+        Limpiar(True)
         If F < 1 Then Exit Sub
         '
         '   0       ID_Moneda
@@ -108,7 +107,7 @@ Public Class F_Monedas
         Dim NombreNota As String = "Curr_" & L_Simbolo_Moneda.Text & ".rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
     End Sub
-    Private Sub GrabarMoneda()
+    Private Sub Grabar()
         Dim F As Integer = L_Fila_Moneda.Text
         If F = 0 Then Exit Sub
 
@@ -149,18 +148,18 @@ Public Class F_Monedas
         L_Mensaje.Text = "Moneda guardada correctamente"
     End Sub
     Private Sub CreaNuevaMoneda()
-        LimpiezaMoneda()
+        Limpiar()
         '
         Dim T As String = "Ingrese el nombre de la moneda, de acuerdo al estandar de COINGEKO (minusculas)" & vbCrLf & "Ejemplo: bitcoin, tether, ripple, tron"
         Dim Acronimo As String = UCase(InputBox(T, "Nueva Moneda")).ToLower
         Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
         If Fila > 0 Then
             MsgBox("La Moneda ya existe en la Matriz, se mostrará la moneda existente", vbInformation)
-            VerMoneda(Fila)
+            Ver(Fila)
             Exit Sub
         End If
         '
-        VerMoneda(API_CoinGecko_NuevaMoneda(Acronimo))
+        Ver(API_CoinGecko_NuevaMoneda(Acronimo))
     End Sub
     '
     '
@@ -172,7 +171,7 @@ Public Class F_Monedas
     '
     '
     Private Sub F_Monedas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ReCarga_Monedas()
+        Inicializar()
     End Sub
     Private Sub T_Busqueda_Monedas_KeyUp(sender As Object, e As KeyEventArgs) Handles T_Busqueda_Monedas.KeyUp
         If VariableDeInicio Then Exit Sub
@@ -194,7 +193,7 @@ Public Class F_Monedas
         Dim T As String = L_Monedas.Text
         Dim x As Integer = InStr(T, "(")
         If x = 0 Then Exit Sub
-        VerMoneda(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(Mid(T, x + 1, Len(T) - x - 1))
     End Sub
     Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
         '
@@ -203,17 +202,17 @@ Public Class F_Monedas
         CreaNuevaMoneda()
     End Sub
     Private Sub B_GrabarMoneda_Click_1(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
-        GrabarMoneda()
+        Grabar()
     End Sub
     Private Sub B_Actualizar_Monedas_Click_1(sender As Object, e As EventArgs) Handles B_ActualizaTODO_Monedas.Click
         Me.Enabled = False
         ActualizarMonedas()
-        ReCarga_Monedas()
+        Inicializar()
         Me.Enabled = True
     End Sub
     Private Sub B_Actualiza_Moneda_Click(sender As Object, e As EventArgs) Handles B_Actualiza_Moneda.Click
         API_CoinGecko_ActualizaValor(L_SlugAPI_Moneda.Text)
-        VerMoneda(L_Fila_Moneda.Text)
+        Ver(L_Fila_Moneda.Text)
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
