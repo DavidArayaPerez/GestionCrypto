@@ -14,6 +14,13 @@ Public Class F_Compra
         Llenar_Billetera(C_Billetera)
         LlenarList_Compras(L_Compras)
         '
+        'Valida que la Matriz Compras tenga un ID unico
+        For i As Integer = 1 To Matriz_ComprasTF
+            If Matriz_Compras(i, 0) = "XXX" Then
+                Matriz_Compras(i, 0) = CrearCodigoInterno()
+                Guardar_Matrices("Compras")
+            End If
+        Next
         VariableDeInicio = False
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
@@ -98,7 +105,6 @@ Public Class F_Compra
     Private Function PreGrabar() As Boolean
         '                 1   Fecha            2   Hora              3 Plataforma              6 Moneda_Destino
         Dim T As String = T_Fecha.Text & " " & T_Hora.Text & " - " & C_Exchange.Text & " - " & C_MonedaDestino.Text
-
         '
         If Val(L_Fila.Text) = 0 Then
             'Nuevo registro
@@ -180,7 +186,7 @@ Public Class F_Compra
         Limpiar(True)
         L_Fila.Text = "0"
         T_Fecha.Text = DateTime.Now.ToString("yyyyMMdd")
-        T_Hora.Text = DateTime.Now.ToString("HHmmss")
+        T_Hora.Text = DateTime.Now.ToString("HHmm")
         C_MonedaOrigen.Text = "CLP"
         T_MontoOrigen.Focus()
     End Sub

@@ -282,8 +282,7 @@ Public Class F_Monedas
         For i As Integer = 1 To Matriz_MonedasTF
             Dim Simbolo As String = Matriz_Monedas(i, 2).ToString().ToUpper()
             If Filtro = "" OrElse Simbolo.StartsWith(Filtro) Then
-                Dim T As String = Matriz_Monedas(i, 3) & " (" & i & ")"
-                L_Monedas.Items.Add(T)
+                L_Monedas.Items.Add(Matriz_Monedas(i, 2))
             End If
         Next
     End Sub

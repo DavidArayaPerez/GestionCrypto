@@ -11,7 +11,7 @@ Module zCargaInicia
     '
     Public zCargaInicialTXT As String = Application.StartupPath & "\zCargaInicial.txt"
     Public zParametrosTXT As String = Application.StartupPath & "\zParametros.txt"
-    Public API_CMF, API_COINGEKO As String
+    Public API_CMF, API_COINGEKO, API_ETHERSCAN As String
     Public RutaLocal As String              'Variable para trabajar en forma local, o forma nativa.
     '
     '
@@ -49,19 +49,23 @@ Module zCargaInicia
                 Case "RUTA_LOCAL"
                     RutaLocal = Columna2
                     ArchivoFinal(0) = Columna1 & vbTab & Columna2   'Fila 0
-
+                    '
                 Case "API_CMF"
                     API_CMF = Columna2
                     ArchivoFinal(1) = Columna1 & vbTab & Columna2   'Fila 1
-
+                    '
                 Case "API_COINGEKO"
                     API_COINGEKO = Columna2
                     ArchivoFinal(2) = Columna1 & vbTab & Columna2   'Fila 2
-
+                    '
+                Case "API_ETHERSCAN"
+                    API_ETHERSCAN = Columna2
+                    ArchivoFinal(3) = Columna1 & vbTab & Columna2   'Fila 3
+                    '
             End Select
         Next Fila
         '
-        ArchivoFinal(3) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()    'Fila 3
+        ArchivoFinal(4) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()    'Fila 4
         '
         If RutaLocal = "" Then
             Texto = "No fue encontrada la variable RUTA local" & vbCrLf

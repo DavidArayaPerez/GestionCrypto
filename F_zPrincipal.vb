@@ -35,11 +35,31 @@ Public Class F_zPrincipal
         'VariableDeInicio = True
         Parametros()
         LogTiempo("Parametros()")
+
+        '1: Redes / Es el corazon del programa
+        CargarTXT("Redes", Matriz_Redes)
+        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
+        Guardar_Matrices("Redes")
         '
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
-        CargarTXT("Exchange", Matriz_Exchange)
+        '2.- Billeteras
         CargarTXT("Billeteras", Matriz_Billeteras)
-        LogTiempo("ValorUSD+Exchange+Billeteras")
+        '
+        '3.- Las Monedas
+        CargarTXT("Monedas", Matriz_Monedas)
+        AsignarRedNativa_MonedasSinRed()
+        LogTiempo("Monedas")
+        '
+        '4.- Exchange
+        CargarTXT("Exchange", Matriz_Exchange)
+        LogTiempo("Exchange")
+        '
+        '
+        CargarTXT("BilleteraSaldo", Matriz_BilleteraSaldo)
+        LogTiempo("BilleteraSaldo")
+
+
+        CargarTXT("ValorUSD", Matriz_ValorUSD)
+        LogTiempo("ValorUSD")
         '
         CargarTXT("Depositos", Matriz_Depositos)
         Transformar_Fechas_Depositos()
@@ -47,22 +67,17 @@ Public Class F_zPrincipal
         '
         CargarTXT("Compras", Matriz_Compras)
         Transformar_Fechas_Compras()
-        LogTiempo("Compras+Transform")
+        LogTiempo("Compras")
         '
         CargarTXT("Traspasos", Matriz_Traspasos)
         Transformar_Fechas_Traspasos()
-        LogTiempo("Traspasos+Transform")
+        LogTiempo("Traspasos")
         '
         CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
         Transformar_Fechas_PoolLiquidez()
-        LogTiempo("Pool+Transform")
+        LogTiempo("PoolLiquidez")
         '
-        CargarTXT("Redes", Matriz_Redes)
-        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
-        Guardar_Matrices("Redes")
         '
-        CargarTXT("Monedas", Matriz_Monedas)
-        LogTiempo("Redes+Monedas+USD")
         '
         'VariableDeInicio = False
         swTotal.Stop()

@@ -131,7 +131,7 @@ Partial Class F_Compra
         '
         Me.T_Hora.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.T_Hora.Location = New System.Drawing.Point(450, 91)
-        Me.T_Hora.MaxLength = 8
+        Me.T_Hora.MaxLength = 4
         Me.T_Hora.Name = "T_Hora"
         Me.T_Hora.Size = New System.Drawing.Size(56, 20)
         Me.T_Hora.TabIndex = 2

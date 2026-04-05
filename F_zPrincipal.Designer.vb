@@ -295,7 +295,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(12, 378)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 329)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 416
@@ -361,7 +361,7 @@ Partial Class F_zPrincipal
         '
         Me.B_PoolLiquidez.BackColor = System.Drawing.SystemColors.Control
         Me.B_PoolLiquidez.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 277)
+        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 228)
         Me.B_PoolLiquidez.Name = "B_PoolLiquidez"
         Me.B_PoolLiquidez.Size = New System.Drawing.Size(99, 23)
         Me.B_PoolLiquidez.TabIndex = 432
@@ -372,7 +372,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Traspasos.BackColor = System.Drawing.SystemColors.Control
         Me.B_Traspasos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Traspasos.Location = New System.Drawing.Point(12, 306)
+        Me.B_Traspasos.Location = New System.Drawing.Point(12, 257)
         Me.B_Traspasos.Name = "B_Traspasos"
         Me.B_Traspasos.Size = New System.Drawing.Size(99, 23)
         Me.B_Traspasos.TabIndex = 433

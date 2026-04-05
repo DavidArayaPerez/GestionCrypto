@@ -78,6 +78,7 @@ Module xFunciones_Archivo
             Case "Traspasos" : ColMatriz = Matriz_TraspasosTC
             Case "Redes" : ColMatriz = Matriz_RedesTC
             Case "ValorUSD" : ColMatriz = Matriz_ValorUSDTC
+            Case "BilleteraSaldo" : ColMatriz = Matriz_BilleteraSaldosTC
             Case Else
                 ColMatriz = 0
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
@@ -96,6 +97,7 @@ Module xFunciones_Archivo
             Case "Traspasos" : Matriz_TraspasosTF = Filas
             Case "Redes" : Matriz_RedesTF = Filas
             Case "ValorUSD" : Matriz_ValorUSDTF = Filas
+            Case "BilleteraSaldo" : Matriz_BilleteraSaldosTF = Filas
             Case Else
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
         End Select
@@ -172,6 +174,10 @@ Module xFunciones_Archivo
                 MatrizAuxActual = Matriz_Redes
                 TotalFilas = Matriz_RedesTF
                 TotalColumnas = Matriz_RedesTC
+            Case "BilleteraSaldo"
+                MatrizAuxActual = Matriz_BilleteraSaldo
+                TotalFilas = Matriz_BilleteraSaldosTF
+                TotalColumnas = Matriz_BilleteraSaldosTC
         End Select
     End Sub
     '

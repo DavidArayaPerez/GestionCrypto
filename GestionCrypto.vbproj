@@ -369,6 +369,7 @@
     <Compile Include="F_Traspaso.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="mBilleteraSaldo.vb" />
     <Compile Include="zAPI_CoinGecko.vb" />
     <Compile Include="mCompras.vb" />
     <Compile Include="mDepositos.vb" />
@@ -389,6 +390,7 @@
     <Compile Include="zAPI_CMF_Chile.vb" />
     <Compile Include="xFunciones_Archivo.vb" />
     <Compile Include="xFunciones_Carpeta.vb" />
+    <Compile Include="zAPI_EtherScan.vb" />
     <Compile Include="zCargaInicia.vb" />
     <Compile Include="zCrearCodigoUnico.vb" />
     <Compile Include="xFunciones Fechas.vb" />

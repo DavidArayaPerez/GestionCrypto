@@ -215,7 +215,7 @@ Module zAPI_CoinGecko
         Next
         Return resultado
     End Function
-    Private Function ValorSeguro(node As JsonNode) As String
+    Public Function ValorSeguro(node As JsonNode) As String
         Return If(node Is Nothing, "0", node.ToString())
     End Function
     Public Function ConvertirFechaUTCaChile(ByVal fechaISO As String) As String
@@ -254,8 +254,7 @@ Module zAPI_CoinGecko
             Supply_Maximo As String,    '11
             MarketCapRank As String)    '13
         '
-        Matriz_Monedas(Fila, 0) = CrearCodigoInterno()  '0  ID_Moneda
-        Matriz_Monedas(Fila, 1) = CrearCodigoInterno()  '1  ID_Despliegue
+
         Matriz_Monedas(Fila, 2) = Simbolo               '2  Simbolo
         Matriz_Monedas(Fila, 3) = Nombre                '3  Nombre_Oficial
         Matriz_Monedas(Fila, 4) = Slug_API              '4  Slug_API
@@ -273,6 +272,297 @@ Module zAPI_CoinGecko
         Matriz_Monedas(Fila, 23) = "CryptoMoneda"       '23 Tipo Moneda
     End Sub
 
+
+
+    ' ============================================================
+    '  Asignar Red Nativa a monedas que tienen ID_Red_Nativa = "0"
+    '  Consulta CoinGecko por cada moneda sin red asignada,
+    '  obtiene asset_platform_id y lo cruza con Matriz_Redes.
+    ' ============================================================
+    Public Sub AsignarRedNativa_MonedasSinRed()
+        Dim monedasActualizadas As Integer = 0
+        Dim monedasSinMatch As Integer = 0
+        Dim detalleSinMatch As String = ""
+        '
+        ' Descargar catálogo de plataformas UNA sola vez al inicio
+        ' para no hacer una llamada extra por cada red nueva
+        Dim plataformas As Dictionary(Of String, JsonNode) = ObtenerCatalogoPlatformas()
+        '
+        For i As Integer = 1 To Matriz_MonedasTF
+            If Matriz_Monedas(i, 10) <> "0" Then Continue For
+            If Matriz_Monedas(i, 23) <> "CryptoMoneda" Then Continue For
+            '
+            Dim slug As String = Matriz_Monedas(i, 4)
+            Dim simbolo As String = Matriz_Monedas(i, 2)
+            '
+            If slug = "0" OrElse String.IsNullOrWhiteSpace(slug) Then Continue For
+            '
+            Try
+                ' --- 1. Obtener platform_id desde CoinGecko ---
+                Dim platformId As String = ObtenerPlatformId(slug)
+                If String.IsNullOrWhiteSpace(platformId) Then Continue For
+                '
+                ' --- 2. Buscar en Matriz_Redes ---
+                Dim filaRed As Integer = 0
+                For r As Integer = 1 To Matriz_RedesTF
+                    If Matriz_Redes(r, 4).ToLower() = platformId Then
+                        filaRed = r
+                        Exit For
+                    End If
+                Next r
+                '
+                ' --- 3. Si no existe la red, agregarla ahora ---
+                If filaRed = 0 Then
+                    filaRed = AgregarRedDesdesCatalogo(platformId, plataformas)
+                End If
+                '
+                ' --- 4. Asignar o registrar fallo ---
+                If filaRed > 0 Then
+                    Matriz_Monedas(i, 10) = Matriz_Redes(filaRed, 0)
+                    monedasActualizadas += 1
+                Else
+                    monedasSinMatch += 1
+                    detalleSinMatch &= $"  • {simbolo} ({slug}) → plataforma: '{platformId}'" & vbCrLf
+                End If
+                '
+                Threading.Thread.Sleep(2500)
+                '
+            Catch ex As Exception
+                detalleSinMatch &= $"  • {simbolo} ({slug}) → ERROR: {ex.Message}" & vbCrLf
+                monedasSinMatch += 1
+            End Try
+        Next i
+        '
+        ' --- 5. Guardar ambas matrices si hubo cambios ---
+        If monedasActualizadas > 0 Then
+            Guardar_Matrices("Redes")
+            Guardar_Matrices("Monedas")
+        End If
+        '
+        ' --- 6. Informe final ---
+        Dim resumen As String = $"Proceso completado." & vbCrLf & vbCrLf & $"✔ Monedas actualizadas: {monedasActualizadas}" & vbCrLf & $"✘ Sin coincidencia: {monedasSinMatch}"
+        '
+        If detalleSinMatch <> "" Then resumen &= vbCrLf & vbCrLf & "Monedas que no pudieron resolverse:" & vbCrLf & detalleSinMatch
+        MsgBox(resumen, vbInformation, "AsignarRedNativa_MonedasSinRed")
+    End Sub
+    ' ------------------------------------------------------------
+    '  Agrega una red nueva a Matriz_Redes usando el catálogo
+    '  ya descargado. Devuelve la fila creada, o 0 si falla.
+    ' ------------------------------------------------------------
+    Private Function AgregarRedDesdesCatalogo(ByVal platformId As String, ByVal plataformas As Dictionary(Of String, JsonNode)) As Integer
+        Dim nombreOficial As String = platformId  ' fallback
+        Dim chainId As String = "0"
+        Dim esEVM As String = "No"
+        '
+        If plataformas IsNot Nothing AndAlso plataformas.ContainsKey(platformId) Then
+            Dim p As JsonNode = plataformas(platformId)
+            nombreOficial = ValorSeguro(p("name"))
+            Dim chainNode As JsonNode = p("chain_identifier")
+            If chainNode IsNot Nothing AndAlso
+           chainNode.GetValueKind() <> JsonValueKind.Null Then
+                chainId = chainNode.ToString()
+                esEVM = "Si"
+            End If
+        End If
+        '
+        Try
+            Dim filaRed As Integer = AgrandarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC)
+            '
+            Matriz_Redes(filaRed, 0) = CrearCodigoInterno()
+            Matriz_Redes(filaRed, 1) = chainId
+            Matriz_Redes(filaRed, 2) = nombreOficial
+            Matriz_Redes(filaRed, 3) = nombreOficial
+            Matriz_Redes(filaRed, 4) = platformId
+            Matriz_Redes(filaRed, 5) = "L1"    ' Por defecto, revisar manualmente si es L2
+            Matriz_Redes(filaRed, 6) = "0"
+            Matriz_Redes(filaRed, 7) = "0"
+            Matriz_Redes(filaRed, 8) = esEVM
+            Matriz_Redes(filaRed, 9) = "0"
+            Matriz_Redes(filaRed, 10) = "0"
+            Matriz_Redes(filaRed, 11) = "0"
+            Matriz_Redes(filaRed, 12) = "0"
+            Matriz_Redes(filaRed, 13) = "0"
+            Matriz_Redes(filaRed, 14) = "0"
+            Matriz_Redes(filaRed, 15) = "0"
+            Matriz_Redes(filaRed, 16) = "0"
+            Matriz_Redes(filaRed, 17) = "S"
+            Return filaRed
+            '
+        Catch ex As Exception
+            Return 0
+        End Try
+        '
+    End Function
+    '
+    '
+    '
+    ' ============================================================
+    '  Agregar redes faltantes a Matriz_Redes desde CoinGecko
+    '  Recibe la lista de slugs de plataforma que no se encontraron
+    '  en Redes.txt, consulta la API y agrega cada red nueva.
+    '  Luego vuelve a ejecutar AsignarRedNativa_MonedasSinRed()
+    '  para completar el cruce con Monedas.
+    ' ============================================================
+    Public Sub AgregarRedesFaltantes_DesdeCoinGecko()
+        ' --- 1. Recolectar slugs de plataforma de monedas sin red ---
+        Dim slugsPendientes As New List(Of String)
+        '
+        For i As Integer = 1 To Matriz_MonedasTF
+            If Matriz_Monedas(i, 10) <> "0" Then Continue For
+            If Matriz_Monedas(i, 23) <> "CryptoMoneda" Then Continue For
+
+            Dim slug As String = Matriz_Monedas(i, 4)
+            If slug = "0" OrElse String.IsNullOrWhiteSpace(slug) Then Continue For
+
+            ' Determinar el platformId igual que en AsignarRedNativa_MonedasSinRed
+            Dim platformId As String = ObtenerPlatformId(slug)
+            If String.IsNullOrWhiteSpace(platformId) Then Continue For
+
+            ' Verificar que realmente no esté en Matriz_Redes
+            Dim yaExiste As Boolean = False
+            For r As Integer = 1 To Matriz_RedesTF
+                If Matriz_Redes(r, 4).ToLower() = platformId.ToLower() Then
+                    yaExiste = True
+                    Exit For
+                End If
+            Next r
+
+            If Not yaExiste AndAlso Not slugsPendientes.Contains(platformId.ToLower()) Then
+                slugsPendientes.Add(platformId.ToLower())
+            End If
+
+            Threading.Thread.Sleep(2500) ' respetar límite API demo
+        Next i
+
+        If slugsPendientes.Count = 0 Then
+            MsgBox("No hay redes nuevas para agregar.", vbInformation)
+            Return
+        End If
+
+        ' --- 2. Para cada slug pendiente, consultar /coins/asset_platforms ---
+        '  CoinGecko tiene el endpoint /asset_platforms que devuelve la lista
+        '  completa de plataformas con id, name, chain_identifier (Chain ID EVM).
+        Dim plataformas As Dictionary(Of String, JsonNode) = ObtenerCatalogoPlatformas()
+
+        Dim redesAgregadas As Integer = 0
+        Dim detalle As String = ""
+
+        For Each platformId As String In slugsPendientes
+
+            Dim nombreOficial As String = platformId  ' fallback
+            Dim chainId As String = "0"
+            Dim esEVM As String = "No"
+
+            ' Buscar en el catálogo de plataformas
+            If plataformas IsNot Nothing AndAlso plataformas.ContainsKey(platformId) Then
+                Dim p As JsonNode = plataformas(platformId)
+                nombreOficial = ValorSeguro(p("name"))
+                Dim chainNode As JsonNode = p("chain_identifier")
+                If chainNode IsNot Nothing AndAlso chainNode.GetValueKind() <> JsonValueKind.Null Then
+                    chainId = chainNode.ToString()
+                    esEVM = "Si"
+                End If
+            End If
+
+            ' Crear nueva fila en Matriz_Redes
+            Dim filaRed As Integer = AgrandarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC)
+
+            Matriz_Redes(filaRed, 0) = CrearCodigoInterno()   '0  ID_Interno
+            Matriz_Redes(filaRed, 1) = chainId                '1  Chain_ID
+            Matriz_Redes(filaRed, 2) = nombreOficial          '2  Nombre_Oficial
+            Matriz_Redes(filaRed, 3) = nombreOficial          '3  Nombre_Corto (igual por ahora)
+            Matriz_Redes(filaRed, 4) = platformId             '4  Slug_API
+            Matriz_Redes(filaRed, 5) = "L1"                  '5  Tipo_Capa (L1 por defecto, ajustar manual si es L2)
+            Matriz_Redes(filaRed, 6) = "0"                   '6  L1_Padre
+            Matriz_Redes(filaRed, 7) = "0"                   '7  Tipo_Rollup
+            Matriz_Redes(filaRed, 8) = esEVM                 '8  Compatible_EVM
+            Matriz_Redes(filaRed, 9) = "0"                   '9  Mecanismo_Consenso
+            Matriz_Redes(filaRed, 10) = "0"                  '10 Token_Nativo
+            Matriz_Redes(filaRed, 11) = "0"                  '11 Decimales
+            Matriz_Redes(filaRed, 12) = "0"                  '12 Tiempo_Bloque
+            Matriz_Redes(filaRed, 13) = "0"                  '13 Color_Marca
+            Matriz_Redes(filaRed, 14) = "0"                  '14 URL_Explorador
+            Matriz_Redes(filaRed, 15) = "0"                  '15 URL_Logo
+            Matriz_Redes(filaRed, 16) = "0"                  '16 URL_RPC
+            Matriz_Redes(filaRed, 17) = "S"                  '17 Activa
+
+            redesAgregadas += 1
+            detalle &= $"  + {nombreOficial} (slug: {platformId}, ChainID: {chainId}, EVM: {esEVM})" & vbCrLf
+        Next
+
+        ' --- 3. Guardar Redes.txt ---
+        If redesAgregadas > 0 Then
+            Guardar_Matrices("Redes")
+        End If
+
+        ' --- 4. Informe y oferta de continuar ---
+        Dim resumen As String = $"Redes agregadas: {redesAgregadas}" & vbCrLf & vbCrLf & detalle & vbCrLf &
+                                "Nota: Tipo_Capa se asignó 'L1' por defecto. " &
+                                "Revisa manualmente las que sean L2 en F_Red." & vbCrLf & vbCrLf &
+                                "¿Desea ejecutar ahora 'AsignarRedNativa_MonedasSinRed' para completar el cruce?"
+
+        Dim respuesta As MsgBoxResult = MsgBox(resumen, vbYesNo + vbInformation, "AgregarRedesFaltantes")
+        If respuesta = MsgBoxResult.Yes Then
+            AsignarRedNativa_MonedasSinRed()
+        End If
+
+    End Sub
+
+    ' ------------------------------------------------------------
+    '  Auxiliar: obtiene el asset_platform_id de una moneda en CoinGecko
+    '  Reutilizable para no duplicar la llamada HTTP
+    ' ------------------------------------------------------------
+    Private Function ObtenerPlatformId(ByVal slug As String) As String
+        Try
+            Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" &
+                                "?localization=false&tickers=false" &
+                                "&market_data=false&community_data=false" &
+                                $"&developer_data=false&x_cg_demo_api_key={API_COINGEKO}"
+
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(url))
+            Dim item As JsonNode = JsonNode.Parse(json)
+
+            Dim platformNode As JsonNode = item("asset_platform_id")
+            If platformNode IsNot Nothing AndAlso
+               platformNode.GetValueKind() <> JsonValueKind.Null Then
+                Dim pid As String = platformNode.ToString().Trim()
+                If Not String.IsNullOrWhiteSpace(pid) Then Return pid
+            End If
+
+            ' Coin nativa → la red tiene el mismo slug que la moneda
+            Return slug.ToLower()
+
+        Catch ex As Exception
+            Return ""
+        End Try
+    End Function
+
+    ' ------------------------------------------------------------
+    '  Auxiliar: descarga el catálogo completo de plataformas de CoinGecko
+    '  Endpoint: /asset_platforms  → id, name, chain_identifier
+    ' ------------------------------------------------------------
+    Private Function ObtenerCatalogoPlatformas() As Dictionary(Of String, JsonNode)
+        Dim resultado As New Dictionary(Of String, JsonNode)
+        Try
+            Dim url As String = CG_BASE_URL & $"asset_platforms?x_cg_demo_api_key={API_COINGEKO}"
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(url))
+            Dim array As JsonArray = JsonNode.Parse(json).AsArray()
+
+            For Each p As JsonNode In array
+                Dim id As String = ValorSeguro(p("id")).ToLower()
+                If Not String.IsNullOrWhiteSpace(id) AndAlso id <> "0" Then
+                    resultado(id) = p
+                End If
+            Next
+        Catch ex As Exception
+            MsgBox("Error al obtener catálogo de plataformas: " & ex.Message)
+        End Try
+        Return resultado
+    End Function
     '
     '
     '
