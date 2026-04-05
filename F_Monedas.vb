@@ -1,6 +1,10 @@
 ﻿'
 '
 '
+Imports Microsoft.Graph.Admin
+'
+'
+'
 Public Class F_Monedas
     '
     '
@@ -10,20 +14,28 @@ Public Class F_Monedas
         LlenarList_Monedas(L_Monedas)
         L_TotalMonedas.Text = Matriz_MonedasTF - 1
         T_Busqueda_Monedas.Text = ""
+        '
+        'For i As Integer = 1 To Matriz_MonedasTF
+        '    If Matriz_Monedas(i, 23) = "0" Then
+        '        Matriz_Monedas(i, 23) = "CryptoMoneda"
+        '        Guardar_Matrices("Monedas")
+        '    End If
+        'Next i
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
         L_Mensaje.Text = ""
-        L_Fila_Moneda.Text = ""
+        L_Fila.Text = ""
         'MONEDA
-        T_ContractAddress_Moneda.Text = ""
+        C_TipoMoneda.Text = "CryptoMoneda"
+        T_SlugAPI.Text = ""
+        T_ContractAddres.Text = ""
+        T_Simbolo.Text = ""
         '
-        L_Simbolo_Moneda.Text = ""
-        L_NombreOficial_Moneda.Text = ""
-        L_SlugAPI_Moneda.Text = ""
-        L_TipoActivo_Moneda.Text = ""
-        L_SubtipoStablecoin_Moneda.Text = ""
-        L_MarketCapRank_Moneda.Text = ""
-        L_IDredNativa_Moneda.Text = ""
+        L_NombreOficial.Text = ""
+        L_TipoActivo.Text = ""
+        L_SubtipoStablecoin.Text = ""
+        L_MarketCapRank.Text = ""
+        L_IDredNativa.Text = ""
         T_LinkCoinGeko.Text = ""
         L_CurentPrice.Text = ""
         L_Hight24h.Text = ""
@@ -36,16 +48,55 @@ Public Class F_Monedas
         CB_ActualizacionAutomatica.Checked = False
         rT_Nota.Text = ""
         '
-        L_IDmoneda_Moneda.Text = ""
-        L_IDdespliegue_Moneda.Text = ""
+        L_IDmoneda.Text = ""
+        L_IDdespliegue.Text = ""
         '
+        C_TipoMoneda.Enabled = Habilitar
+        T_SlugAPI.Enabled = Habilitar
+        T_Simbolo.Enabled = Habilitar
         CB_ActualizacionAutomatica.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
         B_Actualiza_Moneda.Enabled = Habilitar
     End Sub
-    Private Sub Ver(F As Integer)
+    Private Sub Ver(Slug_API As String)
         Limpiar(True)
+        Dim F As Integer = BuscarMoneda(Slug_API)
         If F < 1 Then Exit Sub
+        '
+        CB_ActualizacionAutomatica.Checked = False
+        '
+        L_Fila.Text = F
+        L_IDmoneda.Text = Matriz_Monedas(F, 0)
+        L_IDdespliegue.Text = Matriz_Monedas(F, 1)
+        T_Simbolo.Text = Matriz_Monedas(F, 2)
+        L_NombreOficial.Text = Matriz_Monedas(F, 3)
+        T_SlugAPI.Text = Matriz_Monedas(F, 4)
+        L_TipoActivo.Text = Matriz_Monedas(F, 5)
+        L_SubtipoStablecoin.Text = Matriz_Monedas(F, 6)
+        '   7       Moneda_Paridad
+        '   8       Centralizada
+        '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
+        L_IDredNativa.Text = Matriz_Monedas(F, 10)       'xxxx
+        '   11      Supply_Maximo
+        T_ContractAddres.Text = Matriz_Monedas(F, 12)
+        L_MarketCapRank.Text = Matriz_Monedas(F, 13)
+        T_LinkCoinGeko.Text = "https://www.coingecko.com/es/monedas/" & T_Simbolo.Text
+        L_CurentPrice.Text = FormatoChileno(Matriz_Monedas(F, 15), 6)
+        L_Hight24h.Text = FormatoChileno(Matriz_Monedas(F, 16), 6)
+        L_Low24h.Text = FormatoChileno(Matriz_Monedas(F, 17), 6)
+        L_PriceChange24h.Text = FormatoChileno(Matriz_Monedas(F, 18))
+        L_PriceChangePor24h.Text = FormatoChileno(Matriz_Monedas(F, 19), 0) & " %"
+        L_CirculatingSupply.Text = FormatoChileno(Matriz_Monedas(F, 20), 0)
+        L_FechaActualizacion.Text = ConvertirFechaUTCaChile(Matriz_Monedas(F, 21))
+        If Matriz_Monedas(F, 22) = "S" Then CB_ActualizacionAutomatica.Checked = True
+        C_TipoMoneda.Text = Matriz_Monedas(F, 23)
+        '
+        '
+        Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, L_IDredNativa.Text)
+        If FilaRed > 0 Then L_IDredNativa.Text = Matriz_Redes(FilaRed, 2)
+        '
+        Dim NombreNota As String = "Curr_" & T_SlugAPI.Text & ".rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_Nota)
         '
         '   0       ID_Moneda
         '   1       ID_Despliegue
@@ -65,101 +116,104 @@ Public Class F_Monedas
         '   15      Current_Price
         '   16      Hight24h
         '   17      Low24h
-        '   18      Price Change 24h
-        '   19      Price Change Percentage 24h
-        '   20      Circulating Supply
-        '   21      Fecha Actualizacion
-        '   22      Actualizacion Automatica (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
+        '   18      Price_Change_24h
+        '   19      Price_Change_Percentage_24h
+        '   20      Circulating_Supply
+        '   21      Fecha_Actualizacion
+        '   22      Actualizacion_Automatica        (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
+        '   23      Tipo_Moneda                     Moneda / CryptoMoneda
+    End Sub
+    Private Function DatosNoValidos() As Boolean
+        If C_TipoMoneda.Text <> "Moneda" Or C_TipoMoneda.Text <> "CryptoMoneda" Then L_Mensaje.Text = "Tipo Moneda no válida" : Return True
+        If Len(T_SlugAPI.Text) < 3 Then L_Mensaje.Text = "SlugAPI no válido" : Return True
+        Return False
+    End Function
+    Private Function PreGrabar() As Boolean
+        Dim F1 As Integer = L_Fila.Text
         '
-        L_Fila_Moneda.Text = F
-        L_IDmoneda_Moneda.Text = Matriz_Monedas(F, 0)
-        L_IDdespliegue_Moneda.Text = Matriz_Monedas(F, 1)
-        L_Simbolo_Moneda.Text = Matriz_Monedas(F, 2)
-        L_NombreOficial_Moneda.Text = Matriz_Monedas(F, 3)
-        L_SlugAPI_Moneda.Text = Matriz_Monedas(F, 4)
-        L_TipoActivo_Moneda.Text = Matriz_Monedas(F, 5)
-        L_SubtipoStablecoin_Moneda.Text = Matriz_Monedas(F, 6)
+        If F1 > 0 Then
+            'Se esta editando una moneda que existe
+            If T_SlugAPI.Text = Matriz_Monedas(F1, 4) Then
+                'Se esta editando una moneda que existe. El registro no ha cambia el Slug
+                If C_TipoMoneda.Text = Matriz_Monedas(F1, 23) Then
+                    'Se esta editando una moneda que existe. El registro no ha cambiado el Tipo Moneda
+                    Return False
+                Else
+                    'Se esta editando una moneda que existe. El registro si ha cambiado el Tipo Moneda
+                    MsgBox("No puede cambiar el tipo de moneda", vbCritical)
+                    Return True
+                End If
+            Else
+                'Se esta editando una moneda que existe. El registro si ha cambiado el SLUG
+                MsgBox("No puede cambiar el Slug", vbCritical)
+                Return True
+            End If
+        Else
+            'Se intenta crear una nueva moneda
+            Dim F2 As Integer = BuscarMoneda(T_SlugAPI.Text)
+            If F2 > 0 Then
+                'Se intenta crear una nueva moneda, pero la Moneda ya existe
+                MsgBox("La moneda ya existe", vbCritical)
+                Ver(F2)
+                Return True
+            Else
+                'Se intenta crear una nueva moneda,pero la Moneda NO existe
+                If C_TipoMoneda.Text = "Moneda" Then
+                    'Se intenta crear una nueva moneda, la moneda NO existe, el tipo de moneda es MONEDA REAL, como Peso Chileno CLP o Dolar Americado USD
+                    L_Fila.Text = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                    Return False
+                Else
+                    'Se intenta crear una nueva moneda,pero la Moneda NO existe. el tipo de moneda es CRIPTO Moneda, como BTC, ETH
+                    'Por ende se busca la moneda
+                    L_Fila.Text = API_CoinGecko_NuevaMoneda(T_SlugAPI.Text) 'El seguiente procedimiento busca la moneda y la graba
+                    Return True
+                End If
+            End If
+        End If
+    End Function
+
+
+    Private Sub Grabar()
+        If DatosNoValidos() Then Exit Sub
+        If PreGrabar() Then Exit Sub
+        '
+        If CB_ActualizacionAutomatica.Checked = True Then
+            Matriz_Monedas(L_Fila.Text, 22) = "S"
+        Else
+            Matriz_Monedas(L_Fila.Text, 22) = "N"
+        End If
+        Guardar_Matrices("Monedas")
+        '
+        Dim NombreNota As String = "Curr_" & T_SlugAPI.Text & ".rtf"
+        GuardarRTF(RutaLocal, NombreNota, rT_Nota)
+        '
+        Inicializar()
+        L_Mensaje.Text = "Moneda guardada correctamente"
+        '   0       ID_Moneda
+        '   1       ID_Despliegue
+        '   2       Simbolo
+        '   3       Nombre_Oficial
+        '   4       Slug_API
+        '   5       Tipo_Activo
+        '   6       Subtipo_Stablecoin      solo para stablecoins: fiat, crypto, algoritmica (DAI es crypto-backed, USDT es fiat, etc.)
         '   7       Moneda_Paridad
         '   8       Centralizada
         '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
-        L_IDredNativa_Moneda.Text = Matriz_Monedas(F, 10)       'xxxx
+        '   10      ID_Red                  Es el ID de la Matriz_Red
         '   11      Supply_Maximo
-        T_ContractAddress_Moneda.Text = Matriz_Monedas(F, 12)
-        L_MarketCapRank_Moneda.Text = Matriz_Monedas(F, 13)
-        T_LinkCoinGeko.Text = "https://www.coingecko.com/es/monedas/" & L_SlugAPI_Moneda.Text
-        L_CurentPrice.Text = FormatoChileno(Matriz_Monedas(F, 15), 6)
-        L_Hight24h.Text = FormatoChileno(Matriz_Monedas(F, 16), 6)
-        L_Low24h.Text = FormatoChileno(Matriz_Monedas(F, 17), 6)
-        L_PriceChange24h.Text = FormatoChileno(Matriz_Monedas(F, 18))
-        L_PriceChangePor24h.Text = FormatoChileno(Matriz_Monedas(F, 19), 0) & " %"
-        L_CirculatingSupply.Text = FormatoChileno(Matriz_Monedas(F, 20), 0)
-        L_FechaActualizacion.Text = ConvertirFechaUTCaChile(Matriz_Monedas(F, 21))
-        If Matriz_Monedas(F, 22) = "S" Then
-            CB_ActualizacionAutomatica.Checked = True
-        Else
-            CB_ActualizacionAutomatica.Checked = False
-        End If
-        '
-        '
-        Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, L_IDredNativa_Moneda.Text)
-        If FilaRed > 0 Then L_IDredNativa_Moneda.Text = Matriz_Redes(FilaRed, 2)
-        '
-        Dim NombreNota As String = "Curr_" & L_Simbolo_Moneda.Text & ".rtf"
-        CargaRTF(RutaLocal, NombreNota, rT_Nota)
-    End Sub
-    Private Sub Grabar()
-        Dim F As Integer = L_Fila_Moneda.Text
-        If F = 0 Then Exit Sub
+        '   12      Contract_Address
+        '   13      market_cap_rank
+        '   14      Link CoinGecko
+        '   15      Current_Price
+        '   16      Hight24h
+        '   17      Low24h
+        '   18      Price_Change_24h
+        '   19      Price_Change_Percentage_24h
+        '   20      Circulating_Supply
+        '   21      Fecha_Actualizacion
+        '   22      Actualizacion_Automatica        (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
+        '   23      Tipo_Moneda                     Moneda / CryptoMoneda
 
-        'Matriz_Monedas(F, 0) = L_IDmoneda_Moneda.Text
-        'Matriz_Monedas(F, 1) = L_IDdespliegue_Moneda.Text
-        'Matriz_Monedas(F, 2) = T_Simbolo_Moneda.Text
-        'Matriz_Monedas(F, 3) = T_NombreOficial_Moneda.Text
-        'Matriz_Monedas(F, 4) = T_SlugAPI_Moneda.Text
-        'Matriz_Monedas(F, 5) = T_TipoActivo_Moneda.Text
-        'Matriz_Monedas(F, 6) = T_SubtipoStablecoin_Moneda.Text
-        'Matriz_Monedas(F, 7) = 
-        'Matriz_Monedas(F, 8) = 
-        'Matriz_Monedas(F, 9) = 
-        'Matriz_Monedas(F, 10) = T_IDredNativa_Moneda.Text
-        'Matriz_Monedas(F, 11) = 
-        'Matriz_Monedas(F, 12) = T_ContractAddress_Moneda.Text
-        'Matriz_Monedas(F, 13) = T_MarketCapRank_Moneda.Text
-        'Matriz_Monedas(F, 14) = T_LinkCoinGeko.Text
-        'Matriz_Monedas(F, 15) = T_TipoActivo_Moneda.Text
-        'Matriz_Monedas(F, 16) = T_SubtipoStablecoin_Moneda.Text
-        'Matriz_Monedas(F, 17) = 
-        'Matriz_Monedas(F, 18) = 
-        'Matriz_Monedas(F, 19) = 
-        'Matriz_Monedas(F, 20) =
-        'Matriz_Monedas(F, 21) = 
-        '
-        If CB_ActualizacionAutomatica.Checked = True Then
-            Matriz_Monedas(F, 22) = "S"
-        Else
-            Matriz_Monedas(F, 22) = "N"
-        End If
-        '
-        Guardar_Matrices("Monedas")
-        '
-        Dim NombreNota As String = "Curr_" & L_Simbolo_Moneda.Text & ".rtf"
-        GuardarRTF(RutaLocal, NombreNota, rT_Nota)
-        '
-        L_Mensaje.Text = "Moneda guardada correctamente"
-    End Sub
-    Private Sub CreaNuevaMoneda()
-        Limpiar()
-        '
-        Dim T As String = "Ingrese el nombre de la moneda, de acuerdo al estandar de COINGEKO (minusculas)" & vbCrLf & "Ejemplo: bitcoin, tether, ripple, tron"
-        Dim Acronimo As String = UCase(InputBox(T, "Nueva Moneda")).ToLower
-        Dim Fila As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Monedas, Matriz_MonedasTF, 2, Acronimo)
-        If Fila > 0 Then
-            MsgBox("La Moneda ya existe en la Matriz, se mostrará la moneda existente", vbInformation)
-            Ver(Fila)
-            Exit Sub
-        End If
-        '
-        Ver(API_CoinGecko_NuevaMoneda(Acronimo))
     End Sub
     '
     '
@@ -190,16 +244,15 @@ Public Class F_Monedas
     End Sub
     Private Sub L_Monedas_Click(sender As Object, e As EventArgs) Handles L_Monedas.Click
         If VariableDeInicio Then Exit Sub
-        Dim T As String = L_Monedas.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        Ver(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(L_Monedas.Text)
     End Sub
     Private Sub L_Monedas_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Monedas.SelectedIndexChanged
         '
     End Sub
     Private Sub B_NuevoMoneda_Click_1(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
-        CreaNuevaMoneda()
+        Limpiar()
+        L_Fila.Text = "0"
+        T_SlugAPI.Focus()
     End Sub
     Private Sub B_GrabarMoneda_Click_1(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
         Grabar()
@@ -211,8 +264,8 @@ Public Class F_Monedas
         Me.Enabled = True
     End Sub
     Private Sub B_Actualiza_Moneda_Click(sender As Object, e As EventArgs) Handles B_Actualiza_Moneda.Click
-        API_CoinGecko_ActualizaValor(L_SlugAPI_Moneda.Text)
-        Ver(L_Fila_Moneda.Text)
+        API_CoinGecko_ActualizaValor(T_Simbolo.Text)
+        Ver(L_Fila.Text)
     End Sub
 
     Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
@@ -221,5 +274,9 @@ Public Class F_Monedas
         '
         Dim URL As String = T_LinkCoinGeko.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
+    End Sub
+
+    Private Sub B_Copiar_Click(sender As Object, e As EventArgs) Handles B_Copiar.Click
+        CopiarAlPortapapeles(T_ContractAddres)
     End Sub
 End Class

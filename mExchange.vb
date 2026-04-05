@@ -16,16 +16,16 @@ Module mExchange
     '   1   Nombre
     '   2   Link
     '
-    Public Function Crear_Exchange() As Integer
-        'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
-        Dim Fila As Integer = AgrandarMatriz(Matriz_Exchange, Matriz_ExchangeTF, Matriz_ExchangeTC)
-        Dim CodigoInterno As String = CrearCodigoInterno()
-        Matriz_Exchange(Fila, 0) = CodigoInterno
-        Matriz_Exchange(Fila, 1) = ""
-        Return Fila
+    Public Function BuscarExchange(T As String) As Integer
+        If T = Nothing Then Return 0
+        If T = "" Then Return 0
+        '
+        For i As Integer = 1 To Matriz_ExchangeTF
+            If T = Matriz_Exchange(i, 2) Then Return i
+        Next i
+        Return 0
     End Function
-    Public Function Buscar_Exchange(T As String) As String
-        Dim SW As Boolean = True
+    Public Function ExisteExchange(T As String) As String
         For i As Integer = 1 To Matriz_ExchangeTF
             If T = Matriz_Exchange(i, 1) Then Return "S" 'Si existe
         Next i

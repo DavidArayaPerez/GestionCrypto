@@ -37,21 +37,14 @@ Module mRedes
     '16     URL_RPC                Para conectarse a la red programáticamente      https://...
     '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
     '
-
-    Public Sub CambiarIDRedes()
-        Dim i As Integer
-        For i = 1 To Matriz_RedesTF
-            If Len(Matriz_Redes(i, 0)) < 7 Then
-                Matriz_Redes(i, 0) = CrearCodigoInterno()
-            End If
-        Next i
-        Guardar_Matrices("Redes")
-    End Sub
-    Public Function Buscar_Redes(T As String) As String
+    Public Function BuscarRedes(T As String) As Integer
+        If T = Nothing Then Return 0
+        If T = "" Then Return 0
+        '
         For i As Integer = 1 To Matriz_RedesTF
-            If T = Matriz_Redes(i, 4) Then Return "S" 'Si existe
+            If T = Matriz_Redes(i, 4) Then Return i
         Next i
-        Return "N" 'No existe
+        Return 0
     End Function
     Public Sub Llenar_Redes(ByRef Combo As ComboBox)
         Dim T As String

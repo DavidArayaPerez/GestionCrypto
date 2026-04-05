@@ -1,6 +1,8 @@
 ﻿'
 '
 '
+Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
+
 Module mBilleteras
     '
     '
@@ -18,12 +20,20 @@ Module mBilleteras
         Dim Fila As Integer = AgrandarMatriz(Matriz_Billeteras, Matriz_BilleterasTF, Matriz_BilleterasTC)
         Return Fila
     End Function
-    Public Function Buscar_Billetera(T As String) As String
-        Dim SW As Boolean = True
+    Public Function ExisteBilletera(T As String) As String
         For i As Integer = 1 To Matriz_BilleterasTF
             If T = Matriz_Billeteras(i, 1) Then Return "S" 'Si existe
         Next i
         Return "N" 'No existe
+    End Function
+    Public Function BuscarBilletera(Nombre As String) As Integer
+        If Nombre = Nothing Then Return 0
+        If Nombre = "" Then Return 0
+        '
+        For i As Integer = 1 To Matriz_BilleterasTF
+            If Nombre = Matriz_Billeteras(i, 1) Then Return i
+        Next i
+        Return 0
     End Function
     Public Sub Llenar_Billetera(ByRef Combo As ComboBox)
         Dim T As String

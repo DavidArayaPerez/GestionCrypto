@@ -24,12 +24,13 @@ Public Class F_Exchange
         '
         B_Grabar.Enabled = Habilitar
     End Sub
-    Private Sub Ver(F As Integer)
+    Private Sub Ver(Nombre As String)
         Limpieza(True)
+        Dim F As Integer = BuscarExchange(Nombre)
         If F < 1 Then Exit Sub
+        '
         L_Fila.Text = F
-        '
-        '
+        'Matriz_Exchange(F, 0)
         T_Nom.Text = Matriz_Exchange(F, 1)
         T_Link.Text = Matriz_Exchange(F, 2)
         '
@@ -82,11 +83,7 @@ Public Class F_Exchange
     End Sub
     Private Sub L_Exchange_Click(sender As Object, e As EventArgs) Handles L_Exchange.Click
         If VariableDeInicio Then Exit Sub
-        '
-        Dim T As String = L_Exchange.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        Ver(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(L_Exchange.Text)
     End Sub
     Private Sub L_Exchange_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Exchange.SelectedIndexChanged
 

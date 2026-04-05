@@ -42,35 +42,36 @@ Public Class F_Red
         L_MecanismoConsenso.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
     End Sub
-    Private Sub Ver(F As Integer)
+    Private Sub Ver(Slug_API As String)
         Limpiar(True)
+        Dim F As Integer = BuscarRedes(Slug_API)
         If F < 1 Then Exit Sub
-
+        '
         L_ID.Text = F
-        L_ID.Text = Matriz_Redes(F, 0)
-        L_ChainID.Text = Matriz_Redes(F, 1)
-        L_NomOficial.Text = Matriz_Redes(F, 2)
-        L_NomCorto.Text = Matriz_Redes(F, 3)
-        L_APIcg.Text = Matriz_Redes(F, 4)
-        L_TipoCapa.Text = Matriz_Redes(F, 5)
-        L_L1padre.Text = Matriz_Redes(F, 6)
-        L_TipoRollup.Text = Matriz_Redes(F, 7)
+        L_ID.Text = Matriz_Redes(f, 0)
+        L_ChainID.Text = Matriz_Redes(f, 1)
+        L_NomOficial.Text = Matriz_Redes(f, 2)
+        L_NomCorto.Text = Matriz_Redes(f, 3)
+        L_APIcg.Text = Matriz_Redes(f, 4)
+        L_TipoCapa.Text = Matriz_Redes(f, 5)
+        L_L1padre.Text = Matriz_Redes(f, 6)
+        L_TipoRollup.Text = Matriz_Redes(f, 7)
         '8 EVM
-        L_MecanismoConsenso.Text = Matriz_Redes(F, 9)
-        L_TokenNativo.Text = Matriz_Redes(F, 10)
+        L_MecanismoConsenso.Text = Matriz_Redes(f, 9)
+        L_TokenNativo.Text = Matriz_Redes(f, 10)
         'T_Decimales_Red.Text = Matriz_Redes(F, 11)
         'T_TipoBloque_Red.Text = Matriz_Redes(F, 12)
         'T_Color_Red.Text = Matriz_Redes(F, 13)
-        T_URLexplorador_Red.Text = Matriz_Redes(F, 14)
+        T_URLexplorador_Red.Text = Matriz_Redes(f, 14)
         'T_URLlogo_Red.Text = Matriz_Redes(F, 15)
-        T_URLrpc_Red.Text = Matriz_Redes(F, 16)
+        T_URLrpc_Red.Text = Matriz_Redes(f, 16)
         '17 Activo
         '
         '--------------------------------------------
         Dim T As String
         '
         '8 EVM                  Matriz_Redes(F, 8)
-        T = UCase(Matriz_Redes(F, 8))
+        T = UCase(Matriz_Redes(f, 8))
         If T = "SI" Then
             CB_EVM_Red.Checked = True
         Else
@@ -78,13 +79,13 @@ Public Class F_Red
         End If
         '
         '17 Activo              Matriz_Redes(F, 17)
-        If Matriz_Redes(F, 17) = "SI" Then
+        If Matriz_Redes(f, 17) = "SI" Then
             CB_Activo_Red.Checked = True
         Else
             CB_Activo_Red.Checked = False
         End If
         '
-        Dim NombreNota As String = "Chain_" & Matriz_Redes(F, 4) & ".rtf"
+        Dim NombreNota As String = "Chain_" & Matriz_Redes(f, 4) & ".rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
         '
         '0      ID_Interno
@@ -201,10 +202,7 @@ Public Class F_Red
     End Sub
     Private Sub L_Red_Click(sender As Object, e As EventArgs) Handles L_Red.Click
         If VariableDeInicio Then Exit Sub
-        Dim T As String = L_Red.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        Ver(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(L_Red.Text)
     End Sub
 
     Private Sub B_GrabarRed_Click(sender As Object, e As EventArgs) Handles B_GrabarRed.Click

@@ -16,7 +16,11 @@ Module zVariables_Globales
     '
     '
     '
-
+    Public Sub CopiarAlPortapapeles(ByVal txt As Control)
+        If Not String.IsNullOrWhiteSpace(txt.Text) Then
+            Clipboard.SetText(txt.Text)
+        End If
+    End Sub
     '
     '
     '

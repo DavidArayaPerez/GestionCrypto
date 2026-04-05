@@ -7,7 +7,7 @@ Module mMonedas
     '
     Public Matriz_Monedas(,) As String
     Public Matriz_MonedasTF As Integer
-    Public Matriz_MonedasTC As Integer = 23
+    Public Matriz_MonedasTC As Integer = 24
     '
     '   0       ID_Moneda
     '   1       ID_Despliegue
@@ -27,38 +27,32 @@ Module mMonedas
     '   15      Current_Price
     '   16      Hight24h
     '   17      Low24h
-    '   18      Price Change 24h
-    '   19      Price Change Percentage 24h
-    '   20      Circulating Supply
-    '   21      Fecha Actualizacion
-    '   22      Actualizacion Automatica (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
-    '   23
+    '   18      Price_Change_24h
+    '   19      Price_Change_Percentage_24h
+    '   20      Circulating_Supply
+    '   21      Fecha_Actualizacion
+    '   22      Actualizacion_Automatica        (SI/NO) sirve para saber si se actualiza automaticamente o es una moneda personalizada que no se actualiza
+    '   23      Tipo_Moneda                     Moneda / CryptoMoneda
+    '   24      
     '
-    Public Sub OrdenarMatriz_Monedas()
-        Dim V1, V2 As Integer
-        For i As Integer = 1 To Matriz_MonedasTF - 1
-            For j As Integer = i + 1 To Matriz_MonedasTF
-                V1 = Val(Matriz_Monedas(i, 13))
-                V2 = Matriz_Monedas(j, 13)
-                If V2 > 0 Then
-                    If V1 > V2 Then
-                        For k As Integer = 0 To Matriz_MonedasTC - 1
-                            Dim Temp As String = Matriz_Monedas(i, k)
-                            Matriz_Monedas(i, k) = Matriz_Monedas(j, k)
-                            Matriz_Monedas(j, k) = Temp
-                        Next k
-                    End If
-                End If
-            Next j
-        Next i
-        Guardar_Matrices("Monedas")
-    End Sub
-    Public Function Buscar_Moneda(T As String) As String
+
+    Public Function ExisteMoneda(T As String) As String
         For i As Integer = 1 To Matriz_MonedasTF
             If T = Matriz_Monedas(i, 2) Then Return "S" 'Si existe
         Next i
         Return "N" 'No existe
     End Function
+
+    Public Function BuscarMoneda(T As String) As Integer
+        If T = Nothing Then Return 0
+        If T = "" Then Return 0
+        '
+        For i As Integer = 1 To Matriz_MonedasTF
+            If T = Matriz_Monedas(i, 2) Then Return i
+        Next i
+        Return 0
+    End Function
+
     Public Sub Llenar_Monedas(ByRef Combo As ComboBox)
         Dim T As String
         Combo.Items.Clear()

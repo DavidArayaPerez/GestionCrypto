@@ -24,8 +24,9 @@ Public Class F_Billetera
         rT_Nota.Enabled = Habilitar
         B_Grabar.Enabled = Habilitar
     End Sub
-    Private Sub Ver(F As Integer)
+    Private Sub Ver(Nombre As String)
         Limpieza(True)
+        Dim F As Integer = BuscarBilletera(Nombre)
         If F < 1 Then Exit Sub
         '
         L_Fila.Text = F
@@ -54,11 +55,7 @@ Public Class F_Billetera
         '   0   Codigo Billetera
         '   1   Nombre
     End Sub
-    Public Sub CopiarAlPortapapeles(ByVal txt As Control)
-        If Not String.IsNullOrWhiteSpace(txt.Text) Then
-            Clipboard.SetText(txt.Text)
-        End If
-    End Sub
+
     '
     '
     '
@@ -95,11 +92,7 @@ Public Class F_Billetera
     End Sub
     Private Sub L_Billeteras_Click(sender As Object, e As EventArgs) Handles L_Billeteras.Click
         If VariableDeInicio Then Exit Sub
-        '
-        Dim T As String = L_Billeteras.Text
-        Dim x As Integer = InStr(T, "(")
-        If x = 0 Then Exit Sub
-        Ver(Mid(T, x + 1, Len(T) - x - 1))
+        Ver(L_Billeteras.Text)
     End Sub
     Private Sub L_Billeteras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Billeteras.SelectedIndexChanged
 

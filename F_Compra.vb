@@ -43,9 +43,24 @@ Public Class F_Compra
         '
         Cal_Fecha.Enabled = Habilitar
     End Sub
-    Private Sub Ver(F As Integer)
+    Private Sub Ver(FechaHora_PlataformaMoneda As String)
         Limpiar(True)
+        Dim F As Integer = BuscarCompras(FechaHora_PlataformaMoneda)
         If F < 1 Then Exit Sub
+        '
+        T_Fecha.Text = Matriz_Compras(f, 1)
+        T_Hora.Text = Matriz_Compras(f, 2)
+        C_Exchange.Text = Matriz_Compras(f, 3)
+        C_MonedaOrigen.Text = Matriz_Compras(f, 4)
+        T_MontoOrigen.Text = Matriz_Compras(f, 5)
+        C_MonedaDestino.Text = Matriz_Compras(f, 6)
+        T_CantidadCryptos.Text = Matriz_Compras(f, 7)
+        T_Comision.Text = Matriz_Compras(f, 8)
+        T_Gas.Text = Matriz_Compras(f, 9)
+        L_PrecioMoneda.Text = Matriz_Compras(f, 10)
+        '
+        Dim NombreNota As String = "Fiat_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
+        CargaRTF(RutaLocal, NombreNota, rT_Nota)
         '   0   ID
         '   1   Fecha
         '   2   Hora
@@ -58,25 +73,12 @@ Public Class F_Compra
         '   9   Gas
         '   10  Precio
         '
-        T_Fecha.Text = Matriz_Compras(F, 1)
-        T_Hora.Text = Matriz_Compras(F, 2)
-        C_Exchange.Text = Matriz_Compras(F, 3)
-        C_MonedaOrigen.Text = Matriz_Compras(F, 4)
-        T_MontoOrigen.Text = Matriz_Compras(F, 5)
-        C_MonedaDestino.Text = Matriz_Compras(F, 6)
-        T_CantidadCryptos.Text = Matriz_Compras(F, 7)
-        T_Comision.Text = Matriz_Compras(F, 8)
-        T_Gas.Text = Matriz_Compras(F, 9)
-        L_PrecioMoneda.Text = Matriz_Compras(F, 10)
-        '
-        Dim NombreNota As String = "Fiat_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
-        CargaRTF(RutaLocal, NombreNota, rT_Nota)
     End Sub
     Private Function DatosNoValidos() As Boolean
         '
-        If Buscar_Exchange(C_Exchange.Text) = "N" Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If ExisteExchange(C_Exchange.Text) = "N" Then L_Mensaje.Text = "Plataforma no válida" : Return True
         '
-        If Buscar_Moneda(C_MonedaDestino.Text) = "N" Then L_Mensaje.Text = "Moneda no válida" : Return True
+        If ExisteMoneda(C_MonedaDestino.Text) = "N" Then L_Mensaje.Text = "Moneda no válida" : Return True
         '
         If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Moneda Local no válida" : Return True
         '
@@ -192,6 +194,14 @@ Public Class F_Compra
     '
     Private Sub Cal_Fecha_ValueChanged(sender As Object, e As EventArgs) Handles Cal_Fecha.ValueChanged
         T_Fecha.Text = DateTime.Parse(Cal_Fecha.Value).ToString("yyyyMMdd")
+    End Sub
+
+    Private Sub L_Compras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Compras.SelectedIndexChanged
+
+    End Sub
+    Private Sub L_Compras_Click(sender As Object, e As EventArgs) Handles L_Compras.Click
+        If VariableDeInicio Then Exit Sub
+        Ver(L_Compras.Text)
     End Sub
 
 

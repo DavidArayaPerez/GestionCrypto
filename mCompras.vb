@@ -1,6 +1,8 @@
 ﻿'
 '
 '
+Imports Microsoft.Graph.Drives.Item.Items.Item.Workbook.Functions
+
 Module mCompras
     '
     '
@@ -47,13 +49,23 @@ Module mCompras
         Next i
         Matriz_Compras = Matriz
     End Sub
-
-    'Public Function Buscar_Compras(T As String) As String
-    '    For i As Integer = 1 To Matriz_ComprasTF
-    '        If T = Matriz_Compras(i, 4) Then Return "S" 'Si existe
-    '    Next i
-    '    Return "N" 'No existe
-    'End Function
+    Public Sub LlenarList_Compras(ByRef Lista As ListBox)
+        Dim T As String
+        Lista.Items.Clear()
+        For i As Integer = 1 To Matriz_ComprasTF
+            T = Matriz_Compras(i, 1) & " " & Matriz_Compras(i, 2) & " - " & Matriz_Compras(i, 3) & " - " & Matriz_Compras(i, 4)
+            Lista.Items.Add(T)
+        Next i
+    End Sub
+    Public Function BuscarCompras(FechaHora_PlataformaMoneda As String) As Integer
+        If FechaHora_PlataformaMoneda = Nothing Then Return 0
+        If FechaHora_PlataformaMoneda = "" Then Return 0
+        '
+        For i As Integer = 1 To Matriz_ComprasTF
+            If FechaHora_PlataformaMoneda = Matriz_Compras(i, 4) Then Return i
+        Next i
+        Return 0
+    End Function
     '
     '
     '
