@@ -374,7 +374,6 @@
     <Compile Include="mDepositos.vb" />
     <Compile Include="mExchange.vb" />
     <Compile Include="mMonedas.vb" />
-    <Compile Include="mMovimientos.vb" />
     <Compile Include="mPoolLiquidez.vb" />
     <Compile Include="mRedes.vb" />
     <Compile Include="mTraspasos.vb" />

@@ -74,7 +74,6 @@ Module xFunciones_Archivo
             Case "Depositos" : ColMatriz = Matriz_DepositosTC
             Case "Exchange" : ColMatriz = Matriz_ExchangeTC
             Case "Monedas" : ColMatriz = Matriz_MonedasTC
-            Case "Movimientos" : ColMatriz = Matriz_MovimientosTC
             Case "PoolLiquidez" : ColMatriz = Matriz_PoolLiquidezTC
             Case "Traspasos" : ColMatriz = Matriz_TraspasosTC
             Case "Redes" : ColMatriz = Matriz_RedesTC
@@ -93,7 +92,6 @@ Module xFunciones_Archivo
             Case "Depositos" : Matriz_DepositosTF = Filas
             Case "Exchange" : Matriz_ExchangeTF = Filas
             Case "Monedas" : Matriz_MonedasTF = Filas
-            Case "Movimientos" : Matriz_MovimientosTF = Filas
             Case "PoolLiquidez" : Matriz_PoolLiquidezTF = Filas
             Case "Traspasos" : Matriz_TraspasosTF = Filas
             Case "Redes" : Matriz_RedesTF = Filas
@@ -162,10 +160,6 @@ Module xFunciones_Archivo
                 MatrizAuxActual = Matriz_Monedas
                 TotalFilas = Matriz_MonedasTF
                 TotalColumnas = Matriz_MonedasTC
-            Case "Movimientos"
-                MatrizAuxActual = Matriz_Movimientos
-                TotalFilas = Matriz_MovimientosTF
-                TotalColumnas = Matriz_MovimientosTC
             Case "PoolLiquidez"
                 MatrizAuxActual = Matriz_PoolLiquidez
                 TotalFilas = Matriz_PoolLiquidezTF

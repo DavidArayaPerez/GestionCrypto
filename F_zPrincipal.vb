@@ -57,10 +57,6 @@ Public Class F_zPrincipal
         Transformar_Fechas_PoolLiquidez()
         LogTiempo("Pool+Transform")
         '
-        CargarTXT("Movimientos", Matriz_Movimientos)
-        Transformar_Fechas_Movimientos()
-        LogTiempo("Movimientos+Transform")
-        '
         CargarTXT("Redes", Matriz_Redes)
         OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
         Guardar_Matrices("Redes")

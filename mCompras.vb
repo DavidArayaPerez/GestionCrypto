@@ -54,6 +54,7 @@ Module mCompras
         Lista.Items.Clear()
         For i As Integer = 1 To Matriz_ComprasTF
             T = Matriz_Compras(i, 1) & " " & Matriz_Compras(i, 2) & " - " & Matriz_Compras(i, 3) & " - " & Matriz_Compras(i, 4)
+            '   1   Fecha                    2   Hora                       3   Plataforma                 4   Moneda_Origen
             Lista.Items.Add(T)
         Next i
     End Sub

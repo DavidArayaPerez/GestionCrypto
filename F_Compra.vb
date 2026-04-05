@@ -9,9 +9,11 @@ Public Class F_Compra
         VariableDeInicio = True
         Limpiar()
         Llenar_Exchange(C_Exchange)
-        Llenar_Monedas(C_MonedaOrigen) : C_MonedaOrigen.Items.Add("CLP") : C_MonedaOrigen.Items.Add("USDT")
+        Llenar_Monedas(C_MonedaOrigen)
         Llenar_Monedas(C_MonedaDestino)
         Llenar_Billetera(C_Billetera)
+        LlenarList_Compras(L_Compras)
+        '
         VariableDeInicio = False
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
@@ -26,6 +28,7 @@ Public Class F_Compra
         T_MontoOrigen.Text = ""
         T_CantidadCryptos.Text = ""
         C_Exchange.Text = ""
+        C_Billetera.Text = ""
         T_Comision.Text = ""
         T_Gas.Text = ""
         rT_Nota.Text = ""
@@ -37,6 +40,7 @@ Public Class F_Compra
         T_MontoOrigen.Enabled = Habilitar
         T_CantidadCryptos.Enabled = Habilitar
         C_Exchange.Enabled = Habilitar
+        C_Billetera.Enabled = Habilitar
         T_Comision.Enabled = Habilitar
         T_Gas.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
@@ -75,23 +79,41 @@ Public Class F_Compra
         '
     End Sub
     Private Function DatosNoValidos() As Boolean
-        '
         If ExisteExchange(C_Exchange.Text) = False Then L_Mensaje.Text = "Plataforma no válida" : Return True
-        '
         If ExisteMoneda_Simbolo(C_MonedaDestino.Text) = False Then L_Mensaje.Text = "Moneda no válida" : Return True
-        '
         If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Moneda Local no válida" : Return True
-        '
         Return False
+    End Function
+    Private Function PreGrabar() As Boolean
+        '                 1   Fecha            2   Hora              3 Plataforma              4 Moneda_Origen
+        Dim T As String = T_Fecha.Text & " " & T_Hora.Text & " - " & C_Exchange.Text & " - " & C_MonedaOrigen.Text
+
+        '
+        If Val(L_Fila.Text) = 0 Then
+            'Nuevo registro
+            Dim F As Integer = BuscarCompras(T)
+            If F > 0 Then
+                'Nuevo registro. Pero ya existe en la Matriz
+                MsgBox("El registro ya existe", vbInformation)
+                Ver(T)
+                Return True
+            Else
+                'Nuevo registro. NO existe en la Matriz
+                F = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)
+                L_Fila.Text = F
+                Matriz_Compras(F, 0) = CrearCodigoInterno()
+                Return False
+            End If
+        Else
+            'Registro antiguo ya tiene fila.
+            Return False
+        End If
     End Function
     Private Sub Grabar()
         If DatosNoValidos() Then Exit Sub
+        If PreGrabar() Then Exit Sub
         '
         Dim F As Integer = L_Fila.Text
-        If F = 0 Then
-            F = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)
-            Matriz_Compras(F, 0) = CrearCodigoInterno()
-        End If
         Matriz_Compras(F, 1) = T_Fecha.Text
         Matriz_Compras(F, 2) = T_Hora.Text
         Matriz_Compras(F, 3) = C_Exchange.Text
@@ -143,14 +165,15 @@ Public Class F_Compra
     Private Sub F_Compra_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Inicializar()
     End Sub
-    Private Sub B_NuevoBilletera_Click(sender As Object, e As EventArgs) Handles B_NuevoBilletera.Click
+    Private Sub B_Nuevo_Click(sender As Object, e As EventArgs) Handles B_Nuevo.Click
         Limpiar(True)
+        L_Fila.Text = "0"
         T_Fecha.Text = DateTime.Now.ToString("yyyyMMdd")
         T_Hora.Text = DateTime.Now.ToString("HHmmss")
         C_MonedaOrigen.Text = "CLP"
         T_MontoOrigen.Focus()
     End Sub
-    Private Sub B_GrabarCompra_Click(sender As Object, e As EventArgs) Handles B_GrabarCompra.Click
+    Private Sub B_Grabar_Click(sender As Object, e As EventArgs) Handles B_Grabar.Click
         Grabar()
     End Sub
 

@@ -27,11 +27,11 @@ Public Class F_Monedas
         L_Fila.Text = ""
         'MONEDA
         C_TipoMoneda.Text = "CryptoMoneda"
-        T_SlugAPI.Text = ""
+        T_Nombre.Text = ""
         T_ContractAddres.Text = ""
         T_Simbolo.Text = ""
         '
-        L_NombreOficial.Text = ""
+        L_SlugAPI.Text = ""
         L_TipoActivo.Text = ""
         L_SubtipoStablecoin.Text = ""
         L_MarketCapRank.Text = ""
@@ -52,7 +52,7 @@ Public Class F_Monedas
         L_IDdespliegue.Text = ""
         '
         C_TipoMoneda.Enabled = False
-        T_SlugAPI.Enabled = Habilitar
+        T_Nombre.Enabled = Habilitar
         T_Simbolo.Enabled = Habilitar
         CB_ActualizacionAutomatica.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
@@ -68,11 +68,11 @@ Public Class F_Monedas
         L_Fila.Text = F
         L_IDmoneda.Text = Matriz_Monedas(F, 0)
         L_IDdespliegue.Text = Matriz_Monedas(F, 1)
-        T_Simbolo.Text = Matriz_Monedas(F, 2)
-        L_NombreOficial.Text = Matriz_Monedas(F, 3)
-        T_SlugAPI.Text = Matriz_Monedas(F, 4)
-        L_TipoActivo.Text = Matriz_Monedas(F, 5)
-        L_SubtipoStablecoin.Text = Matriz_Monedas(F, 6)
+        T_Simbolo.Text = Matriz_Monedas(F, 2)               ' 2 Simbolo
+        T_Nombre.Text = Matriz_Monedas(F, 3)                ' 3 Nombre_Oficial
+        L_SlugAPI.Text = Matriz_Monedas(F, 4)               ' 4 Slug_API
+        L_TipoActivo.Text = Matriz_Monedas(F, 5)            '
+        L_SubtipoStablecoin.Text = Matriz_Monedas(F, 6)     '
         '   7       Moneda_Paridad
         '   8       Centralizada
         '   9       Activo_Subyacente       solo para wrapped: WBTC → BTC, WETH → ETH
@@ -95,7 +95,7 @@ Public Class F_Monedas
         Dim FilaRed As Integer = BuscarCualquierValorEnCuaquierMatriz(Matriz_Redes, Matriz_RedesTF, 0, L_IDredNativa.Text)
         If FilaRed > 0 Then L_IDredNativa.Text = Matriz_Redes(FilaRed, 2)
         '
-        Dim NombreNota As String = "Curr_" & T_SlugAPI.Text & ".rtf"
+        Dim NombreNota As String = "Curr_" & T_Nombre.Text & ".rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
         '
         '   0       ID_Moneda
@@ -125,10 +125,10 @@ Public Class F_Monedas
     End Sub
     Private Function DatosNoValidos() As Boolean
         C_TipoMoneda.Text = Trim(C_TipoMoneda.Text)
-        T_SlugAPI.Text = Trim(T_SlugAPI.Text)
+        T_Nombre.Text = Trim(T_Nombre.Text)
         T_Simbolo.Text = Trim(T_Simbolo.Text.ToUpper)
         If Len(T_Simbolo.Text) < 3 Then L_Mensaje.Text = "El simbolo no puede tener menos de 3 letras" : Return True
-        If Len(T_SlugAPI.Text) < 3 Then L_Mensaje.Text = "SlugAPI no puede tener menos de 3 letras" : Return True
+        If Len(T_Nombre.Text) < 3 Then L_Mensaje.Text = "SlugAPI no puede tener menos de 3 letras" : Return True
         '
         If C_TipoMoneda.Text = "Moneda" Or C_TipoMoneda.Text = "CryptoMoneda" Then
             'Es correcto Return False
@@ -142,25 +142,25 @@ Public Class F_Monedas
         Dim F1 As Integer = L_Fila.Text
         Dim Cambios As Integer = 0
         '
-        If T_Simbolo.Text = Matriz_Monedas(F1, 2) Then Cambios = 1
-        If T_SlugAPI.Text = Matriz_Monedas(F1, 4) Then Cambios = 2
+        If T_Simbolo.Text <> Matriz_Monedas(F1, 2) Then Cambios = 1
+        If T_Nombre.Text <> Matriz_Monedas(F1, 3) Then Cambios = 2
         '
         If C_TipoMoneda.Text = "CryptoMoneda" Then
             'Se esta grabando una CryptoMoneda
             If F1 > 0 Then
-                'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA.
+                'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA (tiene Fila).
                 If Cambios > 1 Then
-                    'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA. Y se estan modificando el TipoMoneda o Slug
+                    'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA. Y se estan modificando el Simbolo y el Nombre
                     If Cambios = 1 Then MsgBox("No puede cambiar el simbolo", vbCritical)
-                    If Cambios = 2 Then MsgBox("No puede cambiar el tipo Slug", vbCritical)
+                    If Cambios = 2 Then MsgBox("No puede cambiar el Nombre", vbCritical)
                     Return True
                 Else
-                    'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA. Pero NO se esta modificando el TipoMoneda o Slug
+                    'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA. Pero NO se esta modificando el Simbolo y el Nombre
                     'Asi que tiene el pase de grabar
                     Return False
                 End If
             Else
-                'Se esta grabando una CryptoMoneda. NUEVA MONEDA.
+                'Se esta grabando una CryptoMoneda. NUEVA MONEDA (no tiene filas).
                 Dim F2 As Integer = BuscarMoneda_Simbolo(T_Simbolo.Text) 'Se busca la moneda para saber si ya existe
                 If F2 > 0 Then
                     'Se esta grabando una CryptoMoneda. NUEVA MONEDA. Pero ya existe en la matriz
@@ -168,43 +168,52 @@ Public Class F_Monedas
                     Ver(T_Simbolo.Text)
                     Return True
                 Else
-                    'Se esta grabando una CryptoMoneda. NUEVA MONEDA. NO existe en la matriz.
-                    If API_CoinGecko_NuevaMoneda(T_SlugAPI.Text) Then
+                    'Se esta grabando una CryptoMoneda. NUEVA MONEDA (no tiene filas). NO existe en la matriz.
+                    If API_CoinGecko_NuevaMoneda(T_Nombre.Text) Then
                         'Se esta grabando una CryptoMoneda. NUEVA MONEDA. NO existe en la matriz. Pero si se encontro en CoinGeko.
                         'el procedimiento ya lo encontro y grabo los datos
+                        MsgBox("La moneda ya existe", vbCritical)
                         Ver(T_Simbolo.Text)
-                        'Como ya se grabo no es necesario volverlo a grabar
                         Return True
                     Else
-                        'Se esta grabando una CryptoMoneda. NUEVA MONEDA. NO existe en la matriz. NO se encontro en CoinGeko.
+                        'Se esta grabando una CryptoMoneda. NUEVA MONEDA (no tiene filas). NO existe en la matriz. NO se encontro en CoinGeko.
                         Return True
                     End If
                 End If
-                End If
+            End If
         Else
             'Se esta grabando una MONEDA REAL.
             'Por ende se validan menos datos, una moneda real es CLP (peso chileno), USD (dolar americano)
             'Tambien se setea la actualizacion automatica porque no aplica, esto solo se utiliza para las Crypto
-            CB_ActualizacionAutomatica.Checked = False
+
             If F1 > 0 Then
-                'Se esta grabando una MONEDA REAL. MONEDA ANTIGUA.
-                If ExisteMoneda_Simbolo(T_Simbolo.Text) Then
-                    'Se esta grabando una MONEDA REAL. MONEDA ANTIGUA. Ya existe, asi que se vuelve a cargar
-                    Ver(T_Simbolo.Text)
+                If Cambios = 1 Then
+                    'Se esta grabando una Moneda. MONEDA ANTIGUA. Y se estan modificando el Simbolo
+                    MsgBox("No puede cambiar el simbolo", vbCritical)
                     Return True
                 Else
-                    'Se esta grabando una MONEDA REAL. MONEDA ANTIGUA. NO existe
-                    L_Fila.Text = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                    'Se esta grabando una Moneda. MONEDA ANTIGUA. Pero NO se esta modificando el Simbolo
+                    'Asi que tiene el pase de grabar
+                    Matriz_Monedas(L_Fila.Text, 3) = T_Nombre.Text          ' 3 Nombre Oficial
+                    CB_ActualizacionAutomatica.Checked = False              '
                     Return False
                 End If
             Else
-                'Se esta grabando una MONEDA REAL. NUEVA MONEDA. 
+                'Se esta grabando una MONEDA REAL. NUEVA MONEDA (no tiene fila). 
                 If ExisteMoneda_Simbolo(T_Simbolo.Text) Then
                     'Se esta grabando una MONEDA REAL. NUEVA MONEDA. Ya existe, asi que se vuelve a cargar
                     Ver(T_Simbolo.Text)
-                    Return False
+                    Return True
                 Else
                     'Se esta grabando una MONEDA REAL. NUEVA MONEDA. NO existe
+                    L_Fila.Text = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                    Matriz_Monedas(L_Fila.Text, 0) = CrearCodigoInterno()   ' 0 ID_Moneda
+                    Matriz_Monedas(L_Fila.Text, 1) = CrearCodigoInterno()   ' 1 ID_Despliegue
+                    Matriz_Monedas(L_Fila.Text, 2) = T_Simbolo.Text         ' 2 Simbolo
+                    Matriz_Monedas(L_Fila.Text, 3) = T_Nombre.Text          ' 3 Nombre Oficial
+                    Matriz_Monedas(L_Fila.Text, 4) = "0"                    ' 4 Slug_API
+                    Matriz_Monedas(L_Fila.Text, 23) = "Moneda"              '23 Tipo_Moneda = Moneda / CryptoMoneda
+                    CB_ActualizacionAutomatica.Checked = False              '
                     Return False
                 End If
             End If
@@ -223,7 +232,7 @@ Public Class F_Monedas
         End If
         Guardar_Matrices("Monedas")
         '
-        Dim NombreNota As String = "Curr_" & T_SlugAPI.Text & ".rtf"
+        Dim NombreNota As String = "Curr_" & T_Nombre.Text & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
         Inicializar()

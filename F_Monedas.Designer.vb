@@ -68,11 +68,11 @@ Partial Class F_Monedas
         Me.L_MarketCapRank = New System.Windows.Forms.Label()
         Me.L_SubtipoStablecoin = New System.Windows.Forms.Label()
         Me.L_TipoActivo = New System.Windows.Forms.Label()
-        Me.L_NombreOficial = New System.Windows.Forms.Label()
+        Me.L_SlugAPI = New System.Windows.Forms.Label()
         Me.L_IDredNativa = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.C_TipoMoneda = New System.Windows.Forms.ComboBox()
-        Me.T_SlugAPI = New System.Windows.Forms.TextBox()
+        Me.T_Nombre = New System.Windows.Forms.TextBox()
         Me.T_Simbolo = New System.Windows.Forms.TextBox()
         Me.B_Copiar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -218,7 +218,7 @@ Partial Class F_Monedas
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label39.ForeColor = System.Drawing.Color.Blue
-        Me.Label39.Location = New System.Drawing.Point(253, 153)
+        Me.Label39.Location = New System.Drawing.Point(253, 182)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(96, 13)
         Me.Label39.TabIndex = 624
@@ -230,7 +230,7 @@ Partial Class F_Monedas
         Me.Label38.AutoSize = True
         Me.Label38.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label38.ForeColor = System.Drawing.Color.Blue
-        Me.Label38.Location = New System.Drawing.Point(273, 179)
+        Me.Label38.Location = New System.Drawing.Point(273, 153)
         Me.Label38.Name = "Label38"
         Me.Label38.Size = New System.Drawing.Size(76, 13)
         Me.Label38.TabIndex = 623
@@ -585,15 +585,15 @@ Partial Class F_Monedas
         Me.L_TipoActivo.TabIndex = 674
         Me.L_TipoActivo.Text = "L_TipoActivo"
         '
-        'L_NombreOficial
+        'L_SlugAPI
         '
-        Me.L_NombreOficial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.L_NombreOficial.ForeColor = System.Drawing.Color.Black
-        Me.L_NombreOficial.Location = New System.Drawing.Point(359, 179)
-        Me.L_NombreOficial.Name = "L_NombreOficial"
-        Me.L_NombreOficial.Size = New System.Drawing.Size(170, 13)
-        Me.L_NombreOficial.TabIndex = 673
-        Me.L_NombreOficial.Text = "L_NombreOficial"
+        Me.L_SlugAPI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.L_SlugAPI.ForeColor = System.Drawing.Color.Black
+        Me.L_SlugAPI.Location = New System.Drawing.Point(359, 182)
+        Me.L_SlugAPI.Name = "L_SlugAPI"
+        Me.L_SlugAPI.Size = New System.Drawing.Size(170, 13)
+        Me.L_SlugAPI.TabIndex = 673
+        Me.L_SlugAPI.Text = "L_SlugAPI"
         '
         'L_IDredNativa
         '
@@ -629,15 +629,15 @@ Partial Class F_Monedas
         Me.C_TipoMoneda.TabIndex = 1
         Me.C_TipoMoneda.Text = "C_TipoMoneda"
         '
-        'T_SlugAPI
+        'T_Nombre
         '
-        Me.T_SlugAPI.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_SlugAPI.Location = New System.Drawing.Point(359, 150)
-        Me.T_SlugAPI.MaxLength = 12
-        Me.T_SlugAPI.Name = "T_SlugAPI"
-        Me.T_SlugAPI.Size = New System.Drawing.Size(167, 20)
-        Me.T_SlugAPI.TabIndex = 3
-        Me.T_SlugAPI.Text = "T_SlugAPI"
+        Me.T_Nombre.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_Nombre.Location = New System.Drawing.Point(359, 150)
+        Me.T_Nombre.MaxLength = 60
+        Me.T_Nombre.Name = "T_Nombre"
+        Me.T_Nombre.Size = New System.Drawing.Size(167, 20)
+        Me.T_Nombre.TabIndex = 3
+        Me.T_Nombre.Text = "T_Nombre"
         '
         'T_Simbolo
         '
@@ -669,13 +669,13 @@ Partial Class F_Monedas
         Me.ClientSize = New System.Drawing.Size(836, 679)
         Me.Controls.Add(Me.B_Copiar)
         Me.Controls.Add(Me.T_Simbolo)
-        Me.Controls.Add(Me.T_SlugAPI)
+        Me.Controls.Add(Me.T_Nombre)
         Me.Controls.Add(Me.C_TipoMoneda)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.L_IDredNativa)
         Me.Controls.Add(Me.L_SubtipoStablecoin)
         Me.Controls.Add(Me.L_TipoActivo)
-        Me.Controls.Add(Me.L_NombreOficial)
+        Me.Controls.Add(Me.L_SlugAPI)
         Me.Controls.Add(Me.L_MarketCapRank)
         Me.Controls.Add(Me.CB_ActualizacionAutomatica)
         Me.Controls.Add(Me.Label4)
@@ -777,11 +777,11 @@ Partial Class F_Monedas
     Friend WithEvents L_MarketCapRank As Label
     Friend WithEvents L_SubtipoStablecoin As Label
     Friend WithEvents L_TipoActivo As Label
-    Friend WithEvents L_NombreOficial As Label
+    Friend WithEvents L_SlugAPI As Label
     Friend WithEvents L_IDredNativa As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents C_TipoMoneda As ComboBox
-    Friend WithEvents T_SlugAPI As TextBox
+    Friend WithEvents T_Nombre As TextBox
     Friend WithEvents T_Simbolo As TextBox
     Friend WithEvents B_Copiar As Button
 End Class
