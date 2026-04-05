@@ -148,35 +148,35 @@ Public Class F_Monedas
         If C_TipoMoneda.Text = "CryptoMoneda" Then
             'Se esta grabando una CryptoMoneda
             If F1 > 0 Then
-                'Se esta grabando una CryptoMoneda. La moneda ya esta registrada
+                'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA.
                 If Cambios > 1 Then
-                    'Se esta grabando una CryptoMoneda. La moneda ya esta registrada. Y se estan modificando el TipoMoneda o Slug
+                    'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA. Y se estan modificando el TipoMoneda o Slug
                     If Cambios = 1 Then MsgBox("No puede cambiar el simbolo", vbCritical)
                     If Cambios = 2 Then MsgBox("No puede cambiar el tipo Slug", vbCritical)
                     Return True
                 Else
-                    'Se esta grabando una CryptoMoneda. La moneda ya esta registrada. Pero NO se esta modificando el TipoMoneda o Slug
+                    'Se esta grabando una CryptoMoneda. MONEDA ANTIGUA. Pero NO se esta modificando el TipoMoneda o Slug
                     'Asi que tiene el pase de grabar
                     Return False
                 End If
             Else
-                'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz
-                'Se busca la moneda para saber si ya existe
-                Dim F2 As Integer = BuscarMoneda_Simbolo(T_Simbolo.Text)
+                'Se esta grabando una CryptoMoneda. NUEVA MONEDA.
+                Dim F2 As Integer = BuscarMoneda_Simbolo(T_Simbolo.Text) 'Se busca la moneda para saber si ya existe
                 If F2 > 0 Then
+                    'Se esta grabando una CryptoMoneda. NUEVA MONEDA. Pero ya existe en la matriz
                     MsgBox("La moneda ya existe", vbCritical)
                     Ver(T_Simbolo.Text)
                     Return True
                 Else
-                    'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz. 
+                    'Se esta grabando una CryptoMoneda. NUEVA MONEDA. NO existe en la matriz.
                     If API_CoinGecko_NuevaMoneda(T_SlugAPI.Text) Then
-                        'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz. Pero si se encontro en CoinGeko.
+                        'Se esta grabando una CryptoMoneda. NUEVA MONEDA. NO existe en la matriz. Pero si se encontro en CoinGeko.
                         'el procedimiento ya lo encontro y grabo los datos
                         Ver(T_Simbolo.Text)
                         'Como ya se grabo no es necesario volverlo a grabar
                         Return True
                     Else
-                        'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz. Pero NO se encontro en CoinGeko.
+                        'Se esta grabando una CryptoMoneda. NUEVA MONEDA. NO existe en la matriz. NO se encontro en CoinGeko.
                         Return True
                     End If
                 End If
@@ -187,25 +187,24 @@ Public Class F_Monedas
             'Tambien se setea la actualizacion automatica porque no aplica, esto solo se utiliza para las Crypto
             CB_ActualizacionAutomatica.Checked = False
             If F1 > 0 Then
-                'Se esta grabando una MONEDA REAL. La moneda ya esta registrada
+                'Se esta grabando una MONEDA REAL. MONEDA ANTIGUA.
                 If ExisteMoneda_Simbolo(T_Simbolo.Text) Then
-                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. Ya existe
-                    'Aca se puede actualizar T_SlugAPI o rT_Nota
-                    Return False
+                    'Se esta grabando una MONEDA REAL. MONEDA ANTIGUA. Ya existe, asi que se vuelve a cargar
+                    Ver(T_Simbolo.Text)
+                    Return True
                 Else
-                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. NO existe
-                    'Como el dato principal no ha cambiado se puede actualizar.
+                    'Se esta grabando una MONEDA REAL. MONEDA ANTIGUA. NO existe
                     L_Fila.Text = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
                     Return False
                 End If
             Else
-                'Se esta grabando una MONEDA REAL. La moneda NO esta registrada.
+                'Se esta grabando una MONEDA REAL. NUEVA MONEDA. 
                 If ExisteMoneda_Simbolo(T_Simbolo.Text) Then
-                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. Ya existe
-                    'Aca se puede actualizar T_SlugAPI o rT_Nota
+                    'Se esta grabando una MONEDA REAL. NUEVA MONEDA. Ya existe, asi que se vuelve a cargar
+                    Ver(T_Simbolo.Text)
                     Return False
                 Else
-                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. NO existe
+                    'Se esta grabando una MONEDA REAL. NUEVA MONEDA. NO existe
                     Return False
                 End If
             End If
