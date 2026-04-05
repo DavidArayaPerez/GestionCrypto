@@ -204,7 +204,7 @@ Module zAPI_CoinGecko
             '
             '
         Catch ex As Exception
-            MsgBox("Error leyendo API CoinGecko (Detalle): " & ex.Message)
+            MsgBox("Error al leer datos de " & slug & " en API CoinGecko (puede que no exista)" & vbCrLf & ex.Message)
             Return False
         End Try
     End Function

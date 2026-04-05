@@ -27,9 +27,9 @@ Module mExchange
     End Function
     Public Function ExisteExchange(T As String) As String
         For i As Integer = 1 To Matriz_ExchangeTF
-            If T = Matriz_Exchange(i, 1) Then Return "S" 'Si existe
+            If T = Matriz_Exchange(i, 1) Then Return True 'Si existe
         Next i
-        Return "N" 'No existe
+        Return False 'No existe
     End Function
     Public Sub Llenar_Exchange(ByRef Combo As ComboBox)
         Dim T As String

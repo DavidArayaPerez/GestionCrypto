@@ -76,9 +76,9 @@ Public Class F_Compra
     End Sub
     Private Function DatosNoValidos() As Boolean
         '
-        If ExisteExchange(C_Exchange.Text) = "N" Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If ExisteExchange(C_Exchange.Text) = False Then L_Mensaje.Text = "Plataforma no válida" : Return True
         '
-        If ExisteMoneda(C_MonedaDestino.Text) = "N" Then L_Mensaje.Text = "Moneda no válida" : Return True
+        If ExisteMoneda_Simbolo(C_MonedaDestino.Text) = False Then L_Mensaje.Text = "Moneda no válida" : Return True
         '
         If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Moneda Local no válida" : Return True
         '

@@ -22,9 +22,9 @@ Module mBilleteras
     End Function
     Public Function ExisteBilletera(T As String) As String
         For i As Integer = 1 To Matriz_BilleterasTF
-            If T = Matriz_Billeteras(i, 1) Then Return "S" 'Si existe
+            If T = Matriz_Billeteras(i, 1) Then Return True 'Si existe
         Next i
-        Return "N" 'No existe
+        Return False 'No existe
     End Function
     Public Function BuscarBilletera(Nombre As String) As Integer
         If Nombre = Nothing Then Return 0

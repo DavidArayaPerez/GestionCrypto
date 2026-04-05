@@ -90,10 +90,10 @@ Public Class F_PoolLiquidez
     End Sub
     Private Function DatosNoValidos() As Boolean
         '
-        If ExisteExchange(C_Exchange.Text) = "N" Then L_Mensaje.Text = "Plataforma no válida" : Return True
-        If ExisteBilletera(C_Billetera.Text) = "N" Then L_Mensaje.Text = "Billetera no válida" : Return True
-        If ExisteMoneda(C_Moneda1.Text) = "N" Then L_Mensaje.Text = "Moneda 1 no válida" : Return True
-        If ExisteMoneda(C_Moneda2.Text) = "N" Then L_Mensaje.Text = "Moneda 2 no válida" : Return True
+        If ExisteExchange(C_Exchange.Text) = False Then L_Mensaje.Text = "Plataforma no válida" : Return True
+        If ExisteBilletera(C_Billetera.Text) = False Then L_Mensaje.Text = "Billetera no válida" : Return True
+        If ExisteMoneda_Simbolo(C_Moneda1.Text) = False Then L_Mensaje.Text = "Moneda 1 no válida" : Return True
+        If ExisteMoneda_Simbolo(C_Moneda2.Text) = False Then L_Mensaje.Text = "Moneda 2 no válida" : Return True
         '
         Return False
     End Function

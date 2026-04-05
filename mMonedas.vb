@@ -36,14 +36,13 @@ Module mMonedas
     '   24      
     '
 
-    Public Function ExisteMoneda(T As String) As String
+    Public Function ExisteMoneda_Simbolo(T As String) As String
         For i As Integer = 1 To Matriz_MonedasTF
-            If T = Matriz_Monedas(i, 2) Then Return "S" 'Si existe
+            If T = Matriz_Monedas(i, 2) Then Return True 'Si existe
         Next i
-        Return "N" 'No existe
+        Return False 'No existe
     End Function
-
-    Public Function BuscarMoneda(T As String) As Integer
+    Public Function BuscarMoneda_Simbolo(T As String) As Integer
         If T = Nothing Then Return 0
         If T = "" Then Return 0
         '

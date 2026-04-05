@@ -51,16 +51,16 @@ Public Class F_Monedas
         L_IDmoneda.Text = ""
         L_IDdespliegue.Text = ""
         '
-        C_TipoMoneda.Enabled = Habilitar
+        C_TipoMoneda.Enabled = False
         T_SlugAPI.Enabled = Habilitar
         T_Simbolo.Enabled = Habilitar
         CB_ActualizacionAutomatica.Enabled = Habilitar
         rT_Nota.Enabled = Habilitar
         B_Actualiza_Moneda.Enabled = Habilitar
     End Sub
-    Private Sub Ver(Slug_API As String)
+    Private Sub Ver(Simbolo As String)
         Limpiar(True)
-        Dim F As Integer = BuscarMoneda(Slug_API)
+        Dim F As Integer = BuscarMoneda_Simbolo(Simbolo)
         If F < 1 Then Exit Sub
         '
         CB_ActualizacionAutomatica.Checked = False
@@ -124,49 +124,89 @@ Public Class F_Monedas
         '   23      Tipo_Moneda                     Moneda / CryptoMoneda
     End Sub
     Private Function DatosNoValidos() As Boolean
-        If C_TipoMoneda.Text <> "Moneda" Or C_TipoMoneda.Text <> "CryptoMoneda" Then L_Mensaje.Text = "Tipo Moneda no válida" : Return True
-        If Len(T_SlugAPI.Text) < 3 Then L_Mensaje.Text = "SlugAPI no válido" : Return True
+        C_TipoMoneda.Text = Trim(C_TipoMoneda.Text)
+        T_SlugAPI.Text = Trim(T_SlugAPI.Text)
+        T_Simbolo.Text = Trim(T_Simbolo.Text.ToUpper)
+        If Len(T_Simbolo.Text) < 3 Then L_Mensaje.Text = "El simbolo no puede tener menos de 3 letras" : Return True
+        If Len(T_SlugAPI.Text) < 3 Then L_Mensaje.Text = "SlugAPI no puede tener menos de 3 letras" : Return True
+        '
+        If C_TipoMoneda.Text = "Moneda" Or C_TipoMoneda.Text = "CryptoMoneda" Then
+            'Es correcto Return False
+        Else
+            L_Mensaje.Text = "Tipo Moneda no válida"
+            Return True
+        End If
         Return False
     End Function
     Private Function PreGrabar() As Boolean
         Dim F1 As Integer = L_Fila.Text
+        Dim Cambios As Integer = 0
         '
-        If F1 > 0 Then
-            'Se esta editando una moneda que existe
-            If T_SlugAPI.Text = Matriz_Monedas(F1, 4) Then
-                'Se esta editando una moneda que existe. El registro no ha cambia el Slug
-                If C_TipoMoneda.Text = Matriz_Monedas(F1, 23) Then
-                    'Se esta editando una moneda que existe. El registro no ha cambiado el Tipo Moneda
-                    Return False
-                Else
-                    'Se esta editando una moneda que existe. El registro si ha cambiado el Tipo Moneda
-                    MsgBox("No puede cambiar el tipo de moneda", vbCritical)
+        If T_Simbolo.Text = Matriz_Monedas(F1, 2) Then Cambios = 1
+        If T_SlugAPI.Text = Matriz_Monedas(F1, 4) Then Cambios = 2
+        '
+        If C_TipoMoneda.Text = "CryptoMoneda" Then
+            'Se esta grabando una CryptoMoneda
+            If F1 > 0 Then
+                'Se esta grabando una CryptoMoneda. La moneda ya esta registrada
+                If Cambios > 1 Then
+                    'Se esta grabando una CryptoMoneda. La moneda ya esta registrada. Y se estan modificando el TipoMoneda o Slug
+                    If Cambios = 1 Then MsgBox("No puede cambiar el simbolo", vbCritical)
+                    If Cambios = 2 Then MsgBox("No puede cambiar el tipo Slug", vbCritical)
                     Return True
+                Else
+                    'Se esta grabando una CryptoMoneda. La moneda ya esta registrada. Pero NO se esta modificando el TipoMoneda o Slug
+                    'Asi que tiene el pase de grabar
+                    Return False
                 End If
             Else
-                'Se esta editando una moneda que existe. El registro si ha cambiado el SLUG
-                MsgBox("No puede cambiar el Slug", vbCritical)
-                Return True
-            End If
+                'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz
+                'Se busca la moneda para saber si ya existe
+                Dim F2 As Integer = BuscarMoneda_Simbolo(T_Simbolo.Text)
+                If F2 > 0 Then
+                    MsgBox("La moneda ya existe", vbCritical)
+                    Ver(T_Simbolo.Text)
+                    Return True
+                Else
+                    'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz. 
+                    If API_CoinGecko_NuevaMoneda(T_SlugAPI.Text) Then
+                        'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz. Pero si se encontro en CoinGeko.
+                        'el procedimiento ya lo encontro y grabo los datos
+                        Ver(T_Simbolo.Text)
+                        'Como ya se grabo no es necesario volverlo a grabar
+                        Return True
+                    Else
+                        'Se esta grabando una CryptoMoneda. La moneda NO existe en la Matriz. Pero NO se encontro en CoinGeko.
+                        Return True
+                    End If
+                End If
+                End If
         Else
-            'Se intenta crear una nueva moneda
-            Dim F2 As Integer = BuscarMoneda(T_SlugAPI.Text)
-            If F2 > 0 Then
-                'Se intenta crear una nueva moneda, pero la Moneda ya existe
-                MsgBox("La moneda ya existe", vbCritical)
-                Ver(F2)
-                Return True
-            Else
-                'Se intenta crear una nueva moneda,pero la Moneda NO existe
-                If C_TipoMoneda.Text = "Moneda" Then
-                    'Se intenta crear una nueva moneda, la moneda NO existe, el tipo de moneda es MONEDA REAL, como Peso Chileno CLP o Dolar Americado USD
-                    L_Fila.Text = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+            'Se esta grabando una MONEDA REAL.
+            'Por ende se validan menos datos, una moneda real es CLP (peso chileno), USD (dolar americano)
+            'Tambien se setea la actualizacion automatica porque no aplica, esto solo se utiliza para las Crypto
+            CB_ActualizacionAutomatica.Checked = False
+            If F1 > 0 Then
+                'Se esta grabando una MONEDA REAL. La moneda ya esta registrada
+                If ExisteMoneda_Simbolo(T_Simbolo.Text) Then
+                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. Ya existe
+                    'Aca se puede actualizar T_SlugAPI o rT_Nota
                     Return False
                 Else
-                    'Se intenta crear una nueva moneda,pero la Moneda NO existe. el tipo de moneda es CRIPTO Moneda, como BTC, ETH
-                    'Por ende se busca la moneda
-                    L_Fila.Text = API_CoinGecko_NuevaMoneda(T_SlugAPI.Text) 'El seguiente procedimiento busca la moneda y la graba
-                    Return True
+                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. NO existe
+                    'Como el dato principal no ha cambiado se puede actualizar.
+                    L_Fila.Text = AgrandarMatriz(Matriz_Monedas, Matriz_MonedasTF, Matriz_MonedasTC)
+                    Return False
+                End If
+            Else
+                'Se esta grabando una MONEDA REAL. La moneda NO esta registrada.
+                If ExisteMoneda_Simbolo(T_Simbolo.Text) Then
+                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. Ya existe
+                    'Aca se puede actualizar T_SlugAPI o rT_Nota
+                    Return False
+                Else
+                    'Se esta grabando una MONEDA REAL. La moneda ya esta registrada. NO existe
+                    Return False
                 End If
             End If
         End If
@@ -250,9 +290,10 @@ Public Class F_Monedas
         '
     End Sub
     Private Sub B_NuevoMoneda_Click_1(sender As Object, e As EventArgs) Handles B_NuevoMoneda.Click
-        Limpiar()
+        Limpiar(True)
+        C_TipoMoneda.Enabled = True
         L_Fila.Text = "0"
-        T_SlugAPI.Focus()
+        T_Simbolo.Focus()
     End Sub
     Private Sub B_GrabarMoneda_Click_1(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
         Grabar()
@@ -275,7 +316,6 @@ Public Class F_Monedas
         Dim URL As String = T_LinkCoinGeko.Text
         Process.Start(New ProcessStartInfo(URL) With {.UseShellExecute = True})
     End Sub
-
     Private Sub B_Copiar_Click(sender As Object, e As EventArgs) Handles B_Copiar.Click
         CopiarAlPortapapeles(T_ContractAddres)
     End Sub
