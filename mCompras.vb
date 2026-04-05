@@ -22,7 +22,7 @@ Module mCompras
     '   8   Comision
     '   9   Gas
     '   10  Precio
-    '   xx
+    ' 
     Public Function Crear_Compras() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)
@@ -53,8 +53,8 @@ Module mCompras
         Dim T As String
         Lista.Items.Clear()
         For i As Integer = 1 To Matriz_ComprasTF
-            T = Matriz_Compras(i, 1) & " " & Matriz_Compras(i, 2) & " - " & Matriz_Compras(i, 3) & " - " & Matriz_Compras(i, 4)
-            '   1   Fecha                    2   Hora                       3   Plataforma                 4   Moneda_Origen
+            T = Matriz_Compras(i, 1) & " " & Matriz_Compras(i, 2) & " - " & Matriz_Compras(i, 3) & " - " & Matriz_Compras(i, 6)
+            '   1   Fecha                    2   Hora                       3   Plataforma                 6   Moneda_Destino
             Lista.Items.Add(T)
         Next i
     End Sub
@@ -62,8 +62,10 @@ Module mCompras
         If FechaHora_PlataformaMoneda = Nothing Then Return 0
         If FechaHora_PlataformaMoneda = "" Then Return 0
         '
+        Dim T As String
         For i As Integer = 1 To Matriz_ComprasTF
-            If FechaHora_PlataformaMoneda = Matriz_Compras(i, 4) Then Return i
+            T = Matriz_Compras(i, 1) & " " & Matriz_Compras(i, 2) & " - " & Matriz_Compras(i, 3) & " - " & Matriz_Compras(i, 6)
+            If FechaHora_PlataformaMoneda = T Then Return i
         Next i
         Return 0
     End Function

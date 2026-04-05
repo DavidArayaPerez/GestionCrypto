@@ -82,11 +82,22 @@ Public Class F_Compra
         If ExisteExchange(C_Exchange.Text) = False Then L_Mensaje.Text = "Plataforma no válida" : Return True
         If ExisteMoneda_Simbolo(C_MonedaDestino.Text) = False Then L_Mensaje.Text = "Moneda no válida" : Return True
         If C_MonedaOrigen.Text <> "CLP" And C_MonedaOrigen.Text <> "USDT" Then L_Mensaje.Text = "Moneda Local no válida" : Return True
+        If Len(T_Hora.Text) = 4 Then T_Hora.Text = Mid(T_Hora.Text, 1, 2) & ":" & Mid(T_Hora.Text, 3, 2)
+        If Len(T_Hora.Text) = 5 And Mid(T_Hora.Text, 3, 1) = ":" Then
+            'Valido
+        Else
+            L_Mensaje.Text = "La hora ingresada no es valido" & vbCrLf & "Solo ingrese numeros en el formato HHmm" : Return True
+        End If
+        If Len(T_Fecha.Text) = 8 Then
+            'Valido
+        Else
+            L_Mensaje.Text = "La Fecha ingresada no es valida" & vbCrLf & "Solo ingrese numeros en el formato YYYYmmDD" : Return True
+        End If
         Return False
     End Function
     Private Function PreGrabar() As Boolean
-        '                 1   Fecha            2   Hora              3 Plataforma              4 Moneda_Origen
-        Dim T As String = T_Fecha.Text & " " & T_Hora.Text & " - " & C_Exchange.Text & " - " & C_MonedaOrigen.Text
+        '                 1   Fecha            2   Hora              3 Plataforma              6 Moneda_Destino
+        Dim T As String = T_Fecha.Text & " " & T_Hora.Text & " - " & C_Exchange.Text & " - " & C_MonedaDestino.Text
 
         '
         If Val(L_Fila.Text) = 0 Then

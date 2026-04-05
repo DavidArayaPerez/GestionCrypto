@@ -92,7 +92,7 @@ Partial Class F_Compra
         Me.T_Comision.MaxLength = 12
         Me.T_Comision.Name = "T_Comision"
         Me.T_Comision.Size = New System.Drawing.Size(123, 20)
-        Me.T_Comision.TabIndex = 7
+        Me.T_Comision.TabIndex = 8
         Me.T_Comision.Text = "T_Comision"
         '
         'T_CantidadCryptos
@@ -102,7 +102,7 @@ Partial Class F_Compra
         Me.T_CantidadCryptos.MaxLength = 12
         Me.T_CantidadCryptos.Name = "T_CantidadCryptos"
         Me.T_CantidadCryptos.Size = New System.Drawing.Size(123, 20)
-        Me.T_CantidadCryptos.TabIndex = 6
+        Me.T_CantidadCryptos.TabIndex = 7
         Me.T_CantidadCryptos.Text = "T_CantidadCryptos"
         '
         'T_MontoOrigen
@@ -112,7 +112,7 @@ Partial Class F_Compra
         Me.T_MontoOrigen.MaxLength = 12
         Me.T_MontoOrigen.Name = "T_MontoOrigen"
         Me.T_MontoOrigen.Size = New System.Drawing.Size(123, 20)
-        Me.T_MontoOrigen.TabIndex = 4
+        Me.T_MontoOrigen.TabIndex = 5
         Me.T_MontoOrigen.Text = "T_MontoOrigen"
         '
         'rT_Nota
@@ -186,7 +186,7 @@ Partial Class F_Compra
         Me.C_MonedaDestino.Location = New System.Drawing.Point(357, 221)
         Me.C_MonedaDestino.Name = "C_MonedaDestino"
         Me.C_MonedaDestino.Size = New System.Drawing.Size(123, 21)
-        Me.C_MonedaDestino.TabIndex = 5
+        Me.C_MonedaDestino.TabIndex = 6
         Me.C_MonedaDestino.Text = "C_MonedaDestino"
         '
         'Label09
@@ -216,7 +216,7 @@ Partial Class F_Compra
         Me.C_MonedaOrigen.Location = New System.Drawing.Point(357, 172)
         Me.C_MonedaOrigen.Name = "C_MonedaOrigen"
         Me.C_MonedaOrigen.Size = New System.Drawing.Size(123, 21)
-        Me.C_MonedaOrigen.TabIndex = 3
+        Me.C_MonedaOrigen.TabIndex = 4
         Me.C_MonedaOrigen.Text = "C_MonedaOrigen"
         '
         'Label11
@@ -233,10 +233,10 @@ Partial Class F_Compra
         '
         Me.C_Exchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_Exchange.FormattingEnabled = True
-        Me.C_Exchange.Location = New System.Drawing.Point(528, 276)
+        Me.C_Exchange.Location = New System.Drawing.Point(531, 90)
         Me.C_Exchange.Name = "C_Exchange"
         Me.C_Exchange.Size = New System.Drawing.Size(123, 21)
-        Me.C_Exchange.TabIndex = 8
+        Me.C_Exchange.TabIndex = 3
         Me.C_Exchange.Text = "C_Exchange"
         '
         'Cal_Fecha
@@ -276,7 +276,7 @@ Partial Class F_Compra
         '
         Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label14.ForeColor = System.Drawing.Color.Blue
-        Me.Label14.Location = New System.Drawing.Point(528, 259)
+        Me.Label14.Location = New System.Drawing.Point(531, 73)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(123, 13)
         Me.Label14.TabIndex = 480
@@ -328,16 +328,16 @@ Partial Class F_Compra
         'L_Mensaje
         '
         Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
-        Me.L_Mensaje.Location = New System.Drawing.Point(357, 486)
+        Me.L_Mensaje.Location = New System.Drawing.Point(357, 464)
         Me.L_Mensaje.Name = "L_Mensaje"
-        Me.L_Mensaje.Size = New System.Drawing.Size(294, 16)
+        Me.L_Mensaje.Size = New System.Drawing.Size(294, 38)
         Me.L_Mensaje.TabIndex = 653
         Me.L_Mensaje.Text = "L_Mensaje"
         '
         'T_Gas
         '
         Me.T_Gas.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.T_Gas.Location = New System.Drawing.Point(357, 325)
+        Me.T_Gas.Location = New System.Drawing.Point(528, 276)
         Me.T_Gas.MaxLength = 12
         Me.T_Gas.Name = "T_Gas"
         Me.T_Gas.Size = New System.Drawing.Size(123, 20)
@@ -348,7 +348,7 @@ Partial Class F_Compra
         '
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Blue
-        Me.Label1.Location = New System.Drawing.Point(357, 309)
+        Me.Label1.Location = New System.Drawing.Point(528, 260)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(123, 13)
         Me.Label1.TabIndex = 654

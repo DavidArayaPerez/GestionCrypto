@@ -187,6 +187,7 @@ Module xFunciones_Archivo
     End Function
     Public Function GuardarRTF(Directorio As String, NombreArchivo As String, Control As RichTextBox) As Boolean
         Try
+            If Len(Control.Text) < 1 Then Return False
             Dim RutaCompleta As String = Directorio & "\" & NombreArchivo
             Control.SaveFile(RutaCompleta, RichTextBoxStreamType.RichText)
             Return True
