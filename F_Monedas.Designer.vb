@@ -27,7 +27,7 @@ Partial Class F_Monedas
         Me.L_Fila = New System.Windows.Forms.Label()
         Me.Label83 = New System.Windows.Forms.Label()
         Me.T_Busqueda_Monedas = New System.Windows.Forms.TextBox()
-        Me.B_ActualizaTODO_Monedas = New System.Windows.Forms.Button()
+        Me.B_Actualiza50 = New System.Windows.Forms.Button()
         Me.Label80 = New System.Windows.Forms.Label()
         Me.Label81 = New System.Windows.Forms.Label()
         Me.T_ContractAddres = New System.Windows.Forms.TextBox()
@@ -75,6 +75,7 @@ Partial Class F_Monedas
         Me.T_Nombre = New System.Windows.Forms.TextBox()
         Me.T_Simbolo = New System.Windows.Forms.TextBox()
         Me.B_Copiar = New System.Windows.Forms.Button()
+        Me.B_Actualiza_MonedasRedes = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'B_Cerrar
@@ -130,16 +131,16 @@ Partial Class F_Monedas
         Me.T_Busqueda_Monedas.TabIndex = 644
         Me.T_Busqueda_Monedas.Text = "T_Busqueda_Monedas"
         '
-        'B_ActualizaTODO_Monedas
+        'B_Actualiza50
         '
-        Me.B_ActualizaTODO_Monedas.BackColor = System.Drawing.SystemColors.Control
-        Me.B_ActualizaTODO_Monedas.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_ActualizaTODO_Monedas.Location = New System.Drawing.Point(714, 12)
-        Me.B_ActualizaTODO_Monedas.Name = "B_ActualizaTODO_Monedas"
-        Me.B_ActualizaTODO_Monedas.Size = New System.Drawing.Size(99, 23)
-        Me.B_ActualizaTODO_Monedas.TabIndex = 643
-        Me.B_ActualizaTODO_Monedas.Text = "Actualiza TODO"
-        Me.B_ActualizaTODO_Monedas.UseVisualStyleBackColor = False
+        Me.B_Actualiza50.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Actualiza50.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Actualiza50.Location = New System.Drawing.Point(714, 12)
+        Me.B_Actualiza50.Name = "B_Actualiza50"
+        Me.B_Actualiza50.Size = New System.Drawing.Size(104, 36)
+        Me.B_Actualiza50.TabIndex = 643
+        Me.B_Actualiza50.Text = "Actualiza 50monedas"
+        Me.B_Actualiza50.UseVisualStyleBackColor = False
         '
         'Label80
         '
@@ -302,13 +303,14 @@ Partial Class F_Monedas
         Me.L_Monedas.Location = New System.Drawing.Point(21, 99)
         Me.L_Monedas.Name = "L_Monedas"
         Me.L_Monedas.Size = New System.Drawing.Size(213, 544)
+        Me.L_Monedas.Sorted = True
         Me.L_Monedas.TabIndex = 0
         '
         'B_GrabarMoneda
         '
         Me.B_GrabarMoneda.BackColor = System.Drawing.SystemColors.Control
         Me.B_GrabarMoneda.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_GrabarMoneda.Location = New System.Drawing.Point(480, 12)
+        Me.B_GrabarMoneda.Location = New System.Drawing.Point(250, 12)
         Me.B_GrabarMoneda.Name = "B_GrabarMoneda"
         Me.B_GrabarMoneda.Size = New System.Drawing.Size(99, 23)
         Me.B_GrabarMoneda.TabIndex = 613
@@ -661,12 +663,24 @@ Partial Class F_Monedas
         Me.B_Copiar.Text = "Copiar"
         Me.B_Copiar.UseVisualStyleBackColor = False
         '
+        'B_Actualiza_MonedasRedes
+        '
+        Me.B_Actualiza_MonedasRedes.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Actualiza_MonedasRedes.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Actualiza_MonedasRedes.Location = New System.Drawing.Point(609, 12)
+        Me.B_Actualiza_MonedasRedes.Name = "B_Actualiza_MonedasRedes"
+        Me.B_Actualiza_MonedasRedes.Size = New System.Drawing.Size(99, 36)
+        Me.B_Actualiza_MonedasRedes.TabIndex = 684
+        Me.B_Actualiza_MonedasRedes.Text = "Actualiza Monedas Redes"
+        Me.B_Actualiza_MonedasRedes.UseVisualStyleBackColor = False
+        '
         'F_Monedas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(836, 679)
+        Me.ClientSize = New System.Drawing.Size(834, 679)
+        Me.Controls.Add(Me.B_Actualiza_MonedasRedes)
         Me.Controls.Add(Me.B_Copiar)
         Me.Controls.Add(Me.T_Simbolo)
         Me.Controls.Add(Me.T_Nombre)
@@ -703,7 +717,7 @@ Partial Class F_Monedas
         Me.Controls.Add(Me.L_Fila)
         Me.Controls.Add(Me.Label83)
         Me.Controls.Add(Me.T_Busqueda_Monedas)
-        Me.Controls.Add(Me.B_ActualizaTODO_Monedas)
+        Me.Controls.Add(Me.B_Actualiza50)
         Me.Controls.Add(Me.Label80)
         Me.Controls.Add(Me.Label81)
         Me.Controls.Add(Me.T_ContractAddres)
@@ -736,7 +750,7 @@ Partial Class F_Monedas
     Friend WithEvents L_Fila As Label
     Friend WithEvents Label83 As Label
     Friend WithEvents T_Busqueda_Monedas As TextBox
-    Friend WithEvents B_ActualizaTODO_Monedas As Button
+    Friend WithEvents B_Actualiza50 As Button
     Friend WithEvents Label80 As Label
     Friend WithEvents Label81 As Label
     Friend WithEvents T_ContractAddres As TextBox
@@ -784,4 +798,5 @@ Partial Class F_Monedas
     Friend WithEvents T_Nombre As TextBox
     Friend WithEvents T_Simbolo As TextBox
     Friend WithEvents B_Copiar As Button
+    Friend WithEvents B_Actualiza_MonedasRedes As Button
 End Class

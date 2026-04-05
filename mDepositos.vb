@@ -5,23 +5,7 @@ Module mDepositos
     '
     '
     '
-    Public Matriz_Depositos(,) As String
-    Public Matriz_DepositosTF As Integer
-    Public Matriz_DepositosTC As Integer = 12
-    '
-    '   0   ID
-    '   1   Fecha
-    '   2   Hora
-    '   3   Plataforma      MetraMask, Uniswap, etc
-    '   4   Billetera
-    '   5   Moneda_Entrada
-    '   6   Valor_Entrada
-    '   7   Moneda_Salida
-    '   8   Valor_Salida
-    '   9   Comision
-    '   10  Gas
-    '   11  Precio
-    '
+
     Public Function Crear_Depositos() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Depositos, Matriz_DepositosTF, Matriz_DepositosTC)

@@ -61,6 +61,7 @@ Partial Class F_Traspaso
         Me.L_Traspasos.Location = New System.Drawing.Point(12, 68)
         Me.L_Traspasos.Name = "L_Traspasos"
         Me.L_Traspasos.Size = New System.Drawing.Size(316, 424)
+        Me.L_Traspasos.Sorted = True
         Me.L_Traspasos.TabIndex = 526
         '
         'C_BilleteraDestino

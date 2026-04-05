@@ -8,14 +8,7 @@ Module mExchange
     '
     '
     '
-    Public Matriz_Exchange(,) As String
-    Public Matriz_ExchangeTF As Integer
-    Public Matriz_ExchangeTC As Integer = 3
-    '
-    '   0   ID
-    '   1   Nombre
-    '   2   Link
-    '
+
     Public Function BuscarExchange(T As String) As Integer
         If T = Nothing Then Return 0
         If T = "" Then Return 0

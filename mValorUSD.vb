@@ -8,12 +8,11 @@ Module mValorUSD
     '
     '
     '
-    Public Matriz_ValorUSD(,) As String
-    Public Matriz_ValorUSDTF As Integer
-    Public Matriz_ValorUSDTC As Integer = 2
+
     '
-    '   0   Fecha
-    '   1   Valor (el separador decimal es el punto, no la coma, para evitar problemas al guardar y leer el valor)
+
+    '
+    '
     '
     Public Sub Transformar_Fechas_ValorUSD()
         Dim Matriz(,) As String = Matriz_ValorUSD

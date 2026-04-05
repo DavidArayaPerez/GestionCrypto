@@ -1,4 +1,7 @@
-﻿'https://github.com/DavidArayaPerez/GestionCrypto
+﻿'
+'
+'
+'https://github.com/DavidArayaPerez/GestionCrypto
 '
 Imports System.Diagnostics
 Imports System.IO
@@ -37,44 +40,39 @@ Public Class F_zPrincipal
         LogTiempo("Parametros()")
 
         '1: Redes / Es el corazon del programa
-        CargarTXT("Redes", Matriz_Redes)
-        OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES")
-        Guardar_Matrices("Redes")
+        CargaRedes() 'OrdenarMatriz(Matriz_Redes, Matriz_RedesTF, Matriz_RedesTC, 2, "DES") 'Guardar_Matrices("Redes")
+        LogTiempo("Redes")
         '
         '2.- Billeteras
-        CargarTXT("Billeteras", Matriz_Billeteras)
+        CargaBilleteras()
+        LogTiempo("Billeteras")
         '
         '3.- Las Monedas
-        CargarTXT("Monedas", Matriz_Monedas)
-        AsignarRedNativa_MonedasSinRed()
+        CargaMonedas()
         LogTiempo("Monedas")
         '
         '4.- Exchange
-        CargarTXT("Exchange", Matriz_Exchange)
+        CargaExchange()
         LogTiempo("Exchange")
         '
         '
-        CargarTXT("BilleteraSaldo", Matriz_BilleteraSaldo)
+        CargaBilleteraSaldo()
         LogTiempo("BilleteraSaldo")
-
-
-        CargarTXT("ValorUSD", Matriz_ValorUSD)
+        '
+        '
+        CargaValorUSD()
         LogTiempo("ValorUSD")
         '
-        CargarTXT("Depositos", Matriz_Depositos)
-        Transformar_Fechas_Depositos()
-        LogTiempo("Depositos+Transform")
+        CargaDepositos() 'Transformar_Fechas_Depositos()
+        LogTiempo("Depositos")
         '
-        CargarTXT("Compras", Matriz_Compras)
-        Transformar_Fechas_Compras()
+        CargaCompras() 'Transformar_Fechas_Compras()
         LogTiempo("Compras")
         '
-        CargarTXT("Traspasos", Matriz_Traspasos)
-        Transformar_Fechas_Traspasos()
+        CargaTraspasos() 'Transformar_Fechas_Traspasos()
         LogTiempo("Traspasos")
         '
-        CargarTXT("PoolLiquidez", Matriz_PoolLiquidez)
-        Transformar_Fechas_PoolLiquidez()
+        CargaPoolLiquidez() 'Transformar_Fechas_PoolLiquidez()
         LogTiempo("PoolLiquidez")
         '
         '

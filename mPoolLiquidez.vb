@@ -5,27 +5,7 @@ Module mPoolLiquidez
     '
     '
     '
-    Public Matriz_PoolLiquidez(,) As String
-    Public Matriz_PoolLiquidezTF As Integer
-    Public Matriz_PoolLiquidezTC As Integer = 17
-    '
-    '   0   ID
-    '   1   Fecha
-    '   2   Hora
-    '   3   Plataforma      MetraMask, Uniswap, etc
-    '   4   Billetera
-    '   5   Moneda_Uno
-    '   6   Valor_Uno
-    '   7   Moneda_Dos
-    '   8   Valor_Dos
-    '   9   Comision
-    '   10  Gas
-    '   11  Monto_Uno_Resultante
-    '   12  Monto_Dos_Resultante
-    '   13  Porcentaje_Uno
-    '   14  Porcentaje_Dos
-    '   15  Minimo
-    '   16  Maximo
+
     '
     Public Function Crear_PoolLiquidez() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno

@@ -5,23 +5,7 @@ Module mTraspasos
     '
     '
     '
-    Public Matriz_Traspasos(,) As String
-    Public Matriz_TraspasosTF As Integer
-    Public Matriz_TraspasosTC As Integer = 12
-    '
-    '   0   ID
-    '   1   Fecha
-    '   2   Hora
-    '   3   Plataforma          MetraMask, Uniswap, etc
-    '   4   Billetera_Origen
-    '   5   Moneda_Origen
-    '   6   Valor_Origen
-    '   7   Billetera_Destino
-    '   8   Moneda_Destino
-    '   9   Valor_Destino
-    '   10  Comision
-    '   11  Gas
-    '
+
     Public Function Crear_Traspasos() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Traspasos, Matriz_TraspasosTF, Matriz_TraspasosTC)

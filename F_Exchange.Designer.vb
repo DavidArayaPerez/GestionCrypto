@@ -44,6 +44,7 @@ Partial Class F_Exchange
         Me.L_Exchange.Location = New System.Drawing.Point(12, 49)
         Me.L_Exchange.Name = "L_Exchange"
         Me.L_Exchange.Size = New System.Drawing.Size(316, 424)
+        Me.L_Exchange.Sorted = True
         Me.L_Exchange.TabIndex = 570
         '
         'B_Grabar

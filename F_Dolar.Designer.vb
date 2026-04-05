@@ -34,6 +34,7 @@ Partial Class F_Dolar
         Me.L_Dolar.Location = New System.Drawing.Point(12, 57)
         Me.L_Dolar.Name = "L_Dolar"
         Me.L_Dolar.Size = New System.Drawing.Size(219, 529)
+        Me.L_Dolar.Sorted = True
         Me.L_Dolar.TabIndex = 627
         '
         'B_Cerrar

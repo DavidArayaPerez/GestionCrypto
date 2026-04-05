@@ -69,6 +69,7 @@ Partial Class F_PoolLiquidez
         Me.L_PoolLiquidez.Location = New System.Drawing.Point(12, 62)
         Me.L_PoolLiquidez.Name = "L_PoolLiquidez"
         Me.L_PoolLiquidez.Size = New System.Drawing.Size(316, 424)
+        Me.L_PoolLiquidez.Sorted = True
         Me.L_PoolLiquidez.TabIndex = 560
         '
         'T_Max

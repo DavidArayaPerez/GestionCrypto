@@ -41,11 +41,11 @@ Module zAPI_CoinGecko
     ' ------------------------------------------------------------
     Public Sub ActualizarMonedas()
         'Carga valores actualizados de MONEDAS
-        API_CoinGecko_Monedas(250, 1)
-        API_CoinGecko_Monedas(250, 2)
-        API_CoinGecko_Monedas(250, 3)
-        API_CoinGecko_Monedas(250, 4)
-        API_CoinGecko_Monedas(250, 5)
+        API_CoinGecko_Monedas(50, 1)
+        'API_CoinGecko_Monedas(250, 2)
+        'API_CoinGecko_Monedas(250, 3)
+        'API_CoinGecko_Monedas(250, 4)
+        'API_CoinGecko_Monedas(250, 5)
         MsgBox("Monedas actualizadas correctamente")
     End Sub
     Public Sub API_CoinGecko_Monedas(Optional ByVal cantidad As Integer = 50, Optional ByVal pagina As Integer = 1)

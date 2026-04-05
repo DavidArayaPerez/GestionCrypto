@@ -57,6 +57,7 @@ Partial Class F_Billetera
         Me.L_Billeteras.Location = New System.Drawing.Point(15, 59)
         Me.L_Billeteras.Name = "L_Billeteras"
         Me.L_Billeteras.Size = New System.Drawing.Size(348, 424)
+        Me.L_Billeteras.Sorted = True
         Me.L_Billeteras.TabIndex = 573
         '
         'Label1

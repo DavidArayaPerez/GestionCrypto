@@ -9,22 +9,7 @@ Module mCompras
     '
     '
     '
-    Public Matriz_Compras(,) As String
-    Public Matriz_ComprasTF As Integer
-    Public Matriz_ComprasTC As Integer = 11
-    '
-    '   0   ID
-    '   1   Fecha
-    '   2   Hora
-    '   3   Plataforma      MetraMask, Uniswap, etc
-    '   4   Moneda_Origen
-    '   5   Valor_Origen
-    '   6   Moneda_Destino
-    '   7   Valor_Destino
-    '   8   Comision
-    '   9   Gas
-    '   10  Precio
-    ' 
+
     Public Function Crear_Compras() As Integer
         'Devuelve la posicion del ultimo registro nuevo, el cual ya tiene el codigo interno
         Dim Fila As Integer = AgrandarMatriz(Matriz_Compras, Matriz_ComprasTF, Matriz_ComprasTC)
@@ -42,15 +27,15 @@ Module mCompras
         Matriz_Compras(Fila, 10) = ""
         Return Fila
     End Function
-    Public Sub Transformar_Fechas_Compras()
-        Dim Matriz(,) As String = Matriz_Compras
-        Dim TotalFilas As Integer = Matriz_ComprasTF
-        For i As Integer = 1 To TotalFilas
-            Dim FechaAux As String = TransformarFecha_TextoNumero_YYYYmmDD(Matriz(i, 1))
-            If FechaAux > 1 Then Matriz(i, 1) = FechaAux
-        Next i
-        Matriz_Compras = Matriz
-    End Sub
+    'Public Sub Transformar_Fechas_Compras()
+    '    Dim Matriz(,) As String = Matriz_Compras
+    '    Dim TotalFilas As Integer = Matriz_ComprasTF
+    '    For i As Integer = 1 To TotalFilas
+    '        Dim FechaAux As String = TransformarFecha_TextoNumero_YYYYmmDD(Matriz(i, 1))
+    '        If FechaAux > 1 Then Matriz(i, 1) = FechaAux
+    '    Next i
+    '    Matriz_Compras = Matriz
+    'End Sub
     Public Sub LlenarList_Compras(ByRef Lista As ListBox)
         Dim T As String
         Lista.Items.Clear()

@@ -305,7 +305,7 @@ Public Class F_Monedas
     Private Sub B_GrabarMoneda_Click_1(sender As Object, e As EventArgs) Handles B_GrabarMoneda.Click
         Grabar()
     End Sub
-    Private Sub B_Actualizar_Monedas_Click_1(sender As Object, e As EventArgs) Handles B_ActualizaTODO_Monedas.Click
+    Private Sub B_Actualizar_Monedas_Click_1(sender As Object, e As EventArgs) Handles B_Actualiza50.Click
         Me.Enabled = False
         ActualizarMonedas()
         Inicializar()
@@ -325,5 +325,9 @@ Public Class F_Monedas
     End Sub
     Private Sub B_Copiar_Click(sender As Object, e As EventArgs) Handles B_Copiar.Click
         CopiarAlPortapapeles(T_ContractAddres)
+    End Sub
+
+    Private Sub B_Actualiza_MonedasRedes_Click(sender As Object, e As EventArgs) Handles B_Actualiza_MonedasRedes.Click
+        AsignarRedNativa_MonedasSinRed()
     End Sub
 End Class

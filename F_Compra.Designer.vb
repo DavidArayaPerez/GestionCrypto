@@ -63,6 +63,7 @@ Partial Class F_Compra
         Me.L_Compras.Location = New System.Drawing.Point(12, 56)
         Me.L_Compras.Name = "L_Compras"
         Me.L_Compras.Size = New System.Drawing.Size(316, 439)
+        Me.L_Compras.Sorted = True
         Me.L_Compras.TabIndex = 0
         '
         'Label45

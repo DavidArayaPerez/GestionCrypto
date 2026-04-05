@@ -261,6 +261,7 @@ Partial Class F_Red
         Me.L_Red.Location = New System.Drawing.Point(12, 58)
         Me.L_Red.Name = "L_Red"
         Me.L_Red.Size = New System.Drawing.Size(316, 544)
+        Me.L_Red.Sorted = True
         Me.L_Red.TabIndex = 626
         '
         'B_GrabarRed
