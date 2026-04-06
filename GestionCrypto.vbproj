@@ -391,6 +391,7 @@
     <Compile Include="xFunciones_Archivo.vb" />
     <Compile Include="xFunciones_Carpeta.vb" />
     <Compile Include="zAPI_EtherScan.vb" />
+    <Compile Include="zAPI_Moralis.vb" />
     <Compile Include="zCargaInicia.vb" />
     <Compile Include="zCrearCodigoUnico.vb" />
     <Compile Include="xFunciones Fechas.vb" />

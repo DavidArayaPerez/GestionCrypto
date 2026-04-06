@@ -9,6 +9,7 @@ Public Class F_Billetera
         VariableDeInicio = True
         Limpieza()
         LlenarList_Billetera(L_Billeteras)
+        ConfigurarDGV()
         VariableDeInicio = False
     End Sub
     Private Sub Limpieza(Optional Habilitar As Boolean = False)
@@ -35,6 +36,7 @@ Public Class F_Billetera
         '
         Dim NombreNota As String = "Wall_" & T_NombreBilletera.Text & ".rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
+        MostrarSaldosBilletera(Matriz_Billeteras(F, 0))
         '   0   Codigo Billetera
         '   1   Nombre
         '
@@ -55,7 +57,55 @@ Public Class F_Billetera
         '   0   Codigo Billetera
         '   1   Nombre
     End Sub
-
+    Private Sub ConfigurarDGV()
+        DGV.Columns.Clear()
+        DGV.AllowUserToAddRows = False
+        DGV.ReadOnly = True
+        DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        '
+        DGV.Columns.Add("Fecha_Hora", "Fecha/Hora")
+        DGV.Columns.Add("Red", "Red")
+        DGV.Columns.Add("Simbolo", "Moneda")
+        DGV.Columns.Add("Cantidad", "Cantidad")
+        DGV.Columns.Add("Precio_USD", "Precio USD")
+        DGV.Columns.Add("Valor_USD", "Valor USD")
+    End Sub
+    Private Sub MostrarSaldosBilletera(ByVal idBilletera As String)
+        DGV.Rows.Clear()
+        '
+        For i As Integer = 1 To Matriz_BilleteraSaldosTF
+            If Matriz_BilleteraSaldos(i, 1) <> idBilletera Then Continue For
+            '
+            ' ← AGREGAR ESTA LÍNEA — ocultar monedas sin precio
+            Dim precioUSD As Double = 0
+            Try
+                precioUSD = Double.Parse(Matriz_BilleteraSaldos(i, 7),
+                                     Globalization.CultureInfo.InvariantCulture)
+            Catch
+            End Try
+            If precioUSD = 0 Then Continue For
+            '
+            ' Resolver nombre corto de la red
+            Dim nombreRed As String = Matriz_BilleteraSaldos(i, 2)
+            For r As Integer = 1 To Matriz_RedesTF
+                If Matriz_Redes(r, 0) = Matriz_BilleteraSaldos(i, 2) Then
+                    nombreRed = Matriz_Redes(r, 3)
+                    Exit For
+                End If
+            Next r
+            '
+            DGV.Rows.Add(
+            Matriz_BilleteraSaldos(i, 3),
+            nombreRed,
+            Matriz_BilleteraSaldos(i, 4),
+            Matriz_BilleteraSaldos(i, 6),
+            Matriz_BilleteraSaldos(i, 7),
+            Matriz_BilleteraSaldos(i, 8))
+        Next i
+        '
+        DGV.Sort(DGV.Columns("Fecha_Hora"), System.ComponentModel.ListSortDirection.Descending)
+    End Sub
     '
     '
     '
@@ -103,6 +153,20 @@ Public Class F_Billetera
 
     Private Sub B_Copiar_Click(sender As Object, e As EventArgs) Handles B_Copiar.Click
         CopiarAlPortapapeles(T_CodigoBilletera)
+    End Sub
+
+    Private Sub B_ConsultaSaldo_Click(sender As Object, e As EventArgs) Handles B_ConsultaSaldo.Click
+        If T_CodigoBilletera.Text = "" Then
+            L_Mensaje.Text = "Seleccione una billetera primero"
+            Exit Sub
+        End If
+
+        L_Mensaje.Text = "Consultando todas las redes EVM... por favor espere"
+        Me.Refresh()
+
+        Dim resumen As String = ConsultarBilletera_TodasLasRedes(T_CodigoBilletera.Text)
+        MostrarSaldosBilletera(T_CodigoBilletera.Text)
+        L_Mensaje.Text = resumen
     End Sub
 
 

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F_Billetera
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,10 @@ Partial Class F_Billetera
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.B_Nuevo = New System.Windows.Forms.Button()
         Me.L_Billeteras = New System.Windows.Forms.ListBox()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.B_Grabar = New System.Windows.Forms.Button()
         Me.T_CodigoBilletera = New System.Windows.Forms.TextBox()
         Me.T_NombreBilletera = New System.Windows.Forms.TextBox()
@@ -36,6 +35,9 @@ Partial Class F_Billetera
         Me.L_Fila = New System.Windows.Forms.Label()
         Me.L_Mensaje = New System.Windows.Forms.Label()
         Me.B_Copiar = New System.Windows.Forms.Button()
+        Me.B_ConsultaSaldo = New System.Windows.Forms.Button()
+        Me.DGV = New System.Windows.Forms.DataGridView()
+        CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'B_Nuevo
@@ -59,16 +61,6 @@ Partial Class F_Billetera
         Me.L_Billeteras.Size = New System.Drawing.Size(348, 424)
         Me.L_Billeteras.Sorted = True
         Me.L_Billeteras.TabIndex = 573
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(387, 153)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(457, 25)
-        Me.Label1.TabIndex = 572
-        Me.Label1.Text = "No escriba tu CLAVE semilla NO LO HAGAS"
         '
         'B_Grabar
         '
@@ -108,10 +100,10 @@ Partial Class F_Billetera
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
         Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.rT_Nota.Location = New System.Drawing.Point(387, 181)
+        Me.rT_Nota.Location = New System.Drawing.Point(842, 75)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(457, 267)
+        Me.rT_Nota.Size = New System.Drawing.Size(139, 71)
         Me.rT_Nota.TabIndex = 566
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -181,19 +173,40 @@ Partial Class F_Billetera
         '
         Me.B_Copiar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Copiar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Copiar.Location = New System.Drawing.Point(727, 46)
+        Me.B_Copiar.Location = New System.Drawing.Point(727, 123)
         Me.B_Copiar.Name = "B_Copiar"
         Me.B_Copiar.Size = New System.Drawing.Size(99, 23)
         Me.B_Copiar.TabIndex = 652
         Me.B_Copiar.Text = "Copiar"
         Me.B_Copiar.UseVisualStyleBackColor = False
         '
+        'B_ConsultaSaldo
+        '
+        Me.B_ConsultaSaldo.BackColor = System.Drawing.SystemColors.Control
+        Me.B_ConsultaSaldo.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_ConsultaSaldo.Location = New System.Drawing.Point(882, 457)
+        Me.B_ConsultaSaldo.Name = "B_ConsultaSaldo"
+        Me.B_ConsultaSaldo.Size = New System.Drawing.Size(99, 23)
+        Me.B_ConsultaSaldo.TabIndex = 653
+        Me.B_ConsultaSaldo.Text = "Consulta Saldo"
+        Me.B_ConsultaSaldo.UseVisualStyleBackColor = False
+        '
+        'DGV
+        '
+        Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV.Location = New System.Drawing.Point(387, 152)
+        Me.DGV.Name = "DGV"
+        Me.DGV.Size = New System.Drawing.Size(594, 296)
+        Me.DGV.TabIndex = 654
+        '
         'F_Billetera
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(864, 505)
+        Me.ClientSize = New System.Drawing.Size(1000, 505)
+        Me.Controls.Add(Me.DGV)
+        Me.Controls.Add(Me.B_ConsultaSaldo)
         Me.Controls.Add(Me.B_Copiar)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.Label2)
@@ -201,7 +214,6 @@ Partial Class F_Billetera
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.B_Nuevo)
         Me.Controls.Add(Me.L_Billeteras)
-        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.B_Grabar)
         Me.Controls.Add(Me.T_CodigoBilletera)
         Me.Controls.Add(Me.T_NombreBilletera)
@@ -214,6 +226,7 @@ Partial Class F_Billetera
         Me.Name = "F_Billetera"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.Manual
         Me.Text = "Billetera"
+        CType(Me.DGV, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -221,7 +234,6 @@ Partial Class F_Billetera
 
     Friend WithEvents B_Nuevo As Button
     Friend WithEvents L_Billeteras As ListBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents B_Grabar As Button
     Friend WithEvents T_CodigoBilletera As TextBox
     Friend WithEvents T_NombreBilletera As TextBox
@@ -233,4 +245,6 @@ Partial Class F_Billetera
     Friend WithEvents L_Fila As Label
     Friend WithEvents L_Mensaje As Label
     Friend WithEvents B_Copiar As Button
+    Friend WithEvents B_ConsultaSaldo As Button
+    Friend WithEvents DGV As DataGridView
 End Class

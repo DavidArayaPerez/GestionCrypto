@@ -11,7 +11,7 @@ Module zCargaInicia
     '
     Public zCargaInicialTXT As String = Application.StartupPath & "\zCargaInicial.txt"
     Public zParametrosTXT As String = Application.StartupPath & "\zParametros.txt"
-    Public API_CMF, API_COINGEKO, API_ETHERSCAN As String
+    Public API_CMF, API_COINGEKO, API_ETHERSCAN, API_MORALIS As String
     Public RutaLocal As String              'Variable para trabajar en forma local, o forma nativa.
     '
     '
@@ -21,7 +21,7 @@ Module zCargaInicia
         Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto, Columna1, Columna2 As String
         Dim Fila, Total As Integer
         '
-        If Not ExisteArchivo(zParametrosTXT) Then
+        If Not File.Exists(zParametrosTXT) Then
             Texto = "El archivo de configuracion no fue encontrado" & vbCrLf
             Texto &= zParametrosTXT & vbCrLf
             MsgBox(Texto, vbCritical, "Error Grave")
@@ -62,10 +62,13 @@ Module zCargaInicia
                     API_ETHERSCAN = Columna2
                     ArchivoFinal(3) = Columna1 & vbTab & Columna2   'Fila 3
                     '
+
+                Case "API_MORALIS"
+                    API_ETHERSCAN = Columna2
+                    ArchivoFinal(4) = Columna1 & vbTab & Columna2   'Fila 4
+                    '
             End Select
         Next Fila
-        '
-        ArchivoFinal(4) = "ULTIMO_INGRESO" & vbTab & Texto_FechaHoraActual()    'Fila 4
         '
         If RutaLocal = "" Then
             Texto = "No fue encontrada la variable RUTA local" & vbCrLf

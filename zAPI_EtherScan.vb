@@ -7,19 +7,114 @@ Imports System.Text.Json.Nodes
 Module zAPI_EtherScan
     '
     '
-    'api.etherscan.io
-    '
-    '
-    '
     ' ============================================================
-    '  Leer billetera EVM desde cualquier red compatible Etherscan
-    '  Parámetros:
-    '    direccion  → dirección pública 0x...
-    '    ID_Red     → ID_Interno de Matriz_Redes (columna 0)
+    '  Consulta TODAS las redes EVM activas para una billetera
+    '  Es el punto de entrada principal desde F_Billetera
+    ' ============================================================
+    Public Function ConsultarBilletera_TodasLasRedes(ByVal direccion As String) As String
+        Dim fechaHoraConsulta As String = DateTime.Now.ToString("yyyyMMdd HHmm")
+        Dim redesConsultadas As Integer = 0
+        Dim registrosGrabados As Integer = 0
+        Dim log As String = $"=== Consulta {fechaHoraConsulta} ===" & vbCrLf
+        log &= $"Dirección: {direccion}" & vbCrLf
+        log &= $"Total redes en matriz: {Matriz_RedesTF}" & vbCrLf & vbCrLf
+        '
+        For r As Integer = 1 To Matriz_RedesTF
+            '
+            'If Matriz_Redes(r, 1) <> "1" Then Continue For 'Para para Debug
+            '
+            Dim idRed As String = Matriz_Redes(r, 0)
+            Dim nombreRed As String = Matriz_Redes(r, 3)
+            Dim esEVM As String = Matriz_Redes(r, 8)
+            Dim urlExplorador As String = Matriz_Redes(r, 14)
+            '
+            ' Log de cada red aunque se salte
+            log &= $"Red [{r}]: {nombreRed} | EVM={esEVM} | URL={urlExplorador}" & vbCrLf
+            '
+            If esEVM.ToUpper() <> "SI" Then
+                log &= "  → SALTADA (no EVM)" & vbCrLf
+                Continue For
+            End If
+            If urlExplorador = "0" OrElse String.IsNullOrWhiteSpace(urlExplorador) Then
+                log &= "  → SALTADA (sin URL)" & vbCrLf
+                Continue For
+            End If
+            '
+            Dim chainId As String = Matriz_Redes(r, 1)
+            Dim urlAPINativa As String = Matriz_Redes(r, 18)  ' URL_API columna 18
+
+            ' Decidir qué URL usar
+            Dim urlAPI As String
+            If Not String.IsNullOrWhiteSpace(chainId) AndAlso chainId <> "0" Then
+                urlAPI = $"https://api.etherscan.io/v2/api?chainid={chainId}&"  ' Etherscan V2 siempre preferida
+            ElseIf Not String.IsNullOrWhiteSpace(urlAPINativa) AndAlso urlAPINativa <> "0" Then
+                urlAPI = urlAPINativa & "?"          ' fallback: API nativa solo si no hay chainId
+            Else
+                log &= "  → SALTADA (sin Chain_ID ni URL_API)" & vbCrLf
+                Continue For
+            End If
+
+
+            Dim tokenNativo As String = Matriz_Redes(r, 10)
+            Dim decimalesRed As Integer = 18
+            Try : decimalesRed = CInt(Matriz_Redes(r, 11)) : Catch : End Try
+            '
+            log &= $"  → Consultando {urlAPI}" & vbCrLf
+            '
+            Try
+                ' Saldo nativo
+                Dim saldoWei As Double = ConsultarSaldoNativo(urlAPI, direccion, API_ETHERSCAN, log)
+                Dim saldoLegible As Double = saldoWei / Math.Pow(10, decimalesRed)
+                log &= $"  → Saldo nativo ({tokenNativo}): {saldoWei} Wei = {saldoLegible:F8}" & vbCrLf
+                '
+                If saldoLegible > 0 Then
+                    Dim precioNativo As Double = ObtenerPrecioUSD(tokenNativo)
+                    AgregarBilleteraSaldo(direccion, idRed, fechaHoraConsulta, tokenNativo, saldoLegible, precioNativo)
+                    registrosGrabados += 1
+                    log &= $"  → GRABADO: {tokenNativo} {saldoLegible:F8}" & vbCrLf
+                End If
+
+                ' Tokens ERC-20
+                Dim tokens As List(Of TokenBalance) = ConsultarTokensERC20(urlAPI, direccion, API_ETHERSCAN)
+                log &= $"  → Tokens ERC-20 encontrados: {tokens.Count}" & vbCrLf
+                For Each t As TokenBalance In tokens
+                    log &= $"     • {t.Simbolo}: {t.Saldo:F8}" & vbCrLf
+                    If t.Saldo > 0 Then
+                        AgregarBilleteraSaldo(direccion, idRed, fechaHoraConsulta, t.Simbolo, t.Saldo, ObtenerPrecioUSD(t.Simbolo))
+                        registrosGrabados += 1
+                    End If
+                Next
+                '
+                redesConsultadas += 1
+                '
+                '
+            Catch ex As Exception
+                log &= $"  → ERROR: {ex.Message}" & vbCrLf
+            End Try
+
+            Threading.Thread.Sleep(300)
+        Next r
+
+        log &= vbCrLf & $"=== RESUMEN ===" & vbCrLf
+        log &= $"Redes consultadas: {redesConsultadas}" & vbCrLf
+        log &= $"Registros grabados: {registrosGrabados}" & vbCrLf
+        log &= $"Matriz_BilleteraSaldosTF después: {Matriz_BilleteraSaldosTF}" & vbCrLf
+
+        If registrosGrabados > 0 Then
+            Guardar_Matrices("BilleteraSaldo")
+            log &= "Guardado OK" & vbCrLf
+        End If
+
+        ' Guardar log en disco para revisarlo
+        Dim rutaLog As String = RutaLocal & "\log_billetera.txt"
+        If ModoDebug Then System.IO.File.WriteAllText(rutaLog, log, System.Text.Encoding.UTF8)
+        Return $"Redes: {redesConsultadas} | Registros: {registrosGrabados} | Log: {rutaLog}"
+    End Function
+
+    ' ============================================================
+    '  Consulta una red específica (se mantiene para uso puntual)
     ' ============================================================
     Public Sub ConsultarBilletera_EVM(ByVal direccion As String, ByVal ID_Red As String)
-
-        ' --- 1. Buscar la red en Matriz_Redes ---
         Dim filaRed As Integer = 0
         For r As Integer = 1 To Matriz_RedesTF
             If Matriz_Redes(r, 0) = ID_Red Then
@@ -27,87 +122,53 @@ Module zAPI_EtherScan
                 Exit For
             End If
         Next r
-
+        '
         If filaRed = 0 Then
-            MsgBox("Red no encontrada en Matriz_Redes: " & ID_Red)
+            MsgBox("Red no encontrada: " & ID_Red)
             Return
         End If
-
-        Dim nombreRed As String = Matriz_Redes(filaRed, 3)       ' Nombre_Corto
-        Dim urlExplorador As String = Matriz_Redes(filaRed, 14)  ' URL_Explorador  ej: "etherscan.io"
-        Dim esEVM As String = Matriz_Redes(filaRed, 8)           ' Compatible_EVM
-
-        If esEVM.ToUpper() <> "SI" Then
-            MsgBox($"La red '{nombreRed}' no es compatible EVM. Esta función solo aplica a redes EVM.")
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(urlExplorador) OrElse urlExplorador = "0" Then
-            MsgBox($"La red '{nombreRed}' no tiene URL_Explorador configurada en Redes.txt.")
-            Return
-        End If
-
-        ' --- 2. Construir URL base de la API ---
-        ' De "etherscan.io"      → "https://api.etherscan.io/api"
-        ' De "polygonscan.com"   → "https://api.polygonscan.com/api"
-        ' De "arbiscan.io"       → "https://api.arbiscan.io/api"
+        '
+        Dim nombreRed As String = Matriz_Redes(filaRed, 3)
+        Dim urlExplorador As String = Matriz_Redes(filaRed, 14)
+        Dim esEVM As String = Matriz_Redes(filaRed, 8)
+        '
+        If esEVM.ToUpper() <> "SI" Then Return
+        If String.IsNullOrWhiteSpace(urlExplorador) OrElse urlExplorador = "0" Then Return
+        '
         Dim urlAPI As String = $"https://api.{urlExplorador}/api"
-
-        ' --- 3. Consultar saldo nativo (ETH, BNB, MATIC, etc.) ---
-        Dim saldoNativo As Double = ConsultarSaldoNativo(urlAPI, direccion, API_ETHERSCAN)
-        Dim tokenNativo As String = Matriz_Redes(filaRed, 10)    ' Token_Nativo
+        Dim tokenNativo As String = Matriz_Redes(filaRed, 10)
         Dim decimalesRed As Integer = 18
         Try
             decimalesRed = CInt(Matriz_Redes(filaRed, 11))
         Catch
             decimalesRed = 18
         End Try
-
-        ' Convertir de Wei a unidad legible (dividir por 10^decimales)
-        Dim saldoLegible As Double = saldoNativo / Math.Pow(10, decimalesRed)
-
-        ' --- 4. Consultar tokens ERC-20 ---
-        Dim tokens As List(Of TokenBalance) = ConsultarTokensERC20(urlAPI, direccion, API_ETHERSCAN)
-
-        ' --- 5. Mostrar resultado ---
-        Dim resultado As String = $"Billetera: {direccion}" & vbCrLf &
-                                  $"Red: {nombreRed}" & vbCrLf & vbCrLf &
-                                  $"── Saldo nativo ──" & vbCrLf &
-                                  $"  {tokenNativo}: {saldoLegible:F6}" & vbCrLf & vbCrLf &
-                                  $"── Tokens ERC-20 ({tokens.Count}) ──" & vbCrLf
-
-        For Each t As TokenBalance In tokens
-            resultado &= $"  {t.Simbolo}: {t.Saldo:F4}" & vbCrLf
-        Next
-
-
-        ' --- Guardar saldos en Matriz_BilleteraSaldo ---
+        '
         Dim fechaHoraConsulta As String = DateTime.Now.ToString("yyyyMMdd HHmm")
-
-        ' Saldo nativo (ETH, BNB, MATIC, etc.)
+        Dim logIgnorado As String = ""
+        Dim saldoLegible As Double = ConsultarSaldoNativo(urlAPI, direccion, API_ETHERSCAN, logIgnorado) / Math.Pow(10, decimalesRed)
+        '
         If saldoLegible > 0 Then
-            ' Obtener precio USD desde Matriz_Monedas
-            Dim precioNativo As Double = ObtenerPrecioUSD(tokenNativo)
-            AgregarBilleteraSaldo(direccion, ID_Red, fechaHoraConsulta,
-                          tokenNativo, saldoLegible, precioNativo)
+            AgregarBilleteraSaldo(direccion, ID_Red, fechaHoraConsulta, tokenNativo, saldoLegible, ObtenerPrecioUSD(tokenNativo))
         End If
-
-        ' Tokens ERC-20
+        '
+        Dim tokens As List(Of TokenBalance) = ConsultarTokensERC20(urlAPI, direccion, API_ETHERSCAN)
         For Each t As TokenBalance In tokens
             If t.Saldo > 0 Then
-                Dim precioToken As Double = ObtenerPrecioUSD(t.Simbolo)
-                AgregarBilleteraSaldo(direccion, ID_Red, fechaHoraConsulta, t.Simbolo, t.Saldo, precioToken)
+                AgregarBilleteraSaldo(direccion, ID_Red, fechaHoraConsulta, t.Simbolo, t.Saldo, ObtenerPrecioUSD(t.Simbolo))
             End If
         Next
         Guardar_Matrices("BilleteraSaldo")
-        MsgBox(resultado, vbInformation, $"Billetera {nombreRed}")
     End Sub
+
+    ' ------------------------------------------------------------
+    '  Precio USD desde Matriz_Monedas
+    ' ------------------------------------------------------------
     Private Function ObtenerPrecioUSD(ByVal simbolo As String) As Double
         For i As Integer = 1 To Matriz_MonedasTF
             If Matriz_Monedas(i, 2).ToUpper() = simbolo.ToUpper() Then
                 Try
-                    Return Double.Parse(Matriz_Monedas(i, 15),
-                                    Globalization.CultureInfo.InvariantCulture)
+                    Return Double.Parse(Matriz_Monedas(i, 15), Globalization.CultureInfo.InvariantCulture)
                 Catch
                     Return 0
                 End Try
@@ -117,95 +178,120 @@ Module zAPI_EtherScan
     End Function
 
     ' ------------------------------------------------------------
-    '  Consulta el saldo nativo de la billetera (ETH, BNB, etc.)
-    '  Devuelve el valor en Wei (sin convertir)
+    '  Saldo nativo en Wei
     ' ------------------------------------------------------------
-    Private Function ConsultarSaldoNativo(
-            ByVal urlAPI As String,
-            ByVal direccion As String,
-            ByVal apiKey As String) As Double
+    Private Function ConsultarSaldoNativo(ByVal urlAPI As String, ByVal direccion As String, ByVal apiKey As String, ByRef log As String) As Double   ' ← agregar este parámetro
         Try
-            Dim url As String = $"{urlAPI}?module=account&action=balance" &
-                                $"&address={direccion}&tag=latest&apikey={apiKey}"
-
+            Dim url As String = $"{urlAPI}module=account&action=balance" &
+                    $"&address={direccion}&tag=latest&apikey={apiKey}"
+            log &= $"    URL: {url}" & vbCrLf   ' ← log al string, no al archivo
+            '
             Dim client As New WebClient()
             client.Encoding = System.Text.Encoding.UTF8
             Dim json As String = client.DownloadString(New Uri(url))
+            '
+            log &= $"    RAW JSON: {json}" & vbCrLf
+            '
             Dim item As JsonNode = JsonNode.Parse(json)
-
-            If ValorSeguro(item("status")) = "1" Then
-                Return Double.Parse(ValorSeguro(item("result")))
+            Dim status As String = If(item("status") Is Nothing, "NULL", item("status").ToString())
+            Dim result As String = If(item("result") Is Nothing, "NULL", item("result").ToString())
+            '
+            log &= $"    status={status} | result={result}" & vbCrLf
+            '
+            If status = "1" Then
+                Dim valor As Double = Double.Parse(result, Globalization.CultureInfo.InvariantCulture)
+                log &= $"    Parse OK: {valor}" & vbCrLf
+                Return valor
             End If
             Return 0
-
+            '
+            '
+            '
         Catch ex As Exception
-            MsgBox("Error al consultar saldo nativo: " & ex.Message)
+            log &= $"    EXCEPCION: {ex.GetType().Name} | {ex.Message}" & vbCrLf
             Return 0
         End Try
     End Function
 
     ' ------------------------------------------------------------
-    '  Consulta los tokens ERC-20 con saldo en la billetera
+    '  Tokens ERC-20 con saldo
     ' ------------------------------------------------------------
-    Private Function ConsultarTokensERC20(
-            ByVal urlAPI As String,
-            ByVal direccion As String,
-            ByVal apiKey As String) As List(Of TokenBalance)
-
+    Private Function ConsultarTokensERC20(ByVal urlAPI As String, ByVal direccion As String, ByVal apiKey As String) As List(Of TokenBalance)
         Dim resultado As New List(Of TokenBalance)
-
+        '
         Try
-            Dim url As String = $"{urlAPI}?module=account&action=addresstokenbalance" &
-                                $"&address={direccion}&page=1&offset=100&apikey={apiKey}"
-
+            ' tokentx es gratuito — devuelve historial de transferencias ERC-20
+            Dim url As String = $"{urlAPI}module=account&action=tokentx" & $"&address={direccion}&page=1&offset=200" & $"&sort=desc&apikey={apiKey}"
             Dim client As New WebClient()
             client.Encoding = System.Text.Encoding.UTF8
             Dim json As String = client.DownloadString(New Uri(url))
             Dim item As JsonNode = JsonNode.Parse(json)
+            '
+            If item("status") Is Nothing OrElse item("status").ToString() <> "1" Then
+                Return resultado
+            End If
 
-            If ValorSeguro(item("status")) <> "1" Then Return resultado
-
-            Dim lista As JsonArray = item("result").AsArray()
-
-            For Each t As JsonNode In lista
+            ' Calcular saldo neto por token sumando entradas y restando salidas
+            Dim saldos As New Dictionary(Of String, Double)        ' contractAddress → saldo neto
+            Dim infoTokens As New Dictionary(Of String, TokenBalance) ' contractAddress → info
+            '
+            For Each t As JsonNode In item("result").AsArray()
+                Dim contrato As String = If(t("contractAddress") Is Nothing, "", t("contractAddress").ToString().ToLower())
                 Dim decimales As Integer = 18
-                Try
-                    decimales = CInt(ValorSeguro(t("TokenDivisor")))
-                Catch
-                    decimales = 18
-                End Try
-
+                Try : decimales = CInt(t("tokenDecimal").ToString()) : Catch : End Try
+                '
                 Dim cantidadRaw As Double = 0
                 Try
-                    cantidadRaw = Double.Parse(ValorSeguro(t("TokenQuantity")),
-                                               Globalization.CultureInfo.InvariantCulture)
+                    cantidadRaw = Double.Parse(t("value").ToString(), Globalization.CultureInfo.InvariantCulture)
                 Catch
-                    cantidadRaw = 0
                 End Try
+                '
+                Dim cantidad As Double = cantidadRaw / Math.Pow(10, decimales)
+                Dim desde As String = If(t("from") Is Nothing, "", t("from").ToString().ToLower())
+                Dim hacia As String = If(t("to") Is Nothing, "", t("to").ToString().ToLower())
+                Dim dirLower As String = direccion.ToLower()
 
-                Dim saldo As Double = cantidadRaw / Math.Pow(10, decimales)
+                ' Entrada: la dirección recibe tokens
+                If hacia = dirLower Then
+                    If Not saldos.ContainsKey(contrato) Then saldos(contrato) = 0
+                    saldos(contrato) += cantidad
+                End If
 
-                ' Solo agregar tokens con saldo mayor a 0
-                If saldo > 0 Then
-                    resultado.Add(New TokenBalance With {
-                        .Simbolo = ValorSeguro(t("TokenSymbol")),
-                        .Nombre = ValorSeguro(t("TokenName")),
-                        .ContractAddress = ValorSeguro(t("TokenAddress")),
-                        .Saldo = saldo,
-                        .Decimales = decimales
-                    })
+                ' Salida: la dirección envía tokens
+                If desde = dirLower Then
+                    If Not saldos.ContainsKey(contrato) Then saldos(contrato) = 0
+                    saldos(contrato) -= cantidad
+                End If
+
+                ' Guardar info del token la primera vez que aparece
+                If Not infoTokens.ContainsKey(contrato) Then
+                    infoTokens(contrato) = New TokenBalance With {
+                    .Simbolo = If(t("tokenSymbol") Is Nothing, "?", t("tokenSymbol").ToString()),
+                    .Nombre = If(t("tokenName") Is Nothing, "?", t("tokenName").ToString()),
+                    .ContractAddress = contrato,
+                    .Decimales = decimales
+                }
                 End If
             Next
-
+            '
+            ' Convertir dictionary a lista filtrando saldos > 0
+            For Each kvp As KeyValuePair(Of String, Double) In saldos
+                If kvp.Value > 0.000001 AndAlso infoTokens.ContainsKey(kvp.Key) Then
+                    Dim tk As TokenBalance = infoTokens(kvp.Key)
+                    tk.Saldo = kvp.Value
+                    resultado.Add(tk)
+                End If
+            Next
+            '
+            '
+            '
         Catch ex As Exception
-            MsgBox("Error al consultar tokens ERC-20: " & ex.Message)
         End Try
-
         Return resultado
     End Function
 
     ' ------------------------------------------------------------
-    '  Clase auxiliar para representar el saldo de un token
+    '  Clase auxiliar
     ' ------------------------------------------------------------
     Public Class TokenBalance
         Public Property Simbolo As String
@@ -215,7 +301,4 @@ Module zAPI_EtherScan
         Public Property Decimales As Integer
     End Class
 
-    '
-    '
-    '
 End Module

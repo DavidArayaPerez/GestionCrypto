@@ -24,46 +24,47 @@ Module xFunciones_Archivo
     Public Sub CargarTXT(ByVal NombreMatriz As String, ByRef Matriz(,) As String)
         Dim NombreProcedimiento As String = MethodBase.GetCurrentMethod().Name
         If NombreMatriz = Nothing Then Exit Sub
-        '
+
         Dim Ruta As String = RutaLocal & "\" & NombreMatriz & ".txt"
         Dim ColMatriz As Integer
-        '
-        If Not ExisteArchivo(Ruta) Then End
+
+        If Not File.Exists(Ruta) Then End
         Dim Lineas() As String = File.ReadAllLines(Ruta, System.Text.Encoding.UTF8)
-        '
+
         Dim TotalFilas As Integer = Lineas.Length
         If TotalFilas = 0 Then
             MsgBox("El archivo está vacío", vbCritical, NombreProcedimiento)
             End
         End If
-        '
-        CargaColumnasMatriz(NombreMatriz, ColMatriz)                                            'NUMERO DE COLUMNAS
+
+        CargaColumnasMatriz(NombreMatriz, ColMatriz)
         ReDim Matriz(TotalFilas + 1, ColMatriz)
-        '
+
         Dim i, j, Contador As Integer
-        Contador = -1
+        Contador = 0  ' ← Empieza en 0 para que el encabezado quede en fila 0
+
         For i = 0 To TotalFilas - 1
             Dim Linea = Lineas(i).Trim
-            If Linea = "" Then Continue For 'Si la línea está vacía, continuar con la siguiente iteración
-            '
+            If Linea = "" Then Continue For
+
             Dim Elementos() As String = Linea.Split(vbTab)
             If Elementos.Length > ColMatriz Then
-                'Si hay mas columnas, se ignoran las columnas extras
+                ' Si hay más columnas, se ignoran las extras
             ElseIf Elementos.Length < ColMatriz Then
-                'Si hay menos columnas, se rellenan con espacios en blanco
                 For j = Elementos.Length To ColMatriz
                     Elementos = Elementos.Concat(New String() {""}).ToArray()
                 Next j
             End If
-            '
+
             RellenarElementos(Elementos)
-            Contador += 1
             For j = 0 To ColMatriz - 1
                 Matriz(Contador, j) = Elementos(j).Trim()
             Next j
+            Contador += 1  ' ← Incrementa después de grabar
         Next i
-        '
-        CargaFilasMatriz(NombreMatriz, Contador)
+
+        ' TF apunta al último dato real (el encabezado queda en fila 0, datos desde fila 1)
+        CargaFilasMatriz(NombreMatriz, Contador - 1)
     End Sub
     '
     Private Sub CargaColumnasMatriz(ByVal NombreMatriz As String, ByRef ColMatriz As Integer)
@@ -183,7 +184,7 @@ Module xFunciones_Archivo
     '
     Public Function CargaRTF(Directorio As String, NombreArchivo As String, Control As RichTextBox) As Boolean
         Dim RutaCompleta As String = Directorio & "\" & NombreArchivo
-        If ExisteArchivo(RutaCompleta, False) Then
+        If File.Exists(RutaCompleta) Then
             Control.LoadFile(RutaCompleta, RichTextBoxStreamType.RichText)
             Return True
         Else
@@ -348,7 +349,7 @@ Module xFunciones_Archivo
     Public Matriz_MonedasTC As Integer = 24
     Public Sub CargaMonedas()
         Dim Arreglo(Matriz_MonedasTC) As String
-        Dim Nombre As String = "Exchange"
+        Dim Nombre As String = "Monedas"
         Dim Ruta As String = RutaLocal & "\" & Nombre & ".txt"
         '
         If Not File.Exists(Ruta) Then
@@ -422,7 +423,7 @@ Module xFunciones_Archivo
     '-------------------------------------------------------------------------------------------------------------------------------------------
     Public Matriz_Redes(,) As String
     Public Matriz_RedesTF As Integer = 0
-    Public Matriz_RedesTC As Integer = 18
+    Public Matriz_RedesTC As Integer = 20
     Public Sub CargaRedes()
         Dim Arreglo(Matriz_RedesTC) As String
         Dim Nombre As String = "Redes"
@@ -430,24 +431,26 @@ Module xFunciones_Archivo
         '
         If Not File.Exists(Ruta) Then
             Dim Encabezado As String = String.Join(vbTab,
-                "ID",                      '0   ID 
-                "Chain_ID",                '1   Identificador único para redes EVM
-                "Nombre_Oficial",          '2   Nombre completo
-                "Nombre_Corto",            '3   Para mostrar en pantalla
-                "Slug_API",                '4   Identificador en APIs como CoinGecko
-                "Tipo_Capa",               '5   Arquitectura de la red, L1 / L2 / Sidechain
-                "L1_Padre",                '6   Solo aplica si es L2 — a qué L1 está anclada
-                "Tipo_Rollup",             '7   Solo aplica a L2s
-                "Compatible_EVM",          '8   Define si usa el estándar de Ethereum           Sí / No
-                "Mecanismo_Consenso",      '9   Cómo valida la red                              PoW, PoS, PoH
-                "Token_Nativo",            '10  En ARB el token nativo es ETH, no ARB. El token ARB existe, pero es el token de gobernanza del protocolo, no el que se usa para pagar el gas. Esto aplica también a otras redes como Base y Optimism, que también usan ETH como gas aunque tengan su propio token de gobernanza.
-                "Decimales",               '11  Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
-                "Tiempo_Bloque",           '12  Velocidad de confirmación                       12 seg, 0.4 seg
-                "Color_Marca",             '13  Para mostrar en la UI                           #627EEA                     
-                "URL_Explorador",          '14  Para consultar transacciones                    etherscan.io
-                "URL_Logo",                '15  Ícono de la red                                 https://...
-                "URL_RPC",                 '16  Para conectarse a la red programáticamente      https://...
-                "Activa")                  '17  Para desactivar redes sin borrarlas             Sí / No
+                "ID",                       '0   ID 
+                "Chain_ID",                 '1   Identificador único para redes EVM
+                "Nombre_Oficial",           '2   Nombre completo
+                "Nombre_Corto",             '3   Para mostrar en pantalla
+                "Slug_API",                 '4   Identificador en APIs como CoinGecko
+                "Tipo_Capa",                '5   Arquitectura de la red, L1 / L2 / Sidechain
+                "L1_Padre",                 '6   Solo aplica si es L2 — a qué L1 está anclada
+                "Tipo_Rollup",              '7   Solo aplica a L2s
+                "Compatible_EVM",           '8   Define si usa el estándar de Ethereum           Sí / No
+                "Mecanismo_Consenso",       '9   Cómo valida la red                              PoW, PoS, PoH
+                "Token_Nativo",             '10  En ARB el token nativo es ETH, no ARB. El token ARB existe, pero es el token de gobernanza del protocolo, no el que se usa para pagar el gas. Esto aplica también a otras redes como Base y Optimism, que también usan ETH como gas aunque tengan su propio token de gobernanza.
+                "Decimales",                '11  Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
+                "Tiempo_Bloque",            '12  Velocidad de confirmación                       12 seg, 0.4 seg
+                "Color_Marca",              '13  Para mostrar en la UI                           #627EEA                     
+                "URL_Explorador",           '14  Para consultar transacciones                    etherscan.io
+                "URL_Logo",                 '15  Ícono de la red                                 https://...
+                "URL_RPC",                  '16  Para conectarse a la red programáticamente      https://...
+                "Activa",                   '17  Para desactivar redes sin borrarlas             Sí / No
+                "URL_API",                  '18  x
+                "chainHex")                 '19  Para sascar valores de Moralis
             File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
         End If
 
@@ -508,9 +511,7 @@ Module xFunciones_Archivo
     '
     '
     '-------------------------------------------------------------------------------------------------------------------------------------------
-    Private Sub GuardarMatriz(Ruta As String, Arreglo() As String)
-        File.WriteAllLines(Ruta, Arreglo, System.Text.Encoding.UTF8) ' Crear el archivo vacío para que CargarTXT no falle en el futuro
-    End Sub
+
     '
     '
 End Module
