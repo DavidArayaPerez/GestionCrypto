@@ -69,6 +69,7 @@ Public Class F_Compra
         T_Comision.Text = Matriz_Compras(f, 8)
         T_Gas.Text = Matriz_Compras(f, 9)
         L_PrecioMoneda.Text = Matriz_Compras(f, 10)
+        C_Billetera.Text = Matriz_Compras(f, 11)
         '
         Dim NombreNota As String = "Fiat_" & T_Fecha.Text & "_" & T_Hora.Text & ".rtf"
         CargaRTF(RutaLocal, NombreNota, rT_Nota)
@@ -83,6 +84,7 @@ Public Class F_Compra
         '   8   Comision
         '   9   Gas
         '   10  Precio
+        '   11  Billetera
         '
     End Sub
     Private Function DatosNoValidos() As Boolean
@@ -141,6 +143,7 @@ Public Class F_Compra
         Matriz_Compras(F, 8) = T_Comision.Text
         Matriz_Compras(F, 9) = T_Gas.Text
         Matriz_Compras(F, 10) = L_PrecioMoneda.Text
+        Matriz_Compras(F, 11) = C_Billetera.Text
         '
         Guardar_Matrices("Compras")
         '
@@ -159,6 +162,7 @@ Public Class F_Compra
         'Matriz_Compras(F,8   Comision
         'Matriz_Compras(F,9   Gas
         'Matriz_Compras(F,10  Precio
+        'Matriz_Compras(F,11  Billetera
         '
     End Sub
     Private Sub CalculoPrecioFinal()

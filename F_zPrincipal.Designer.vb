@@ -67,6 +67,7 @@ Partial Class F_zPrincipal
         Me.B_PoolLiquidez = New System.Windows.Forms.Button()
         Me.B_Traspasos = New System.Windows.Forms.Button()
         Me.B_Exchange = New System.Windows.Forms.Button()
+        Me.B_Transacciones = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Menu_Agregar
@@ -295,7 +296,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Cerrar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Cerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Cerrar.Location = New System.Drawing.Point(12, 329)
+        Me.B_Cerrar.Location = New System.Drawing.Point(12, 366)
         Me.B_Cerrar.Name = "B_Cerrar"
         Me.B_Cerrar.Size = New System.Drawing.Size(99, 23)
         Me.B_Cerrar.TabIndex = 416
@@ -339,7 +340,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Compras.BackColor = System.Drawing.SystemColors.Control
         Me.B_Compras.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Compras.Location = New System.Drawing.Point(12, 190)
+        Me.B_Compras.Location = New System.Drawing.Point(12, 270)
         Me.B_Compras.Name = "B_Compras"
         Me.B_Compras.Size = New System.Drawing.Size(99, 23)
         Me.B_Compras.TabIndex = 429
@@ -350,7 +351,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Billetera.BackColor = System.Drawing.SystemColors.Control
         Me.B_Billetera.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Billetera.Location = New System.Drawing.Point(12, 127)
+        Me.B_Billetera.Location = New System.Drawing.Point(12, 161)
         Me.B_Billetera.Name = "B_Billetera"
         Me.B_Billetera.Size = New System.Drawing.Size(99, 23)
         Me.B_Billetera.TabIndex = 428
@@ -361,7 +362,7 @@ Partial Class F_zPrincipal
         '
         Me.B_PoolLiquidez.BackColor = System.Drawing.SystemColors.Control
         Me.B_PoolLiquidez.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 228)
+        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 299)
         Me.B_PoolLiquidez.Name = "B_PoolLiquidez"
         Me.B_PoolLiquidez.Size = New System.Drawing.Size(99, 23)
         Me.B_PoolLiquidez.TabIndex = 432
@@ -372,7 +373,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Traspasos.BackColor = System.Drawing.SystemColors.Control
         Me.B_Traspasos.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Traspasos.Location = New System.Drawing.Point(12, 257)
+        Me.B_Traspasos.Location = New System.Drawing.Point(12, 328)
         Me.B_Traspasos.Name = "B_Traspasos"
         Me.B_Traspasos.Size = New System.Drawing.Size(99, 23)
         Me.B_Traspasos.TabIndex = 433
@@ -390,12 +391,24 @@ Partial Class F_zPrincipal
         Me.B_Exchange.Text = "Exchange"
         Me.B_Exchange.UseVisualStyleBackColor = False
         '
+        'B_Transacciones
+        '
+        Me.B_Transacciones.BackColor = System.Drawing.SystemColors.Control
+        Me.B_Transacciones.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.B_Transacciones.Location = New System.Drawing.Point(12, 190)
+        Me.B_Transacciones.Name = "B_Transacciones"
+        Me.B_Transacciones.Size = New System.Drawing.Size(99, 23)
+        Me.B_Transacciones.TabIndex = 435
+        Me.B_Transacciones.Text = "Transacciones"
+        Me.B_Transacciones.UseVisualStyleBackColor = False
+        '
         'F_zPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
         Me.ClientSize = New System.Drawing.Size(137, 413)
+        Me.Controls.Add(Me.B_Transacciones)
         Me.Controls.Add(Me.B_Exchange)
         Me.Controls.Add(Me.B_Traspasos)
         Me.Controls.Add(Me.B_PoolLiquidez)
@@ -459,4 +472,5 @@ Partial Class F_zPrincipal
     Friend WithEvents B_PoolLiquidez As Button
     Friend WithEvents B_Traspasos As Button
     Friend WithEvents B_Exchange As Button
+    Friend WithEvents B_Transacciones As Button
 End Class

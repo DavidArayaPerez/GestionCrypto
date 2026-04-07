@@ -363,6 +363,12 @@
     <Compile Include="F_Red.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_Transacciones.Designer.vb">
+      <DependentUpon>F_Transacciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Transacciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Traspaso.Designer.vb">
       <DependentUpon>F_Traspaso.vb</DependentUpon>
     </Compile>
@@ -430,6 +436,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_Red.resx">
       <DependentUpon>F_Red.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Transacciones.resx">
+      <DependentUpon>F_Transacciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Traspaso.resx">
       <DependentUpon>F_Traspaso.vb</DependentUpon>

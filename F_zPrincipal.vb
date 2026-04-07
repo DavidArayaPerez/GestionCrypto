@@ -63,8 +63,6 @@ Public Class F_zPrincipal
         CargaValorUSD()
         LogTiempo("ValorUSD")
         '
-        CargaDepositos() 'Transformar_Fechas_Depositos()
-        LogTiempo("Depositos")
         '
         CargaCompras() 'Transformar_Fechas_Compras()
         LogTiempo("Compras")
@@ -114,6 +112,10 @@ Public Class F_zPrincipal
     End Sub
     Private Sub B_Exchange_Click(sender As Object, e As EventArgs) Handles B_Exchange.Click
         F_Exchange.Show()
+    End Sub
+
+    Private Sub B_Transacciones_Click(sender As Object, e As EventArgs) Handles B_Transacciones.Click
+        F_Transacciones.Show()
     End Sub
     '
     '

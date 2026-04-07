@@ -31,7 +31,7 @@ Module mValorUSD
     End Function
     Public Sub GuardarValorUSD(Año As Integer)
         'Valida si se guardo la ultima fecha
-        If Matriz_ValorUSDTF > 1 Then
+        If Matriz_ValorUSDTF >= 1 Then
             Dim UltimaFecha As String = Matriz_ValorUSD(Matriz_ValorUSDTF, 0)
             If UltimaFecha >= DateTime.Now.ToString("yyyyMMdd") Then Exit Sub
         End If

@@ -65,6 +65,7 @@ Public Class F_Billetera
     '  ordenadas de mas reciente a mas antigua
     ' ------------------------------------------------------------
     Private Sub CargarComboFechas(ByVal idBilletera As String)
+        '
         Dim fechas As New List(Of String)
         For i As Integer = 1 To Matriz_BilleteraSaldosTF
             If Matriz_BilleteraSaldos(i, 1) <> idBilletera Then Continue For
@@ -77,12 +78,16 @@ Public Class F_Billetera
         ' Ordenar descendente (mas reciente primero)
         fechas.Sort()
         fechas.Reverse()
+        '
+        ' Bloquear evento mientras se carga el combo
+        VariableDeInicio = True
         C_FechaHora.Items.Clear()
         For Each f As String In fechas
             C_FechaHora.Items.Add(f)
         Next
+        VariableDeInicio = False
         '
-        ' Seleccionar la mas reciente (indice 0) y mostrar su saldo
+        ' Seleccionar la mas reciente: dispara C_FechaHora_SelectedIndexChanged limpiamente
         If C_FechaHora.Items.Count > 0 Then C_FechaHora.SelectedIndex = 0
     End Sub
     Private Sub ConfigurarDGV()

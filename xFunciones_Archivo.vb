@@ -79,6 +79,7 @@ Module xFunciones_Archivo
             Case "Redes" : ColMatriz = Matriz_RedesTC
             Case "ValorUSD" : ColMatriz = Matriz_ValorUSDTC
             Case "BilleteraSaldo" : ColMatriz = Matriz_BilleteraSaldosTC
+            Case "Traspasos" : ColMatriz = Matriz_TraspasosTC
             Case Else
                 ColMatriz = 0
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
@@ -97,6 +98,7 @@ Module xFunciones_Archivo
             Case "Redes" : Matriz_RedesTF = Filas
             Case "ValorUSD" : Matriz_ValorUSDTF = Filas
             Case "BilleteraSaldo" : Matriz_BilleteraSaldosTF = Filas
+            Case "Traspasos" : Matriz_TraspasosTF = Filas
             Case Else
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
         End Select
@@ -173,6 +175,10 @@ Module xFunciones_Archivo
                 MatrizAuxActual = Matriz_BilleteraSaldos
                 TotalFilas = Matriz_BilleteraSaldosTF
                 TotalColumnas = Matriz_BilleteraSaldosTC
+            Case "Traspasos"
+                MatrizAuxActual = Matriz_Traspasos
+                TotalFilas = Matriz_TraspasosTF
+                TotalColumnas = Matriz_TraspasosTC
         End Select
     End Sub
     '
@@ -260,7 +266,7 @@ Module xFunciones_Archivo
     '-------------------------------------------------------------------------------------------------------------------------------------------
     Public Matriz_Compras(,) As String
     Public Matriz_ComprasTF As Integer = 0
-    Public Matriz_ComprasTC As Integer = 11
+    Public Matriz_ComprasTC As Integer = 12
     Public Sub CargaCompras()
         Dim Arreglo(Matriz_ComprasTC) As String
         Dim Nombre As String = "Compras"
