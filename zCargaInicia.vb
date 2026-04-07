@@ -16,7 +16,6 @@ Module zCargaInicia
     '
     '
     '
-
     Public Sub Parametros()
         Dim Lineas(), ArchivoFinal(), Elementos(), Linea, Texto, Columna1, Columna2 As String
         Dim Fila, Total As Integer
@@ -64,7 +63,7 @@ Module zCargaInicia
                     '
 
                 Case "API_MORALIS"
-                    API_ETHERSCAN = Columna2
+                    API_MORALIS = Columna2
                     ArchivoFinal(4) = Columna1 & vbTab & Columna2   'Fila 4
                     '
             End Select
@@ -98,7 +97,6 @@ Module zCargaInicia
         'Cada elemento del array se escribe como una línea separada en el archivo
         'Agrega saltos de línea automáticamente entre cada elemento
     End Sub
-
     '
     '
     '

@@ -72,7 +72,6 @@ Module xFunciones_Archivo
         Select Case NombreMatriz
             Case "Billeteras" : ColMatriz = Matriz_BilleterasTC
             Case "Compras" : ColMatriz = Matriz_ComprasTC
-            Case "Depositos" : ColMatriz = Matriz_DepositosTC
             Case "Exchange" : ColMatriz = Matriz_ExchangeTC
             Case "Monedas" : ColMatriz = Matriz_MonedasTC
             Case "PoolLiquidez" : ColMatriz = Matriz_PoolLiquidezTC
@@ -91,7 +90,6 @@ Module xFunciones_Archivo
         Select Case NombreMatriz
             Case "Billeteras" : Matriz_BilleterasTF = Filas
             Case "Compras" : Matriz_ComprasTF = Filas
-            Case "Depositos" : Matriz_DepositosTF = Filas
             Case "Exchange" : Matriz_ExchangeTF = Filas
             Case "Monedas" : Matriz_MonedasTF = Filas
             Case "PoolLiquidez" : Matriz_PoolLiquidezTF = Filas
@@ -151,10 +149,6 @@ Module xFunciones_Archivo
                 MatrizAuxActual = Matriz_Compras
                 TotalFilas = Matriz_ComprasTF
                 TotalColumnas = Matriz_ComprasTC
-            Case "Depositos"
-                MatrizAuxActual = Matriz_Depositos
-                TotalFilas = Matriz_DepositosTF
-                TotalColumnas = Matriz_DepositosTC
             Case "Exchange"
                 MatrizAuxActual = Matriz_Exchange
                 TotalFilas = Matriz_ExchangeTF
@@ -288,36 +282,6 @@ Module xFunciones_Archivo
             File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
         End If
         CargarTXT(Nombre, Matriz_Compras)
-    End Sub
-    '
-    '
-    '
-    '-------------------------------------------------------------------------------------------------------------------------------------------
-    Public Matriz_Depositos(,) As String
-    Public Matriz_DepositosTF As Integer = 0
-    Public Matriz_DepositosTC As Integer = 12
-    Public Sub CargaDepositos()
-        Dim Arreglo(Matriz_DepositosTC) As String
-        Dim Nombre As String = "Depositos"
-        Dim Ruta As String = RutaLocal & "\" & Nombre & ".txt"
-        '
-        If Not File.Exists(Ruta) Then
-            Dim Encabezado As String = String.Join(vbTab,
-                "ID",                   '0
-                "Fecha",                '1
-                "Hora",                 '2
-                "Plataforma",           '3 MetraMask, Uniswap, etc
-                "Billetera",            '4
-                "Moneda_Entrada",       '5
-                "Valor_Entrada",        '6
-                "Moneda_Salida",        '7
-                "Valor_Salida",         '8
-                "Comision",             '9
-                "Gas",                  '10
-                "Precio")               '11
-            File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
-        End If
-        CargarTXT(Nombre, Matriz_Depositos)
     End Sub
     '
     '

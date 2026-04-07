@@ -37,6 +37,8 @@ Partial Class F_Billetera
         Me.B_Copiar = New System.Windows.Forms.Button()
         Me.B_ConsultaSaldo = New System.Windows.Forms.Button()
         Me.DGV = New System.Windows.Forms.DataGridView()
+        Me.C_FechaHora = New System.Windows.Forms.ComboBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         CType(Me.DGV, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -58,7 +60,7 @@ Partial Class F_Billetera
         Me.L_Billeteras.ItemHeight = 15
         Me.L_Billeteras.Location = New System.Drawing.Point(15, 59)
         Me.L_Billeteras.Name = "L_Billeteras"
-        Me.L_Billeteras.Size = New System.Drawing.Size(348, 424)
+        Me.L_Billeteras.Size = New System.Drawing.Size(348, 559)
         Me.L_Billeteras.Sorted = True
         Me.L_Billeteras.TabIndex = 573
         '
@@ -76,11 +78,11 @@ Partial Class F_Billetera
         'T_CodigoBilletera
         '
         Me.T_CodigoBilletera.BackColor = System.Drawing.Color.White
-        Me.T_CodigoBilletera.Location = New System.Drawing.Point(609, 75)
+        Me.T_CodigoBilletera.Location = New System.Drawing.Point(584, 75)
         Me.T_CodigoBilletera.MaxLength = 0
         Me.T_CodigoBilletera.Multiline = True
         Me.T_CodigoBilletera.Name = "T_CodigoBilletera"
-        Me.T_CodigoBilletera.Size = New System.Drawing.Size(217, 45)
+        Me.T_CodigoBilletera.Size = New System.Drawing.Size(145, 45)
         Me.T_CodigoBilletera.TabIndex = 570
         Me.T_CodigoBilletera.Text = "T_CodigoBilletera"
         '
@@ -100,10 +102,10 @@ Partial Class F_Billetera
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
         Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.rT_Nota.Location = New System.Drawing.Point(842, 75)
+        Me.rT_Nota.Location = New System.Drawing.Point(735, 75)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(139, 71)
+        Me.rT_Nota.Size = New System.Drawing.Size(174, 117)
         Me.rT_Nota.TabIndex = 566
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -111,7 +113,7 @@ Partial Class F_Billetera
         '
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Blue
-        Me.Label17.Location = New System.Drawing.Point(606, 59)
+        Me.Label17.Location = New System.Drawing.Point(581, 59)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(126, 13)
         Me.Label17.TabIndex = 569
@@ -163,9 +165,9 @@ Partial Class F_Billetera
         'L_Mensaje
         '
         Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
-        Me.L_Mensaje.Location = New System.Drawing.Point(387, 462)
+        Me.L_Mensaje.Location = New System.Drawing.Point(384, 595)
         Me.L_Mensaje.Name = "L_Mensaje"
-        Me.L_Mensaje.Size = New System.Drawing.Size(457, 16)
+        Me.L_Mensaje.Size = New System.Drawing.Size(525, 42)
         Me.L_Mensaje.TabIndex = 651
         Me.L_Mensaje.Text = "L_Mensaje"
         '
@@ -173,7 +175,7 @@ Partial Class F_Billetera
         '
         Me.B_Copiar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Copiar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Copiar.Location = New System.Drawing.Point(727, 123)
+        Me.B_Copiar.Location = New System.Drawing.Point(630, 128)
         Me.B_Copiar.Name = "B_Copiar"
         Me.B_Copiar.Size = New System.Drawing.Size(99, 23)
         Me.B_Copiar.TabIndex = 652
@@ -184,7 +186,7 @@ Partial Class F_Billetera
         '
         Me.B_ConsultaSaldo.BackColor = System.Drawing.SystemColors.Control
         Me.B_ConsultaSaldo.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_ConsultaSaldo.Location = New System.Drawing.Point(882, 457)
+        Me.B_ConsultaSaldo.Location = New System.Drawing.Point(630, 169)
         Me.B_ConsultaSaldo.Name = "B_ConsultaSaldo"
         Me.B_ConsultaSaldo.Size = New System.Drawing.Size(99, 23)
         Me.B_ConsultaSaldo.TabIndex = 653
@@ -194,17 +196,39 @@ Partial Class F_Billetera
         'DGV
         '
         Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV.Location = New System.Drawing.Point(387, 152)
+        Me.DGV.Location = New System.Drawing.Point(387, 198)
         Me.DGV.Name = "DGV"
-        Me.DGV.Size = New System.Drawing.Size(594, 296)
+        Me.DGV.Size = New System.Drawing.Size(522, 383)
         Me.DGV.TabIndex = 654
+        '
+        'C_FechaHora
+        '
+        Me.C_FechaHora.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.C_FechaHora.FormattingEnabled = True
+        Me.C_FechaHora.Location = New System.Drawing.Point(475, 171)
+        Me.C_FechaHora.Name = "C_FechaHora"
+        Me.C_FechaHora.Size = New System.Drawing.Size(123, 21)
+        Me.C_FechaHora.TabIndex = 655
+        Me.C_FechaHora.Text = "C_FechaHora"
+        '
+        'Label14
+        '
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.ForeColor = System.Drawing.Color.Blue
+        Me.Label14.Location = New System.Drawing.Point(390, 171)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(79, 13)
+        Me.Label14.TabIndex = 656
+        Me.Label14.Text = "Fecha/Hora"
         '
         'F_Billetera
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(1000, 505)
+        Me.ClientSize = New System.Drawing.Size(923, 646)
+        Me.Controls.Add(Me.C_FechaHora)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.DGV)
         Me.Controls.Add(Me.B_ConsultaSaldo)
         Me.Controls.Add(Me.B_Copiar)
@@ -247,4 +271,6 @@ Partial Class F_Billetera
     Friend WithEvents B_Copiar As Button
     Friend WithEvents B_ConsultaSaldo As Button
     Friend WithEvents DGV As DataGridView
+    Friend WithEvents C_FechaHora As ComboBox
+    Friend WithEvents Label14 As Label
 End Class

@@ -69,6 +69,14 @@ Module zAPI_Moralis
                     End If
                 Next
                 '
+                If chainHex = "0x1" Then
+                    Dim simbolosMoralis As New List(Of String)
+                    For Each t2 As TokenBalance In tokens
+                        simbolosMoralis.Add(t2.Simbolo.ToUpper())
+                    Next
+                    ComplementarConEtherscan(direccion, idRed, fechaHoraConsulta, simbolosMoralis, log, registrosGrabados)
+                End If
+                '
                 log &= $"  → Tokens encontrados: {tokens.Count}" & vbCrLf
                 redesConsultadas += 1
                 '
@@ -101,7 +109,7 @@ Module zAPI_Moralis
         Dim resultado As New List(Of TokenBalance)
         '
         Try
-            Dim url As String = $"https://deep-index.moralis.io/api/v2.2/wallets/{direccion}/tokens?chain={chainHex}"
+            Dim url As String = $"https://deep-index.moralis.io/api/v2.2/wallets/{direccion}/tokens?chain={chainHex}&exclude_spam=false"
             log &= $"    URL: {url}" & vbCrLf
             '
             Dim client As New WebClient()
@@ -173,6 +181,94 @@ Module zAPI_Moralis
     End Class
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ' ------------------------------------------------------------
+    '  Complemento Etherscan: tokens ERC-20 en Ethereum
+    '  que Moralis no devolvió
+    ' ------------------------------------------------------------
+    Private Sub ComplementarConEtherscan(ByVal direccion As String, ByVal idRedEthereum As String, ByVal fechaHoraConsulta As String, ByVal simbolosMoralis As List(Of String), ByRef log As String, ByRef registrosGrabados As Integer)
+        Try
+            Dim urlAPI As String = "https://api.etherscan.io/v2/api?chainid=1&"
+            Dim url As String = $"{urlAPI}module=account&action=tokentx&address={direccion}&page=1&offset=200&sort=desc&apikey={API_ETHERSCAN}"
+            '
+            log &= vbCrLf & "  → Complementando Ethereum con Etherscan V2..." & vbCrLf
+            '
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(url))
+            Dim item As JsonNode = JsonNode.Parse(json)
+            '
+            If item("status") Is Nothing OrElse item("status").ToString() <> "1" Then
+                log &= "  → Etherscan: sin datos" & vbCrLf
+                Return
+            End If
+            '
+            ' Calcular saldo neto por token
+            Dim saldos As New Dictionary(Of String, Double)
+            Dim infoTokens As New Dictionary(Of String, String) ' contrato → simbolo
+            '
+            For Each t As JsonNode In item("result").AsArray()
+                Dim contrato As String = If(t("contractAddress") Is Nothing, "", t("contractAddress").ToString().ToLower())
+                Dim simbolo As String = If(t("tokenSymbol") Is Nothing, "?", t("tokenSymbol").ToString())
+                Dim decimales As Integer = 18
+                Try : decimales = CInt(t("tokenDecimal").ToString()) : Catch : End Try
+                '
+                Dim cantidadRaw As Double = 0
+                Try : cantidadRaw = Double.Parse(t("value").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+                '
+                Dim cantidad As Double = cantidadRaw / Math.Pow(10, decimales)
+                Dim desde As String = If(t("from") Is Nothing, "", t("from").ToString().ToLower())
+                Dim hacia As String = If(t("to") Is Nothing, "", t("to").ToString().ToLower())
+                Dim dirLower As String = direccion.ToLower()
+                '
+                If hacia = dirLower Then
+                    If Not saldos.ContainsKey(contrato) Then saldos(contrato) = 0
+                    saldos(contrato) += cantidad
+                End If
+                If desde = dirLower Then
+                    If Not saldos.ContainsKey(contrato) Then saldos(contrato) = 0
+                    saldos(contrato) -= cantidad
+                End If
+                '
+                If Not infoTokens.ContainsKey(contrato) Then
+                    infoTokens(contrato) = simbolo
+                End If
+            Next
+            '
+            ' Agregar solo tokens con saldo > 0 que Moralis NO devolvió
+            For Each kvp As KeyValuePair(Of String, Double) In saldos
+                If kvp.Value > 0.000001 AndAlso infoTokens.ContainsKey(kvp.Key) Then
+                    Dim simbolo As String = infoTokens(kvp.Key)
+                    If Not simbolosMoralis.Contains(simbolo.ToUpper()) Then
+                        log &= $"  → Etherscan complementa: {simbolo} {kvp.Value:F8}" & vbCrLf
+                        AgregarBilleteraSaldo(direccion, idRedEthereum, fechaHoraConsulta, simbolo, kvp.Value, ObtenerPrecioUSD(simbolo))
+                        registrosGrabados += 1
+                    End If
+                End If
+            Next
+            '
+        Catch ex As Exception
+            log &= $"  → Etherscan ERROR: {ex.Message}" & vbCrLf
+        End Try
+    End Sub
     '
     '
     '
