@@ -159,7 +159,7 @@ Partial Class F_Monedas
         Me.Label81.AutoSize = True
         Me.Label81.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label81.ForeColor = System.Drawing.Color.Blue
-        Me.Label81.Location = New System.Drawing.Point(582, 570)
+        Me.Label81.Location = New System.Drawing.Point(545, 568)
         Me.Label81.Name = "Label81"
         Me.Label81.Size = New System.Drawing.Size(88, 13)
         Me.Label81.TabIndex = 640
@@ -169,12 +169,12 @@ Partial Class F_Monedas
         'T_ContractAddres
         '
         Me.T_ContractAddres.BackColor = System.Drawing.Color.White
-        Me.T_ContractAddres.Location = New System.Drawing.Point(582, 599)
+        Me.T_ContractAddres.Location = New System.Drawing.Point(545, 597)
         Me.T_ContractAddres.MaxLength = 0
         Me.T_ContractAddres.Multiline = True
         Me.T_ContractAddres.Name = "T_ContractAddres"
         Me.T_ContractAddres.ReadOnly = True
-        Me.T_ContractAddres.Size = New System.Drawing.Size(236, 47)
+        Me.T_ContractAddres.Size = New System.Drawing.Size(258, 47)
         Me.T_ContractAddres.TabIndex = 638
         Me.T_ContractAddres.Text = "T_ContractAddres"
         '
@@ -352,7 +352,7 @@ Partial Class F_Monedas
         'rT_Nota
         '
         Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.rT_Nota.Location = New System.Drawing.Point(560, 99)
+        Me.rT_Nota.Location = New System.Drawing.Point(545, 97)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.Size = New System.Drawing.Size(258, 371)
         Me.rT_Nota.TabIndex = 4
@@ -506,7 +506,7 @@ Partial Class F_Monedas
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Magenta
-        Me.Label3.Location = New System.Drawing.Point(582, 486)
+        Me.Label3.Location = New System.Drawing.Point(545, 484)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(77, 13)
         Me.Label3.TabIndex = 665
@@ -516,12 +516,12 @@ Partial Class F_Monedas
         'T_LinkCoinGeko
         '
         Me.T_LinkCoinGeko.BackColor = System.Drawing.Color.White
-        Me.T_LinkCoinGeko.Location = New System.Drawing.Point(582, 502)
+        Me.T_LinkCoinGeko.Location = New System.Drawing.Point(545, 500)
         Me.T_LinkCoinGeko.MaxLength = 60
         Me.T_LinkCoinGeko.Multiline = True
         Me.T_LinkCoinGeko.Name = "T_LinkCoinGeko"
         Me.T_LinkCoinGeko.ReadOnly = True
-        Me.T_LinkCoinGeko.Size = New System.Drawing.Size(236, 49)
+        Me.T_LinkCoinGeko.Size = New System.Drawing.Size(258, 49)
         Me.T_LinkCoinGeko.TabIndex = 666
         Me.T_LinkCoinGeko.Text = "T_LinkCoinGeko"
         '
@@ -656,7 +656,7 @@ Partial Class F_Monedas
         '
         Me.B_Copiar.BackColor = System.Drawing.SystemColors.Control
         Me.B_Copiar.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Copiar.Location = New System.Drawing.Point(719, 570)
+        Me.B_Copiar.Location = New System.Drawing.Point(704, 568)
         Me.B_Copiar.Name = "B_Copiar"
         Me.B_Copiar.Size = New System.Drawing.Size(99, 23)
         Me.B_Copiar.TabIndex = 683

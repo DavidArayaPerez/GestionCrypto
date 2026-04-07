@@ -16,18 +16,10 @@ Module mRedes
         If T = "" Then Return 0
         '
         For i As Integer = 1 To Matriz_RedesTF
-            If T = Matriz_Redes(i, 4) Then Return i
+            If T = Matriz_Redes(i, 2) Then Return i
         Next i
         Return 0
     End Function
-    Public Sub Llenar_Redes(ByRef Combo As ComboBox)
-        Dim T As String
-        Combo.Items.Clear()
-        For i As Integer = 1 To Matriz_RedesTF
-            T = Matriz_Redes(i, 1)
-            Combo.Items.Add(T)
-        Next i
-    End Sub
     Public Sub LlenarList_Redes(ByRef Lista As ListBox)
         Dim Contador As Integer = 0
         Dim T As String

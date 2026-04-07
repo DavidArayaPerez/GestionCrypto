@@ -8,10 +8,13 @@ Public Class F_Red
     '
     '
     Private Sub Inicializar()
+        VariableDeInicio = True
         Limpiar()
         LlenarList_Redes(L_Red)
+        VariableDeInicio = False
     End Sub
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
+        L_Mensaje.Text = ""
         L_Fila.Text = ""
         'REDES
         L_ID.Text = ""
@@ -65,6 +68,8 @@ Public Class F_Red
         T_URLexplorador_Red.Text = Matriz_Redes(f, 14)
         'T_URLlogo_Red.Text = Matriz_Redes(F, 15)
         T_URLrpc_Red.Text = Matriz_Redes(f, 16)
+        T_URLAPI_Red.Text = Matriz_Redes(f, 18)
+        T_ChainHex_Red.Text = Matriz_Redes(f, 19)
         '17 Activo
         '
         '--------------------------------------------
@@ -129,13 +134,15 @@ Public Class F_Red
         Else
             Matriz_Redes(F, 17) = "NO"
         End If
+        Matriz_Redes(F, 18) = T_URLAPI_Red.Text
+        Matriz_Redes(F, 19) = T_ChainHex_Red.Text
         '
         Guardar_Matrices("Redes")
         '
         Dim NombreNota As String = "Chain_" & Matriz_Redes(F, 4) & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
-        L_Mensaje.Text = "Compra guardada correctamente"
+        L_Mensaje.Text = "Red guardada correctamente"
         '0      ID_Interno
         '1      Chain_ID               Identificador único para redes EVM
         '2      Nombre_Oficial         Nombre completo
@@ -146,18 +153,16 @@ Public Class F_Red
         '7      Tipo_Rollup            Solo aplica a L2s
         '8      Compatible_EVM         Define si usa el estándar de Ethereum           Sí / No
         '9      Mecanismo_Consenso     Cómo valida la red                              PoW, PoS, PoH
-        '10     Token_Nativo           En ARB el token nativo es ETH, no ARB.
-        '                            El token ARB existe, pero es el token de gobernanza del protocolo,
-        '                                no el que se usa para pagar el gas.
-        '                                Esto aplica también a otras redes como Base y Optimism,
-        '                                    que también usan ETH como gas aunque tengan su propio token de gobernanza.
-        '11     Decimales              Crítico para cálculos — cada red usa distinto   Pueden ser; 18 decimales, 6 decimales, etc.
-        '12     Tiempo_Bloque          Velocidad de confirmación                       12 seg, 0.4 seg
-        '13     Color_Marca            Para mostrar en la UI                           #627EEA                     
-        '14     URL_Explorador         Para consultar transacciones                    etherscan.io
-        '15     URL_Logo               Ícono de la red                                 https://...
-        '16     URL_RPC                Para conectarse a la red programáticamente      https://...
-        '17     Activa                 Para desactivar redes sin borrarlas             Sí / No
+        '10     Token_Nativo
+        '11     Decimales              Crítico para cálculos
+        '12     Tiempo_Bloque          Velocidad de confirmación
+        '13     Color_Marca            Para mostrar en la UI
+        '14     URL_Explorador         Para consultar transacciones
+        '15     URL_Logo               Ícono de la red
+        '16     URL_RPC                Para conectarse a la red programáticamente
+        '17     Activa                 Para desactivar redes sin borrarlas
+        '18     URL_API                API nativa de la red (BscScan, BaseScan, etc.)
+        '19     Chain_Hex              Identificador hexadecimal para Moralis
     End Sub
     '
     '

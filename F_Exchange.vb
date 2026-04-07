@@ -12,6 +12,7 @@ Public Class F_Exchange
         VariableDeInicio = False
     End Sub
     Private Sub Limpieza(Optional Habilitar As Boolean = False)
+        L_Mensaje.Text = ""
         L_Fila.Text = ""
         'EXCHANGE
         T_Nom.Text = ""

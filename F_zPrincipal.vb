@@ -113,6 +113,9 @@ Public Class F_zPrincipal
     Private Sub B_Exchange_Click(sender As Object, e As EventArgs) Handles B_Exchange.Click
         F_Exchange.Show()
     End Sub
+    Private Sub B_Traspasos_Click(sender As Object, e As EventArgs) Handles B_Traspasos.Click
+        F_Traspaso.Show()
+    End Sub
 
     Private Sub B_Transacciones_Click(sender As Object, e As EventArgs) Handles B_Transacciones.Click
         F_Transacciones.Show()

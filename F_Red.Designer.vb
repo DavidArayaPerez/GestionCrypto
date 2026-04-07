@@ -29,6 +29,10 @@ Partial Class F_Red
         Me.Label72 = New System.Windows.Forms.Label()
         Me.T_URLexplorador_Red = New System.Windows.Forms.TextBox()
         Me.Label65 = New System.Windows.Forms.Label()
+        Me.T_URLAPI_Red = New System.Windows.Forms.TextBox()
+        Me.Label_URLAPI = New System.Windows.Forms.Label()
+        Me.T_ChainHex_Red = New System.Windows.Forms.TextBox()
+        Me.Label_ChainHex = New System.Windows.Forms.Label()
         Me.Label70 = New System.Windows.Forms.Label()
         Me.Label71 = New System.Windows.Forms.Label()
         Me.Label62 = New System.Windows.Forms.Label()
@@ -72,7 +76,7 @@ Partial Class F_Red
         'CB_EVM_Red
         '
         Me.CB_EVM_Red.AutoSize = True
-        Me.CB_EVM_Red.Location = New System.Drawing.Point(460, 364)
+        Me.CB_EVM_Red.Location = New System.Drawing.Point(541, 419)
         Me.CB_EVM_Red.Name = "CB_EVM_Red"
         Me.CB_EVM_Red.Size = New System.Drawing.Size(125, 17)
         Me.CB_EVM_Red.TabIndex = 657
@@ -82,7 +86,7 @@ Partial Class F_Red
         'CB_Activo_Red
         '
         Me.CB_Activo_Red.AutoSize = True
-        Me.CB_Activo_Red.Location = New System.Drawing.Point(460, 396)
+        Me.CB_Activo_Red.Location = New System.Drawing.Point(458, 419)
         Me.CB_Activo_Red.Name = "CB_Activo_Red"
         Me.CB_Activo_Red.Size = New System.Drawing.Size(56, 17)
         Me.CB_Activo_Red.TabIndex = 656
@@ -92,7 +96,7 @@ Partial Class F_Red
         'T_URLrpc_Red
         '
         Me.T_URLrpc_Red.BackColor = System.Drawing.Color.White
-        Me.T_URLrpc_Red.Location = New System.Drawing.Point(460, 329)
+        Me.T_URLrpc_Red.Location = New System.Drawing.Point(458, 329)
         Me.T_URLrpc_Red.MaxLength = 6
         Me.T_URLrpc_Red.Name = "T_URLrpc_Red"
         Me.T_URLrpc_Red.ReadOnly = True
@@ -105,7 +109,7 @@ Partial Class F_Red
         Me.Label72.AutoSize = True
         Me.Label72.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label72.ForeColor = System.Drawing.Color.Magenta
-        Me.Label72.Location = New System.Drawing.Point(400, 333)
+        Me.Label72.Location = New System.Drawing.Point(397, 333)
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(54, 13)
         Me.Label72.TabIndex = 654
@@ -115,7 +119,7 @@ Partial Class F_Red
         'T_URLexplorador_Red
         '
         Me.T_URLexplorador_Red.BackColor = System.Drawing.Color.White
-        Me.T_URLexplorador_Red.Location = New System.Drawing.Point(460, 303)
+        Me.T_URLexplorador_Red.Location = New System.Drawing.Point(458, 303)
         Me.T_URLexplorador_Red.MaxLength = 6
         Me.T_URLexplorador_Red.Name = "T_URLexplorador_Red"
         Me.T_URLexplorador_Red.ReadOnly = True
@@ -128,19 +132,61 @@ Partial Class F_Red
         Me.Label65.AutoSize = True
         Me.Label65.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label65.ForeColor = System.Drawing.Color.Magenta
-        Me.Label65.Location = New System.Drawing.Point(372, 307)
+        Me.Label65.Location = New System.Drawing.Point(369, 307)
         Me.Label65.Name = "Label65"
         Me.Label65.Size = New System.Drawing.Size(82, 13)
         Me.Label65.TabIndex = 650
         Me.Label65.Text = "URL Explotador"
         Me.Label65.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'T_URLAPI_Red
+        '
+        Me.T_URLAPI_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_URLAPI_Red.Location = New System.Drawing.Point(458, 355)
+        Me.T_URLAPI_Red.MaxLength = 200
+        Me.T_URLAPI_Red.Name = "T_URLAPI_Red"
+        Me.T_URLAPI_Red.Size = New System.Drawing.Size(324, 20)
+        Me.T_URLAPI_Red.TabIndex = 680
+        '
+        'Label_URLAPI
+        '
+        Me.Label_URLAPI.AutoSize = True
+        Me.Label_URLAPI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_URLAPI.ForeColor = System.Drawing.Color.Magenta
+        Me.Label_URLAPI.Location = New System.Drawing.Point(402, 358)
+        Me.Label_URLAPI.Name = "Label_URLAPI"
+        Me.Label_URLAPI.Size = New System.Drawing.Size(49, 13)
+        Me.Label_URLAPI.TabIndex = 681
+        Me.Label_URLAPI.Text = "URL API"
+        Me.Label_URLAPI.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'T_ChainHex_Red
+        '
+        Me.T_ChainHex_Red.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.T_ChainHex_Red.Location = New System.Drawing.Point(458, 381)
+        Me.T_ChainHex_Red.MaxLength = 20
+        Me.T_ChainHex_Red.Name = "T_ChainHex_Red"
+        Me.T_ChainHex_Red.Size = New System.Drawing.Size(120, 20)
+        Me.T_ChainHex_Red.TabIndex = 682
+        '
+        'Label_ChainHex
+        '
+        Me.Label_ChainHex.AutoSize = True
+        Me.Label_ChainHex.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label_ChainHex.ForeColor = System.Drawing.Color.Magenta
+        Me.Label_ChainHex.Location = New System.Drawing.Point(395, 384)
+        Me.Label_ChainHex.Name = "Label_ChainHex"
+        Me.Label_ChainHex.Size = New System.Drawing.Size(56, 13)
+        Me.Label_ChainHex.TabIndex = 683
+        Me.Label_ChainHex.Text = "Chain Hex"
+        Me.Label_ChainHex.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'Label70
         '
         Me.Label70.AutoSize = True
         Me.Label70.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label70.ForeColor = System.Drawing.Color.Blue
-        Me.Label70.Location = New System.Drawing.Point(384, 281)
+        Me.Label70.Location = New System.Drawing.Point(381, 281)
         Me.Label70.Name = "Label70"
         Me.Label70.Size = New System.Drawing.Size(70, 13)
         Me.Label70.TabIndex = 642
@@ -152,7 +198,7 @@ Partial Class F_Red
         Me.Label71.AutoSize = True
         Me.Label71.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label71.ForeColor = System.Drawing.Color.Blue
-        Me.Label71.Location = New System.Drawing.Point(343, 252)
+        Me.Label71.Location = New System.Drawing.Point(340, 252)
         Me.Label71.Name = "Label71"
         Me.Label71.Size = New System.Drawing.Size(111, 13)
         Me.Label71.TabIndex = 641
@@ -164,7 +210,7 @@ Partial Class F_Red
         Me.Label62.AutoSize = True
         Me.Label62.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label62.ForeColor = System.Drawing.Color.Blue
-        Me.Label62.Location = New System.Drawing.Point(393, 226)
+        Me.Label62.Location = New System.Drawing.Point(390, 226)
         Me.Label62.Name = "Label62"
         Me.Label62.Size = New System.Drawing.Size(61, 13)
         Me.Label62.TabIndex = 639
@@ -176,7 +222,7 @@ Partial Class F_Red
         Me.Label63.AutoSize = True
         Me.Label63.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label63.ForeColor = System.Drawing.Color.Blue
-        Me.Label63.Location = New System.Drawing.Point(404, 196)
+        Me.Label63.Location = New System.Drawing.Point(401, 196)
         Me.Label63.Name = "Label63"
         Me.Label63.Size = New System.Drawing.Size(50, 13)
         Me.Label63.TabIndex = 637
@@ -188,7 +234,7 @@ Partial Class F_Red
         Me.Label64.AutoSize = True
         Me.Label64.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label64.ForeColor = System.Drawing.Color.Blue
-        Me.Label64.Location = New System.Drawing.Point(398, 170)
+        Me.Label64.Location = New System.Drawing.Point(395, 170)
         Me.Label64.Name = "Label64"
         Me.Label64.Size = New System.Drawing.Size(56, 13)
         Me.Label64.TabIndex = 636
@@ -200,7 +246,7 @@ Partial Class F_Red
         Me.Label58.AutoSize = True
         Me.Label58.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label58.ForeColor = System.Drawing.Color.Blue
-        Me.Label58.Location = New System.Drawing.Point(374, 144)
+        Me.Label58.Location = New System.Drawing.Point(371, 144)
         Me.Label58.Name = "Label58"
         Me.Label58.Size = New System.Drawing.Size(80, 13)
         Me.Label58.TabIndex = 634
@@ -212,7 +258,7 @@ Partial Class F_Red
         Me.Label60.AutoSize = True
         Me.Label60.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label60.ForeColor = System.Drawing.Color.Blue
-        Me.Label60.Location = New System.Drawing.Point(382, 118)
+        Me.Label60.Location = New System.Drawing.Point(379, 118)
         Me.Label60.Name = "Label60"
         Me.Label60.Size = New System.Drawing.Size(72, 13)
         Me.Label60.TabIndex = 632
@@ -224,7 +270,7 @@ Partial Class F_Red
         Me.Label57.AutoSize = True
         Me.Label57.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label57.ForeColor = System.Drawing.Color.Blue
-        Me.Label57.Location = New System.Drawing.Point(378, 88)
+        Me.Label57.Location = New System.Drawing.Point(375, 88)
         Me.Label57.Name = "Label57"
         Me.Label57.Size = New System.Drawing.Size(76, 13)
         Me.Label57.TabIndex = 630
@@ -235,23 +281,26 @@ Partial Class F_Red
         '
         Me.L_ID.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_ID.ForeColor = System.Drawing.Color.Black
-        Me.L_ID.Location = New System.Drawing.Point(460, 429)
+        Me.L_ID.Location = New System.Drawing.Point(722, 441)
         Me.L_ID.Name = "L_ID"
-        Me.L_ID.Size = New System.Drawing.Size(170, 13)
+        Me.L_ID.Size = New System.Drawing.Size(83, 13)
         Me.L_ID.TabIndex = 629
         Me.L_ID.Text = "L_ID"
+        Me.L_ID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.L_ID.Visible = False
         '
         'Label56
         '
         Me.Label56.AutoSize = True
         Me.Label56.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label56.ForeColor = System.Drawing.Color.Black
-        Me.Label56.Location = New System.Drawing.Point(400, 429)
+        Me.Label56.Location = New System.Drawing.Point(722, 422)
         Me.Label56.Name = "Label56"
         Me.Label56.Size = New System.Drawing.Size(54, 13)
         Me.Label56.TabIndex = 628
         Me.Label56.Text = "ID Interno"
         Me.Label56.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label56.Visible = False
         '
         'L_Red
         '
@@ -260,7 +309,7 @@ Partial Class F_Red
         Me.L_Red.ItemHeight = 15
         Me.L_Red.Location = New System.Drawing.Point(12, 58)
         Me.L_Red.Name = "L_Red"
-        Me.L_Red.Size = New System.Drawing.Size(316, 544)
+        Me.L_Red.Size = New System.Drawing.Size(316, 439)
         Me.L_Red.Sorted = True
         Me.L_Red.TabIndex = 626
         '
@@ -302,7 +351,7 @@ Partial Class F_Red
         '
         Me.L_Fila.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_Fila.ForeColor = System.Drawing.Color.Black
-        Me.L_Fila.Location = New System.Drawing.Point(460, 457)
+        Me.L_Fila.Location = New System.Drawing.Point(458, 450)
         Me.L_Fila.Name = "L_Fila"
         Me.L_Fila.Size = New System.Drawing.Size(170, 13)
         Me.L_Fila.TabIndex = 662
@@ -313,7 +362,7 @@ Partial Class F_Red
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Black
-        Me.Label1.Location = New System.Drawing.Point(428, 459)
+        Me.Label1.Location = New System.Drawing.Point(428, 450)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(23, 13)
         Me.Label1.TabIndex = 663
@@ -324,7 +373,7 @@ Partial Class F_Red
         '
         Me.L_ChainID.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_ChainID.ForeColor = System.Drawing.Color.Black
-        Me.L_ChainID.Location = New System.Drawing.Point(460, 62)
+        Me.L_ChainID.Location = New System.Drawing.Point(458, 62)
         Me.L_ChainID.Name = "L_ChainID"
         Me.L_ChainID.Size = New System.Drawing.Size(170, 13)
         Me.L_ChainID.TabIndex = 671
@@ -334,7 +383,7 @@ Partial Class F_Red
         '
         Me.L_NomOficial.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_NomOficial.ForeColor = System.Drawing.Color.Black
-        Me.L_NomOficial.Location = New System.Drawing.Point(460, 88)
+        Me.L_NomOficial.Location = New System.Drawing.Point(458, 88)
         Me.L_NomOficial.Name = "L_NomOficial"
         Me.L_NomOficial.Size = New System.Drawing.Size(170, 13)
         Me.L_NomOficial.TabIndex = 672
@@ -344,7 +393,7 @@ Partial Class F_Red
         '
         Me.L_NomCorto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_NomCorto.ForeColor = System.Drawing.Color.Black
-        Me.L_NomCorto.Location = New System.Drawing.Point(460, 118)
+        Me.L_NomCorto.Location = New System.Drawing.Point(458, 118)
         Me.L_NomCorto.Name = "L_NomCorto"
         Me.L_NomCorto.Size = New System.Drawing.Size(170, 13)
         Me.L_NomCorto.TabIndex = 673
@@ -354,7 +403,7 @@ Partial Class F_Red
         '
         Me.L_APIcg.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_APIcg.ForeColor = System.Drawing.Color.Black
-        Me.L_APIcg.Location = New System.Drawing.Point(460, 144)
+        Me.L_APIcg.Location = New System.Drawing.Point(458, 144)
         Me.L_APIcg.Name = "L_APIcg"
         Me.L_APIcg.Size = New System.Drawing.Size(170, 13)
         Me.L_APIcg.TabIndex = 674
@@ -364,7 +413,7 @@ Partial Class F_Red
         '
         Me.L_TipoCapa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_TipoCapa.ForeColor = System.Drawing.Color.Black
-        Me.L_TipoCapa.Location = New System.Drawing.Point(460, 170)
+        Me.L_TipoCapa.Location = New System.Drawing.Point(458, 170)
         Me.L_TipoCapa.Name = "L_TipoCapa"
         Me.L_TipoCapa.Size = New System.Drawing.Size(170, 13)
         Me.L_TipoCapa.TabIndex = 675
@@ -374,7 +423,7 @@ Partial Class F_Red
         '
         Me.L_L1padre.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_L1padre.ForeColor = System.Drawing.Color.Black
-        Me.L_L1padre.Location = New System.Drawing.Point(460, 196)
+        Me.L_L1padre.Location = New System.Drawing.Point(458, 196)
         Me.L_L1padre.Name = "L_L1padre"
         Me.L_L1padre.Size = New System.Drawing.Size(170, 13)
         Me.L_L1padre.TabIndex = 676
@@ -384,7 +433,7 @@ Partial Class F_Red
         '
         Me.L_TipoRollup.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_TipoRollup.ForeColor = System.Drawing.Color.Black
-        Me.L_TipoRollup.Location = New System.Drawing.Point(460, 226)
+        Me.L_TipoRollup.Location = New System.Drawing.Point(458, 226)
         Me.L_TipoRollup.Name = "L_TipoRollup"
         Me.L_TipoRollup.Size = New System.Drawing.Size(170, 13)
         Me.L_TipoRollup.TabIndex = 677
@@ -394,7 +443,7 @@ Partial Class F_Red
         '
         Me.L_MecanismoConsenso.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_MecanismoConsenso.ForeColor = System.Drawing.Color.Black
-        Me.L_MecanismoConsenso.Location = New System.Drawing.Point(460, 252)
+        Me.L_MecanismoConsenso.Location = New System.Drawing.Point(458, 252)
         Me.L_MecanismoConsenso.Name = "L_MecanismoConsenso"
         Me.L_MecanismoConsenso.Size = New System.Drawing.Size(170, 13)
         Me.L_MecanismoConsenso.TabIndex = 678
@@ -404,7 +453,7 @@ Partial Class F_Red
         '
         Me.L_TokenNativo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.L_TokenNativo.ForeColor = System.Drawing.Color.Black
-        Me.L_TokenNativo.Location = New System.Drawing.Point(460, 281)
+        Me.L_TokenNativo.Location = New System.Drawing.Point(458, 281)
         Me.L_TokenNativo.Name = "L_TokenNativo"
         Me.L_TokenNativo.Size = New System.Drawing.Size(170, 13)
         Me.L_TokenNativo.TabIndex = 679
@@ -413,7 +462,7 @@ Partial Class F_Red
         'L_Mensaje
         '
         Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
-        Me.L_Mensaje.Location = New System.Drawing.Point(343, 586)
+        Me.L_Mensaje.Location = New System.Drawing.Point(344, 477)
         Me.L_Mensaje.Name = "L_Mensaje"
         Me.L_Mensaje.Size = New System.Drawing.Size(524, 16)
         Me.L_Mensaje.TabIndex = 680
@@ -424,7 +473,7 @@ Partial Class F_Red
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(880, 623)
+        Me.ClientSize = New System.Drawing.Size(880, 516)
         Me.Controls.Add(Me.L_Mensaje)
         Me.Controls.Add(Me.L_TokenNativo)
         Me.Controls.Add(Me.L_MecanismoConsenso)
@@ -445,6 +494,10 @@ Partial Class F_Red
         Me.Controls.Add(Me.Label72)
         Me.Controls.Add(Me.T_URLexplorador_Red)
         Me.Controls.Add(Me.Label65)
+        Me.Controls.Add(Me.T_URLAPI_Red)
+        Me.Controls.Add(Me.Label_URLAPI)
+        Me.Controls.Add(Me.T_ChainHex_Red)
+        Me.Controls.Add(Me.Label_ChainHex)
         Me.Controls.Add(Me.Label70)
         Me.Controls.Add(Me.Label71)
         Me.Controls.Add(Me.Label62)
@@ -476,6 +529,10 @@ Partial Class F_Red
     Friend WithEvents Label72 As Label
     Friend WithEvents T_URLexplorador_Red As TextBox
     Friend WithEvents Label65 As Label
+    Friend WithEvents T_URLAPI_Red As TextBox
+    Friend WithEvents Label_URLAPI As Label
+    Friend WithEvents T_ChainHex_Red As TextBox
+    Friend WithEvents Label_ChainHex As Label
     Friend WithEvents Label70 As Label
     Friend WithEvents Label71 As Label
     Friend WithEvents Label62 As Label

@@ -14,7 +14,7 @@ Module mExchange
         If T = "" Then Return 0
         '
         For i As Integer = 1 To Matriz_ExchangeTF
-            If T = Matriz_Exchange(i, 2) Then Return i
+            If T = Matriz_Exchange(i, 1) Then Return i
         Next i
         Return 0
     End Function

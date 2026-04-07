@@ -284,7 +284,8 @@ Module xFunciones_Archivo
                 "Valor_Destino",        '7
                 "Comision",             '8
                 "Gas",                  '9
-                "Precio")               '10
+                "Precio",               '10
+                "Billetera")            '11
             File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
         End If
         CargarTXT(Nombre, Matriz_Compras)
@@ -431,7 +432,7 @@ Module xFunciones_Archivo
     '
     '-------------------------------------------------------------------------------------------------------------------------------------------
     Public Matriz_Traspasos(,) As String
-    Public Matriz_TraspasosTF As Integer
+    Public Matriz_TraspasosTF As Integer = 0
     Public Matriz_TraspasosTC As Integer = 12
     Public Sub CargaTraspasos()
         Dim Arreglo(Matriz_TraspasosTC) As String
@@ -440,18 +441,18 @@ Module xFunciones_Archivo
         '
         If Not File.Exists(Ruta) Then
             Dim Encabezado As String = String.Join(vbTab,
-                "ID",                   '1  x
-                "Fecha",                '2  x
-                "Hora",                 '3  x
-                "Plataforma",           '4  MetraMask, Uniswap, etc
-                "Billetera_Origen",     '5  x
-                "Moneda_Origen",        '6  x
-                "Valor_Origen",         '7  x
-                "Billetera_Destino",    '8  x
-                "Moneda_Destino",       '9  x
-                "Valor_Destino",        '10 x
-                "Comision",             '11 x
-                "Gas")                  '12 x
+                "ID",                   '0
+                "Fecha",                '1
+                "Hora",                 '2
+                "Plataforma",           '3  MetraMask, Uniswap, etc
+                "Billetera_Origen",     '4
+                "Moneda_Origen",        '5
+                "Valor_Origen",         '6
+                "Billetera_Destino",    '7
+                "Moneda_Destino",       '8
+                "Valor_Destino",        '9
+                "Comision",             '10
+                "Gas")                  '11
             File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
         End If
         CargarTXT(Nombre, Matriz_Traspasos)

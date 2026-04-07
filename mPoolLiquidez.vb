@@ -30,6 +30,22 @@ Module mPoolLiquidez
         Matriz_PoolLiquidez(Fila, 16) = ""
         Return Fila
     End Function
+    Public Sub LlenarList_PoolLiquidez(ByRef Lista As ListBox)
+        Lista.Items.Clear()
+        For i As Integer = 1 To Matriz_PoolLiquidezTF
+            '   1 Fecha   2 Hora   3 Plataforma   5 Moneda1   7 Moneda2
+            Dim T As String = Matriz_PoolLiquidez(i, 1) & " " & Matriz_PoolLiquidez(i, 2) & " - " & Matriz_PoolLiquidez(i, 3) & " - " & Matriz_PoolLiquidez(i, 5) & "/" & Matriz_PoolLiquidez(i, 7)
+            Lista.Items.Add(T)
+        Next i
+    End Sub
+    Public Function BuscarPoolLiquidez(ByVal Clave As String) As Integer
+        If Clave = Nothing OrElse Clave = "" Then Return 0
+        For i As Integer = 1 To Matriz_PoolLiquidezTF
+            Dim T As String = Matriz_PoolLiquidez(i, 1) & " " & Matriz_PoolLiquidez(i, 2) & " - " & Matriz_PoolLiquidez(i, 3) & " - " & Matriz_PoolLiquidez(i, 5) & "/" & Matriz_PoolLiquidez(i, 7)
+            If Clave = T Then Return i
+        Next i
+        Return 0
+    End Function
     Public Sub Transformar_Fechas_PoolLiquidez()
         Dim Matriz(,) As String = Matriz_PoolLiquidez
         Dim TotalFilas As Integer = Matriz_PoolLiquidezTF
