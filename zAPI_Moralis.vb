@@ -271,5 +271,171 @@ Module zAPI_Moralis
     End Sub
     '
     '
+    ' ============================================================
+    '  Consulta el historial de transacciones on-chain de una
+    '  billetera en todas las redes EVM activas con chainHex
+    '  y guarda los resultados en TransaccionesOnChain.txt
+    ' ============================================================
+    Public Function ConsultarTransacciones_TodasLasRedes(ByVal direccion As String) As String
+        Dim redesConsultadas As Integer = 0
+        Dim registrosGrabados As Integer = 0
+        Dim log As String = $"=== Transacciones {DateTime.Now.ToString("yyyyMMdd HHmm")} ===" & vbCrLf
+        log &= $"Dirección: {direccion}" & vbCrLf & vbCrLf
+        '
+        For r As Integer = 1 To Matriz_RedesTF
+            Dim chainHex As String = Matriz_Redes(r, 19)
+            Dim esEVM As String = Matriz_Redes(r, 8)
+            Dim nombreRed As String = Matriz_Redes(r, 3)
+            '
+            If esEVM.ToUpper() <> "SI" Then Continue For
+            If String.IsNullOrWhiteSpace(chainHex) OrElse chainHex = "0" Then Continue For
+            '
+            log &= $"Red: {nombreRed} | chain={chainHex}" & vbCrLf
+            '
+            Try
+                Dim txs As List(Of TransaccionOnChain) = ObtenerTransacciones(chainHex, direccion, log)
+                '
+                For Each tx As TransaccionOnChain In txs
+                    ' Evitar duplicados por hash + red
+                    Dim esDuplicado As Boolean = False
+                    For i As Integer = 1 To Matriz_TransaccionesOnChainTF
+                        If Matriz_TransaccionesOnChain(i, 0) = direccion AndAlso
+                           Matriz_TransaccionesOnChain(i, 1) = chainHex AndAlso
+                           Matriz_TransaccionesOnChain(i, 3) = tx.Hash Then
+                            esDuplicado = True
+                            Exit For
+                        End If
+                    Next i
+                    If esDuplicado Then Continue For
+                    '
+                    Dim fila As Integer = AgrandarMatriz(Matriz_TransaccionesOnChain, Matriz_TransaccionesOnChainTF, Matriz_TransaccionesOnChainTC)
+                    Matriz_TransaccionesOnChain(fila, 0) = direccion
+                    Matriz_TransaccionesOnChain(fila, 1) = chainHex
+                    Matriz_TransaccionesOnChain(fila, 2) = tx.FechaHora
+                    Matriz_TransaccionesOnChain(fila, 3) = tx.Hash
+                    Matriz_TransaccionesOnChain(fila, 4) = tx.Tipo
+                    Matriz_TransaccionesOnChain(fila, 5) = tx.Desde
+                    Matriz_TransaccionesOnChain(fila, 6) = tx.Hacia
+                    Matriz_TransaccionesOnChain(fila, 7) = tx.Simbolo
+                    Matriz_TransaccionesOnChain(fila, 8) = tx.Valor.ToString("F8", Globalization.CultureInfo.InvariantCulture)
+                    Matriz_TransaccionesOnChain(fila, 9) = tx.Resumen
+                    Matriz_TransaccionesOnChain(fila, 10) = ""
+                    registrosGrabados += 1
+                Next
+                '
+                log &= $"  → {txs.Count} transacciones obtenidas" & vbCrLf
+                redesConsultadas += 1
+                '
+            Catch ex As Exception
+                log &= $"  → ERROR: {ex.Message}" & vbCrLf
+            End Try
+            '
+            Threading.Thread.Sleep(300)
+        Next r
+        '
+        If registrosGrabados > 0 Then
+            Guardar_Matrices("TransaccionesOnChain")
+            log &= $"Guardado OK — {registrosGrabados} registros nuevos" & vbCrLf
+        End If
+        '
+        Dim rutaLog As String = RutaLocal & "\log_transacciones.txt"
+        If ModoDebug Then System.IO.File.WriteAllText(rutaLog, log, System.Text.Encoding.UTF8)
+        Return $"Redes: {redesConsultadas} | Registros nuevos: {registrosGrabados}"
+    End Function
+    '
+    ' ------------------------------------------------------------
+    '  Llama al endpoint /wallets/{address}/history de Moralis
+    '  y parsea cada entrada del array result
+    ' ------------------------------------------------------------
+    Private Function ObtenerTransacciones(ByVal chainHex As String, ByVal direccion As String, ByRef log As String) As List(Of TransaccionOnChain)
+        Dim resultado As New List(Of TransaccionOnChain)
+        '
+        Try
+            Dim url As String = $"https://deep-index.moralis.io/api/v2.2/wallets/{direccion}/history?chain={chainHex}&limit=100"
+            log &= $"    URL: {url}" & vbCrLf
+            '
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            client.Headers.Add("X-API-Key", API_MORALIS)
+            client.Headers.Add("accept", "application/json")
+            '
+            Dim json As String = client.DownloadString(New Uri(url))
+            Dim root As JsonNode = JsonNode.Parse(json)
+            Dim items As JsonArray = root("result").AsArray()
+            '
+            For Each item As JsonNode In items
+                Dim tx As New TransaccionOnChain()
+                '
+                ' Fecha desde block_timestamp (ISO 8601 → yyyyMMdd HHmm)
+                Dim tsRaw As String = If(item("block_timestamp") Is Nothing, "", item("block_timestamp").ToString())
+                Try
+                    Dim dtUTC As DateTime = DateTime.Parse(tsRaw, Nothing, Globalization.DateTimeStyles.RoundtripKind)
+                    Dim dtChile As DateTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(dtUTC, "Pacific SA Standard Time")
+                    tx.FechaHora = dtChile.ToString("yyyyMMdd HHmm")
+                Catch
+                    tx.FechaHora = tsRaw
+                End Try
+                '
+                tx.Hash = If(item("hash") Is Nothing, "", item("hash").ToString())
+                tx.Tipo = If(item("category") Is Nothing, "other", item("category").ToString())
+                tx.Desde = If(item("from_address") Is Nothing, "", item("from_address").ToString())
+                tx.Hacia = If(item("to_address") Is Nothing, "", item("to_address").ToString())
+                tx.Resumen = If(item("summary") Is Nothing, "", item("summary").ToString())
+                '
+                ' Intentar leer erc20_transfers primero
+                Dim erc20 As JsonArray = Nothing
+                Try : erc20 = item("erc20_transfers").AsArray() : Catch : End Try
+                '
+                If erc20 IsNot Nothing AndAlso erc20.Count > 0 Then
+                    ' Una transacción puede tener varios tokens — registrar el primero relevante
+                    For Each t As JsonNode In erc20
+                        Dim simbolo As String = If(t("token_symbol") Is Nothing, "?", t("token_symbol").ToString())
+                        Dim valorFmt As Double = 0
+                        Try : valorFmt = Double.Parse(t("value_formatted").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+                        '
+                        Dim txERC20 As New TransaccionOnChain With {
+                            .FechaHora = tx.FechaHora,
+                            .Hash = tx.Hash,
+                            .Tipo = tx.Tipo,
+                            .Desde = If(t("from_address") Is Nothing, tx.Desde, t("from_address").ToString()),
+                            .Hacia = If(t("to_address") Is Nothing, tx.Hacia, t("to_address").ToString()),
+                            .Simbolo = simbolo,
+                            .Valor = valorFmt,
+                            .Resumen = tx.Resumen
+                        }
+                        resultado.Add(txERC20)
+                    Next
+                Else
+                    ' Transacción nativa (ETH, BNB, etc.)
+                    Dim valorWei As Double = 0
+                    Try : valorWei = Double.Parse(item("value").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+                    tx.Valor = valorWei / 1e18
+                    tx.Simbolo = "NATIVE"
+                    resultado.Add(tx)
+                End If
+            Next
+            '
+        Catch ex As Exception
+            log &= $"    EXCEPCION: {ex.GetType().Name} | {ex.Message}" & vbCrLf
+        End Try
+        '
+        Return resultado
+    End Function
+    '
+    ' ------------------------------------------------------------
+    '  Clase auxiliar para transacciones on-chain
+    ' ------------------------------------------------------------
+    Public Class TransaccionOnChain
+        Public Property FechaHora As String
+        Public Property Hash As String
+        Public Property Tipo As String
+        Public Property Desde As String
+        Public Property Hacia As String
+        Public Property Simbolo As String
+        Public Property Valor As Double
+        Public Property Resumen As String
+    End Class
+    '
+    '
     '
 End Module

@@ -22,6 +22,7 @@ Partial Class F_Compra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Compra))
         Me.L_Compras = New System.Windows.Forms.ListBox()
         Me.Label45 = New System.Windows.Forms.Label()
         Me.L_PrecioMoneda = New System.Windows.Forms.Label()
@@ -412,6 +413,7 @@ Partial Class F_Compra
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label14)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

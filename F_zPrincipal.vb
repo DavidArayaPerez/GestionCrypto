@@ -73,6 +73,8 @@ Public Class F_zPrincipal
         CargaPoolLiquidez() 'Transformar_Fechas_PoolLiquidez()
         LogTiempo("PoolLiquidez")
         '
+        CargaTransaccionesOnChain()
+        LogTiempo("TransaccionesOnChain")
         '
         '
         'VariableDeInicio = False

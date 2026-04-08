@@ -3,175 +3,147 @@
 '
 Public Class F_PoolLiquidez
     '
-    Private _Fila As Integer = 0  ' reemplaza L_Fila — no visible en pantalla
+    Private _Fila As Integer = 0
     '
     '
     Private Sub Inicializar()
         VariableDeInicio = True
         Limpiar()
-        Llenar_Exchange(C_Exchange)
         Llenar_Billetera(C_Billetera)
-        Llenar_Monedas(C_Moneda1)
-        Llenar_Monedas(C_Moneda2)
+        C_Exchange.Items.Clear()
+        C_Exchange.Items.Add("uniswap-v3")
+        C_Exchange.Items.Add("beefy")
         LlenarList_PoolLiquidez(L_PoolLiquidez)
+        ConfigurarDGV()
         VariableDeInicio = False
     End Sub
+    '
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
         _Fila = 0
+        L_Fila.Text = ""
         L_Mensaje.Text = ""
-        'POOL LIQUIDEZ
         T_Fecha.Text = ""
-        T_Hora.Text = ""
-        C_Exchange.Text = ""
         C_Billetera.Text = ""
-        C_Moneda1.Text = ""
-        T_ValorMoneda1.Text = ""
-        C_Moneda2.Text = ""
-        T_ValorMoneda2.Text = ""
-        T_Comision.Text = ""
-        T_Gas.Text = ""
-        T_Min.Text = ""
-        T_Max.Text = ""
-        T_ValorMoneda1Resultante.Text = ""
-        T_ValorMoneda2Resultante.Text = ""
+        C_Exchange.Text = ""
+        T_Link.Text = ""
         rT_Nota.Text = ""
+        DGV.Rows.Clear()
         '
         T_Fecha.Enabled = Habilitar
-        T_Hora.Enabled = Habilitar
-        C_Exchange.Enabled = Habilitar
         C_Billetera.Enabled = Habilitar
-        C_Moneda1.Enabled = Habilitar
-        T_ValorMoneda1.Enabled = Habilitar
-        C_Moneda2.Enabled = Habilitar
-        T_ValorMoneda2.Enabled = Habilitar
-        T_Comision.Enabled = Habilitar
-        T_Gas.Enabled = Habilitar
-        T_Min.Enabled = Habilitar
-        T_Max.Enabled = Habilitar
-        T_ValorMoneda1Resultante.Enabled = Habilitar
-        T_ValorMoneda2Resultante.Enabled = Habilitar
-        rT_Nota.Enabled = Habilitar
+        C_Exchange.Enabled = Habilitar
+        T_Link.Enabled = Habilitar
+        rT_Nota.ReadOnly = Not Habilitar
+        B_Grabar.Enabled = Habilitar
+        B_Actualizar.Enabled = False
         CalFechaPool.Enabled = Habilitar
     End Sub
+    '
     Private Sub Ver(ByVal Clave As String)
         Limpiar(True)
         Dim F As Integer = BuscarPoolLiquidez(Clave)
         If F < 1 Then Exit Sub
         '   0   ID
         '   1   Fecha
-        '   2   Hora
-        '   3   Plataforma      MetraMask, Uniswap, etc
-        '   4   Billetera
-        '   5   Moneda_Uno
-        '   6   Valor_Uno
-        '   7   Moneda_Dos
-        '   8   Valor_Dos
-        '   9   Comision
-        '   10  Gas
-        '   11  Monto_Uno_Resultante
-        '   12  Monto_Dos_Resultante
-        '   13  Porcentaje_Uno
-        '   14  Porcentaje_Dos
-        '   15  Minimo
-        '   16  Maximo
+        '   2   ID_Billetera
+        '   3   Exchange
+        '   4   Link
+        '   5   Token1_Simbolo
+        '   6   Token1_Cantidad
+        '   7   Token1_USD
+        '   8   Token2_Simbolo
+        '   9   Token2_Cantidad
+        '   10  Token2_USD
+        '   11  Fees_USD
+        '   12  Total_USD
+        '   13  Nombre_RTF
         '
         _Fila = F
+        L_Fila.Text = F
         T_Fecha.Text = Matriz_PoolLiquidez(F, 1)
-        T_Hora.Text = Matriz_PoolLiquidez(F, 2)
+        C_Billetera.Text = Matriz_PoolLiquidez(F, 2)
         C_Exchange.Text = Matriz_PoolLiquidez(F, 3)
-        C_Billetera.Text = Matriz_PoolLiquidez(F, 4)
-        C_Moneda1.Text = Matriz_PoolLiquidez(F, 5)
-        T_ValorMoneda1.Text = Matriz_PoolLiquidez(F, 6)
-        C_Moneda2.Text = Matriz_PoolLiquidez(F, 7)
-        T_ValorMoneda2.Text = Matriz_PoolLiquidez(F, 8)
-        T_Comision.Text = Matriz_PoolLiquidez(F, 9)
-        T_Gas.Text = Matriz_PoolLiquidez(F, 10)
-        T_ValorMoneda1Resultante.Text = Matriz_PoolLiquidez(F, 11)
-        T_ValorMoneda2Resultante.Text = Matriz_PoolLiquidez(F, 12)
-        '13 Porcentaje_Uno — calculado, no editable
-        '14 Porcentaje_Dos — calculado, no editable
-        T_Min.Text = Matriz_PoolLiquidez(F, 15)
-        T_Max.Text = Matriz_PoolLiquidez(F, 16)
+        T_Link.Text = Matriz_PoolLiquidez(F, 4)
         '
-        Dim NombreNota As String = "Pool_" & T_Fecha.Text & " " & C_Moneda1.Text & "-" & C_Moneda2.Text & ".rtf"
-        CargaRTF(RutaLocal, NombreNota, rT_Nota)
+        ' Cargar nota RTF
+        Dim nombreRTF As String = Matriz_PoolLiquidez(F, 13)
+        If nombreRTF <> "" Then CargaRTF(RutaLocal, nombreRTF, rT_Nota)
+        '
+        ' Mostrar datos en DGV si existen
+        MostrarDatosPool(F)
+        '
+        ' Habilitar Actualizar solo si hay billetera y exchange
+        If C_Billetera.Text <> "" AndAlso C_Exchange.Text <> "" Then
+            B_Actualizar.Enabled = True
+        End If
     End Sub
+    '
+    Private Sub ConfigurarDGV()
+        DGV.Columns.Clear()
+        DGV.AllowUserToAddRows = False
+        DGV.ReadOnly = True
+        DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
+        '
+        DGV.Columns.Add("Token1", "Token 1")
+        DGV.Columns.Add("Cantidad1", "Cantidad")
+        DGV.Columns.Add("USD1", "USD")
+        DGV.Columns.Add("Token2", "Token 2")
+        DGV.Columns.Add("Cantidad2", "Cantidad")
+        DGV.Columns.Add("USD2", "USD")
+        DGV.Columns.Add("Fees", "Fees USD")
+        DGV.Columns.Add("Total", "Total USD")
+    End Sub
+    '
+    Private Sub MostrarDatosPool(ByVal F As Integer)
+        DGV.Rows.Clear()
+        If Matriz_PoolLiquidez(F, 5) = "" AndAlso Matriz_PoolLiquidez(F, 8) = "" Then Exit Sub
+        '
+        DGV.Rows.Add(
+            Matriz_PoolLiquidez(F, 5),
+            Matriz_PoolLiquidez(F, 6),
+            Matriz_PoolLiquidez(F, 7),
+            Matriz_PoolLiquidez(F, 8),
+            Matriz_PoolLiquidez(F, 9),
+            Matriz_PoolLiquidez(F, 10),
+            Matriz_PoolLiquidez(F, 11),
+            Matriz_PoolLiquidez(F, 12))
+    End Sub
+    '
     Private Function DatosNoValidos() As Boolean
-        If ExisteExchange(C_Exchange.Text) = False Then L_Mensaje.Text = "Plataforma no valida" : Return True
-        If ExisteBilletera(C_Billetera.Text) = False Then L_Mensaje.Text = "Billetera no valida" : Return True
-        If ExisteMoneda_Simbolo(C_Moneda1.Text) = False Then L_Mensaje.Text = "Moneda 1 no valida" : Return True
-        If ExisteMoneda_Simbolo(C_Moneda2.Text) = False Then L_Mensaje.Text = "Moneda 2 no valida" : Return True
+        If T_Fecha.Text = "" Then L_Mensaje.Text = "Ingrese una fecha" : Return True
+        If C_Billetera.Text = "" Then L_Mensaje.Text = "Seleccione una billetera" : Return True
+        If C_Exchange.Text = "" Then L_Mensaje.Text = "Seleccione un Exchange" : Return True
         Return False
     End Function
-    Private Function PreGrabar() As Boolean
-        '           1 Fecha          2 Hora           3 Plataforma        5 Moneda1       7 Moneda2
-        Dim T As String = T_Fecha.Text & " " & T_Hora.Text & " - " & C_Exchange.Text & " - " & C_Moneda1.Text & "/" & C_Moneda2.Text
-        '
-        If _Fila = 0 Then
-            Dim F As Integer = BuscarPoolLiquidez(T)
-            If F > 0 Then
-                MsgBox("El registro ya existe", vbInformation)
-                Ver(T)
-                Return True
-            Else
-                F = AgrandarMatriz(Matriz_PoolLiquidez, Matriz_PoolLiquidezTF, Matriz_PoolLiquidezTC)
-                _Fila = F
-                Matriz_PoolLiquidez(F, 0) = CrearCodigoInterno()
-                Return False
-            End If
-        Else
-            Return False
-        End If
-    End Function
+    '
     Private Sub Grabar()
         If DatosNoValidos() Then Exit Sub
-        If PreGrabar() Then Exit Sub
+        '
+        If _Fila = 0 Then
+            _Fila = Crear_PoolLiquidez()
+            L_Fila.Text = _Fila
+        End If
         '
         Dim F As Integer = _Fila
         Matriz_PoolLiquidez(F, 1) = T_Fecha.Text
-        Matriz_PoolLiquidez(F, 2) = T_Hora.Text
+        Matriz_PoolLiquidez(F, 2) = C_Billetera.Text
         Matriz_PoolLiquidez(F, 3) = C_Exchange.Text
-        Matriz_PoolLiquidez(F, 4) = C_Billetera.Text
-        Matriz_PoolLiquidez(F, 5) = C_Moneda1.Text
-        Matriz_PoolLiquidez(F, 6) = T_ValorMoneda1.Text
-        Matriz_PoolLiquidez(F, 7) = C_Moneda2.Text
-        Matriz_PoolLiquidez(F, 8) = T_ValorMoneda2.Text
-        Matriz_PoolLiquidez(F, 9) = T_Comision.Text
-        Matriz_PoolLiquidez(F, 10) = T_Gas.Text
-        Matriz_PoolLiquidez(F, 11) = T_ValorMoneda1Resultante.Text
-        Matriz_PoolLiquidez(F, 12) = T_ValorMoneda2Resultante.Text
-        '13 Porcentaje_Uno — reservado
-        '14 Porcentaje_Dos — reservado
-        Matriz_PoolLiquidez(F, 15) = T_Min.Text
-        Matriz_PoolLiquidez(F, 16) = T_Max.Text
+        Matriz_PoolLiquidez(F, 4) = T_Link.Text
+        '
+        ' Nombre RTF basado en ID
+        Dim nombreRTF As String = "Pool_" & Matriz_PoolLiquidez(F, 0) & ".rtf"
+        Matriz_PoolLiquidez(F, 13) = nombreRTF
+        If rT_Nota.Text <> "" Then GuardarRTF(RutaLocal, nombreRTF, rT_Nota)
         '
         Guardar_Matrices("PoolLiquidez")
-        '
-        Dim NombreNota As String = "Pool_" & T_Fecha.Text & " " & C_Moneda1.Text & "-" & C_Moneda2.Text & ".rtf"
-        GuardarRTF(RutaLocal, NombreNota, rT_Nota)
-        '
         LlenarList_PoolLiquidez(L_PoolLiquidez)
         L_Mensaje.Text = "Pool guardada correctamente"
-        'Matriz_PoolLiquidez(F, 0   ID
-        'Matriz_PoolLiquidez(F, 1   Fecha
-        'Matriz_PoolLiquidez(F, 2   Hora
-        'Matriz_PoolLiquidez(F, 3   Plataforma
-        'Matriz_PoolLiquidez(F, 4   Billetera
-        'Matriz_PoolLiquidez(F, 5   Moneda_Uno
-        'Matriz_PoolLiquidez(F, 6   Valor_Uno
-        'Matriz_PoolLiquidez(F, 7   Moneda_Dos
-        'Matriz_PoolLiquidez(F, 8   Valor_Dos
-        'Matriz_PoolLiquidez(F, 9   Comision
-        'Matriz_PoolLiquidez(F, 10  Gas
-        'Matriz_PoolLiquidez(F, 11  Monto_Uno_Resultante
-        'Matriz_PoolLiquidez(F, 12  Monto_Dos_Resultante
-        'Matriz_PoolLiquidez(F, 13  Porcentaje_Uno
-        'Matriz_PoolLiquidez(F, 14  Porcentaje_Dos
-        'Matriz_PoolLiquidez(F, 15  Minimo
-        'Matriz_PoolLiquidez(F, 16  Maximo
         '
+        If C_Billetera.Text <> "" AndAlso C_Exchange.Text <> "" Then
+            B_Actualizar.Enabled = True
+        End If
     End Sub
-    '
     '
     '
     '---------------------------------------------------------------------------------------------------------------------
@@ -185,18 +157,18 @@ Public Class F_PoolLiquidez
     Private Sub B_Cerrar_Click(sender As Object, e As EventArgs) Handles B_Cerrar.Click
         Me.Close()
     End Sub
-    Private Sub B_GrabarPool_Click(sender As Object, e As EventArgs) Handles B_GrabarPool.Click
-        Grabar()
-    End Sub
     Private Sub B_Nuevo_Click(sender As Object, e As EventArgs) Handles B_Nuevo.Click
         Limpiar(True)
         T_Fecha.Text = DateTime.Now.ToString("yyyyMMdd")
-        T_Hora.Text = DateTime.Now.ToString("HHmm")
-        C_Exchange.Focus()
+        T_Fecha.Focus()
+    End Sub
+    Private Sub B_Grabar_Click(sender As Object, e As EventArgs) Handles B_Grabar.Click
+        Grabar()
     End Sub
     Private Sub L_PoolLiquidez_Click(sender As Object, e As EventArgs) Handles L_PoolLiquidez.Click
         If VariableDeInicio Then Exit Sub
-        Ver(L_PoolLiquidez.Text)
+        If L_PoolLiquidez.SelectedItem Is Nothing Then Exit Sub
+        Ver(L_PoolLiquidez.SelectedItem.ToString())
     End Sub
     Private Sub L_PoolLiquidez_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_PoolLiquidez.SelectedIndexChanged
         '
@@ -205,63 +177,61 @@ Public Class F_PoolLiquidez
         If VariableDeInicio Then Exit Sub
         T_Fecha.Text = DateTime.Parse(CalFechaPool.Value).ToString("yyyyMMdd")
     End Sub
-    '
-    Private Sub T_ValorMoneda1_TextChanged(sender As Object, e As EventArgs) Handles T_ValorMoneda1.TextChanged
+    Private Sub B_Actualizar_Click(sender As Object, e As EventArgs) Handles B_Actualizar.Click
+        If _Fila < 1 Then
+            L_Mensaje.Text = "Guarde el registro primero"
+            Exit Sub
+        End If
+        If C_Billetera.Text = "" OrElse C_Exchange.Text = "" Then
+            L_Mensaje.Text = "Seleccione billetera y exchange"
+            Exit Sub
+        End If
         '
-    End Sub
-    Private Sub T_ValorMoneda1Resultante_TextChanged(sender As Object, e As EventArgs) Handles T_ValorMoneda1Resultante.TextChanged
+        ' Obtener codigo de billetera desde la matriz
+        Dim F As Integer = 0
+        For i As Integer = 1 To Matriz_BilleterasTF
+            If Matriz_Billeteras(i, 1) = C_Billetera.Text Then
+                F = i
+                Exit For
+            End If
+        Next i
+        If F < 1 Then L_Mensaje.Text = "Billetera no encontrada" : Exit Sub
         '
-    End Sub
-    Private Sub T_ValorMoneda2_TextChanged(sender As Object, e As EventArgs) Handles T_ValorMoneda2.TextChanged
+        Dim idBilletera As String = Matriz_Billeteras(F, 0)
+        Dim exchange As String = C_Exchange.Text.ToLower()
         '
-    End Sub
-    Private Sub T_ValorMoneda2Resultante_TextChanged(sender As Object, e As EventArgs) Handles T_ValorMoneda2Resultante.TextChanged
+        L_Mensaje.Text = "Consultando " & C_Exchange.Text & "... por favor espere"
+        Me.Refresh()
         '
-    End Sub
-    Private Sub T_Min_TextChanged(sender As Object, e As EventArgs) Handles T_Min.TextChanged
+        Dim resultado As PoolDeFiResultado
+        If exchange = "uniswap-v3" Then
+            resultado = ConsultarPool_UniswapV3(idBilletera)
+        ElseIf exchange = "beefy" Then
+            resultado = ConsultarPool_Beefy(idBilletera)
+        Else
+            L_Mensaje.Text = "Exchange no soportado"
+            Exit Sub
+        End If
         '
-    End Sub
-    Private Sub T_Max_TextChanged(sender As Object, e As EventArgs) Handles T_Max.TextChanged
+        If resultado Is Nothing Then
+            L_Mensaje.Text = "Sin datos de la API"
+            Exit Sub
+        End If
         '
-    End Sub
-    Private Sub T_Comision_TextChanged(sender As Object, e As EventArgs) Handles T_Comision.TextChanged
+        ' Guardar en la matriz
+        Dim Fp As Integer = _Fila
+        Matriz_PoolLiquidez(Fp, 5) = resultado.Token1_Simbolo
+        Matriz_PoolLiquidez(Fp, 6) = resultado.Token1_Cantidad.ToString("F8", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(Fp, 7) = resultado.Token1_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(Fp, 8) = resultado.Token2_Simbolo
+        Matriz_PoolLiquidez(Fp, 9) = resultado.Token2_Cantidad.ToString("F8", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(Fp, 10) = resultado.Token2_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(Fp, 11) = resultado.Fees_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(Fp, 12) = resultado.Total_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
         '
-    End Sub
-    Private Sub T_Gas_TextChanged(sender As Object, e As EventArgs) Handles T_Gas.TextChanged
-        '
-    End Sub
-    '
-    Private Sub T_ValorMoneda1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_ValorMoneda1.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_ValorMoneda1, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_ValorMoneda1Resultante_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_ValorMoneda1Resultante.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_ValorMoneda1Resultante, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_ValorMoneda2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_ValorMoneda2.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_ValorMoneda2, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_ValorMoneda2Resultante_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_ValorMoneda2Resultante.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_ValorMoneda2Resultante, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_Min_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Min.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_Min, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_Max_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Max.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_Max, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_Comision_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Comision.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_Comision, sender, e) Then e.Handled = True
-    End Sub
-    Private Sub T_Gas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles T_Gas.KeyPress
-        If VariableDeInicio Then Exit Sub
-        If SoloNumero_KeyPress(T_Gas, sender, e) Then e.Handled = True
+        Guardar_Matrices("PoolLiquidez")
+        MostrarDatosPool(Fp)
+        L_Mensaje.Text = $"Actualizado: {resultado.Token1_Simbolo}/{resultado.Token2_Simbolo} = USD {resultado.Total_USD:F2}"
     End Sub
     '
     '

@@ -9,8 +9,8 @@ Module zCargaInicia
     '
     '
     '
-    Public zCargaInicialTXT As String = Application.StartupPath & "\zCargaInicial.txt"
-    Public zParametrosTXT As String = Application.StartupPath & "\zParametros.txt"
+    Public zCargaInicialTXT As String = Application.StartupPath & "\xCargaInicial.txt"
+    Public zParametrosTXT As String = Application.StartupPath & "\xParametros.txt"
     Public API_CMF, API_COINGEKO, API_ETHERSCAN, API_MORALIS As String
     Public RutaLocal As String              'Variable para trabajar en forma local, o forma nativa.
     '

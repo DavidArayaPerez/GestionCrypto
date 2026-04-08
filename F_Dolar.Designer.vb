@@ -22,6 +22,7 @@ Partial Class F_Dolar
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Dolar))
         Me.L_Dolar = New System.Windows.Forms.ListBox()
         Me.B_Cerrar = New System.Windows.Forms.Button()
         Me.SuspendLayout()
@@ -34,7 +35,6 @@ Partial Class F_Dolar
         Me.L_Dolar.Location = New System.Drawing.Point(12, 57)
         Me.L_Dolar.Name = "L_Dolar"
         Me.L_Dolar.Size = New System.Drawing.Size(219, 529)
-        Me.L_Dolar.Sorted = True
         Me.L_Dolar.TabIndex = 627
         '
         'B_Cerrar
@@ -56,6 +56,7 @@ Partial Class F_Dolar
         Me.ClientSize = New System.Drawing.Size(256, 608)
         Me.Controls.Add(Me.B_Cerrar)
         Me.Controls.Add(Me.L_Dolar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

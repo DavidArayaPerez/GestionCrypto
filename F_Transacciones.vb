@@ -5,155 +5,75 @@ Public Class F_Transacciones
     '
     '
     '
+    Private _FilaSeleccionada As Integer = 0  ' fila en Matriz_TransaccionesOnChain de la tx seleccionada
+    '
     Private Sub Inicializar()
         VariableDeInicio = True
         LlenarList_Billetera(L_Billeteras)
-        C_Tipo.Items.Clear()
-        C_Tipo.Items.Add("Compras")
-        C_Tipo.Items.Add("Traspasos")
-        ConfigurarDGV_Compras()
-        '
-        ' Seleccionar primer tipo por defecto
-        C_Tipo.SelectedIndex = 0
+        ConfigurarDGV()
+        DGV.Rows.Clear()
+        L_Mensaje.Text = ""
+        L_TotalRegistros.Text = ""
+        T_Comentario.Text = ""
+        T_Comentario.Enabled = False
+        B_Actualizar.Enabled = False
+        B_Grabar.Enabled = False
         VariableDeInicio = False
     End Sub
-    ' ------------------------------------------------------------
-    '  Configura el DGV para mostrar Compras
-    ' ------------------------------------------------------------
-    Private Sub ConfigurarDGV_Compras()
+    '
+    Private Sub ConfigurarDGV()
         DGV.Columns.Clear()
         DGV.AllowUserToAddRows = False
         DGV.ReadOnly = True
         DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
         '
-        DGV.Columns.Add("Fecha", "Fecha")
-        DGV.Columns.Add("Hora", "Hora")
-        DGV.Columns.Add("Exchange", "Exchange")
-        DGV.Columns.Add("MonedaOrigen", "Moneda Origen")
-        DGV.Columns.Add("MontoOrigen", "Monto Origen")
-        DGV.Columns.Add("MonedaDestino", "Moneda Destino")
-        DGV.Columns.Add("Cantidad", "Cantidad")
-        DGV.Columns.Add("Comision", "Comision")
-        DGV.Columns.Add("Gas", "Gas")
-        DGV.Columns.Add("Precio", "Precio USD")
+        DGV.Columns.Add("FechaHora", "Fecha/Hora")
+        DGV.Columns.Add("Red", "Red")
+        DGV.Columns.Add("Tipo", "Tipo")
+        DGV.Columns.Add("Simbolo", "Token")
+        DGV.Columns.Add("Valor", "Valor")
+        DGV.Columns.Add("Desde", "Desde")
+        DGV.Columns.Add("Hacia", "Hacia")
+        DGV.Columns.Add("Resumen", "Resumen")
     End Sub
-    Private Sub ConfigurarDGV_Traspasos()
-        DGV.Columns.Clear()
-        DGV.AllowUserToAddRows = False
-        DGV.ReadOnly = True
-        DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-        DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells
-        '
-        DGV.Columns.Add("Fecha", "Fecha")
-        DGV.Columns.Add("Hora", "Hora")
-        DGV.Columns.Add("Exchange", "Exchange")
-        DGV.Columns.Add("BilleteraOrigen", "Billetera Origen")
-        DGV.Columns.Add("MonedaOrigen", "Moneda Origen")
-        DGV.Columns.Add("ValorOrigen", "Valor Origen")
-        DGV.Columns.Add("BilleteraDestino", "Billetera Destino")
-        DGV.Columns.Add("MonedaDestino", "Moneda Destino")
-        DGV.Columns.Add("ValorDestino", "Valor Destino")
-        DGV.Columns.Add("Comision", "Comision")
-        DGV.Columns.Add("Gas", "Gas")
-    End Sub
+    '
     ' ------------------------------------------------------------
-    '  Muestra Compras filtradas por billetera (col 11)
-    '  Si idBilletera = "" muestra todas
+    '  Muestra transacciones on-chain filtradas por billetera
     ' ------------------------------------------------------------
-    Private Sub MostrarCompras(ByVal idBilletera As String)
+    Private Sub VerTransacciones(ByVal idBilletera As String)
         DGV.Rows.Clear()
         Dim contador As Integer = 0
         '
-        For i As Integer = 1 To Matriz_ComprasTF
-            ' Filtrar por billetera si hay una seleccionada
-            If idBilletera <> "" AndAlso Matriz_Compras(i, 11) <> idBilletera Then Continue For
+        For i As Integer = 1 To Matriz_TransaccionesOnChainTF
+            If idBilletera <> "" AndAlso Matriz_TransaccionesOnChain(i, 0) <> idBilletera Then Continue For
+            '
+            ' Resolver nombre corto de la red por chainHex
+            Dim chainHex As String = Matriz_TransaccionesOnChain(i, 1)
+            Dim nombreRed As String = chainHex
+            For r As Integer = 1 To Matriz_RedesTF
+                If Matriz_Redes(r, 19) = chainHex Then
+                    nombreRed = Matriz_Redes(r, 3)
+                    Exit For
+                End If
+            Next r
             '
             DGV.Rows.Add(
-                Matriz_Compras(i, 1),
-                Matriz_Compras(i, 2),
-                Matriz_Compras(i, 3),
-                Matriz_Compras(i, 4),
-                Matriz_Compras(i, 5),
-                Matriz_Compras(i, 6),
-                Matriz_Compras(i, 7),
-                Matriz_Compras(i, 8),
-                Matriz_Compras(i, 9),
-                Matriz_Compras(i, 10))
+                Matriz_TransaccionesOnChain(i, 2),
+                nombreRed,
+                Matriz_TransaccionesOnChain(i, 4),
+                Matriz_TransaccionesOnChain(i, 7),
+                Matriz_TransaccionesOnChain(i, 8),
+                Matriz_TransaccionesOnChain(i, 5),
+                Matriz_TransaccionesOnChain(i, 6),
+                Matriz_TransaccionesOnChain(i, 9))
             contador += 1
         Next i
         '
-        ' Ordenar por Fecha desc, Hora desc
-        DGV.Sort(DGV.Columns("Fecha"), System.ComponentModel.ListSortDirection.Descending)
+        DGV.Sort(DGV.Columns("FechaHora"), System.ComponentModel.ListSortDirection.Descending)
         L_TotalRegistros.Text = $"Registros: {contador}"
         L_Mensaje.Text = ""
     End Sub
-    ' ------------------------------------------------------------
-    '  Muestra Traspasos filtrados por billetera (origen O destino)
-    '  Si idBilletera = "" muestra todos
-    ' ------------------------------------------------------------
-    Private Sub MostrarTraspasos(ByVal idBilletera As String)
-        DGV.Rows.Clear()
-        Dim contador As Integer = 0
-        '
-        For i As Integer = 1 To Matriz_TraspasosTF
-            ' Filtrar: aparece si es billetera origen O destino
-            If idBilletera <> "" Then
-                Dim esOrigen As Boolean = (Matriz_Traspasos(i, 4) = idBilletera)
-                Dim esDestino As Boolean = (Matriz_Traspasos(i, 7) = idBilletera)
-                If Not esOrigen AndAlso Not esDestino Then Continue For
-            End If
-            '
-            DGV.Rows.Add(
-                Matriz_Traspasos(i, 1),
-                Matriz_Traspasos(i, 2),
-                Matriz_Traspasos(i, 3),
-                Matriz_Traspasos(i, 4),
-                Matriz_Traspasos(i, 5),
-                Matriz_Traspasos(i, 6),
-                Matriz_Traspasos(i, 7),
-                Matriz_Traspasos(i, 8),
-                Matriz_Traspasos(i, 9),
-                Matriz_Traspasos(i, 10),
-                Matriz_Traspasos(i, 11))
-            contador += 1
-        Next i
-        '
-        DGV.Sort(DGV.Columns("Fecha"), System.ComponentModel.ListSortDirection.Descending)
-        L_TotalRegistros.Text = $"Registros: {contador}"
-        L_Mensaje.Text = ""
-    End Sub
-    ' ------------------------------------------------------------
-    '  Despacha la visualizacion segun tipo seleccionado
-    ' ------------------------------------------------------------
-    Private Sub Mostrar()
-        VariableDeInicio = True
-        '
-        If L_Billeteras.SelectedIndex < 0 Then
-            ' Sin billetera seleccionada: mostrar todo
-            If C_Tipo.SelectedItem Is Nothing Then Exit Sub
-            If C_Tipo.SelectedItem.ToString() = "Compras" Then
-                MostrarCompras("")
-            Else
-                MostrarTraspasos("")
-            End If
-        Else
-            ' Con billetera seleccionada: filtrar por codigo
-            Dim nombreBilletera As String = L_Billeteras.SelectedItem.ToString()
-            Dim F As Integer = BuscarBilletera(nombreBilletera)
-            If F < 1 Then Exit Sub
-            Dim idBilletera As String = Matriz_Billeteras(F, 0)
-            '
-            If C_Tipo.SelectedItem Is Nothing Then Exit Sub
-            If C_Tipo.SelectedItem.ToString() = "Compras" Then
-                MostrarCompras(idBilletera)
-            Else
-                MostrarTraspasos(idBilletera)
-            End If
-        End If
-        VariableDeInicio = False
-    End Sub
-
     '
     '
     '
@@ -170,24 +90,66 @@ Public Class F_Transacciones
     End Sub
     Private Sub L_Billeteras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles L_Billeteras.SelectedIndexChanged
         If VariableDeInicio Then Exit Sub
-        Mostrar()
-    End Sub
-
-    Private Sub C_Tipo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles C_Tipo.SelectedIndexChanged
-        If VariableDeInicio Then Exit Sub
         '
-        ' Reconfigurar columnas del DGV segun tipo
-        If C_Tipo.SelectedItem Is Nothing Then Exit Sub
-        If C_Tipo.SelectedItem.ToString() = "Compras" Then
-            ConfigurarDGV_Compras()
-        Else
-            ConfigurarDGV_Traspasos()
+        B_Actualizar.Enabled = True
+        Dim nombreBilletera As String = L_Billeteras.SelectedItem.ToString()
+        Dim F As Integer = BuscarBilletera(nombreBilletera)
+        If F < 1 Then Exit Sub
+        '
+        VerTransacciones(Matriz_Billeteras(F, 0))
+    End Sub
+    Private Sub B_Actualizar_Click(sender As Object, e As EventArgs) Handles B_Actualizar.Click
+        If L_Billeteras.SelectedIndex < 0 Then
+            L_Mensaje.Text = "Seleccione una billetera primero"
+            Exit Sub
         End If
         '
-        Mostrar()
+        Dim nombreBilletera As String = L_Billeteras.SelectedItem.ToString()
+        Dim F As Integer = BuscarBilletera(nombreBilletera)
+        If F < 1 Then Exit Sub
+        '
+        L_Mensaje.Text = "Consultando transacciones on-chain... por favor espere"
+        Me.Refresh()
+        '
+        Dim resumen As String = ConsultarTransacciones_TodasLasRedes(Matriz_Billeteras(F, 0))
+        L_Mensaje.Text = resumen
+        '
+        VerTransacciones(Matriz_Billeteras(F, 0))
     End Sub
-
-
+    Private Sub DGV_SelectionChanged(sender As Object, e As EventArgs) Handles DGV.SelectionChanged
+        If VariableDeInicio Then Exit Sub
+        If DGV.SelectedRows.Count = 0 Then Exit Sub
+        '
+        ' Buscar la fila de la matriz por hash (col FechaHora+Resumen no son únicos, hash sí)
+        ' El DGV no almacena el hash directamente — lo buscamos por FechaHora + Simbolo + Valor
+        ' que en combinación son suficientemente únicos
+        Dim fechaHora As String = DGV.SelectedRows(0).Cells("FechaHora").Value?.ToString()
+        Dim simbolo As String = DGV.SelectedRows(0).Cells("Simbolo").Value?.ToString()
+        Dim valor As String = DGV.SelectedRows(0).Cells("Valor").Value?.ToString()
+        '
+        _FilaSeleccionada = 0
+        For i As Integer = 1 To Matriz_TransaccionesOnChainTF
+            If Matriz_TransaccionesOnChain(i, 2) = fechaHora AndAlso
+               Matriz_TransaccionesOnChain(i, 7) = simbolo AndAlso
+               Matriz_TransaccionesOnChain(i, 8) = valor Then
+                _FilaSeleccionada = i
+                Exit For
+            End If
+        Next i
+        '
+        If _FilaSeleccionada > 0 Then
+            T_Comentario.Text = Matriz_TransaccionesOnChain(_FilaSeleccionada, 10)
+            T_Comentario.Enabled = True
+            B_Grabar.Enabled = True
+        End If
+    End Sub
+    Private Sub B_Grabar_Click(sender As Object, e As EventArgs) Handles B_Grabar.Click
+        If _FilaSeleccionada < 1 Then Exit Sub
+        '
+        Matriz_TransaccionesOnChain(_FilaSeleccionada, 10) = T_Comentario.Text.Trim()
+        Guardar_Matrices("TransaccionesOnChain")
+        L_Mensaje.Text = "Comentario guardado"
+    End Sub
     '
     '
     '

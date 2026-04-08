@@ -22,6 +22,7 @@ Partial Class F_Billetera
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Billetera))
         Me.B_Nuevo = New System.Windows.Forms.Button()
         Me.L_Billeteras = New System.Windows.Forms.ListBox()
         Me.B_Grabar = New System.Windows.Forms.Button()
@@ -60,7 +61,7 @@ Partial Class F_Billetera
         Me.L_Billeteras.ItemHeight = 15
         Me.L_Billeteras.Location = New System.Drawing.Point(15, 59)
         Me.L_Billeteras.Name = "L_Billeteras"
-        Me.L_Billeteras.Size = New System.Drawing.Size(348, 139)
+        Me.L_Billeteras.Size = New System.Drawing.Size(348, 94)
         Me.L_Billeteras.Sorted = True
         Me.L_Billeteras.TabIndex = 573
         '
@@ -102,10 +103,10 @@ Partial Class F_Billetera
         Me.rT_Nota.AcceptsTab = True
         Me.rT_Nota.AutoWordSelection = True
         Me.rT_Nota.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.rT_Nota.Location = New System.Drawing.Point(15, 224)
+        Me.rT_Nota.Location = New System.Drawing.Point(15, 175)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(348, 245)
+        Me.rT_Nota.Size = New System.Drawing.Size(348, 294)
         Me.rT_Nota.TabIndex = 566
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -245,6 +246,7 @@ Partial Class F_Billetera
         Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label19)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

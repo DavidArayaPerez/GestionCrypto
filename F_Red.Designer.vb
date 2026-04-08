@@ -22,6 +22,7 @@ Partial Class F_Red
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Red))
         Me.rT_Nota = New System.Windows.Forms.RichTextBox()
         Me.CB_EVM_Red = New System.Windows.Forms.CheckBox()
         Me.CB_Activo_Red = New System.Windows.Forms.CheckBox()
@@ -511,6 +512,7 @@ Partial Class F_Red
         Me.Controls.Add(Me.L_Red)
         Me.Controls.Add(Me.B_GrabarRed)
         Me.Controls.Add(Me.Label59)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

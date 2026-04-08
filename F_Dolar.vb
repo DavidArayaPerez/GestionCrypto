@@ -9,14 +9,23 @@ Public Class F_Dolar
         'GuardarValorUSD(2022)  GuardarValorUSD(2023)   GuardarValorUSD(2024)   GuardarValorUSD(2025)
         GuardarValorUSD(2026)
         CargarTXT("ValorUSD", Matriz_ValorUSD)
-
+        '
         Dim T As String
-        For i As Integer = Matriz_ValorUSDTF To 1 Step -1
+        Dim Vector As New List(Of String)
+        For i As Integer = 1 To Matriz_ValorUSDTF
             T = Matriz_ValorUSD(i, 0) & " = " & Matriz_ValorUSD(i, 1) & " (" & i & ")"
-            L_Dolar.Items.Add(T)
+            Vector.Add(T)
         Next i
-        '   0   Fecha
-        '   1   Valor
+        '
+        ' Ordenar descendente (mas reciente primero)
+        Vector.Sort()
+        Vector.Reverse()
+        '
+        L_Dolar.Items.Clear()
+        For Each v As String In Vector
+            L_Dolar.Items.Add(v)
+        Next
+
     End Sub
     '
     '

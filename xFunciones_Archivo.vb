@@ -79,7 +79,7 @@ Module xFunciones_Archivo
             Case "Redes" : ColMatriz = Matriz_RedesTC
             Case "ValorUSD" : ColMatriz = Matriz_ValorUSDTC
             Case "BilleteraSaldo" : ColMatriz = Matriz_BilleteraSaldosTC
-            Case "Traspasos" : ColMatriz = Matriz_TraspasosTC
+            Case "TransaccionesOnChain" : ColMatriz = Matriz_TransaccionesOnChainTC
             Case Else
                 ColMatriz = 0
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
@@ -98,7 +98,7 @@ Module xFunciones_Archivo
             Case "Redes" : Matriz_RedesTF = Filas
             Case "ValorUSD" : Matriz_ValorUSDTF = Filas
             Case "BilleteraSaldo" : Matriz_BilleteraSaldosTF = Filas
-            Case "Traspasos" : Matriz_TraspasosTF = Filas
+            Case "TransaccionesOnChain" : Matriz_TransaccionesOnChainTF = Filas
             Case Else
                 MsgBox("Sin Clasificar", vbCritical, NombreProcedimiento)
         End Select
@@ -175,10 +175,10 @@ Module xFunciones_Archivo
                 MatrizAuxActual = Matriz_BilleteraSaldos
                 TotalFilas = Matriz_BilleteraSaldosTF
                 TotalColumnas = Matriz_BilleteraSaldosTC
-            Case "Traspasos"
-                MatrizAuxActual = Matriz_Traspasos
-                TotalFilas = Matriz_TraspasosTF
-                TotalColumnas = Matriz_TraspasosTC
+            Case "TransaccionesOnChain"
+                MatrizAuxActual = Matriz_TransaccionesOnChain
+                TotalFilas = Matriz_TransaccionesOnChainTF
+                TotalColumnas = Matriz_TransaccionesOnChainTC
         End Select
     End Sub
     '
@@ -359,7 +359,7 @@ Module xFunciones_Archivo
     '-------------------------------------------------------------------------------------------------------------------------------------------
     Public Matriz_PoolLiquidez(,) As String
     Public Matriz_PoolLiquidezTF As Integer = 0
-    Public Matriz_PoolLiquidezTC As Integer = 17
+    Public Matriz_PoolLiquidezTC As Integer = 14
     Public Sub CargaPoolLiquidez()
         Dim Arreglo(Matriz_PoolLiquidezTC) As String
         Dim Nombre As String = "PoolLiquidez"
@@ -367,23 +367,20 @@ Module xFunciones_Archivo
         '
         If Not File.Exists(Ruta) Then
             Dim Encabezado As String = String.Join(vbTab,
-                "ID",                       '0  
-                "Fecha",                    '1  
-                "Hora",                     '2  
-                "Plataforma",               '3  MetraMask, Uniswap, etc
-                "Billetera",                '4  
-                "Moneda_Uno",               '5  
-                "Valor_Uno",                '6  
-                "Moneda_Dos",               '7  
-                "Valor_Dos",                '8  
-                "Comision",                 '9  
-                "Gas",                      '10 
-                "Monto_Uno_Resultante",     '11 
-                "Monto_Dos_Resultante",     '12 
-                "Porcentaje_Uno",           '13 
-                "Porcentaje_Dos",           '14 
-                "Minimo",                   '15 
-                "Maximo")                   '16 
+                "ID",                       '0
+                "Fecha",                    '1
+                "ID_Billetera",             '2
+                "Exchange",                 '3
+                "Link",                     '4
+                "Token1_Simbolo",           '5
+                "Token1_Cantidad",          '6
+                "Token1_USD",               '7
+                "Token2_Simbolo",           '8
+                "Token2_Cantidad",          '9
+                "Token2_USD",               '10
+                "Fees_USD",                 '11
+                "Total_USD",                '12
+                "Nombre_RTF")               '13
             File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
         End If
         CargarTXT(Nombre, Matriz_PoolLiquidez)
@@ -483,6 +480,31 @@ Module xFunciones_Archivo
     '
     '-------------------------------------------------------------------------------------------------------------------------------------------
 
+    '-------------------------------------------------------------------------------------------------------------------------------------------
+    Public Matriz_TransaccionesOnChain(,) As String
+    Public Matriz_TransaccionesOnChainTF As Integer = 0
+    Public Matriz_TransaccionesOnChainTC As Integer = 11
+    Public Sub CargaTransaccionesOnChain()
+        Dim Nombre As String = "TransaccionesOnChain"
+        Dim Ruta As String = RutaLocal & "\" & Nombre & ".txt"
+        '
+        If Not File.Exists(Ruta) Then
+            Dim Encabezado As String = String.Join(vbTab,
+                "ID_Billetera",     '0  Codigo de la billetera
+                "Red",              '1  chainHex de la red
+                "Fecha_Hora",       '2  Timestamp del bloque (yyyyMMdd HHmm)
+                "Hash",             '3  Hash de la transaccion
+                "Tipo",             '4  send / receive / swap / other
+                "Desde",            '5  from_address
+                "Hacia",            '6  to_address
+                "Simbolo",          '7  Simbolo del token (ETH, USDT, etc.)
+                "Valor",            '8  Cantidad del token
+                "Resumen",          '9  summary devuelto por Moralis
+                "Comentario")       '10 Comentario manual del usuario
+            File.WriteAllText(Ruta, Encabezado & vbCrLf, System.Text.Encoding.UTF8)
+        End If
+        CargarTXT(Nombre, Matriz_TransaccionesOnChain)
+    End Sub
     '
     '
 End Module

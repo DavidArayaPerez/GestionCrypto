@@ -22,6 +22,7 @@ Partial Class F_Exchange
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Exchange))
         Me.L_Exchange = New System.Windows.Forms.ListBox()
         Me.B_Grabar = New System.Windows.Forms.Button()
         Me.T_Nom = New System.Windows.Forms.TextBox()
@@ -185,6 +186,7 @@ Partial Class F_Exchange
         Me.Controls.Add(Me.T_Nom)
         Me.Controls.Add(Me.rT_Nota)
         Me.Controls.Add(Me.Label43)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(200, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False

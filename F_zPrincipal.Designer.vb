@@ -22,6 +22,7 @@ Partial Class F_zPrincipal
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_zPrincipal))
         Me.Menu_Agregar = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_ServicioMas = New System.Windows.Forms.ToolStripMenuItem()
         Me.Menu_DocumentoMas = New System.Windows.Forms.ToolStripMenuItem()
@@ -418,6 +419,7 @@ Partial Class F_zPrincipal
         Me.Controls.Add(Me.B_Redes)
         Me.Controls.Add(Me.B_Monedas)
         Me.Controls.Add(Me.B_Cerrar)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(50, 100)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
