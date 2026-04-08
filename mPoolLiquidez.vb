@@ -21,14 +21,6 @@ Module mPoolLiquidez
         Next i
         Return 0
     End Function
-    Public Function Crear_PoolLiquidez() As Integer
-        Dim Fila As Integer = AgrandarMatriz(Matriz_PoolLiquidez, Matriz_PoolLiquidezTF, Matriz_PoolLiquidezTC)
-        Matriz_PoolLiquidez(Fila, 0) = CrearCodigoInterno()
-        For j As Integer = 1 To Matriz_PoolLiquidezTC - 1
-            Matriz_PoolLiquidez(Fila, j) = ""
-        Next j
-        Return Fila
-    End Function
     '
     '
     '

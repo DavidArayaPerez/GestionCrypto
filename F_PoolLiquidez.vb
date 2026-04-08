@@ -3,23 +3,21 @@
 '
 Public Class F_PoolLiquidez
     '
-    Private _Fila As Integer = 0
+    Private F As Integer = 0
     '
     '
     Private Sub Inicializar()
         VariableDeInicio = True
         Limpiar()
         Llenar_Billetera(C_Billetera)
-        C_Exchange.Items.Clear()
-        C_Exchange.Items.Add("uniswap-v3")
-        C_Exchange.Items.Add("beefy")
+        Llenar_Exchange(C_Exchange)
         LlenarList_PoolLiquidez(L_PoolLiquidez)
         ConfigurarDGV()
         VariableDeInicio = False
     End Sub
     '
     Private Sub Limpiar(Optional Habilitar As Boolean = False)
-        _Fila = 0
+        F = 0
         L_Fila.Text = ""
         L_Mensaje.Text = ""
         T_Fecha.Text = ""
@@ -41,8 +39,25 @@ Public Class F_PoolLiquidez
     '
     Private Sub Ver(ByVal Clave As String)
         Limpiar(True)
-        Dim F As Integer = BuscarPoolLiquidez(Clave)
+        F = BuscarPoolLiquidez(Clave)
         If F < 1 Then Exit Sub
+        '
+        L_Fila.Text = F
+        T_Fecha.Text = Matriz_PoolLiquidez(F, 1)
+        C_Billetera.Text = Matriz_PoolLiquidez(F, 2)
+        C_Exchange.Text = Matriz_PoolLiquidez(F, 3)
+        T_Link.Text = Matriz_PoolLiquidez(F, 4)
+        '
+        ' Cargar nota RTF
+        Dim T As String = Matriz_PoolLiquidez(F, 13)
+        If T <> "" Then CargaRTF(RutaLocal, T, rT_Nota)
+        '
+        ' Mostrar datos en DGV si existen
+        MostrarDatosPool(F)
+        '
+        ' Habilitar Actualizar solo si hay billetera y exchange
+        If C_Billetera.Text <> "" AndAlso C_Exchange.Text <> "" Then B_Actualizar.Enabled = True
+        '
         '   0   ID
         '   1   Fecha
         '   2   ID_Billetera
@@ -57,25 +72,6 @@ Public Class F_PoolLiquidez
         '   11  Fees_USD
         '   12  Total_USD
         '   13  Nombre_RTF
-        '
-        _Fila = F
-        L_Fila.Text = F
-        T_Fecha.Text = Matriz_PoolLiquidez(F, 1)
-        C_Billetera.Text = Matriz_PoolLiquidez(F, 2)
-        C_Exchange.Text = Matriz_PoolLiquidez(F, 3)
-        T_Link.Text = Matriz_PoolLiquidez(F, 4)
-        '
-        ' Cargar nota RTF
-        Dim nombreRTF As String = Matriz_PoolLiquidez(F, 13)
-        If nombreRTF <> "" Then CargaRTF(RutaLocal, nombreRTF, rT_Nota)
-        '
-        ' Mostrar datos en DGV si existen
-        MostrarDatosPool(F)
-        '
-        ' Habilitar Actualizar solo si hay billetera y exchange
-        If C_Billetera.Text <> "" AndAlso C_Exchange.Text <> "" Then
-            B_Actualizar.Enabled = True
-        End If
     End Sub
     '
     Private Sub ConfigurarDGV()
@@ -120,12 +116,12 @@ Public Class F_PoolLiquidez
     Private Sub Grabar()
         If DatosNoValidos() Then Exit Sub
         '
-        If _Fila = 0 Then
-            _Fila = Crear_PoolLiquidez()
-            L_Fila.Text = _Fila
+        If F = 0 Then
+            F = AgrandarMatriz(Matriz_PoolLiquidez, Matriz_PoolLiquidezTF, Matriz_PoolLiquidezTC)
+            Matriz_PoolLiquidez(F, 0) = CrearCodigoInterno()
+            L_Fila.Text = F
         End If
         '
-        Dim F As Integer = _Fila
         Matriz_PoolLiquidez(F, 1) = T_Fecha.Text
         Matriz_PoolLiquidez(F, 2) = C_Billetera.Text
         Matriz_PoolLiquidez(F, 3) = C_Exchange.Text
@@ -178,7 +174,7 @@ Public Class F_PoolLiquidez
         T_Fecha.Text = DateTime.Parse(CalFechaPool.Value).ToString("yyyyMMdd")
     End Sub
     Private Sub B_Actualizar_Click(sender As Object, e As EventArgs) Handles B_Actualizar.Click
-        If _Fila < 1 Then
+        If F < 1 Then
             L_Mensaje.Text = "Guarde el registro primero"
             Exit Sub
         End If
@@ -188,7 +184,7 @@ Public Class F_PoolLiquidez
         End If
         '
         ' Obtener codigo de billetera desde la matriz
-        Dim F As Integer = 0
+        F = 0
         For i As Integer = 1 To Matriz_BilleterasTF
             If Matriz_Billeteras(i, 1) = C_Billetera.Text Then
                 F = i
@@ -204,9 +200,9 @@ Public Class F_PoolLiquidez
         Me.Refresh()
         '
         Dim resultado As PoolDeFiResultado
-        If exchange = "uniswap-v3" Then
+        If exchange.Contains("uniswap") Then
             resultado = ConsultarPool_UniswapV3(idBilletera)
-        ElseIf exchange = "beefy" Then
+        ElseIf exchange.Contains("beefy") Then
             resultado = ConsultarPool_Beefy(idBilletera)
         Else
             L_Mensaje.Text = "Exchange no soportado"
@@ -219,18 +215,17 @@ Public Class F_PoolLiquidez
         End If
         '
         ' Guardar en la matriz
-        Dim Fp As Integer = _Fila
-        Matriz_PoolLiquidez(Fp, 5) = resultado.Token1_Simbolo
-        Matriz_PoolLiquidez(Fp, 6) = resultado.Token1_Cantidad.ToString("F8", Globalization.CultureInfo.InvariantCulture)
-        Matriz_PoolLiquidez(Fp, 7) = resultado.Token1_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
-        Matriz_PoolLiquidez(Fp, 8) = resultado.Token2_Simbolo
-        Matriz_PoolLiquidez(Fp, 9) = resultado.Token2_Cantidad.ToString("F8", Globalization.CultureInfo.InvariantCulture)
-        Matriz_PoolLiquidez(Fp, 10) = resultado.Token2_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
-        Matriz_PoolLiquidez(Fp, 11) = resultado.Fees_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
-        Matriz_PoolLiquidez(Fp, 12) = resultado.Total_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(F, 5) = resultado.Token1_Simbolo
+        Matriz_PoolLiquidez(F, 6) = resultado.Token1_Cantidad.ToString("F8", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(F, 7) = resultado.Token1_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(F, 8) = resultado.Token2_Simbolo
+        Matriz_PoolLiquidez(F, 9) = resultado.Token2_Cantidad.ToString("F8", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(F, 10) = resultado.Token2_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(F, 11) = resultado.Fees_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
+        Matriz_PoolLiquidez(F, 12) = resultado.Total_USD.ToString("F4", Globalization.CultureInfo.InvariantCulture)
         '
         Guardar_Matrices("PoolLiquidez")
-        MostrarDatosPool(Fp)
+        MostrarDatosPool(F)
         L_Mensaje.Text = $"Actualizado: {resultado.Token1_Simbolo}/{resultado.Token2_Simbolo} = USD {resultado.Total_USD:F2}"
     End Sub
     '

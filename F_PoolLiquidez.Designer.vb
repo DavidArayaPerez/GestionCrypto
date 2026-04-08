@@ -84,7 +84,7 @@ Partial Class F_PoolLiquidez
         '
         Me.C_Billetera.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_Billetera.FormattingEnabled = True
-        Me.C_Billetera.Location = New System.Drawing.Point(476, 79)
+        Me.C_Billetera.Location = New System.Drawing.Point(473, 127)
         Me.C_Billetera.Name = "C_Billetera"
         Me.C_Billetera.Size = New System.Drawing.Size(123, 21)
         Me.C_Billetera.TabIndex = 555
@@ -94,7 +94,7 @@ Partial Class F_PoolLiquidez
         '
         Me.Label48.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label48.ForeColor = System.Drawing.Color.Blue
-        Me.Label48.Location = New System.Drawing.Point(473, 63)
+        Me.Label48.Location = New System.Drawing.Point(473, 111)
         Me.Label48.Name = "Label48"
         Me.Label48.Size = New System.Drawing.Size(126, 13)
         Me.Label48.TabIndex = 554
@@ -115,7 +115,7 @@ Partial Class F_PoolLiquidez
         '
         Me.C_Exchange.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.C_Exchange.FormattingEnabled = True
-        Me.C_Exchange.Location = New System.Drawing.Point(476, 126)
+        Me.C_Exchange.Location = New System.Drawing.Point(473, 79)
         Me.C_Exchange.Name = "C_Exchange"
         Me.C_Exchange.Size = New System.Drawing.Size(123, 21)
         Me.C_Exchange.TabIndex = 535
@@ -148,7 +148,7 @@ Partial Class F_PoolLiquidez
         '
         Me.Label28.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label28.ForeColor = System.Drawing.Color.Blue
-        Me.Label28.Location = New System.Drawing.Point(476, 110)
+        Me.Label28.Location = New System.Drawing.Point(473, 63)
         Me.Label28.Name = "Label28"
         Me.Label28.Size = New System.Drawing.Size(126, 13)
         Me.Label28.TabIndex = 531
@@ -224,7 +224,7 @@ Partial Class F_PoolLiquidez
         Me.T_Link.MaxLength = 60
         Me.T_Link.Multiline = True
         Me.T_Link.Name = "T_Link"
-        Me.T_Link.Size = New System.Drawing.Size(347, 49)
+        Me.T_Link.Size = New System.Drawing.Size(347, 70)
         Me.T_Link.TabIndex = 670
         Me.T_Link.Text = "T_Link"
         '

@@ -79,11 +79,11 @@ Partial Class F_Billetera
         'T_CodigoBilletera
         '
         Me.T_CodigoBilletera.BackColor = System.Drawing.Color.White
-        Me.T_CodigoBilletera.Location = New System.Drawing.Point(595, 60)
+        Me.T_CodigoBilletera.Location = New System.Drawing.Point(560, 60)
         Me.T_CodigoBilletera.MaxLength = 0
         Me.T_CodigoBilletera.Multiline = True
         Me.T_CodigoBilletera.Name = "T_CodigoBilletera"
-        Me.T_CodigoBilletera.Size = New System.Drawing.Size(246, 45)
+        Me.T_CodigoBilletera.Size = New System.Drawing.Size(280, 45)
         Me.T_CodigoBilletera.TabIndex = 570
         Me.T_CodigoBilletera.Text = "T_CodigoBilletera"
         '
@@ -94,7 +94,7 @@ Partial Class F_Billetera
         Me.T_NombreBilletera.MaxLength = 60
         Me.T_NombreBilletera.Multiline = True
         Me.T_NombreBilletera.Name = "T_NombreBilletera"
-        Me.T_NombreBilletera.Size = New System.Drawing.Size(209, 45)
+        Me.T_NombreBilletera.Size = New System.Drawing.Size(176, 45)
         Me.T_NombreBilletera.TabIndex = 568
         Me.T_NombreBilletera.Text = "T_NombreBilletera"
         '
@@ -114,7 +114,7 @@ Partial Class F_Billetera
         '
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.Color.Blue
-        Me.Label17.Location = New System.Drawing.Point(595, 44)
+        Me.Label17.Location = New System.Drawing.Point(560, 44)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(126, 13)
         Me.Label17.TabIndex = 569

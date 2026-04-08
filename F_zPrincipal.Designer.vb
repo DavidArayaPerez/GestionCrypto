@@ -341,7 +341,7 @@ Partial Class F_zPrincipal
         '
         Me.B_Compras.BackColor = System.Drawing.SystemColors.Control
         Me.B_Compras.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_Compras.Location = New System.Drawing.Point(12, 270)
+        Me.B_Compras.Location = New System.Drawing.Point(12, 299)
         Me.B_Compras.Name = "B_Compras"
         Me.B_Compras.Size = New System.Drawing.Size(99, 23)
         Me.B_Compras.TabIndex = 429
@@ -363,7 +363,7 @@ Partial Class F_zPrincipal
         '
         Me.B_PoolLiquidez.BackColor = System.Drawing.SystemColors.Control
         Me.B_PoolLiquidez.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 299)
+        Me.B_PoolLiquidez.Location = New System.Drawing.Point(12, 219)
         Me.B_PoolLiquidez.Name = "B_PoolLiquidez"
         Me.B_PoolLiquidez.Size = New System.Drawing.Size(99, 23)
         Me.B_PoolLiquidez.TabIndex = 432

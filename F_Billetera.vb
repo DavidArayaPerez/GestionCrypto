@@ -55,7 +55,8 @@ Public Class F_Billetera
         Dim NombreNota As String = "Wall_" & T_NombreBilletera.Text & ".rtf"
         GuardarRTF(RutaLocal, NombreNota, rT_Nota)
         '
-        L_Mensaje.Text = "Moneda guardada correctamente"
+        L_Mensaje.Text = "Billetera guardada correctamente"
+        LlenarList_Billetera(L_Billeteras)
         '   0   Codigo Billetera
         '   1   Nombre
     End Sub
