@@ -175,8 +175,8 @@ Module zAPI_CoinGecko
         '
         'Agrega una nueva MONEDA
         For i As Integer = 1 To Matriz_MonedasTF
-            If Matriz_Monedas(i, 2).ToUpper() = slug Then
-                MsgBox("La moneda " & slug & " YA EXISTE en la matriz.")
+            If Matriz_Monedas(i, 4).ToLower() = slug.ToLower() Then
+                MsgBox("La moneda con slug '" & slug & "' YA EXISTE en la matriz.")
                 Return 0
             End If
         Next

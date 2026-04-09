@@ -149,19 +149,82 @@ Module zAPI_Moralis
         '
         Return resultado
     End Function
-    Private Function ObtenerPrecioUSD(ByVal simbolo As String) As Double
-        ' 1. Buscar en Matriz_Monedas
+    Private Function ObtenerPrecioUSD(ByVal simbolo As String, Optional ByVal chainHex As String = "") As Double
+        ' 1. Buscar en Matriz_Monedas — si hay chainHex, priorizar la moneda de esa red
+        Dim idRedBuscada As String = ""
+        If chainHex <> "" Then
+            For r As Integer = 1 To Matriz_RedesTF
+                If Matriz_Redes(r, 19).ToLower() = chainHex.ToLower() Then
+                    idRedBuscada = Matriz_Redes(r, 0)
+                    Exit For
+                End If
+            Next r
+        End If
+        '
+        ' Primera pasada: buscar coincidencia exacta de símbolo + red
+        If idRedBuscada <> "" Then
+            For i As Integer = 1 To Matriz_MonedasTF
+                If Matriz_Monedas(i, 2).ToUpper() = simbolo.ToUpper() AndAlso
+               Matriz_Monedas(i, 10) = idRedBuscada Then
+                    Dim precio As Double = 0
+                    Try : precio = Double.Parse(Matriz_Monedas(i, 15), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+                    If precio > 0 Then Return precio
+                End If
+            Next i
+        End If
+        '
+        ' Segunda pasada: cualquier coincidencia de símbolo con precio > 0
+        Dim precioEncontrado As Double = 0
         For i As Integer = 1 To Matriz_MonedasTF
             If Matriz_Monedas(i, 2).ToUpper() = simbolo.ToUpper() Then
+                Dim precio As Double = 0
+                Try : precio = Double.Parse(Matriz_Monedas(i, 15), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+                If precio > 0 Then Return precio
+                If precioEncontrado = 0 Then precioEncontrado = precio
+            End If
+        Next i
+        '
+        If precioEncontrado > 0 Then Return precioEncontrado
+        '
+        ' 2. No encontrada con precio — intentar actualizar las que ya están en la matriz
+        Dim filaActualizable As Integer = 0
+        '
+        ' Buscar primero por red si tenemos chainHex
+        If idRedBuscada <> "" Then
+            For i As Integer = 1 To Matriz_MonedasTF
+                If Matriz_Monedas(i, 2).ToUpper() = simbolo.ToUpper() AndAlso
+               Matriz_Monedas(i, 10) = idRedBuscada Then
+                    filaActualizable = i
+                    Exit For
+                End If
+            Next i
+        End If
+        '
+        ' Si no encontró por red, tomar la primera que esté en la matriz
+        If filaActualizable = 0 Then
+            For i As Integer = 1 To Matriz_MonedasTF
+                If Matriz_Monedas(i, 2).ToUpper() = simbolo.ToUpper() Then
+                    filaActualizable = i
+                    Exit For
+                End If
+            Next i
+        End If
+        '
+        ' Si ya está en la matriz, actualizar su precio desde CoinGecko y retornar
+        If filaActualizable > 0 Then
+            Dim slug As String = Matriz_Monedas(filaActualizable, 4)
+            If slug <> "" AndAlso slug <> "0" Then
+                API_CoinGecko_ActualizaValor(slug)
                 Try
-                    Return Double.Parse(Matriz_Monedas(i, 15), Globalization.CultureInfo.InvariantCulture)
+                    Return Double.Parse(Matriz_Monedas(filaActualizable, 15), Globalization.CultureInfo.InvariantCulture)
                 Catch
                     Return 0
                 End Try
             End If
-        Next i
+            Return 0
+        End If
         '
-        ' 2. No encontrada — buscar slug en CoinGecko por símbolo
+        ' 3. No está en la matriz — buscar en CoinGecko por símbolo
         Try
             Dim urlBusqueda As String = $"https://api.coingecko.com/api/v3/search?query={simbolo}&x_cg_demo_api_key={API_COINGEKO}"
             Dim client As New WebClient()
@@ -170,7 +233,6 @@ Module zAPI_Moralis
             Dim root As JsonNode = JsonNode.Parse(json)
             Dim coins As JsonArray = root("coins").AsArray()
             '
-            ' Recopilar todas las coincidencias exactas de símbolo
             Dim coincidencias As New List(Of String)
             For Each coin As JsonNode In coins
                 Dim sym As String = If(coin("symbol") Is Nothing, "", coin("symbol").ToString().ToUpper())
@@ -182,31 +244,19 @@ Module zAPI_Moralis
             '
             If coincidencias.Count = 0 Then Return 0
             '
-            ' Si hay más de una coincidencia, avisar y no agregar automáticamente
-            If coincidencias.Count > 1 Then
+            Dim slugEncontrado As String = ""
+            If coincidencias.Count = 1 Then
+                slugEncontrado = coincidencias(0)
+            Else
                 MsgBox("El símbolo '" & simbolo & "' tiene " & coincidencias.Count & " monedas en CoinGecko:" & vbCrLf &
                    String.Join(vbCrLf, coincidencias) & vbCrLf & vbCrLf &
                    "Agrégala manualmente desde F_Monedas con el slug correcto.", MsgBoxStyle.Information, "Símbolo ambiguo")
                 Return 0
             End If
             '
-            ' Solo una coincidencia exacta — verificar que no fue agregada ya por slug
-            Dim slugEncontrado As String = coincidencias(0)
-            For i As Integer = 1 To Matriz_MonedasTF
-                If Matriz_Monedas(i, 4).ToLower() = slugEncontrado.ToLower() Then
-                    Try
-                        Return Double.Parse(Matriz_Monedas(i, 15), Globalization.CultureInfo.InvariantCulture)
-                    Catch
-                        Return 0
-                    End Try
-                End If
-            Next i
-            '
-            ' 3. Agregar la moneda a Matriz_Monedas
+            ' Agregar la moneda nueva
             Dim fila As Integer = API_CoinGecko_NuevaMoneda(slugEncontrado)
             If fila < 1 Then Return 0
-            '
-            ' 4. Retornar el precio recién cargado
             Try
                 Return Double.Parse(Matriz_Monedas(fila, 15), Globalization.CultureInfo.InvariantCulture)
             Catch
@@ -540,8 +590,8 @@ Module zAPI_Moralis
             Try : sim1 = posNode("token1")("symbol").ToString() : Catch : End Try
             '
             ' Precios USD desde Matriz_Monedas
-            Dim precioUSD0 As Double = ObtenerPrecioUSD(sim0)
-            Dim precioUSD1 As Double = ObtenerPrecioUSD(sim1)
+            Dim precioUSD0 As Double = ObtenerPrecioUSD(sim0, "0x1")
+            Dim precioUSD1 As Double = ObtenerPrecioUSD(sim1, "0x1")
             '
             resultado.Token1_Simbolo = sim0
             resultado.Token1_Cantidad = cant0
