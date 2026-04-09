@@ -10,13 +10,11 @@ Module zAPI_Moralis
     '
     '
     '
-    '
-    '
-    ' ============================================================
-    '  Consulta TODAS las redes EVM activas para una billetera
-    '  Usando Moralis como fuente única de datos
-    ' ============================================================
     Public Function ConsultarBilletera_TodasLasRedes(ByVal direccion As String) As String
+        ' ============================================================
+        '  Consulta TODAS las redes EVM activas para una billetera
+        '  Usando Moralis como fuente única de datos
+        ' ============================================================
         Dim fechaHoraConsulta As String = DateTime.Now.ToString("yyyyMMdd HHmm")
         Dim redesConsultadas As Integer = 0
         Dim registrosGrabados As Integer = 0
@@ -101,11 +99,10 @@ Module zAPI_Moralis
         If ModoDebug Then System.IO.File.WriteAllText(rutaLog, log, System.Text.Encoding.UTF8)
         Return $"Redes: {redesConsultadas} | Registros: {registrosGrabados} | Log: {rutaLog}"
     End Function
-
-    ' ------------------------------------------------------------
-    '  Consulta saldo nativo + tokens ERC-20 en una sola llamada
-    ' ------------------------------------------------------------
     Private Function ConsultarTokens(ByVal chainHex As String, ByVal direccion As String, ByRef log As String) As List(Of TokenBalance)
+        ' ------------------------------------------------------------
+        '  Consulta saldo nativo + tokens ERC-20 en una sola llamada
+        ' ------------------------------------------------------------
         Dim resultado As New List(Of TokenBalance)
         '
         Try
@@ -152,11 +149,8 @@ Module zAPI_Moralis
         '
         Return resultado
     End Function
-
-    ' ------------------------------------------------------------
-    '  Precio USD desde Matriz_Monedas
-    ' ------------------------------------------------------------
     Private Function ObtenerPrecioUSD(ByVal simbolo As String) As Double
+        ' 1. Buscar en Matriz_Monedas
         For i As Integer = 1 To Matriz_MonedasTF
             If Matriz_Monedas(i, 2).ToUpper() = simbolo.ToUpper() Then
                 Try
@@ -166,45 +160,78 @@ Module zAPI_Moralis
                 End Try
             End If
         Next i
-        Return 0
+        '
+        ' 2. No encontrada — buscar slug en CoinGecko por símbolo
+        Try
+            Dim urlBusqueda As String = $"https://api.coingecko.com/api/v3/search?query={simbolo}&x_cg_demo_api_key={API_COINGEKO}"
+            Dim client As New WebClient()
+            client.Encoding = System.Text.Encoding.UTF8
+            Dim json As String = client.DownloadString(New Uri(urlBusqueda))
+            Dim root As JsonNode = JsonNode.Parse(json)
+            Dim coins As JsonArray = root("coins").AsArray()
+            '
+            ' Recopilar todas las coincidencias exactas de símbolo
+            Dim coincidencias As New List(Of String)
+            For Each coin As JsonNode In coins
+                Dim sym As String = If(coin("symbol") Is Nothing, "", coin("symbol").ToString().ToUpper())
+                If sym = simbolo.ToUpper() Then
+                    Dim slug As String = If(coin("id") Is Nothing, "", coin("id").ToString())
+                    If slug <> "" Then coincidencias.Add(slug)
+                End If
+            Next
+            '
+            If coincidencias.Count = 0 Then Return 0
+            '
+            ' Si hay más de una coincidencia, avisar y no agregar automáticamente
+            If coincidencias.Count > 1 Then
+                MsgBox("El símbolo '" & simbolo & "' tiene " & coincidencias.Count & " monedas en CoinGecko:" & vbCrLf &
+                   String.Join(vbCrLf, coincidencias) & vbCrLf & vbCrLf &
+                   "Agrégala manualmente desde F_Monedas con el slug correcto.", MsgBoxStyle.Information, "Símbolo ambiguo")
+                Return 0
+            End If
+            '
+            ' Solo una coincidencia exacta — verificar que no fue agregada ya por slug
+            Dim slugEncontrado As String = coincidencias(0)
+            For i As Integer = 1 To Matriz_MonedasTF
+                If Matriz_Monedas(i, 4).ToLower() = slugEncontrado.ToLower() Then
+                    Try
+                        Return Double.Parse(Matriz_Monedas(i, 15), Globalization.CultureInfo.InvariantCulture)
+                    Catch
+                        Return 0
+                    End Try
+                End If
+            Next i
+            '
+            ' 3. Agregar la moneda a Matriz_Monedas
+            Dim fila As Integer = API_CoinGecko_NuevaMoneda(slugEncontrado)
+            If fila < 1 Then Return 0
+            '
+            ' 4. Retornar el precio recién cargado
+            Try
+                Return Double.Parse(Matriz_Monedas(fila, 15), Globalization.CultureInfo.InvariantCulture)
+            Catch
+                Return 0
+            End Try
+            '
+        Catch ex As Exception
+            Return 0
+        End Try
     End Function
-
-    ' ------------------------------------------------------------
-    '  Clase auxiliar
-    ' ------------------------------------------------------------
     Public Class TokenBalance
+        ' ------------------------------------------------------------
+        '  Clase auxiliar
+        ' ------------------------------------------------------------
         Public Property Simbolo As String
         Public Property Nombre As String
         Public Property ContractAddress As String
         Public Property Saldo As Double
         Public Property EsNativo As Boolean
     End Class
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ' ------------------------------------------------------------
-    '  Complemento Etherscan: tokens ERC-20 en Ethereum
-    '  que Moralis no devolvió
-    ' ------------------------------------------------------------
     Private Sub ComplementarConEtherscan(ByVal direccion As String, ByVal idRedEthereum As String, ByVal fechaHoraConsulta As String, ByVal simbolosMoralis As List(Of String), ByRef log As String, ByRef registrosGrabados As Integer)
+        ' ------------------------------------------------------------
+        '  Complemento Etherscan: tokens ERC-20 en Ethereum
+        '  que Moralis no devolvió
+        ' ------------------------------------------------------------
         Try
             Dim urlAPI As String = "https://api.etherscan.io/v2/api?chainid=1&"
             Dim url As String = $"{urlAPI}module=account&action=tokentx&address={direccion}&page=1&offset=200&sort=desc&apikey={API_ETHERSCAN}"
@@ -269,14 +296,12 @@ Module zAPI_Moralis
             log &= $"  → Etherscan ERROR: {ex.Message}" & vbCrLf
         End Try
     End Sub
-    '
-    '
-    ' ============================================================
-    '  Consulta el historial de transacciones on-chain de una
-    '  billetera en todas las redes EVM activas con chainHex
-    '  y guarda los resultados en TransaccionesOnChain.txt
-    ' ============================================================
     Public Function ConsultarTransacciones_TodasLasRedes(ByVal direccion As String) As String
+        ' ============================================================
+        '  Consulta el historial de transacciones on-chain de una
+        '  billetera en todas las redes EVM activas con chainHex
+        '  y guarda los resultados en TransaccionesOnChain.txt
+        ' ============================================================
         Dim redesConsultadas As Integer = 0
         Dim registrosGrabados As Integer = 0
         Dim log As String = $"=== Transacciones {DateTime.Now.ToString("yyyyMMdd HHmm")} ===" & vbCrLf
@@ -341,12 +366,12 @@ Module zAPI_Moralis
         If ModoDebug Then System.IO.File.WriteAllText(rutaLog, log, System.Text.Encoding.UTF8)
         Return $"Redes: {redesConsultadas} | Registros nuevos: {registrosGrabados}"
     End Function
-    '
-    ' ------------------------------------------------------------
-    '  Llama al endpoint /wallets/{address}/history de Moralis
-    '  y parsea cada entrada del array result
-    ' ------------------------------------------------------------
     Private Function ObtenerTransacciones(ByVal chainHex As String, ByVal direccion As String, ByRef log As String) As List(Of TransaccionOnChain)
+        ' ------------------------------------------------------------
+        '  Llama al endpoint /wallets/{address}/history de Moralis
+        '  y parsea cada entrada del array result
+        ' ------------------------------------------------------------
+
         Dim resultado As New List(Of TransaccionOnChain)
         '
         Try
@@ -408,7 +433,7 @@ Module zAPI_Moralis
                     ' Transacción nativa (ETH, BNB, etc.)
                     Dim valorWei As Double = 0
                     Try : valorWei = Double.Parse(item("value").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
-                    tx.Valor = valorWei / 1e18
+                    tx.Valor = valorWei / 1.0E+18
                     tx.Simbolo = "NATIVE"
                     resultado.Add(tx)
                 End If
@@ -420,11 +445,10 @@ Module zAPI_Moralis
         '
         Return resultado
     End Function
-    '
-    ' ------------------------------------------------------------
-    '  Clase auxiliar para transacciones on-chain
-    ' ------------------------------------------------------------
     Public Class TransaccionOnChain
+        ' ------------------------------------------------------------
+        '  Clase auxiliar para transacciones on-chain
+        ' ------------------------------------------------------------
         Public Property FechaHora As String
         Public Property Hash As String
         Public Property Tipo As String
@@ -434,14 +458,10 @@ Module zAPI_Moralis
         Public Property Valor As Double
         Public Property Resumen As String
     End Class
-    '
-    '
-    '
-
-    ' ============================================================
-    '  Clase resultado Pool DeFi
-    ' ============================================================
     Public Class PoolDeFiResultado
+        ' ============================================================
+        '  Clase resultado Pool DeFi
+        ' ============================================================
         Public Property Token1_Simbolo As String = ""
         Public Property Token1_Cantidad As Double = 0
         Public Property Token1_USD As Double = 0
@@ -451,94 +471,105 @@ Module zAPI_Moralis
         Public Property Fees_USD As Double = 0
         Public Property Total_USD As Double = 0
     End Class
-    '
-    ' ============================================================
-    '  Consulta posiciones Uniswap V3 via Moralis
-    '  Endpoint: /wallets/{address}/defi/uniswap-v3/positions?chain=0x1
-    '  Devuelve la primera posicion activa encontrada
-    ' ============================================================
-    Public Function ConsultarPool_UniswapV3(ByVal direccion As String) As PoolDeFiResultado
+    Public Function ConsultarPool_UniswapV3(ByVal direccion As String, ByVal link As String) As PoolDeFiResultado
+        ' ============================================================
+        '  Consulta posiciones Uniswap V3 via Moralis
+        '  Endpoint: /wallets/{address}/defi/uniswap-v3/positions?chain=0x1
+        '  Devuelve la primera posicion activa encontrada
+        ' ============================================================
+
         Dim resultado As New PoolDeFiResultado()
-        Dim log As String = ""
+        Dim url As String = ""
+        Dim json As String = ""
         '
         Try
-            Dim url As String = $"https://deep-index.moralis.io/api/v2.2/wallets/{direccion}/defi/uniswap-v3/positions?chain=0x1"
-            log &= $"URL: {url}" & vbCrLf
+            ' Extraer tokenId del link
+            Dim tokenId As String = ""
+            Dim partes() As String = link.TrimEnd("/").Split("/"c)
+            For i As Integer = partes.Length - 1 To 0 Step -1
+                Dim segmento As String = partes(i).Trim()
+                If segmento <> "" AndAlso segmento.All(Function(c) Char.IsDigit(c)) Then
+                    tokenId = segmento
+                    Exit For
+                End If
+            Next i
+            '
+            If tokenId = "" Then Return Nothing
+            '
+            ' Consultar The Graph - Uniswap V3 Subgraph Ethereum mainnet
+            url = "https://gateway.thegraph.com/api/" & API_THEGRAPH & "/subgraphs/id/5zvR82QoaXYFyDEKLZ9t6v9adgnptxYpKpSbxtgVENFV"
+            '
+            Dim query As String = "{""query"":""{ position(id: " & tokenId & ") { id liquidity token0 { symbol } token1 { symbol } depositedToken0 depositedToken1 withdrawnToken0 withdrawnToken1 collectedFeesToken0 collectedFeesToken1 pool { token0Price token1Price } } }""}"
             '
             Dim client As New System.Net.WebClient()
             client.Encoding = System.Text.Encoding.UTF8
-            client.Headers.Add("X-API-Key", API_MORALIS)
+            client.Headers.Add("Content-Type", "application/json")
             client.Headers.Add("accept", "application/json")
             '
-            Dim json As String = client.DownloadString(New Uri(url))
-            log &= $"RAW: {json.Substring(0, Math.Min(300, json.Length))}..." & vbCrLf
+            json = client.UploadString(New Uri(url), "POST", query)
+            System.IO.File.WriteAllText(RutaLocal & "\log_pool_uniswap.txt", json, System.Text.Encoding.UTF8)
             '
             Dim root As JsonNode = JsonNode.Parse(json)
-            Dim positions As JsonArray = root.AsArray()
             '
-            If positions Is Nothing OrElse positions.Count = 0 Then
-                log &= "Sin posiciones Uniswap V3" & vbCrLf
-                Return Nothing
-            End If
+            ' Verificar que position no sea null
+            Dim posNode As JsonNode = Nothing
+            Try : posNode = root("data")("position") : Catch : End Try
+            If posNode Is Nothing Then Return Nothing
+            If posNode.GetValueKind() = System.Text.Json.JsonValueKind.Null Then Return Nothing
             '
-            ' Tomar la primera posicion activa
-            Dim pos As JsonNode = positions(0)
-            Dim tokens As JsonArray = pos("position")("tokens").AsArray()
+            ' Calcular saldo actual = depositado - retirado
+            Dim dep0 As Double = 0, dep1 As Double = 0
+            Dim wit0 As Double = 0, wit1 As Double = 0
+            Try : dep0 = Double.Parse(posNode("depositedToken0").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+            Try : dep1 = Double.Parse(posNode("depositedToken1").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+            Try : wit0 = Double.Parse(posNode("withdrawnToken0").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+            Try : wit1 = Double.Parse(posNode("withdrawnToken1").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
             '
-            Dim supplied As New List(Of JsonNode)
-            Dim rewards As New List(Of JsonNode)
-            For Each t As JsonNode In tokens
-                Dim tt As String = If(t("token_type") Is Nothing, "", t("token_type").ToString())
-                If tt = "supplied" Then supplied.Add(t)
-                If tt = "reward" Then rewards.Add(t)
-            Next
+            Dim cant0 As Double = dep0 - wit0
+            Dim cant1 As Double = dep1 - wit1
             '
-            ' Token 1
-            If supplied.Count >= 1 Then
-                resultado.Token1_Simbolo = If(supplied(0)("symbol") Is Nothing, "?", supplied(0)("symbol").ToString())
-                Try : resultado.Token1_Cantidad = Double.Parse(supplied(0)("balance_formatted").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
-                Try : resultado.Token1_USD = Double.Parse(supplied(0)("usd_value").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
-            End If
+            ' Fees acumulados
+            Dim fee0 As Double = 0, fee1 As Double = 0
+            Try : fee0 = Double.Parse(posNode("collectedFeesToken0").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
+            Try : fee1 = Double.Parse(posNode("collectedFeesToken1").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
             '
-            ' Token 2
-            If supplied.Count >= 2 Then
-                resultado.Token2_Simbolo = If(supplied(1)("symbol") Is Nothing, "?", supplied(1)("symbol").ToString())
-                Try : resultado.Token2_Cantidad = Double.Parse(supplied(1)("balance_formatted").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
-                Try : resultado.Token2_USD = Double.Parse(supplied(1)("usd_value").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
-            End If
+            ' Simbolos
+            Dim sim0 As String = "?"
+            Dim sim1 As String = "?"
+            Try : sim0 = posNode("token0")("symbol").ToString() : Catch : End Try
+            Try : sim1 = posNode("token1")("symbol").ToString() : Catch : End Try
             '
-            ' Fees (rewards)
-            Dim feesTotal As Double = 0
-            For Each r As JsonNode In rewards
-                Dim feeUSD As Double = 0
-                Try : feeUSD = Double.Parse(r("usd_value").ToString(), Globalization.CultureInfo.InvariantCulture) : Catch : End Try
-                feesTotal += feeUSD
-            Next
-            resultado.Fees_USD = feesTotal
+            ' Precios USD desde Matriz_Monedas
+            Dim precioUSD0 As Double = ObtenerPrecioUSD(sim0)
+            Dim precioUSD1 As Double = ObtenerPrecioUSD(sim1)
             '
-            ' Total USD
-            Try
-                resultado.Total_USD = Double.Parse(pos("position")("balance_usd").ToString(), Globalization.CultureInfo.InvariantCulture)
-            Catch
-                resultado.Total_USD = resultado.Token1_USD + resultado.Token2_USD
-            End Try
+            resultado.Token1_Simbolo = sim0
+            resultado.Token1_Cantidad = cant0
+            resultado.Token1_USD = cant0 * precioUSD0
+            resultado.Token2_Simbolo = sim1
+            resultado.Token2_Cantidad = cant1
+            resultado.Token2_USD = cant1 * precioUSD1
+            resultado.Fees_USD = (fee0 * precioUSD0) + (fee1 * precioUSD1)
+            resultado.Total_USD = resultado.Token1_USD + resultado.Token2_USD
             '
         Catch ex As Exception
-            log &= $"ERROR Uniswap V3: {ex.Message}" & vbCrLf
-            If ModoDebug Then System.IO.File.WriteAllText(RutaLocal & "\log_pool_uniswap.txt", log, System.Text.Encoding.UTF8)
+            System.IO.File.WriteAllText(RutaLocal & "\log_pool_error.txt",
+            "TIPO: " & ex.GetType().Name & vbCrLf &
+            "MENSAJE: " & ex.Message & vbCrLf &
+            "URL: " & url & vbCrLf &
+            "JSON: " & json.Substring(0, Math.Min(500, json.Length)), System.Text.Encoding.UTF8)
             Return Nothing
         End Try
         '
-        If ModoDebug Then System.IO.File.WriteAllText(RutaLocal & "\log_pool_uniswap.txt", log, System.Text.Encoding.UTF8)
         Return resultado
     End Function
-    '
-    ' ============================================================
-    '  Consulta posiciones Beefy Finance
-    '  Endpoint: https://balance-api.beefy.finance/api/v1/holders/{address}/latest-balances
-    '  Suma todos los vaults activos y devuelve el total USD
-    ' ============================================================
     Public Function ConsultarPool_Beefy(ByVal direccion As String) As PoolDeFiResultado
+        ' ============================================================
+        '  Consulta posiciones Beefy Finance
+        '  Endpoint: https://balance-api.beefy.finance/api/v1/holders/{address}/latest-balances
+        '  Suma todos los vaults activos y devuelve el total USD
+        ' ============================================================
+
         Dim resultado As New PoolDeFiResultado()
         Dim log As String = ""
         '
@@ -600,3 +631,8 @@ Module zAPI_Moralis
     '
     '
 End Module
+
+
+
+
+

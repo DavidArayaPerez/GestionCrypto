@@ -54,7 +54,7 @@ Partial Class F_PoolLiquidez
         Me.L_PoolLiquidez.ItemHeight = 15
         Me.L_PoolLiquidez.Location = New System.Drawing.Point(12, 78)
         Me.L_PoolLiquidez.Name = "L_PoolLiquidez"
-        Me.L_PoolLiquidez.Size = New System.Drawing.Size(316, 424)
+        Me.L_PoolLiquidez.Size = New System.Drawing.Size(316, 304)
         Me.L_PoolLiquidez.Sorted = True
         Me.L_PoolLiquidez.TabIndex = 560
         '
@@ -66,7 +66,7 @@ Partial Class F_PoolLiquidez
         Me.rT_Nota.Location = New System.Drawing.Point(356, 166)
         Me.rT_Nota.Name = "rT_Nota"
         Me.rT_Nota.ReadOnly = True
-        Me.rT_Nota.Size = New System.Drawing.Size(599, 56)
+        Me.rT_Nota.Size = New System.Drawing.Size(659, 56)
         Me.rT_Nota.TabIndex = 536
         Me.rT_Nota.Text = "rT_Nota"
         '
@@ -200,10 +200,11 @@ Partial Class F_PoolLiquidez
         '
         'L_Mensaje
         '
+        Me.L_Mensaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.L_Mensaje.ForeColor = System.Drawing.Color.Red
-        Me.L_Mensaje.Location = New System.Drawing.Point(356, 486)
+        Me.L_Mensaje.Location = New System.Drawing.Point(356, 357)
         Me.L_Mensaje.Name = "L_Mensaje"
-        Me.L_Mensaje.Size = New System.Drawing.Size(357, 16)
+        Me.L_Mensaje.Size = New System.Drawing.Size(656, 16)
         Me.L_Mensaje.TabIndex = 653
         Me.L_Mensaje.Text = "L_Mensaje"
         '
@@ -224,7 +225,7 @@ Partial Class F_PoolLiquidez
         Me.T_Link.MaxLength = 60
         Me.T_Link.Multiline = True
         Me.T_Link.Name = "T_Link"
-        Me.T_Link.Size = New System.Drawing.Size(347, 70)
+        Me.T_Link.Size = New System.Drawing.Size(407, 70)
         Me.T_Link.TabIndex = 670
         Me.T_Link.Text = "T_Link"
         '
@@ -255,9 +256,9 @@ Partial Class F_PoolLiquidez
         'DGV
         '
         Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV.Location = New System.Drawing.Point(359, 280)
+        Me.DGV.Location = New System.Drawing.Point(356, 280)
         Me.DGV.Name = "DGV"
-        Me.DGV.Size = New System.Drawing.Size(596, 186)
+        Me.DGV.Size = New System.Drawing.Size(656, 64)
         Me.DGV.TabIndex = 672
         '
         'B_Actualizar
@@ -276,7 +277,7 @@ Partial Class F_PoolLiquidez
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.B_Cerrar
-        Me.ClientSize = New System.Drawing.Size(968, 520)
+        Me.ClientSize = New System.Drawing.Size(1027, 407)
         Me.Controls.Add(Me.B_Actualizar)
         Me.Controls.Add(Me.DGV)
         Me.Controls.Add(Me.Label8)

@@ -36,10 +36,12 @@ Module zAPI_CoinGecko
     '
     Private Const CG_BASE_URL As String = "https://api.coingecko.com/api/v3/"
     '
-    ' ------------------------------------------------------------
-    '  Lista general de monedas ordenadas por market cap
-    ' ------------------------------------------------------------
+    '
+    '
     Public Sub ActualizarMonedas()
+        ' ------------------------------------------------------------
+        '  Lista general de monedas ordenadas por market cap
+        ' ------------------------------------------------------------
         'Carga valores actualizados de MONEDAS
         API_CoinGecko_Monedas(50, 1)
         'API_CoinGecko_Monedas(250, 2)
@@ -125,7 +127,6 @@ Module zAPI_CoinGecko
             MsgBox("Error leyendo API CoinGecko (Monedas): " & ex.Message)
         End Try
     End Sub
-    '
     Public Function API_CoinGecko_ActualizaValor(ByVal slug As String) As Boolean
         'Actualiza solo el valor de mercado
         Dim SW As Boolean = True
@@ -271,15 +272,12 @@ Module zAPI_CoinGecko
         '
         Matriz_Monedas(Fila, 23) = "CryptoMoneda"       '23 Tipo Moneda
     End Sub
-
-
-
-    ' ============================================================
-    '  Asignar Red Nativa a monedas que tienen ID_Red_Nativa = "0"
-    '  Consulta CoinGecko por cada moneda sin red asignada,
-    '  obtiene asset_platform_id y lo cruza con Matriz_Redes.
-    ' ============================================================
     Public Sub AsignarRedNativa_MonedasSinRed()
+        ' ============================================================
+        '  Asignar Red Nativa a monedas que tienen ID_Red_Nativa = "0"
+        '  Consulta CoinGecko por cada moneda sin red asignada,
+        '  obtiene asset_platform_id y lo cruza con Matriz_Redes.
+        ' ============================================================
         Dim monedasActualizadas As Integer = 0
         Dim monedasSinMatch As Integer = 0
         Dim detalleSinMatch As String = ""
@@ -345,11 +343,11 @@ Module zAPI_CoinGecko
         If detalleSinMatch <> "" Then resumen &= vbCrLf & vbCrLf & "Monedas que no pudieron resolverse:" & vbCrLf & detalleSinMatch
         MsgBox(resumen, vbInformation, "AsignarRedNativa_MonedasSinRed")
     End Sub
-    ' ------------------------------------------------------------
-    '  Agrega una red nueva a Matriz_Redes usando el catálogo
-    '  ya descargado. Devuelve la fila creada, o 0 si falla.
-    ' ------------------------------------------------------------
     Private Function AgregarRedDesdesCatalogo(ByVal platformId As String, ByVal plataformas As Dictionary(Of String, JsonNode)) As Integer
+        ' ------------------------------------------------------------
+        '  Agrega una red nueva a Matriz_Redes usando el catálogo
+        '  ya descargado. Devuelve la fila creada, o 0 si falla.
+        ' ------------------------------------------------------------
         Dim nombreOficial As String = platformId  ' fallback
         Dim chainId As String = "0"
         Dim esEVM As String = "No"
@@ -393,17 +391,15 @@ Module zAPI_CoinGecko
         End Try
         '
     End Function
-    '
-    '
-    '
-    ' ============================================================
-    '  Agregar redes faltantes a Matriz_Redes desde CoinGecko
-    '  Recibe la lista de slugs de plataforma que no se encontraron
-    '  en Redes.txt, consulta la API y agrega cada red nueva.
-    '  Luego vuelve a ejecutar AsignarRedNativa_MonedasSinRed()
-    '  para completar el cruce con Monedas.
-    ' ============================================================
     Public Sub AgregarRedesFaltantes_DesdeCoinGecko()
+        ' ============================================================
+        '  Agregar redes faltantes a Matriz_Redes desde CoinGecko
+        '  Recibe la lista de slugs de plataforma que no se encontraron
+        '  en Redes.txt, consulta la API y agrega cada red nueva.
+        '  Luego vuelve a ejecutar AsignarRedNativa_MonedasSinRed()
+        '  para completar el cruce con Monedas.
+        ' ============================================================
+        '
         ' --- 1. Recolectar slugs de plataforma de monedas sin red ---
         Dim slugsPendientes As New List(Of String)
         '
@@ -507,12 +503,12 @@ Module zAPI_CoinGecko
         End If
 
     End Sub
-
-    ' ------------------------------------------------------------
-    '  Auxiliar: obtiene el asset_platform_id de una moneda en CoinGecko
-    '  Reutilizable para no duplicar la llamada HTTP
-    ' ------------------------------------------------------------
     Private Function ObtenerPlatformId(ByVal slug As String) As String
+        ' ------------------------------------------------------------
+        '  Auxiliar: obtiene el asset_platform_id de una moneda en CoinGecko
+        '  Reutilizable para no duplicar la llamada HTTP
+        ' ------------------------------------------------------------
+        '
         Try
             Dim url As String = CG_BASE_URL & $"coins/{slug.ToLower()}" &
                                 "?localization=false&tickers=false" &
@@ -538,12 +534,12 @@ Module zAPI_CoinGecko
             Return ""
         End Try
     End Function
-
-    ' ------------------------------------------------------------
-    '  Auxiliar: descarga el catálogo completo de plataformas de CoinGecko
-    '  Endpoint: /asset_platforms  → id, name, chain_identifier
-    ' ------------------------------------------------------------
     Private Function ObtenerCatalogoPlatformas() As Dictionary(Of String, JsonNode)
+        ' ------------------------------------------------------------
+        '  Auxiliar: descarga el catálogo completo de plataformas de CoinGecko
+        '  Endpoint: /asset_platforms  → id, name, chain_identifier
+        ' ------------------------------------------------------------
+        '
         Dim resultado As New Dictionary(Of String, JsonNode)
         Try
             Dim url As String = CG_BASE_URL & $"asset_platforms?x_cg_demo_api_key={API_COINGEKO}"

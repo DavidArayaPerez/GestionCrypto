@@ -13,7 +13,7 @@ Module zVariables_Globales
     Public HabilitadoParaGrabar As Boolean = False
     Public VariableDeInicio As Boolean = False
     Public ArchivoNota As String
-    Public ModoDebug As Boolean = False  'Cambiar a True cuando necesites diagnosticar
+    Public ModoDebug As Boolean = True  'Cambiar a True cuando necesites diagnosticar
     '
     '
     '

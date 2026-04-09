@@ -184,16 +184,16 @@ Public Class F_PoolLiquidez
         End If
         '
         ' Obtener codigo de billetera desde la matriz
-        F = 0
+        Dim FilaBilletera As Integer = 0
         For i As Integer = 1 To Matriz_BilleterasTF
             If Matriz_Billeteras(i, 1) = C_Billetera.Text Then
-                F = i
+                FilaBilletera = i
                 Exit For
             End If
         Next i
-        If F < 1 Then L_Mensaje.Text = "Billetera no encontrada" : Exit Sub
+        If FilaBilletera < 1 Then L_Mensaje.Text = "Billetera no encontrada" : Exit Sub
         '
-        Dim idBilletera As String = Matriz_Billeteras(F, 0)
+        Dim idBilletera As String = Matriz_Billeteras(FilaBilletera, 0)
         Dim exchange As String = C_Exchange.Text.ToLower()
         '
         L_Mensaje.Text = "Consultando " & C_Exchange.Text & "... por favor espere"
@@ -201,7 +201,7 @@ Public Class F_PoolLiquidez
         '
         Dim resultado As PoolDeFiResultado
         If exchange.Contains("uniswap") Then
-            resultado = ConsultarPool_UniswapV3(idBilletera)
+            resultado = ConsultarPool_UniswapV3(idBilletera, Matriz_PoolLiquidez(F, 4))
         ElseIf exchange.Contains("beefy") Then
             resultado = ConsultarPool_Beefy(idBilletera)
         Else
@@ -232,3 +232,6 @@ Public Class F_PoolLiquidez
     '
     '
 End Class
+
+
+

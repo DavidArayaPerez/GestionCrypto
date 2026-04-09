@@ -11,7 +11,7 @@ Module zCargaInicia
     '
     Public zCargaInicialTXT As String = Application.StartupPath & "\xCargaInicial.txt"
     Public zParametrosTXT As String = Application.StartupPath & "\xParametros.txt"
-    Public API_CMF, API_COINGEKO, API_ETHERSCAN, API_MORALIS As String
+    Public API_CMF, API_COINGEKO, API_ETHERSCAN, API_MORALIS, API_THEGRAPH As String
     Public RutaLocal As String              'Variable para trabajar en forma local, o forma nativa.
     '
     '
@@ -61,10 +61,13 @@ Module zCargaInicia
                     API_ETHERSCAN = Columna2
                     ArchivoFinal(3) = Columna1 & vbTab & Columna2   'Fila 3
                     '
-
                 Case "API_MORALIS"
                     API_MORALIS = Columna2
                     ArchivoFinal(4) = Columna1 & vbTab & Columna2   'Fila 4
+                    '
+                Case "API_THEGRAPH"
+                    API_THEGRAPH = Columna2
+                    ArchivoFinal(5) = Columna1 & vbTab & Columna2   'Fila 5
                     '
             End Select
         Next Fila
@@ -75,7 +78,7 @@ Module zCargaInicia
             End
         End If
         '
-        GuardarParametros(zParametrosTXT, ArchivoFinal)
+        'GuardarParametros(zParametrosTXT, ArchivoFinal)
     End Sub
     Public Sub GuardarParametros(ByVal RutaArchivo As String, ByVal Arreglo() As String)
         Dim ArregloSinEspacios(1) As String
